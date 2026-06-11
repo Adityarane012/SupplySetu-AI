@@ -51,7 +51,7 @@ export default function NewOrderVoicePage() {
 
     try {
       setStep("transcribing");
-      const resTranscribe = await fetch("http://localhost:8000/api/transcribe", {
+      const resTranscribe = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/transcribe`, {
         method: "POST",
         body: formData,
       });
@@ -59,7 +59,7 @@ export default function NewOrderVoicePage() {
       setTranscript(dataTranscribe.transcript);
 
       setStep("extracting");
-      const resExtract = await fetch("http://localhost:8000/api/transcribe/extract", {
+      const resExtract = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/transcribe/extract`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ transcript: dataTranscribe.transcript }),
@@ -76,7 +76,7 @@ export default function NewOrderVoicePage() {
 
   const saveOrder = async () => {
     try {
-      await fetch("http://localhost:8000/api/orders", {
+      await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/orders`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({

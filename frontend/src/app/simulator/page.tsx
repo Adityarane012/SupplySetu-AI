@@ -55,7 +55,7 @@ export default function SimulatorPage() {
         formData.append("body", text);
       }
 
-      const res = await fetch("http://localhost:8000/api/simulator/message", {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/simulator/message`, {
         method: "POST",
         body: formData,
       });

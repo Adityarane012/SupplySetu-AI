@@ -17,9 +17,9 @@ export default function AnalyticsPage() {
     async function fetchData() {
       try {
         const [sumRes, weekRes, foreRes] = await Promise.all([
-          fetch("http://localhost:8000/api/analytics/summary"),
-          fetch("http://localhost:8000/api/analytics/weekly"),
-          fetch("http://localhost:8000/api/analytics/forecast")
+          fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/analytics/summary`),
+          fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/analytics/weekly`),
+          fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/analytics/forecast`)
         ]);
 
         const sumData = await sumRes.json();

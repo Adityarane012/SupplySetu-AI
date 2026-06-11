@@ -17,7 +17,7 @@ export default function DeliveryMap() {
   useEffect(() => {
     async function fetchRoute() {
       try {
-        const ordersRes = await fetch("http://localhost:8000/api/orders?status=pending");
+        const ordersRes = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/orders?status=pending`);
         const ordersData = await ordersRes.json();
         let orderIds = ordersData.map((o: any) => o.id);
         
@@ -26,7 +26,7 @@ export default function DeliveryMap() {
           orderIds = ["a1000000-0000-0000-0000-000000000001"];
         }
 
-        const response = await fetch("http://localhost:8000/api/route/", {
+        const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/route/`, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
