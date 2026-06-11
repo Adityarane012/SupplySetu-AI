@@ -1,0 +1,33 @@
+# Dependencies
+node_modules/
+backend/venv/
+venv/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Environment Variables
+.env
+.env.local
+.env.*.local
+
+# Next.js
+.next/
+out/
+build/
+*.tsbuildinfo
+
+# OS Files
+.DS_Store
+Thumbs.db
+
+# Hackathon / Scratch Data
+backend/test_order.mp3
+backend/test_transcribe.py
+backend/test_route.py
+backend/test_db.py
+backend/test_extract.py
+download_screens.py
+test_extract.py
+*.log

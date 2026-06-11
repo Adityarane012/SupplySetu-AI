@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Route Optimization - SupplySetu AI</title>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=JetBrains+Mono:wght@400&amp;family=Noto+Sans:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-background": "#161c27",
+                        "primary": "#005129",
+                        "secondary": "#006d34",
+                        "surface-tint": "#1b6c3d",
+                        "surface": "#f9f9ff",
+                        "secondary-container": "#83fba2",
+                        "on-primary-fixed": "#00210d",
+                        "on-primary-container": "#9ae9ae",
+                        "on-primary": "#ffffff",
+                        "on-primary-fixed-variant": "#005229",
+                        "on-error-container": "#93000a",
+                        "primary-fixed": "#a5f4b8",
+                        "inverse-on-surface": "#ecf0ff",
+                        "on-tertiary-fixed-variant": "#633f00",
+                        "tertiary-container": "#825400",
+                        "inverse-surface": "#2a303d",
+                        "secondary-fixed": "#83fba2",
+                        "on-secondary-fixed": "#00210b",
+                        "surface-container": "#e8eeff",
+                        "on-secondary-container": "#007437",
+                        "on-tertiary-container": "#ffcf92",
+                        "primary-container": "#1a6b3c",
+                        "on-surface-variant": "#404940",
+                        "tertiary-fixed": "#ffddb4",
+                        "outline-variant": "#bfc9be",
+                        "surface-container-lowest": "#ffffff",
+                        "primary-fixed-dim": "#89d89e",
+                        "surface-container-high": "#e3e8f9",
+                        "surface-container-highest": "#dde2f3",
+                        "tertiary": "#623f00",
+                        "surface-container-low": "#f1f3ff",
+                        "tertiary-fixed-dim": "#ffb955",
+                        "inverse-primary": "#89d89e",
+                        "on-error": "#ffffff",
+                        "outline": "#707a70",
+                        "surface-bright": "#f9f9ff",
+                        "background": "#f9f9ff",
+                        "error-container": "#ffdad6",
+                        "error": "#ba1a1a",
+                        "surface-variant": "#dde2f3",
+                        "secondary-fixed-dim": "#67de88",
+                        "on-tertiary-fixed": "#291800",
+                        "on-surface": "#161c27",
+                        "surface-dim": "#d4daea",
+                        "on-tertiary": "#ffffff",
+                        "on-secondary-fixed-variant": "#005225",
+                        "on-secondary": "#ffffff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "margin-mobile": "16px",
+                        "stack-sm": "8px",
+                        "gutter": "16px",
+                        "base": "4px",
+                        "stack-lg": "24px",
+                        "margin-desktop": "32px",
+                        "stack-md": "16px"
+                    },
+                    "fontFamily": {
+                        "data-value": ["Inter"],
+                        "body-md": ["Noto Sans"],
+                        "body-lg": ["Noto Sans"],
+                        "headline-md": ["Noto Sans"],
+                        "headline-lg": ["Noto Sans"],
+                        "headline-lg-mobile": ["Noto Sans"],
+                        "data-label": ["Inter"],
+                        "code-sm": ["JetBrains Mono"]
+                    },
+                    "fontSize": {
+                        "data-value": ["14px", { "lineHeight": "20px", "fontWeight": "500" }],
+                        "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "headline-md": ["20px", { "lineHeight": "28px", "fontWeight": "600" }],
+                        "headline-lg": ["28px", { "lineHeight": "36px", "fontWeight": "700" }],
+                        "headline-lg-mobile": ["24px", { "lineHeight": "32px", "fontWeight": "700" }],
+                        "data-label": ["12px", { "lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "600" }],
+                        "code-sm": ["12px", { "lineHeight": "18px", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .icon-fill {
+            font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        
+        /* Map dash animation */
+        @keyframes dash {
+            to { stroke-dashoffset: -20; }
+        }
+        .animated-path {
+            stroke-dasharray: 8 8;
+            animation: dash 1s linear infinite;
+        }
+        
+        /* Custom scrollbar for left panel */
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background-color: #d4daea; /* surface-dim */
+            border-radius: 20px;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body-md text-body-md h-screen w-full overflow-hidden flex m-0 p-0">
+<nav class="fixed left-0 top-0 h-full flex flex-col py-6 w-[240px] bg-on-background shadow-md z-50">
+<div class="px-6 mb-8 flex items-center gap-3">
+<div class="w-8 h-8 rounded-lg bg-primary-container flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-on-primary text-[20px] icon-fill">local_shipping</span>
+</div>
+<div class="flex flex-col">
+<span class="font-headline-md text-headline-md font-bold text-on-primary">SupplySetu AI</span>
+<span class="font-data-label text-data-label text-surface-variant opacity-80">Logistics Intelligence</span>
+</div>
+</div>
+<div class="flex flex-col flex-grow gap-2">
+<a class="flex items-center gap-3 w-full text-surface-variant pl-4 py-2 hover:bg-primary/20 hover:text-primary-fixed transition-colors" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-data-label text-data-label">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 w-full text-surface-variant pl-4 py-2 hover:bg-primary/20 hover:text-primary-fixed transition-colors" href="#">
+<span class="material-symbols-outlined">package_2</span>
+<span class="font-data-label text-data-label">Orders</span>
+</a>
+<a class="flex items-center gap-3 w-full text-primary-fixed font-bold border-l-4 border-primary-fixed pl-3 py-2 bg-primary/10 opacity-90 transition-all duration-200" href="#">
+<span class="material-symbols-outlined icon-fill">map</span>
+<span class="font-data-label text-data-label">Route Map</span>
+</a>
+<a class="flex items-center gap-3 w-full text-surface-variant pl-4 py-2 hover:bg-primary/20 hover:text-primary-fixed transition-colors" href="#">
+<span class="material-symbols-outlined">groups</span>
+<span class="font-data-label text-data-label">Customers</span>
+</a>
+<a class="flex items-center gap-3 w-full text-surface-variant pl-4 py-2 hover:bg-primary/20 hover:text-primary-fixed transition-colors" href="#">
+<span class="material-symbols-outlined">analytics</span>
+<span class="font-data-label text-data-label">Analytics</span>
+</a>
+</div>
+<div class="mt-auto px-4">
+<a class="flex items-center gap-3 w-full text-surface-variant pl-4 py-2 hover:bg-primary/20 hover:text-primary-fixed transition-colors" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-data-label text-data-label">Settings</span>
+</a>
+</div>
+</nav>
+<main class="ml-[240px] flex w-[calc(100%-240px)] h-full">
+<section class="w-[35%] h-full bg-surface-container-lowest border-r border-surface-variant flex flex-col z-10 shadow-[4px_0_12px_rgba(0,0,0,0.02)]">
+<div class="p-stack-lg border-b border-surface-variant flex flex-col gap-stack-md shrink-0">
+<div class="flex items-center justify-between">
+<h1 class="font-headline-lg text-headline-lg text-on-surface">Today's Route</h1>
+<button id="generate-route-btn" class="bg-tertiary-container text-on-tertiary-container hover:bg-tertiary transition-colors h-10 px-4 rounded-xl flex items-center gap-2 shadow-sm active:scale-95 duration-100">
+<span class="material-symbols-outlined text-[18px]">bolt</span>
+<span class="font-data-value text-data-value font-semibold">Generate Route</span>
+</button>
+</div>
+<div class="flex items-center justify-between bg-surface-container-low p-4 rounded-xl border border-surface-container-high">
+<div class="flex flex-col">
+<span class="font-data-label text-data-label text-on-surface-variant mb-1">STOPS</span>
+<span id="route-stops-count" class="font-headline-md text-headline-md text-primary">0</span>
+</div>
+<div class="w-px h-8 bg-surface-variant"></div>
+<div class="flex flex-col">
+<span class="font-data-label text-data-label text-on-surface-variant mb-1">DISTANCE</span>
+<span id="route-distance" class="font-headline-md text-headline-md text-primary">0.0 km</span>
+</div>
+<div class="w-px h-8 bg-surface-variant"></div>
+<div class="flex flex-col">
+<span class="font-data-label text-data-label text-on-surface-variant mb-1">EST. TIME</span>
+<span id="route-time" class="font-headline-md text-headline-md text-primary">0m</span>
+</div>
+</div>
+</div>
+<div id="stops-list" class="flex-grow overflow-y-auto custom-scrollbar p-stack-md flex flex-col gap-stack-sm bg-surface">
+<div class="bg-surface-container-lowest p-4 rounded-xl border border-surface-variant flex items-start gap-4 shadow-sm opacity-60">
+<div class="w-8 h-8 rounded-full bg-primary-container text-on-primary flex items-center justify-center font-data-value text-data-value shrink-0">1</div>
+<div class="flex-grow flex flex-col gap-1">
+<div class="flex items-center justify-between">
+<span class="font-data-value text-data-value text-on-surface">Ramesh Kirana Store</span>
+<span class="px-2 py-1 bg-primary/10 text-primary-container rounded-full font-data-label text-data-label border border-primary/20">Delivered</span>
+</div>
+<span class="font-body-md text-body-md text-on-surface-variant">4 Boxes, 12kg</span>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-4 rounded-xl border border-surface-variant flex items-start gap-4 shadow-sm opacity-60">
+<div class="w-8 h-8 rounded-full bg-primary-container text-on-primary flex items-center justify-center font-data-value text-data-value shrink-0">2</div>
+<div class="flex-grow flex flex-col gap-1">
+<div class="flex items-center justify-between">
+<span class="font-data-value text-data-value text-on-surface">Sai Traders</span>
+<span class="px-2 py-1 bg-primary/10 text-primary-container rounded-full font-data-label text-data-label border border-primary/20">Delivered</span>
+</div>
+<span class="font-body-md text-body-md text-on-surface-variant">2 Pallets, 45kg</span>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-4 rounded-xl border-l-4 border-l-secondary border-t border-r border-b border-surface-variant flex items-start gap-4 shadow-[0_4px_12px_rgba(0,0,0,0.05)] transform scale-[1.02] transition-transform">
+<div class="w-8 h-8 rounded-full bg-secondary-container text-on-secondary-container flex items-center justify-center font-data-value text-data-value shrink-0 ring-4 ring-secondary/20">3</div>
+<div class="flex-grow flex flex-col gap-1">
+<div class="flex items-center justify-between">
+<span class="font-data-value text-data-value text-on-surface font-semibold">Hotel Sai Ram</span>
+<span class="px-2 py-1 bg-secondary-container/30 text-on-secondary-container rounded-full font-data-label text-data-label border border-secondary/30">In Transit</span>
+</div>
+<span class="font-body-md text-body-md text-on-surface-variant">Bulk Provisions, 120kg</span>
+<div class="flex items-center gap-2 mt-2 text-secondary font-data-label text-data-label">
+<span class="material-symbols-outlined text-[16px]">navigation</span>
+<span>Arriving in 15 mins</span>
+</div>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-4 rounded-xl border border-surface-variant flex items-start gap-4 hover:shadow-md transition-shadow cursor-pointer">
+<div class="w-8 h-8 rounded-full bg-surface-container-high text-on-surface-variant flex items-center justify-center font-data-value text-data-value shrink-0">4</div>
+<div class="flex-grow flex flex-col gap-1">
+<div class="flex items-center justify-between">
+<span class="font-data-value text-data-value text-on-surface">Fresh Mart Supermarket</span>
+<span class="px-2 py-1 bg-tertiary-fixed/40 text-on-tertiary-container rounded-full font-data-label text-data-label border border-tertiary/20">Pending</span>
+</div>
+<span class="font-body-md text-body-md text-on-surface-variant">Produce, 80kg</span>
+</div>
+</div>
+<div class="bg-surface-container-lowest p-4 rounded-xl border border-surface-variant flex items-start gap-4 hover:shadow-md transition-shadow cursor-pointer">
+<div class="w-8 h-8 rounded-full bg-surface-container-high text-on-surface-variant flex items-center justify-center font-data-value text-data-value shrink-0">5</div>
+<div class="flex-grow flex flex-col gap-1">
+<div class="flex items-center justify-between">
+<span class="font-data-value text-data-value text-on-surface">Sharma Electronics</span>
+<span class="px-2 py-1 bg-tertiary-fixed/40 text-on-tertiary-container rounded-full font-data-label text-data-label border border-tertiary/20">Pending</span>
+</div>
+<span class="font-body-md text-body-md text-on-surface-variant">High Value Goods, 15kg</span>
+</div>
+</div>
+</div>
+</section>
+<section class="w-[65%] h-full relative overflow-hidden">
+<div id="map" class="w-full h-full" style="z-index: 1;"></div>
+<div class="absolute top-6 right-6 bg-surface-container-lowest p-3 rounded-xl shadow-sm border border-surface-variant flex gap-4" style="z-index: 1000;">
+<div class="flex items-center gap-2">
+<div class="w-3 h-3 rounded-full bg-[#005129]"></div>
+<span class="font-data-label text-data-label text-on-surface">Depot</span>
+</div>
+<div class="flex items-center gap-2">
+<div class="w-3 h-3 rounded-full bg-[#006d34]" style="border: 2px solid #89d89e;"></div>
+<span class="font-data-label text-data-label text-on-surface">Stops</span>
+</div>
+</div>
+</section>
+</main>
+<script>
+document.addEventListener('DOMContentLoaded', async () => {
+    // 1. Initialize Leaflet Map
+    const map = L.map('map').setView([19.0178, 72.8478], 13);
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        maxZoom: 19,
+        attribution: '© OpenStreetMap'
+    }).addTo(map);
+
+    let routeMarkers = [];
+    let routeLine = null;
+
+    const API_BASE = 'http://localhost:8000';
+    const DEPOT_COORDS = { lat: 19.0178, lng: 72.8478, name: "Dadar West Depot" };
+
+    // Default depot marker
+    const depotMarker = L.marker([DEPOT_COORDS.lat, DEPOT_COORDS.lng], {
+        title: "Depot",
+        riseOnHover: true
+    }).addTo(map).bindPopup("<b>Dadar West Depot</b><br/>Distribution Center");
+
+    // 2. Fetch pending orders on load to show them
+    let pendingOrders = [];
+    try {
+        const ordersResp = await fetch(`${API_BASE}/api/orders?status=pending`);
+        if (ordersResp.ok) {
+            pendingOrders = await ordersResp.json();
+            
+            // Also get in-transit orders
+            const transitResp = await fetch(`${API_BASE}/api/orders?status=in_transit`);
+            if (transitResp.ok) {
+                const transitOrders = await transitResp.json();
+                pendingOrders = [...pendingOrders, ...transitOrders];
+            }
+
+            const listContainer = document.getElementById('stops-list');
+            listContainer.innerHTML = ''; // Clear default hardcoded items
+            
+            if (pendingOrders.length === 0) {
+                listContainer.innerHTML = `<div class="p-4 text-center text-on-surface-variant font-bold">No pending delivery requests.</div>`;
+                return;
+            }
+
+            // Display pending orders list
+            pendingOrders.forEach((order, idx) => {
+                const itemsText = (order.order_items || []).map(i => `${i.quantity} ${i.unit} ${i.product_name}`).join(', ') || 'No items';
+                const card = document.createElement('div');
+                card.className = "bg-surface-container-lowest p-4 rounded-xl border border-surface-variant flex items-start gap-4 hover:shadow-md transition-shadow cursor-pointer";
+                card.innerHTML = `
+                    <div class="w-8 h-8 rounded-full bg-surface-container-high text-on-surface-variant flex items-center justify-center font-data-value text-data-value shrink-0">?</div>
+                    <div class="flex-grow flex flex-col gap-1">
+                        <div class="flex items-center justify-between">
+                            <span class="font-data-value text-data-value text-on-surface font-semibold">${order.customer_name}</span>
+                            <span class="px-2 py-1 bg-tertiary-fixed/40 text-on-tertiary-container rounded-full font-data-label text-data-label border border-tertiary/20">${order.status}</span>
+                        </div>
+                        <span class="font-body-md text-body-md text-on-surface-variant">${itemsText}</span>
+                    </div>
+                `;
+                listContainer.appendChild(card);
+            });
+        }
+    } catch (e) {
+        console.error("Error loading pending orders:", e);
+    }
+
+    // 3. Generate Route Click Handler
+    const genRouteBtn = document.getElementById('generate-route-btn');
+    genRouteBtn.addEventListener('click', async () => {
+        if (pendingOrders.length === 0) {
+            alert("No pending orders available to optimize!");
+            return;
+        }
+
+        genRouteBtn.disabled = true;
+        genRouteBtn.innerHTML = `<span class="material-symbols-outlined animate-spin text-[18px]">autorenew</span> <span class="font-data-value text-data-value font-semibold">Optimizing...</span>`;
+
+        try {
+            const orderIds = pendingOrders.map(o => o.id);
+            const routeResp = await fetch(`${API_BASE}/api/route`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    order_ids: orderIds,
+                    depot: DEPOT_COORDS
+                })
+            });
+
+            if (routeResp.ok) {
+                const data = await routeResp.json();
+                
+                // Update KPI Metrics
+                document.getElementById('route-stops-count').textContent = data.total_stops;
+                document.getElementById('route-distance').textContent = `${data.distance_km} km`;
+                
+                const mins = data.est_minutes;
+                const hrs = Math.floor(mins / 60);
+                const rm = mins % 60;
+                document.getElementById('route-time').textContent = hrs > 0 ? `${hrs}h ${rm}m` : `${rm}m`;
+
+                // Update stops list panel in optimized sequence
+                const listContainer = document.getElementById('stops-list');
+                listContainer.innerHTML = '';
+                
+                // Clear existing route markers and polyline
+                routeMarkers.forEach(m => map.removeLayer(m));
+                routeMarkers = [];
+                if (routeLine) {
+                    map.removeLayer(routeLine);
+                }
+
+                const coordinates = [];
+                let stopNum = 1;
+
+                data.route.forEach((stop) => {
+                    // Save coordinate for polyline path
+                    coordinates.push([stop.lat, stop.lng]);
+
+                    if (stop.type === 'depot') {
+                        // Mark depot on list (first or last)
+                        const depotCard = document.createElement('div');
+                        depotCard.className = "bg-surface-container-high p-4 rounded-xl border border-surface-variant flex items-start gap-4 shadow-sm opacity-80";
+                        depotCard.innerHTML = `
+                            <div class="w-8 h-8 rounded-full bg-[#005129] text-white flex items-center justify-center font-data-value text-data-value shrink-0">⌂</div>
+                            <div class="flex-grow flex flex-col gap-1">
+                                <span class="font-data-value text-data-value text-on-surface font-bold">${stop.label || 'Depot'}</span>
+                                <span class="font-body-md text-body-md text-on-surface-variant">Dadar West Market</span>
+                            </div>
+                        `;
+                        listContainer.appendChild(depotCard);
+                    } else {
+                        // Mark customer stop on list
+                        const matchingOrder = pendingOrders.find(o => o.id === stop.order_id);
+                        const itemsText = matchingOrder && matchingOrder.order_items 
+                            ? matchingOrder.order_items.map(i => `${i.quantity} ${i.unit} ${i.product_name}`).join(', ') 
+                            : 'Produce';
+
+                        const stopCard = document.createElement('div');
+                        stopCard.className = "bg-surface-container-lowest p-4 rounded-xl border border-surface-variant flex items-start gap-4 shadow-sm hover:shadow-md transition-shadow cursor-pointer";
+                        stopCard.innerHTML = `
+                            <div class="w-8 h-8 rounded-full bg-secondary-container text-on-secondary-container flex items-center justify-center font-data-value text-data-value shrink-0 ring-4 ring-secondary/20">${stopNum}</div>
+                            <div class="flex-grow flex flex-col gap-1">
+                                <div class="flex items-center justify-between">
+                                    <span class="font-data-value text-data-value text-on-surface font-semibold">${stop.customer_name}</span>
+                                    <span class="px-2 py-1 bg-secondary-container/30 text-on-secondary-container rounded-full font-data-label text-data-label border border-secondary/30">Staged</span>
+                                </div>
+                                <span class="font-body-md text-body-md text-on-surface-variant">${itemsText}</span>
+                                <span class="font-body-sm text-xs text-on-surface-variant"><span class="material-symbols-outlined text-xs">location_on</span> ${stop.address || ''}</span>
+                            </div>
+                        `;
+                        listContainer.appendChild(stopCard);
+
+                        // Add Marker to map
+                        const marker = L.marker([stop.lat, stop.lng])
+                            .addTo(map)
+                            .bindPopup(`<b>Stop #${stopNum}: ${stop.customer_name}</b><br/>${itemsText}<br/>Address: ${stop.address || ''}`);
+                        
+                        routeMarkers.push(marker);
+                        stopNum++;
+                    }
+                });
+
+                // Draw optimized route polyline on Leaflet
+                routeLine = L.polyline(coordinates, {
+                    color: '#006d34',
+                    weight: 4,
+                    dashArray: '8, 8',
+                    lineJoin: 'round'
+                }).addTo(map);
+
+                // Zoom fit boundaries
+                const bounds = L.latLngBounds(coordinates);
+                map.fitBounds(bounds, { padding: [50, 50] });
+
+            } else {
+                alert("Failed to compute optimized route. Please verify database coordinates.");
+            }
+        } catch (e) {
+            console.error("Error generating route:", e);
+            alert("Error connecting to route optimization backend service.");
+        } finally {
+            genRouteBtn.disabled = false;
+            genRouteBtn.innerHTML = `<span class="material-symbols-outlined text-[18px]">bolt</span> <span class="font-data-value text-data-value font-semibold">Generate Route</span>`;
+        }
+    });
+});
+</script>
+</body></html>

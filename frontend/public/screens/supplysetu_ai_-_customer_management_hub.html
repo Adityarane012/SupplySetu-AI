@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>SupplySetu AI - Customer Directory</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-bright": "#fcf9f8",
+                        "background": "#fcf9f8",
+                        "primary-fixed": "#69ff87",
+                        "on-tertiary": "#ffffff",
+                        "tertiary": "#b02e00",
+                        "surface": "#fcf9f8",
+                        "surface-container-high": "#ebe7e7",
+                        "on-primary-fixed-variant": "#00531e",
+                        "on-background": "#1c1b1b",
+                        "on-error": "#ffffff",
+                        "primary-container": "#00c853",
+                        "tertiary-container": "#ff8f6f",
+                        "surface-dim": "#dcd9d9",
+                        "secondary-fixed-dim": "#fdbc13",
+                        "surface-container": "#f0edec",
+                        "surface-variant": "#e5e2e1",
+                        "secondary-container": "#fdbc13",
+                        "on-secondary-fixed": "#261900",
+                        "on-tertiary-fixed": "#3b0900",
+                        "on-secondary-container": "#6b4d00",
+                        "primary": "#006e2a",
+                        "tertiary-fixed": "#ffdbd1",
+                        "on-surface": "#1c1b1b",
+                        "on-tertiary-fixed-variant": "#872100",
+                        "tertiary-fixed-dim": "#ffb5a0",
+                        "surface-container-low": "#f6f3f2",
+                        "on-surface-variant": "#3c4a3c",
+                        "error-container": "#ffdad6",
+                        "secondary-fixed": "#ffdea3",
+                        "surface-container-highest": "#e5e2e1",
+                        "inverse-on-surface": "#f3f0ef",
+                        "on-primary-container": "#004c1b",
+                        "surface-tint": "#006e2a",
+                        "on-tertiary-container": "#7d1e00",
+                        "on-secondary-fixed-variant": "#5d4200",
+                        "primary-fixed-dim": "#3ce36a",
+                        "on-primary-fixed": "#002108",
+                        "on-error-container": "#93000a",
+                        "surface-container-lowest": "#ffffff",
+                        "error": "#ba1a1a",
+                        "inverse-primary": "#3ce36a",
+                        "on-secondary": "#ffffff",
+                        "secondary": "#7a5900",
+                        "outline-variant": "#bbcbb8",
+                        "inverse-surface": "#313030",
+                        "on-primary": "#ffffff",
+                        "outline": "#6c7b6a"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "grid-gutter": "12px",
+                        "section-margin": "24px",
+                        "item-gap": "8px",
+                        "unit": "4px",
+                        "container-padding": "12px"
+                    },
+                    "fontFamily": {
+                        "display-lg": ["Noto Sans"],
+                        "label-lg": ["Noto Sans"],
+                        "body-md": ["Noto Sans"],
+                        "body-lg": ["Noto Sans"],
+                        "vernacular-md": ["Noto Sans"],
+                        "headline-md": ["Noto Sans"],
+                        "headline-lg": ["Noto Sans"],
+                        "body-sm": ["Noto Sans"]
+                    },
+                    "fontSize": {
+                        "display-lg": ["40px", {"lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "label-lg": ["14px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "700"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "body-lg": ["18px", {"lineHeight": "26px", "fontWeight": "400"}],
+                        "vernacular-md": ["16px", {"lineHeight": "24px", "fontWeight": "500"}],
+                        "headline-md": ["22px", {"lineHeight": "28px", "fontWeight": "600"}],
+                        "headline-lg": ["28px", {"lineHeight": "36px", "fontWeight": "700"}],
+                        "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .icon-fill {
+            font-variation-settings: 'FILL' 1;
+        }
+        /* Zebra striping for high density rows */
+        .density-row:nth-child(even) {
+            background-color: theme('colors.surface-container-low');
+        }
+        .density-row:hover {
+            background-color: theme('colors.surface-container');
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md min-h-screen flex flex-col md:flex-row antialiased">
+<!-- Desktop SideNav (Hidden on Mobile) -->
+<nav class="hidden md:flex flex-col h-screen w-64 fixed left-0 top-0 py-section-margin px-unit bg-surface-container border-r-2 border-on-background z-50">
+<div class="px-container-padding mb-8">
+<div class="flex items-center gap-3">
+<img alt="Vendor Profile" class="w-12 h-12 rounded-full border border-outline object-cover" data-alt="A professional headshot of a middle-aged Indian logistics manager wearing a neat button-down shirt. The setting is an active but blurred warehouse background with soft natural light streaming in, conveying reliability and industry experience. The image is bright and crisp, suitable for a professional corporate profile." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAa3qLJa35ZlN4bkeSyRgK9IOcHvl6y1sSAq4FVj3YlVfr3nbNecAuxmXUUYdiSDOzLinpV2FJ15dQOQhvcG8-1h9LgOBaPU3_XRUiuKUctNBSjczI1KIkPD1-EWZ2v6d8HvW_2ha7Pdtyu2UxuwxURyxcePgOcxcBSokxF9voOxA7-0D0eGETQl9itmAGxADYbccfrArM7jxcZhObvi2-LQdzhVkZaUi0UEL_Pg5DPEHA2mXbc2pJ2kWmqDLT5qeFOcrjWtOV0c9Wb"/>
+<div>
+<h2 class="font-headline-md text-headline-md font-bold text-primary">SupplySetu Vendor</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant">ID: 99283-IN</p>
+</div>
+</div>
+<button class="mt-4 w-full bg-primary text-on-primary font-label-lg text-label-lg py-3 px-4 rounded flex items-center justify-center gap-2 hover:bg-primary-container hover:text-on-primary-container transition-colors shadow-sm">
+<span class="material-symbols-outlined">add</span>
+                New Request / नया अनुरोध
+            </button>
+</div>
+<div class="flex-1 overflow-y-auto">
+<ul class="space-y-1">
+<li>
+<a class="flex items-center gap-4 px-container-padding py-3 text-on-surface hover:bg-surface-variant transition-all rounded mx-2 font-vernacular-md text-vernacular-md font-label-lg text-label-lg" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+                        Dashboard / डैशबोर्ड
+                    </a>
+</li>
+<li>
+<a class="flex items-center gap-4 px-container-padding py-3 text-on-surface hover:bg-surface-variant transition-all rounded mx-2 font-vernacular-md text-vernacular-md font-label-lg text-label-lg" href="#">
+<span class="material-symbols-outlined">local_shipping</span>
+                        Shipments / शिपमेंट
+                    </a>
+</li>
+<li>
+<a class="flex items-center gap-4 px-container-padding py-3 bg-secondary-container text-on-secondary-container border-b-4 border-secondary-fixed-dim font-bold rounded mx-2 transition-all font-vernacular-md text-vernacular-md font-label-lg text-label-lg" href="#">
+<span class="material-symbols-outlined icon-fill">inventory_2</span>
+                        Inventory / सूची
+                    </a>
+</li>
+<li>
+<a class="flex items-center gap-4 px-container-padding py-3 text-on-surface hover:bg-surface-variant transition-all rounded mx-2 font-vernacular-md text-vernacular-md font-label-lg text-label-lg" href="#">
+<span class="material-symbols-outlined">gavel</span>
+                        Bids / बोलियां
+                    </a>
+</li>
+<li>
+<a class="flex items-center gap-4 px-container-padding py-3 text-on-surface hover:bg-surface-variant transition-all rounded mx-2 font-vernacular-md text-vernacular-md font-label-lg text-label-lg" href="#">
+<span class="material-symbols-outlined">leaderboard</span>
+                        Analytics / विश्लेषण
+                    </a>
+</li>
+<li>
+<a class="flex items-center gap-4 px-container-padding py-3 text-on-surface hover:bg-surface-variant transition-all rounded mx-2 font-vernacular-md text-vernacular-md font-label-lg text-label-lg" href="#">
+<span class="material-symbols-outlined">settings</span>
+                        Settings / सेटिंग्स
+                    </a>
+</li>
+</ul>
+</div>
+<div class="mt-auto pt-4 border-t-2 border-on-background mx-2">
+<ul class="space-y-1">
+<li>
+<a class="flex items-center gap-4 px-container-padding py-3 text-on-surface hover:bg-surface-variant transition-all rounded font-vernacular-md text-vernacular-md font-label-lg text-label-lg" href="#">
+<span class="material-symbols-outlined">help_outline</span>
+                        Support / सहायता
+                    </a>
+</li>
+<li>
+<a class="flex items-center gap-4 px-container-padding py-3 text-error hover:bg-error-container transition-all rounded font-vernacular-md text-vernacular-md font-label-lg text-label-lg" href="#">
+<span class="material-symbols-outlined">logout</span>
+                        Logout / लॉगआउट
+                    </a>
+</li>
+</ul>
+</div>
+</nav>
+<!-- Main Content Area -->
+<main class="flex-1 md:ml-64 flex flex-col min-h-screen relative w-full">
+<!-- TopAppBar (Visible on all, nav toggle on mobile) -->
+<header class="bg-surface border-b-2 border-on-background sticky top-0 z-40 flex justify-between items-center w-full px-grid-gutter py-2 mx-auto h-16">
+<div class="flex items-center gap-4">
+<button class="md:hidden text-on-background p-2">
+<span class="material-symbols-outlined">menu</span>
+</button>
+<div class="font-headline-lg text-headline-lg font-bold text-primary flex items-center gap-2">
+                    SupplySetu AI
+                </div>
+</div>
+<!-- Global Search -->
+<div class="hidden md:flex flex-1 max-w-md mx-8 relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant">search</span>
+<input class="w-full bg-surface-container border-[1.5px] border-outline text-on-surface pl-10 pr-4 py-2 rounded focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none font-body-sm text-body-sm placeholder-on-surface-variant" placeholder="Search customers, orders... / ग्राहक, ऑर्डर खोजें..." type="text"/>
+</div>
+<div class="flex items-center gap-2 md:gap-4">
+<button class="text-on-surface-variant hover:bg-surface-container-high transition-colors p-2 rounded-full active:scale-95 duration-75">
+<span class="material-symbols-outlined">mic</span>
+</button>
+<button class="text-on-surface-variant hover:bg-surface-container-high transition-colors p-2 rounded-full active:scale-95 duration-75 relative">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-1 right-1 w-2 h-2 bg-error rounded-full"></span>
+</button>
+<button class="hidden md:flex bg-secondary-container text-on-secondary-container font-label-lg text-label-lg py-1.5 px-4 rounded border-b-2 border-secondary-fixed-dim items-center gap-2 hover:bg-secondary-fixed active:scale-95 duration-75">
+                    Command Center
+                </button>
+<button class="text-on-surface-variant hover:bg-surface-container-high transition-colors p-2 rounded-full active:scale-95 duration-75 md:hidden">
+<span class="material-symbols-outlined">account_circle</span>
+</button>
+</div>
+</header>
+<!-- Page Content -->
+<div class="p-container-padding md:p-section-margin max-w-[1440px] mx-auto w-full flex-1 overflow-x-hidden">
+<!-- Header Section -->
+<div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-6 gap-4 border-b border-surface-variant pb-4">
+<div>
+<h1 class="font-headline-lg text-headline-lg font-bold text-on-background">Customer Directory</h1>
+<p class="font-vernacular-md text-vernacular-md text-on-surface-variant mt-1">ग्राहक निर्देशिका (842 Active)</p>
+</div>
+<div class="flex items-center gap-3 w-full md:w-auto">
+<!-- Filters -->
+<button class="flex items-center gap-2 px-3 py-2 bg-surface-container border-1.5 border-outline rounded font-label-lg text-label-lg text-on-surface hover:bg-surface-variant">
+<span class="material-symbols-outlined text-[18px]">filter_list</span>
+                        Filter
+                    </button>
+<!-- Sort -->
+<button class="flex items-center gap-2 px-3 py-2 bg-surface-container border-1.5 border-outline rounded font-label-lg text-label-lg text-on-surface hover:bg-surface-variant">
+<span class="material-symbols-outlined text-[18px]">sort</span>
+                        Recent
+                    </button>
+<!-- Add New -->
+<button class="flex items-center gap-2 px-4 py-2 bg-primary text-on-primary font-label-lg text-label-lg rounded ml-auto md:ml-0 hover:bg-primary-container shadow-sm border-b-2 border-on-primary-fixed-variant">
+<span class="material-symbols-outlined text-[18px]">person_add</span>
+<span class="hidden sm:inline">Add Customer</span>
+</button>
+</div>
+</div>
+<!-- High-Density Directory List -->
+<div class="bg-surface border-2 border-on-background rounded overflow-hidden shadow-sm">
+<!-- Table Header (Desktop only) -->
+<div class="hidden md:grid grid-cols-12 gap-4 px-4 py-3 bg-surface-container-high border-b-2 border-on-background font-label-lg text-label-lg text-on-surface-variant">
+<div class="col-span-3">Customer / ग्राहक</div>
+<div class="col-span-2">Location / स्थान</div>
+<div class="col-span-2 text-right">Total Value / कुल मूल्य</div>
+<div class="col-span-2">Last Order / अंतिम आदेश</div>
+<div class="col-span-3 text-center">Quick Actions / त्वरित कार्रवाई</div>
+</div>
+<!-- List Body -->
+<div class="flex flex-col">
+<!-- Customer Row 1 -->
+<div class="density-row border-b border-surface-variant last:border-b-0 p-4 md:py-3 transition-colors md:grid md:grid-cols-12 md:gap-4 md:items-center">
+<!-- Mobile Header / Desktop Col 1 -->
+<div class="col-span-3 flex items-start gap-3 mb-3 md:mb-0">
+<div class="w-10 h-10 rounded bg-primary-container text-on-primary-container flex items-center justify-center font-bold text-lg border border-primary shrink-0">
+                                SA
+                            </div>
+<div>
+<p class="font-body-md text-body-md font-bold text-on-background leading-tight">Sharma Agro Traders</p>
+<p class="font-vernacular-md text-vernacular-md font-bold text-on-surface-variant text-sm mt-0.5">शर्मा एग्रो ट्रेडर्स</p>
+<p class="md:hidden font-body-sm text-body-sm text-on-surface-variant mt-1">ID: C-1092 • 45 Orders</p>
+</div>
+</div>
+<!-- Location -->
+<div class="col-span-2 flex items-center gap-1.5 mb-2 md:mb-0">
+<span class="material-symbols-outlined text-[16px] text-tertiary md:hidden">location_on</span>
+<div>
+<p class="font-body-sm text-body-sm text-on-background">Ludhiana, PB</p>
+<p class="font-vernacular-md text-vernacular-md font-bold text-on-surface-variant text-xs">लुधियाना, पंजाब</p>
+</div>
+</div>
+<!-- Insights: Value & Last Order -->
+<div class="col-span-4 flex justify-between md:contents mb-4 md:mb-0 bg-surface-container p-2 rounded md:bg-transparent md:p-0">
+<div class="col-span-2 md:text-right">
+<p class="font-label-lg text-label-lg text-on-surface-variant md:hidden mb-0.5 text-xs">Total Value</p>
+<p class="font-headline-md text-headline-md font-bold text-on-background md:text-lg">₹12.4L</p>
+</div>
+<div class="col-span-2 text-right md:text-left">
+<p class="font-label-lg text-label-lg text-on-surface-variant md:hidden mb-0.5 text-xs">Last Order</p>
+<p class="font-body-sm text-body-sm text-on-background">2 Days Ago</p>
+<div class="inline-flex items-center px-1.5 py-0.5 rounded bg-primary-container text-on-primary-container font-label-lg text-[10px] mt-1 border border-primary">
+                                    DELIVERED
+                                </div>
+</div>
+</div>
+<!-- Actions -->
+<div class="col-span-3 flex items-center justify-end md:justify-center gap-2 mt-2 md:mt-0 pt-3 md:pt-0 border-t border-surface-variant md:border-t-0">
+<button class="flex-1 md:flex-none flex items-center justify-center gap-1.5 bg-[#25D366] text-white px-3 py-1.5 rounded font-label-lg text-sm border-b-2 border-[#128C7E] active:scale-95 transition-transform" title="WhatsApp">
+<!-- Using generic chat icon as placeholder for WhatsApp in Material Symbols -->
+<span class="material-symbols-outlined text-[18px]">chat</span>
+<span class="md:hidden lg:inline">Message</span>
+</button>
+<button class="flex-1 md:flex-none flex items-center justify-center gap-1.5 bg-surface text-on-surface px-3 py-1.5 rounded border-[1.5px] border-outline font-label-lg text-sm hover:bg-surface-variant active:scale-95 transition-transform" title="Call">
+<span class="material-symbols-outlined text-[18px]">call</span>
+<span class="md:hidden lg:inline">Call</span>
+</button>
+<button class="p-1.5 text-on-surface-variant hover:text-on-background rounded hover:bg-surface-variant transition-colors">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</div>
+</div>
+<!-- Customer Row 2 -->
+<div class="density-row border-b border-surface-variant last:border-b-0 p-4 md:py-3 transition-colors md:grid md:grid-cols-12 md:gap-4 md:items-center">
+<div class="col-span-3 flex items-start gap-3 mb-3 md:mb-0">
+<div class="w-10 h-10 rounded bg-secondary-container text-on-secondary-container flex items-center justify-center font-bold text-lg border border-secondary shrink-0">
+                                ML
+                            </div>
+<div>
+<p class="font-body-md text-body-md font-bold text-on-background leading-tight">Mehta Logistics Hub</p>
+<p class="font-vernacular-md text-vernacular-md font-bold text-on-surface-variant text-sm mt-0.5">मेहता लॉजिस्टिक्स हब</p>
+<p class="md:hidden font-body-sm text-body-sm text-on-surface-variant mt-1">ID: C-2241 • 12 Orders</p>
+</div>
+</div>
+<div class="col-span-2 flex items-center gap-1.5 mb-2 md:mb-0">
+<span class="material-symbols-outlined text-[16px] text-tertiary md:hidden">location_on</span>
+<div>
+<p class="font-body-sm text-body-sm text-on-background">Surat, GJ</p>
+<p class="font-vernacular-md text-vernacular-md font-bold text-on-surface-variant text-xs">सूरत, गुजरात</p>
+</div>
+</div>
+<div class="col-span-4 flex justify-between md:contents mb-4 md:mb-0 bg-surface-container p-2 rounded md:bg-transparent md:p-0">
+<div class="col-span-2 md:text-right">
+<p class="font-label-lg text-label-lg text-on-surface-variant md:hidden mb-0.5 text-xs">Total Value</p>
+<p class="font-headline-md text-headline-md font-bold text-on-background md:text-lg">₹4.2L</p>
+</div>
+<div class="col-span-2 text-right md:text-left">
+<p class="font-label-lg text-label-lg text-on-surface-variant md:hidden mb-0.5 text-xs">Last Order</p>
+<p class="font-body-sm text-body-sm text-on-background">Today, 10:30 AM</p>
+<div class="inline-flex items-center px-1.5 py-0.5 rounded bg-secondary-container text-on-secondary-container font-label-lg text-[10px] mt-1 border border-secondary">
+                                    IN TRANSIT
+                                </div>
+</div>
+</div>
+<div class="col-span-3 flex items-center justify-end md:justify-center gap-2 mt-2 md:mt-0 pt-3 md:pt-0 border-t border-surface-variant md:border-t-0">
+<button class="flex-1 md:flex-none flex items-center justify-center gap-1.5 bg-[#25D366] text-white px-3 py-1.5 rounded font-label-lg text-sm border-b-2 border-[#128C7E] active:scale-95 transition-transform" title="WhatsApp">
+<span class="material-symbols-outlined text-[18px]">chat</span>
+<span class="md:hidden lg:inline">Message</span>
+</button>
+<button class="flex-1 md:flex-none flex items-center justify-center gap-1.5 bg-surface text-on-surface px-3 py-1.5 rounded border-[1.5px] border-outline font-label-lg text-sm hover:bg-surface-variant active:scale-95 transition-transform" title="Call">
+<span class="material-symbols-outlined text-[18px]">call</span>
+<span class="md:hidden lg:inline">Call</span>
+</button>
+<button class="p-1.5 text-on-surface-variant hover:text-on-background rounded hover:bg-surface-variant transition-colors">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</div>
+</div>
+<!-- Customer Row 3 -->
+<div class="density-row border-b border-surface-variant last:border-b-0 p-4 md:py-3 transition-colors md:grid md:grid-cols-12 md:gap-4 md:items-center">
+<div class="col-span-3 flex items-start gap-3 mb-3 md:mb-0">
+<div class="w-10 h-10 rounded bg-tertiary-container text-on-tertiary-container flex items-center justify-center font-bold text-lg border border-tertiary shrink-0">
+                                RT
+                            </div>
+<div>
+<p class="font-body-md text-body-md font-bold text-on-background leading-tight">Reddy Transports Pvt</p>
+<p class="font-vernacular-md text-vernacular-md font-bold text-on-surface-variant text-sm mt-0.5">रेड्डी ट्रांसपोर्ट्स प्राइवेट</p>
+<p class="md:hidden font-body-sm text-body-sm text-on-surface-variant mt-1">ID: C-0889 • 156 Orders</p>
+</div>
+</div>
+<div class="col-span-2 flex items-center gap-1.5 mb-2 md:mb-0">
+<span class="material-symbols-outlined text-[16px] text-tertiary md:hidden">location_on</span>
+<div>
+<p class="font-body-sm text-body-sm text-on-background">Hyderabad, TG</p>
+<p class="font-vernacular-md text-vernacular-md font-bold text-on-surface-variant text-xs">हैदराबाद, तेलंगाना</p>
+</div>
+</div>
+<div class="col-span-4 flex justify-between md:contents mb-4 md:mb-0 bg-surface-container p-2 rounded md:bg-transparent md:p-0">
+<div class="col-span-2 md:text-right">
+<p class="font-label-lg text-label-lg text-on-surface-variant md:hidden mb-0.5 text-xs">Total Value</p>
+<p class="font-headline-md text-headline-md font-bold text-on-background md:text-lg">₹48.9L</p>
+</div>
+<div class="col-span-2 text-right md:text-left">
+<p class="font-label-lg text-label-lg text-on-surface-variant md:hidden mb-0.5 text-xs">Last Order</p>
+<p class="font-body-sm text-body-sm text-on-background">1 Week Ago</p>
+<div class="inline-flex items-center px-1.5 py-0.5 rounded bg-surface-variant text-on-surface-variant font-label-lg text-[10px] mt-1 border border-outline">
+                                    COMPLETED
+                                </div>
+</div>
+</div>
+<div class="col-span-3 flex items-center justify-end md:justify-center gap-2 mt-2 md:mt-0 pt-3 md:pt-0 border-t border-surface-variant md:border-t-0">
+<button class="flex-1 md:flex-none flex items-center justify-center gap-1.5 bg-[#25D366] text-white px-3 py-1.5 rounded font-label-lg text-sm border-b-2 border-[#128C7E] active:scale-95 transition-transform" title="WhatsApp">
+<span class="material-symbols-outlined text-[18px]">chat</span>
+<span class="md:hidden lg:inline">Message</span>
+</button>
+<button class="flex-1 md:flex-none flex items-center justify-center gap-1.5 bg-surface text-on-surface px-3 py-1.5 rounded border-[1.5px] border-outline font-label-lg text-sm hover:bg-surface-variant active:scale-95 transition-transform" title="Call">
+<span class="material-symbols-outlined text-[18px]">call</span>
+<span class="md:hidden lg:inline">Call</span>
+</button>
+<button class="p-1.5 text-on-surface-variant hover:text-on-background rounded hover:bg-surface-variant transition-colors">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</div>
+</div>
+<!-- Customer Row 4 -->
+<div class="density-row border-b border-surface-variant last:border-b-0 p-4 md:py-3 transition-colors md:grid md:grid-cols-12 md:gap-4 md:items-center">
+<div class="col-span-3 flex items-start gap-3 mb-3 md:mb-0">
+<div class="w-10 h-10 rounded bg-surface-variant text-on-surface-variant flex items-center justify-center font-bold text-lg border border-outline shrink-0">
+                                VK
+                            </div>
+<div>
+<p class="font-body-md text-body-md font-bold text-on-background leading-tight">Vikas Kirana Stores</p>
+<p class="font-vernacular-md text-vernacular-md font-bold text-on-surface-variant text-sm mt-0.5">विकास किराना स्टोर्स</p>
+<p class="md:hidden font-body-sm text-body-sm text-on-surface-variant mt-1">ID: C-5102 • 3 Orders</p>
+</div>
+</div>
+<div class="col-span-2 flex items-center gap-1.5 mb-2 md:mb-0">
+<span class="material-symbols-outlined text-[16px] text-tertiary md:hidden">location_on</span>
+<div>
+<p class="font-body-sm text-body-sm text-on-background">Indore, MP</p>
+<p class="font-vernacular-md text-vernacular-md font-bold text-on-surface-variant text-xs">इंदौर, मध्य प्रदेश</p>
+</div>
+</div>
+<div class="col-span-4 flex justify-between md:contents mb-4 md:mb-0 bg-surface-container p-2 rounded md:bg-transparent md:p-0">
+<div class="col-span-2 md:text-right">
+<p class="font-label-lg text-label-lg text-on-surface-variant md:hidden mb-0.5 text-xs">Total Value</p>
+<p class="font-headline-md text-headline-md font-bold text-on-background md:text-lg">₹0.8L</p>
+</div>
+<div class="col-span-2 text-right md:text-left">
+<p class="font-label-lg text-label-lg text-on-surface-variant md:hidden mb-0.5 text-xs">Last Order</p>
+<p class="font-body-sm text-body-sm text-error font-bold">Payment Pending</p>
+<div class="inline-flex items-center px-1.5 py-0.5 rounded bg-error-container text-error font-label-lg text-[10px] mt-1 border border-error">
+                                    ACTION REQ
+                                </div>
+</div>
+</div>
+<div class="col-span-3 flex items-center justify-end md:justify-center gap-2 mt-2 md:mt-0 pt-3 md:pt-0 border-t border-surface-variant md:border-t-0">
+<button class="flex-1 md:flex-none flex items-center justify-center gap-1.5 bg-[#25D366] text-white px-3 py-1.5 rounded font-label-lg text-sm border-b-2 border-[#128C7E] active:scale-95 transition-transform" title="WhatsApp">
+<span class="material-symbols-outlined text-[18px]">chat</span>
+<span class="md:hidden lg:inline">Message</span>
+</button>
+<button class="flex-1 md:flex-none flex items-center justify-center gap-1.5 bg-surface text-on-surface px-3 py-1.5 rounded border-[1.5px] border-outline font-label-lg text-sm hover:bg-surface-variant active:scale-95 transition-transform" title="Call">
+<span class="material-symbols-outlined text-[18px]">call</span>
+<span class="md:hidden lg:inline">Call</span>
+</button>
+<button class="p-1.5 text-on-surface-variant hover:text-on-background rounded hover:bg-surface-variant transition-colors">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Pagination -->
+<div class="bg-surface-container-low border-t-2 border-on-background p-4 flex flex-col md:flex-row justify-between items-center gap-4">
+<p class="font-body-sm text-body-sm text-on-surface-variant">Showing 1 to 4 of 842 entries</p>
+<div class="flex items-center gap-1">
+<button class="w-8 h-8 flex items-center justify-center rounded border border-outline bg-surface text-on-surface hover:bg-surface-variant disabled:opacity-50" disabled="">
+<span class="material-symbols-outlined text-sm">chevron_left</span>
+</button>
+<button class="w-8 h-8 flex items-center justify-center rounded bg-primary text-on-primary font-label-lg text-sm">1</button>
+<button class="w-8 h-8 flex items-center justify-center rounded border border-outline bg-surface text-on-surface hover:bg-surface-variant font-label-lg text-sm">2</button>
+<button class="w-8 h-8 flex items-center justify-center rounded border border-outline bg-surface text-on-surface hover:bg-surface-variant font-label-lg text-sm">3</button>
+<span class="px-2 text-on-surface-variant">...</span>
+<button class="w-8 h-8 flex items-center justify-center rounded border border-outline bg-surface text-on-surface hover:bg-surface-variant font-label-lg text-sm">85</button>
+<button class="w-8 h-8 flex items-center justify-center rounded border border-outline bg-surface text-on-surface hover:bg-surface-variant">
+<span class="material-symbols-outlined text-sm">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Quick Command Hint -->
+<div class="mt-6 bg-inverse-surface text-inverse-on-surface rounded p-4 flex items-center gap-4 border-b-[3px] border-secondary">
+<div class="w-10 h-10 rounded-full bg-[#222222] border border-[#444444] flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-primary-fixed">mic</span>
+</div>
+<div>
+<p class="font-body-md text-body-md font-bold mb-1">Voice Command Active / वॉयस कमांड सक्रिय</p>
+<p class="font-body-sm text-body-sm text-[#aaaaaa]">Try saying: "Find Sharma Agro Traders" or "Show customers in Ludhiana" / प्रयास करें: "शर्मा एग्रो खोजें"</p>
+</div>
+</div>
+</div>
+</main>
+<!-- Mobile Bottom Navigation -->
+<nav class="md:hidden fixed bottom-0 left-0 right-0 bg-surface border-t-2 border-on-background z-50 pb-safe">
+<div class="flex justify-around items-center h-16">
+<a class="flex flex-col items-center justify-center w-full h-full text-on-surface-variant hover:bg-surface-container-high transition-colors" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-label-lg text-[10px] mt-1">Dashboard</span>
+</a>
+<a class="flex flex-col items-center justify-center w-full h-full text-on-surface-variant hover:bg-surface-container-high transition-colors" href="#">
+<span class="material-symbols-outlined">local_shipping</span>
+<span class="font-label-lg text-[10px] mt-1">Shipments</span>
+</a>
+<a class="flex flex-col items-center justify-center w-full h-full text-primary font-bold bg-primary-container/20" href="#">
+<span class="material-symbols-outlined icon-fill">inventory_2</span>
+<span class="font-label-lg text-[10px] mt-1">Directory</span>
+</a>
+<a class="flex flex-col items-center justify-center w-full h-full text-on-surface-variant hover:bg-surface-container-high transition-colors" href="#">
+<span class="material-symbols-outlined">gavel</span>
+<span class="font-label-lg text-[10px] mt-1">Bids</span>
+</a>
+</div>
+</nav>
+</body></html>

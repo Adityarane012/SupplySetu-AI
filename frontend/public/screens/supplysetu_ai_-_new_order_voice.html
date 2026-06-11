@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>New Order - SupplySetu AI</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Noto+Sans:wght@400;600;700&amp;family=JetBrains+Mono:wght@400&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-background": "#161c27",
+                        "primary": "#005129",
+                        "secondary": "#006d34",
+                        "surface-tint": "#1b6c3d",
+                        "surface": "#f9f9ff",
+                        "secondary-container": "#83fba2",
+                        "on-primary-fixed": "#00210d",
+                        "on-primary-container": "#9ae9ae",
+                        "on-primary": "#ffffff",
+                        "on-primary-fixed-variant": "#005229",
+                        "on-error-container": "#93000a",
+                        "primary-fixed": "#a5f4b8",
+                        "inverse-on-surface": "#ecf0ff",
+                        "on-tertiary-fixed-variant": "#633f00",
+                        "tertiary-container": "#825400",
+                        "inverse-surface": "#2a303d",
+                        "secondary-fixed": "#83fba2",
+                        "on-secondary-fixed": "#00210b",
+                        "surface-container": "#e8eeff",
+                        "on-secondary-container": "#007437",
+                        "on-tertiary-container": "#ffcf92",
+                        "primary-container": "#1a6b3c",
+                        "on-surface-variant": "#404940",
+                        "tertiary-fixed": "#ffddb4",
+                        "outline-variant": "#bfc9be",
+                        "surface-container-lowest": "#ffffff",
+                        "primary-fixed-dim": "#89d89e",
+                        "surface-container-high": "#e3e8f9",
+                        "surface-container-highest": "#dde2f3",
+                        "tertiary": "#623f00",
+                        "surface-container-low": "#f1f3ff",
+                        "tertiary-fixed-dim": "#ffb955",
+                        "inverse-primary": "#89d89e",
+                        "on-error": "#ffffff",
+                        "outline": "#707a70",
+                        "surface-bright": "#f9f9ff",
+                        "background": "#f9f9ff",
+                        "error-container": "#ffdad6",
+                        "error": "#ba1a1a",
+                        "surface-variant": "#dde2f3",
+                        "secondary-fixed-dim": "#67de88",
+                        "on-tertiary-fixed": "#291800",
+                        "on-surface": "#161c27",
+                        "surface-dim": "#d4daea",
+                        "on-tertiary": "#ffffff",
+                        "on-secondary-fixed-variant": "#005225",
+                        "on-secondary": "#ffffff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "margin-mobile": "16px",
+                        "stack-sm": "8px",
+                        "gutter": "16px",
+                        "base": "4px",
+                        "stack-lg": "24px",
+                        "margin-desktop": "32px",
+                        "stack-md": "16px"
+                    },
+                    "fontFamily": {
+                        "data-value": ["Inter"],
+                        "body-md": ["Noto Sans"],
+                        "body-lg": ["Noto Sans"],
+                        "headline-md": ["Noto Sans"],
+                        "headline-lg": ["Noto Sans"],
+                        "headline-lg-mobile": ["Noto Sans"],
+                        "data-label": ["Inter"],
+                        "code-sm": ["JetBrains Mono"]
+                    },
+                    "fontSize": {
+                        "data-value": ["14px", { "lineHeight": "20px", "fontWeight": "500" }],
+                        "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "headline-md": ["20px", { "lineHeight": "28px", "fontWeight": "600" }],
+                        "headline-lg": ["28px", { "lineHeight": "36px", "fontWeight": "700" }],
+                        "headline-lg-mobile": ["24px", { "lineHeight": "32px", "fontWeight": "700" }],
+                        "data-label": ["12px", { "lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "600" }],
+                        "code-sm": ["12px", { "lineHeight": "18px", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style type="text/tailwindcss">
+        @layer utilities {
+            .scrollbar-hide::-webkit-scrollbar {
+                display: none;
+            }
+            .scrollbar-hide {
+                -ms-overflow-style: none;
+                scrollbar-width: none;
+            }
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md min-h-screen flex">
+<!-- SideNavBar -->
+<nav class="fixed left-0 top-0 h-full flex flex-col py-6 docked w-[240px] bg-on-background shadow-md hidden md:flex z-20">
+<div class="px-6 mb-8 flex items-center gap-3">
+<div class="w-10 h-10 rounded-lg bg-primary-container flex items-center justify-center text-on-primary">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">deployed_code</span>
+</div>
+<div>
+<h1 class="font-headline-md text-headline-md font-bold text-on-primary">SupplySetu AI</h1>
+<p class="font-data-label text-data-label text-outline-variant">Logistics Intelligence</p>
+</div>
+</div>
+<ul class="flex flex-col gap-1 w-full">
+<li>
+<a class="flex items-center gap-3 text-surface-variant pl-4 py-2 hover:bg-primary/20 hover:text-primary-fixed transition-colors" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-body-md text-body-md">Dashboard</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-3 text-primary-fixed font-bold border-l-4 border-primary-fixed pl-3 py-2 bg-primary/10 opacity-90 transition-all duration-200" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">package_2</span>
+<span class="font-body-md text-body-md">Orders</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-3 text-surface-variant pl-4 py-2 hover:bg-primary/20 hover:text-primary-fixed transition-colors" href="#">
+<span class="material-symbols-outlined">map</span>
+<span class="font-body-md text-body-md">Route Map</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-3 text-surface-variant pl-4 py-2 hover:bg-primary/20 hover:text-primary-fixed transition-colors" href="#">
+<span class="material-symbols-outlined">groups</span>
+<span class="font-body-md text-body-md">Customers</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-3 text-surface-variant pl-4 py-2 hover:bg-primary/20 hover:text-primary-fixed transition-colors" href="#">
+<span class="material-symbols-outlined">analytics</span>
+<span class="font-body-md text-body-md">Analytics</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-3 text-surface-variant pl-4 py-2 hover:bg-primary/20 hover:text-primary-fixed transition-colors" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-body-md text-body-md">Settings</span>
+</a>
+</li>
+</ul>
+</nav>
+<!-- Main Content Area -->
+<div class="flex-1 flex flex-col min-w-0 md:ml-[240px]">
+<!-- TopAppBar -->
+<header class="flex justify-between items-center w-full px-margin-desktop h-16 docked top-0 bg-surface shadow-sm z-10 sticky top-0">
+<div class="flex items-center gap-4 flex-1">
+<h2 class="font-headline-md text-headline-md font-bold text-primary hidden md:block">New Order</h2>
+<!-- Mobile Menu Button -->
+<button class="md:hidden text-on-surface p-2">
+<span class="material-symbols-outlined">menu</span>
+</button>
+</div>
+<!-- Search Bar (on_left configuration) -->
+<div class="flex-1 max-w-md mx-4 hidden md:block">
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline">search</span>
+<input class="w-full bg-surface-container-low border-0 rounded-lg pl-10 pr-4 py-2 focus:ring-2 focus:ring-primary font-body-md text-body-md text-on-surface" placeholder="Search..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-4 justify-end flex-1">
+<button class="text-on-surface-variant hover:text-primary transition-colors p-2 rounded-full">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<div class="w-8 h-8 rounded-full bg-primary-container overflow-hidden shrink-0 border border-outline-variant">
+<!-- Placeholder avatar -->
+<img alt="User Profile" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAKbqKYeDHqNWemE56D6sgzrCO6Fyu9aUx2ehW4aPa30YuBxFZ5PYSW-9vEoCSsTUX2rLc_pLMz3quMdO4B-OaSKSZSWQbRiWUQMxSoaGeT-gskxpkZAeihdhrZVQs2GgMNzJZdg0aa_W_jvC0cxx7DDzOXO14huuqUV9C3r7Sx5NqYFYFme1h9Zspt_4U5ybqB2xvcEqRVSxVkADMcV60c8KWtSiP3C67U_vwki4FZVkWELjxayCi6_xPJnkAh0OEtxbos6U1dJ-_i"/>
+</div>
+</div>
+</header>
+<!-- Page Content -->
+<main class="flex-1 p-margin-mobile md:p-margin-desktop overflow-y-auto overflow-x-hidden w-full max-w-5xl mx-auto">
+<!-- Header & Mode Toggle -->
+<div class="mb-stack-lg flex flex-col md:flex-row md:items-end justify-between gap-4">
+<div>
+<h1 class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-surface mb-2">Create New Order</h1>
+<p class="font-body-md text-body-md text-on-surface-variant">Upload an audio note or enter manually.</p>
+</div>
+<div class="inline-flex bg-surface-container-low rounded-lg p-1 border border-outline-variant/30 w-full md:w-auto">
+<button class="flex-1 md:flex-none flex items-center justify-center gap-2 px-4 py-2 rounded-md bg-white shadow-[0_2px_4px_rgba(0,0,0,0.04)] font-data-label text-data-label text-primary transition-all">
+<span class="material-symbols-outlined text-[18px]">mic</span>
+                        Voice Upload
+                    </button>
+<button class="flex-1 md:flex-none flex items-center justify-center gap-2 px-4 py-2 rounded-md text-on-surface-variant hover:text-primary font-data-label text-data-label transition-all">
+<span class="material-symbols-outlined text-[18px]">edit</span>
+                        Manual Entry
+                    </button>
+</div>
+</div>
+<!-- Bento Grid Layout -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-stack-lg">
+<!-- Left Column: Upload & Processing (Span 5) -->
+<div class="lg:col-span-5 flex flex-col gap-stack-md">
+<!-- Progress Stepper -->
+<div class="bg-white rounded-xl p-4 shadow-[0_2px_4px_rgba(0,0,0,0.04)] border border-outline-variant/20 flex justify-between items-center relative z-0">
+<div class="absolute top-1/2 left-8 right-8 h-0.5 bg-surface-container-high -z-10 -translate-y-1/2"></div>
+<div class="flex flex-col items-center gap-1 bg-white px-2">
+<div class="w-6 h-6 rounded-full bg-primary text-white flex items-center justify-center">
+<span class="material-symbols-outlined text-[14px]">check</span>
+</div>
+<span class="font-data-label text-data-label text-on-surface">Upload</span>
+</div>
+<div class="flex flex-col items-center gap-1 bg-white px-2">
+<div class="w-6 h-6 rounded-full bg-[#E8F5EE] border border-primary text-primary flex items-center justify-center animate-pulse">
+<div class="w-2 h-2 rounded-full bg-primary"></div>
+</div>
+<span class="font-data-label text-data-label text-primary">Transcribing</span>
+</div>
+<div class="flex flex-col items-center gap-1 bg-white px-2 opacity-50">
+<div class="w-6 h-6 rounded-full bg-surface-container-high text-outline flex items-center justify-center">
+<span class="font-data-label text-data-label">3</span>
+</div>
+<span class="font-data-label text-data-label text-on-surface-variant">Extracting</span>
+</div>
+<div class="flex flex-col items-center gap-1 bg-white px-2 opacity-50">
+<div class="w-6 h-6 rounded-full bg-surface-container-high text-outline flex items-center justify-center">
+<span class="font-data-label text-data-label">4</span>
+</div>
+<span class="font-data-label text-data-label text-on-surface-variant">Review</span>
+</div>
+</div>
+<!-- Upload Zone -->
+<div class="border-2 border-dashed border-primary-fixed-dim bg-primary/5 rounded-xl p-8 flex flex-col items-center justify-center text-center transition-all hover:bg-primary/10 cursor-pointer group">
+<div class="w-16 h-16 rounded-full bg-white shadow-sm flex items-center justify-center mb-4 group-hover:scale-105 transition-transform">
+<span class="material-symbols-outlined text-4xl text-primary">mic</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-primary mb-1">Drop WhatsApp Note</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">or click to browse (.ogg, .mp3, .wav)</p>
+</div>
+<!-- AI Insights / Transcription Result (Simulated Active State) -->
+<div class="bg-[#E8F5EE] rounded-xl p-5 border border-primary/20 shadow-[0_2px_4px_rgba(0,0,0,0.04)]">
+<div class="flex items-center gap-2 mb-3">
+<span class="material-symbols-outlined text-secondary text-[20px]">auto_awesome</span>
+<span class="font-data-label text-data-label text-secondary uppercase tracking-wider">AI Transcript Detected</span>
+</div>
+<!-- Audio Waveform Placeholder -->
+<div class="flex items-center gap-3 bg-white/50 rounded-lg p-2 mb-4">
+<button class="w-8 h-8 rounded-full bg-primary text-white flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[18px]">play_arrow</span>
+</button>
+<div class="flex-1 flex items-center gap-1 h-6">
+<div class="w-1 h-3 bg-primary rounded-full"></div>
+<div class="w-1 h-5 bg-primary rounded-full"></div>
+<div class="w-1 h-4 bg-primary rounded-full"></div>
+<div class="w-1 h-6 bg-primary rounded-full"></div>
+<div class="w-1 h-2 bg-primary rounded-full"></div>
+<div class="w-1 h-4 bg-primary/30 rounded-full"></div>
+<div class="w-1 h-3 bg-primary/30 rounded-full"></div>
+<div class="w-1 h-5 bg-primary/30 rounded-full"></div>
+<div class="w-1 h-2 bg-primary/30 rounded-full"></div>
+<div class="w-1 h-4 bg-primary/30 rounded-full"></div>
+</div>
+<span class="font-code-sm text-code-sm text-on-surface-variant shrink-0">0:04</span>
+</div>
+<div class="bg-surface rounded-lg p-3 border border-outline-variant/30 relative">
+<div class="absolute -top-3 right-3 bg-secondary-container text-on-secondary-container font-data-label text-data-label px-2 py-0.5 rounded-full text-[10px]">Hindi/Hinglish</div>
+<p class="font-code-sm text-code-sm text-on-surface">"Kal subah 20 kilo tamatar aur 15 kilo pyaz bhejna"</p>
+</div>
+</div>
+</div>
+<!-- Right Column: Extracted Data Review (Span 7) -->
+<div class="lg:col-span-7 bg-white rounded-xl shadow-[0_2px_4px_rgba(0,0,0,0.04)] border border-outline-variant/20 flex flex-col h-full">
+<div class="p-5 border-b border-outline-variant/20 flex justify-between items-center bg-surface-container-lowest rounded-t-xl">
+<div>
+<h2 class="font-headline-md text-headline-md text-on-surface flex items-center gap-2">
+                                Order Preview
+                                <span class="bg-secondary-container text-on-secondary-container px-2 py-0.5 rounded-full font-data-label text-[10px] uppercase tracking-wider">Draft</span>
+</h2>
+<p class="font-body-md text-[13px] text-on-surface-variant mt-1">Review extracted details before saving.</p>
+</div>
+<button class="text-on-surface-variant hover:text-primary transition-colors p-2 rounded-full bg-surface-container hover:bg-primary-container/10">
+<span class="material-symbols-outlined text-[20px]">add</span>
+</button>
+</div>
+<div class="p-5 flex-1 overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="border-b border-outline-variant/30">
+<th class="pb-2 font-data-label text-data-label text-on-surface-variant w-[45%]">Product</th>
+<th class="pb-2 font-data-label text-data-label text-on-surface-variant w-[20%]">Qty</th>
+<th class="pb-2 font-data-label text-data-label text-on-surface-variant w-[20%]">Unit</th>
+<th class="pb-2 font-data-label text-data-label text-on-surface-variant text-right w-[15%]">Actions</th>
+</tr>
+</thead>
+<tbody class="font-data-value text-data-value">
+<tr class="border-b border-outline-variant/10 hover:bg-surface-container-low transition-colors group">
+<td class="py-3 pr-2">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded bg-error-container text-on-error-container flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[16px]">local_pizza</span>
+</div>
+<input class="w-full bg-transparent border border-transparent hover:border-outline-variant/50 focus:border-primary focus:ring-1 focus:ring-primary rounded px-2 py-1 text-on-surface focus:bg-white transition-all outline-none" type="text" value="Tomato"/>
+</div>
+</td>
+<td class="py-3 pr-2">
+<input class="w-full bg-transparent border border-transparent hover:border-outline-variant/50 focus:border-primary focus:ring-1 focus:ring-primary rounded px-2 py-1 text-on-surface focus:bg-white transition-all outline-none" type="number" value="20"/>
+</td>
+<td class="py-3 pr-2">
+<select class="w-full bg-transparent border border-transparent hover:border-outline-variant/50 focus:border-primary focus:ring-1 focus:ring-primary rounded px-1 py-1 text-on-surface focus:bg-white transition-all outline-none text-sm appearance-none cursor-pointer">
+<option selected="" value="kg">kg</option>
+<option value="pcs">pcs</option>
+<option value="boxes">boxes</option>
+</select>
+</td>
+<td class="py-3 text-right">
+<button class="text-outline hover:text-error transition-colors p-1 rounded opacity-0 group-hover:opacity-100 focus:opacity-100">
+<span class="material-symbols-outlined text-[18px]">delete</span>
+</button>
+</td>
+</tr>
+<tr class="border-b border-outline-variant/10 hover:bg-surface-container-low transition-colors group">
+<td class="py-3 pr-2">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded bg-tertiary-fixed text-on-tertiary-fixed flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[16px]">nutrition</span>
+</div>
+<input class="w-full bg-transparent border border-transparent hover:border-outline-variant/50 focus:border-primary focus:ring-1 focus:ring-primary rounded px-2 py-1 text-on-surface focus:bg-white transition-all outline-none" type="text" value="Onion"/>
+</div>
+</td>
+<td class="py-3 pr-2">
+<input class="w-full bg-transparent border border-transparent hover:border-outline-variant/50 focus:border-primary focus:ring-1 focus:ring-primary rounded px-2 py-1 text-on-surface focus:bg-white transition-all outline-none" type="number" value="15"/>
+</td>
+<td class="py-3 pr-2">
+<select class="w-full bg-transparent border border-transparent hover:border-outline-variant/50 focus:border-primary focus:ring-1 focus:ring-primary rounded px-1 py-1 text-on-surface focus:bg-white transition-all outline-none text-sm appearance-none cursor-pointer">
+<option selected="" value="kg">kg</option>
+<option value="pcs">pcs</option>
+<option value="boxes">boxes</option>
+</select>
+</td>
+<td class="py-3 text-right">
+<button class="text-outline hover:text-error transition-colors p-1 rounded opacity-0 group-hover:opacity-100 focus:opacity-100">
+<span class="material-symbols-outlined text-[18px]">delete</span>
+</button>
+</td>
+</tr>
+</tbody>
+</table>
+<!-- Customer Assignment Info (Contextual) -->
+<div class="mt-4 bg-surface-container-low p-3 rounded-lg border border-outline-variant/20 flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-primary-container text-on-primary flex items-center justify-center">
+<span class="font-data-label">RS</span>
+</div>
+<div>
+<p class="font-body-md text-[13px] text-on-surface font-semibold">Assign to Customer</p>
+<p class="font-data-label text-outline text-[11px]">Ramesh Stores (Suggested based on history)</p>
+</div>
+</div>
+<button class="text-primary font-data-label text-[12px] hover:underline">Change</button>
+</div>
+</div>
+<!-- Footer Actions -->
+<div class="p-4 bg-surface-container-lowest border-t border-outline-variant/20 rounded-b-xl flex justify-end gap-3">
+<button class="px-4 py-2 rounded-lg border-1.5 border-primary text-primary font-data-label text-data-label hover:bg-primary/5 transition-colors">
+                            Cancel
+                        </button>
+<button class="px-6 py-2 rounded-lg bg-[#1A6B3C] text-white font-data-label text-data-label flex items-center gap-2 hover:bg-secondary transition-colors shadow-[0_2px_4px_rgba(0,0,0,0.1)]">
+<span class="material-symbols-outlined text-[18px]">save</span>
+                            Save Order
+                        </button>
+</div>
+</div>
+</div>
+</main>
+</div>
+</body></html>

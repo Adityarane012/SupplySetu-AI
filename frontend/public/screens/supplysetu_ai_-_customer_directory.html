@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Customers Directory - SupplySetu AI</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Noto+Sans:wght@400;600;700&amp;family=JetBrains+Mono:wght@400&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary": "#006d34",
+                        "tertiary-container": "#825400",
+                        "on-tertiary-fixed-variant": "#633f00",
+                        "on-primary-fixed": "#00210d",
+                        "surface-container-high": "#e3e8f9",
+                        "on-surface-variant": "#404940",
+                        "primary-fixed-dim": "#89d89e",
+                        "background": "#f9f9ff",
+                        "surface-tint": "#1b6c3d",
+                        "on-primary-fixed-variant": "#005229",
+                        "on-background": "#161c27",
+                        "tertiary-fixed-dim": "#ffb955",
+                        "surface-variant": "#dde2f3",
+                        "inverse-primary": "#89d89e",
+                        "on-tertiary": "#ffffff",
+                        "tertiary": "#623f00",
+                        "primary": "#005129",
+                        "surface-container-highest": "#dde2f3",
+                        "surface-container-low": "#f1f3ff",
+                        "on-secondary-fixed-variant": "#005225",
+                        "on-secondary-container": "#007437",
+                        "error": "#ba1a1a",
+                        "surface-container-lowest": "#ffffff",
+                        "on-error-container": "#93000a",
+                        "secondary-fixed-dim": "#67de88",
+                        "secondary-fixed": "#83fba2",
+                        "on-secondary-fixed": "#00210b",
+                        "surface-dim": "#d4daea",
+                        "surface-container": "#e8eeff",
+                        "tertiary-fixed": "#ffddb4",
+                        "on-tertiary-fixed": "#291800",
+                        "primary-fixed": "#a5f4b8",
+                        "outline-variant": "#bfc9be",
+                        "outline": "#707a70",
+                        "secondary-container": "#83fba2",
+                        "on-error": "#ffffff",
+                        "on-tertiary-container": "#ffcf92",
+                        "on-primary-container": "#9ae9ae",
+                        "on-primary": "#ffffff",
+                        "error-container": "#ffdad6",
+                        "primary-container": "#1a6b3c",
+                        "inverse-surface": "#2a303d",
+                        "inverse-on-surface": "#ecf0ff",
+                        "surface-bright": "#f9f9ff",
+                        "surface": "#f9f9ff",
+                        "on-secondary": "#ffffff",
+                        "on-surface": "#161c27"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "stack-lg": "24px",
+                        "margin-desktop": "32px",
+                        "gutter": "16px",
+                        "base": "4px",
+                        "stack-sm": "8px",
+                        "stack-md": "16px",
+                        "margin-mobile": "16px"
+                    },
+                    "fontFamily": {
+                        "headline-lg": ["Noto Sans"],
+                        "code-sm": ["JetBrains Mono"],
+                        "headline-md": ["Noto Sans"],
+                        "data-value": ["Inter"],
+                        "body-lg": ["Noto Sans"],
+                        "headline-lg-mobile": ["Noto Sans"],
+                        "data-label": ["Inter"],
+                        "body-md": ["Noto Sans"]
+                    },
+                    "fontSize": {
+                        "headline-lg": ["28px", { "lineHeight": "36px", "fontWeight": "700" }],
+                        "code-sm": ["12px", { "lineHeight": "18px", "fontWeight": "400" }],
+                        "headline-md": ["20px", { "lineHeight": "28px", "fontWeight": "600" }],
+                        "data-value": ["14px", { "lineHeight": "20px", "fontWeight": "500" }],
+                        "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "headline-lg-mobile": ["24px", { "lineHeight": "32px", "fontWeight": "700" }],
+                        "data-label": ["12px", { "lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "600" }],
+                        "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .icon-fill {
+            font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        
+        /* Subtle depth for cards */
+        .card-shadow {
+            box-shadow: 0 2px 4px rgba(0,0,0,0.04);
+        }
+        .card-hover:hover {
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            transform: translateY(-2px);
+            transition: all 0.2s ease;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body-lg antialiased flex">
+<!-- SideNavBar (Desktop) -->
+<nav class="hidden md:flex flex-col bg-on-background dark:bg-on-background shadow-md docked h-full w-[240px] left-0 top-0 fixed py-6 z-50">
+<div class="px-6 mb-8 flex items-center gap-3">
+<div class="w-8 h-8 rounded bg-primary flex items-center justify-center text-on-primary font-bold">
+                S
+            </div>
+<div>
+<h1 class="font-headline-md text-headline-md font-bold text-on-primary dark:text-on-primary-fixed">SupplySetu AI</h1>
+<p class="font-data-label text-data-label text-surface-variant opacity-80">Logistics Intelligence</p>
+</div>
+</div>
+<div class="flex-1 overflow-y-auto">
+<ul class="flex flex-col gap-1">
+<li>
+<a class="flex items-center gap-3 px-4 py-2 mx-2 rounded text-surface-variant dark:text-outline-variant hover:bg-primary/20 hover:text-primary-fixed transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="font-body-md text-body-md">Dashboard</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-4 py-2 mx-2 rounded text-surface-variant dark:text-outline-variant hover:bg-primary/20 hover:text-primary-fixed transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="package_2">package_2</span>
+<span class="font-body-md text-body-md">Orders</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-4 py-2 mx-2 rounded text-surface-variant dark:text-outline-variant hover:bg-primary/20 hover:text-primary-fixed transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="map">map</span>
+<span class="font-body-md text-body-md">Route Map</span>
+</a>
+</li>
+<li>
+<!-- Active State -->
+<a class="flex items-center gap-3 px-4 py-2 mx-2 rounded text-primary-fixed font-bold border-l-4 border-primary-fixed pl-3 bg-primary/10 opacity-90 transition-all duration-200" href="#">
+<span class="material-symbols-outlined icon-fill" data-icon="groups">groups</span>
+<span class="font-body-md text-body-md">Customers</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-4 py-2 mx-2 rounded text-surface-variant dark:text-outline-variant hover:bg-primary/20 hover:text-primary-fixed transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="analytics">analytics</span>
+<span class="font-body-md text-body-md">Analytics</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-4 py-2 mx-2 rounded text-surface-variant dark:text-outline-variant hover:bg-primary/20 hover:text-primary-fixed transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="font-body-md text-body-md">Settings</span>
+</a>
+</li>
+</ul>
+</div>
+</nav>
+<!-- Main Content Area -->
+<div class="flex-1 flex flex-col md:ml-[240px] min-h-screen">
+<!-- TopAppBar -->
+<header class="bg-surface dark:bg-on-background shadow-sm docked full-width top-0 sticky z-40 flex justify-between items-center w-full px-margin-mobile md:px-margin-desktop h-16">
+<div class="md:hidden flex items-center gap-2">
+<div class="w-8 h-8 rounded bg-primary flex items-center justify-center text-on-primary font-bold">
+                    S
+                </div>
+<span class="font-headline-md text-headline-md font-bold text-primary dark:text-primary-fixed-dim">SupplySetu AI</span>
+</div>
+<!-- Mobile Menu Toggle -->
+<button class="md:hidden text-on-surface-variant">
+<span class="material-symbols-outlined">menu</span>
+</button>
+<!-- Search Bar (Desktop) -->
+<div class="hidden md:flex flex-1 max-w-md ml-4">
+<div class="relative w-full">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline-variant">search</span>
+<input class="w-full bg-surface-container-lowest border border-outline-variant rounded-md py-2 pl-10 pr-4 text-body-md font-body-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-shadow" placeholder="Search customers..." type="text"/>
+</div>
+</div>
+<div class="hidden md:flex items-center gap-4 ml-auto">
+<button class="text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+<img alt="User Profile" class="w-8 h-8 rounded-full border border-outline-variant" data-alt="A professional headshot of a mature South Asian man with a neat beard, wearing a crisp light blue shirt, against a neutral light grey background. The lighting is soft and studio-quality, conveying trust and competence suitable for a business software profile picture." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA6iuNgPDIB_znNf__QrL_NjxweF7KCbuZ1yyKd4re3b1bBKFROs69Vwl-pIB3Smtbbj1JdUeT2AtrtD4qX8UHg4NqJLYdQhh0bsjL4ILIKx_gvtgQmqUVwi3WysrVd3-T0cozvX0Vr413oWh0Pan3si0ppO9HHJn2px9Ec7djZRTZa76mPebJAE0zntPP3TanegiBJT-uO2Xroaey5KeCk0OX2aRDyUO2PD0ASafn0u5_tV6bsXJ_LINemDnjtvkAKuN6LeWJTkIv5"/>
+</div>
+</header>
+<!-- Page Content -->
+<main class="flex-1 p-margin-mobile md:p-margin-desktop bg-background">
+<!-- Header Section -->
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-stack-md mb-stack-lg">
+<div>
+<h2 class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-surface">Customers <span class="text-outline">(42)</span></h2>
+<p class="font-body-md text-body-md text-on-surface-variant mt-1">Manage and view your vendor and client network.</p>
+</div>
+<div class="flex gap-3">
+<button class="flex items-center justify-center gap-2 bg-primary-container text-on-primary px-4 py-2 rounded-xl font-data-value text-data-value hover:bg-primary transition-colors shadow-sm">
+<span class="material-symbols-outlined text-[18px]">add</span>
+                        Add Customer
+                    </button>
+</div>
+</div>
+<!-- Mobile Search Bar -->
+<div class="md:hidden mb-stack-md">
+<div class="relative w-full">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline-variant">search</span>
+<input class="w-full bg-surface-container-lowest border border-outline-variant rounded-md py-2 pl-10 pr-4 text-body-md font-body-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-shadow" placeholder="Search customers..." type="text"/>
+</div>
+</div>
+<!-- Customers Grid Bento Style -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-gutter">
+<!-- Card 1 -->
+<div class="bg-surface-container-lowest rounded-xl p-4 card-shadow card-hover border border-surface-variant flex flex-col">
+<div class="flex items-start justify-between mb-4">
+<div class="flex items-center gap-3">
+<div class="w-12 h-12 rounded-full bg-secondary-container text-on-secondary-container flex items-center justify-center font-headline-md text-headline-md font-bold">
+                                RK
+                            </div>
+<div>
+<h3 class="font-data-value text-data-value text-on-surface font-semibold">Rajiv Kumar</h3>
+<div class="flex items-center gap-1 text-on-surface-variant mt-0.5">
+<span class="material-symbols-outlined text-[14px]">call</span>
+<span class="font-data-label text-data-label">+91 98765 43210</span>
+</div>
+</div>
+</div>
+<span class="px-2.5 py-1 bg-surface-container-high text-on-surface-variant rounded-full font-data-label text-data-label">Regular</span>
+</div>
+<div class="mb-4">
+<div class="flex items-start gap-1.5 text-outline text-sm">
+<span class="material-symbols-outlined text-[16px] mt-0.5">location_on</span>
+<span class="font-body-md text-body-md line-clamp-1">Sector 18, MIDC, Andheri East, Mumbai</span>
+</div>
+</div>
+<div class="grid grid-cols-3 gap-2 mb-4 bg-surface-container rounded-lg p-2">
+<div class="flex flex-col items-center">
+<span class="font-data-label text-data-label text-outline">Last Order</span>
+<span class="font-data-value text-data-value text-on-surface">2 days ago</span>
+</div>
+<div class="flex flex-col items-center border-l border-r border-outline-variant/30">
+<span class="font-data-label text-data-label text-outline">Total</span>
+<span class="font-data-value text-data-value text-on-surface">142</span>
+</div>
+<div class="flex flex-col items-center">
+<span class="font-data-label text-data-label text-outline">LTV</span>
+<span class="font-data-value text-data-value text-primary font-semibold">₹4.2L</span>
+</div>
+</div>
+<div class="mt-auto pt-2">
+<button class="w-full py-2 border-[1.5px] border-primary text-primary rounded-lg font-data-value text-data-value hover:bg-primary/5 transition-colors">
+                            View Profile
+                        </button>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="bg-surface-container-lowest rounded-xl p-4 card-shadow card-hover border border-surface-variant flex flex-col relative overflow-hidden">
+<!-- AI Highlight Tint -->
+<div class="absolute inset-0 bg-[#E8F5EE]/50 pointer-events-none"></div>
+<div class="flex items-start justify-between mb-4 relative z-10">
+<div class="flex items-center gap-3">
+<div class="w-12 h-12 rounded-full bg-tertiary-container text-on-tertiary-container flex items-center justify-center font-headline-md text-headline-md font-bold">
+                                ME
+                            </div>
+<div>
+<h3 class="font-data-value text-data-value text-on-surface font-semibold flex items-center gap-1">
+                                    Mahindra Exports
+                                    <span class="material-symbols-outlined text-[14px] text-tertiary-fixed-dim" title="AI Insight Available">auto_awesome</span>
+</h3>
+<div class="flex items-center gap-1 text-on-surface-variant mt-0.5">
+<span class="material-symbols-outlined text-[14px]">call</span>
+<span class="font-data-label text-data-label">+91 88888 11111</span>
+</div>
+</div>
+</div>
+<span class="px-2.5 py-1 bg-tertiary-fixed text-on-tertiary-fixed rounded-full font-data-label text-data-label border border-tertiary-fixed-dim">High Volume</span>
+</div>
+<div class="mb-4 relative z-10">
+<div class="flex items-start gap-1.5 text-outline text-sm">
+<span class="material-symbols-outlined text-[16px] mt-0.5">location_on</span>
+<span class="font-body-md text-body-md line-clamp-1">Phase 2, Peenya Industrial Area, Bengaluru</span>
+</div>
+</div>
+<div class="grid grid-cols-3 gap-2 mb-4 bg-surface rounded-lg p-2 border border-[#E8F5EE] relative z-10">
+<div class="flex flex-col items-center">
+<span class="font-data-label text-data-label text-outline">Last Order</span>
+<span class="font-data-value text-data-value text-on-surface">Today</span>
+</div>
+<div class="flex flex-col items-center border-l border-r border-outline-variant/30">
+<span class="font-data-label text-data-label text-outline">Total</span>
+<span class="font-data-value text-data-value text-on-surface">589</span>
+</div>
+<div class="flex flex-col items-center">
+<span class="font-data-label text-data-label text-outline">LTV</span>
+<span class="font-data-value text-data-value text-primary font-semibold">₹18.5L</span>
+</div>
+</div>
+<div class="mt-auto pt-2 relative z-10 flex gap-2">
+<button class="flex-1 py-2 border-[1.5px] border-primary text-primary rounded-lg font-data-value text-data-value hover:bg-primary/5 transition-colors">
+                            View Profile
+                        </button>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="bg-surface-container-lowest rounded-xl p-4 card-shadow card-hover border border-surface-variant flex flex-col">
+<div class="flex items-start justify-between mb-4">
+<div class="flex items-center gap-3">
+<div class="w-12 h-12 rounded-full bg-surface-dim text-on-surface flex items-center justify-center font-headline-md text-headline-md font-bold">
+                                ST
+                            </div>
+<div>
+<h3 class="font-data-value text-data-value text-on-surface font-semibold">Singh Transports</h3>
+<div class="flex items-center gap-1 text-on-surface-variant mt-0.5">
+<span class="material-symbols-outlined text-[14px]">call</span>
+<span class="font-data-label text-data-label">+91 99999 55555</span>
+</div>
+</div>
+</div>
+<span class="px-2.5 py-1 bg-error-container text-on-error-container rounded-full font-data-label text-data-label">Inactive</span>
+</div>
+<div class="mb-4">
+<div class="flex items-start gap-1.5 text-outline text-sm">
+<span class="material-symbols-outlined text-[16px] mt-0.5">location_on</span>
+<span class="font-body-md text-body-md line-clamp-1">GT Road, Transport Nagar, Ludhiana</span>
+</div>
+</div>
+<div class="grid grid-cols-3 gap-2 mb-4 bg-surface-container rounded-lg p-2">
+<div class="flex flex-col items-center">
+<span class="font-data-label text-data-label text-outline">Last Order</span>
+<span class="font-data-value text-data-value text-on-surface">3 mo ago</span>
+</div>
+<div class="flex flex-col items-center border-l border-r border-outline-variant/30">
+<span class="font-data-label text-data-label text-outline">Total</span>
+<span class="font-data-value text-data-value text-on-surface">12</span>
+</div>
+<div class="flex flex-col items-center">
+<span class="font-data-label text-data-label text-outline">LTV</span>
+<span class="font-data-value text-data-value text-primary font-semibold">₹45K</span>
+</div>
+</div>
+<div class="mt-auto pt-2">
+<button class="w-full py-2 border-[1.5px] border-primary text-primary rounded-lg font-data-value text-data-value hover:bg-primary/5 transition-colors">
+                            View Profile
+                        </button>
+</div>
+</div>
+</div>
+</main>
+</div>
+</body></html>

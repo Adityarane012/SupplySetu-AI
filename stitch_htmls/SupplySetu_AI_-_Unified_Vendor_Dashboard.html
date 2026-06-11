@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>SupplySetu AI - Vendor Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        "colors": {
+                "primary-container": "#00c853",
+                "on-tertiary-fixed-variant": "#872100",
+                "outline-variant": "#bbcbb8",
+                "surface-bright": "#fcf9f8",
+                "surface-container-highest": "#e5e2e1",
+                "on-primary": "#ffffff",
+                "primary-fixed-dim": "#3ce36a",
+                "background": "#fcf9f8",
+                "on-tertiary": "#ffffff",
+                "on-primary-fixed": "#002108",
+                "on-error-container": "#93000a",
+                "secondary-fixed-dim": "#fdbc13",
+                "on-surface": "#1c1b1b",
+                "error": "#ba1a1a",
+                "on-surface-variant": "#3c4a3c",
+                "tertiary-container": "#ff8f6f",
+                "secondary-container": "#fdbc13",
+                "surface-variant": "#e5e2e1",
+                "surface-dim": "#dcd9d9",
+                "surface": "#fcf9f8",
+                "on-tertiary-fixed": "#3b0900",
+                "surface-tint": "#006e2a",
+                "on-primary-container": "#004c1b",
+                "surface-container-high": "#ebe7e7",
+                "inverse-on-surface": "#f3f0ef",
+                "primary": "#006e2a",
+                "secondary": "#7a5900",
+                "on-error": "#ffffff",
+                "on-secondary": "#ffffff",
+                "tertiary": "#b02e00",
+                "tertiary-fixed-dim": "#ffb5a0",
+                "surface-container": "#f0edec",
+                "primary-fixed": "#69ff87",
+                "inverse-surface": "#313030",
+                "surface-container-low": "#f6f3f2",
+                "on-secondary-fixed-variant": "#5d4200",
+                "error-container": "#ffdad6",
+                "inverse-primary": "#3ce36a",
+                "on-background": "#1c1b1b",
+                "secondary-fixed": "#ffdea3",
+                "tertiary-fixed": "#ffdbd1",
+                "on-secondary-container": "#6b4d00",
+                "outline": "#6c7b6a",
+                "on-primary-fixed-variant": "#00531e",
+                "surface-container-lowest": "#ffffff",
+                "on-tertiary-container": "#7d1e00",
+                "on-secondary-fixed": "#261900"
+        },
+        "borderRadius": {
+                "DEFAULT": "0.125rem",
+                "lg": "0.25rem",
+                "xl": "0.5rem",
+                "full": "0.75rem"
+        },
+        "spacing": {
+                "item-gap": "8px",
+                "container-padding": "12px",
+                "unit": "4px",
+                "grid-gutter": "12px",
+                "section-margin": "24px"
+        },
+        "fontFamily": {
+                "vernacular-md": [
+                        "Noto Sans"
+                ],
+                "display-lg": [
+                        "Noto Sans"
+                ],
+                "body-lg": [
+                        "Noto Sans"
+                ],
+                "label-lg": [
+                        "Noto Sans"
+                ],
+                "headline-lg": [
+                        "Noto Sans"
+                ],
+                "body-md": [
+                        "Noto Sans"
+                ],
+                "headline-md": [
+                        "Noto Sans"
+                ],
+                "body-sm": [
+                        "Noto Sans"
+                ]
+        },
+        "fontSize": {
+                "vernacular-md": [
+                        "16px",
+                        {
+                                "lineHeight": "24px",
+                                "fontWeight": "500"
+                        }
+                ],
+                "display-lg": [
+                        "40px",
+                        {
+                                "lineHeight": "48px",
+                                "letterSpacing": "-0.02em",
+                                "fontWeight": "700"
+                        }
+                ],
+                "body-lg": [
+                        "18px",
+                        {
+                                "lineHeight": "26px",
+                                "fontWeight": "400"
+                        }
+                ],
+                "label-lg": [
+                        "14px",
+                        {
+                                "lineHeight": "16px",
+                                "letterSpacing": "0.05em",
+                                "fontWeight": "700"
+                        }
+                ],
+                "headline-lg": [
+                        "28px",
+                        {
+                                "lineHeight": "36px",
+                                "fontWeight": "700"
+                        }
+                ],
+                "body-md": [
+                        "16px",
+                        {
+                                "lineHeight": "24px",
+                                "fontWeight": "400"
+                        }
+                ],
+                "headline-md": [
+                        "22px",
+                        {
+                                "lineHeight": "28px",
+                                "fontWeight": "600"
+                        }
+                ],
+                "body-sm": [
+                        "14px",
+                        {
+                                "lineHeight": "20px",
+                                "fontWeight": "400"
+                        }
+                ]
+        }
+},
+    },
+  }
+</script>
+<style>
+        .ripple {
+            animation: ripple 2s infinite linear;
+        }
+        @keyframes ripple {
+            0% { box-shadow: 0 0 0 0 rgba(0, 200, 83, 0.4), 0 0 0 0 rgba(0, 200, 83, 0.4); }
+            100% { box-shadow: 0 0 0 20px rgba(0, 200, 83, 0), 0 0 0 40px rgba(0, 200, 83, 0); }
+        }
+        
+        .zebra-row:nth-child(even) {
+            background-color: #f0edec; /* surface-container */
+        }
+        .zebra-row:nth-child(odd) {
+            background-color: #ffffff;
+        }
+        
+        /* Thin high contrast borders */
+        .hc-border {
+            border: 2px solid #1c1b1b;
+        }
+        .hc-border-bottom {
+            border-bottom: 2px solid #1c1b1b;
+        }
+        .hc-border-right {
+            border-right: 2px solid #1c1b1b;
+        }
+        .hc-border-top {
+            border-top: 2px solid #1c1b1b;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md selection:bg-primary-container selection:text-on-primary-container min-h-screen flex flex-col md:flex-row">
+<!-- TopAppBar -->
+<header class="bg-surface flex justify-between items-center w-full px-grid-gutter py-2 max-w-[1440px] mx-auto border-b-2 border-on-background docked full-width top-0 sticky z-50 md:hidden">
+<div class="flex items-center gap-item-gap">
+<span class="font-headline-lg text-headline-lg font-bold text-primary">SupplySetu AI</span>
+</div>
+<div class="flex items-center gap-grid-gutter">
+<button aria-label="mic" class="text-on-surface-variant hover:bg-surface-container-high transition-colors p-unit rounded-full active:scale-95 duration-75">
+<span class="material-symbols-outlined" data-weight="fill" style="font-variation-settings: 'FILL' 1;">mic</span>
+</button>
+<button aria-label="notifications" class="text-on-surface-variant hover:bg-surface-container-high transition-colors p-unit rounded-full active:scale-95 duration-75">
+<span class="material-symbols-outlined" data-weight="fill" style="font-variation-settings: 'FILL' 1;">notifications</span>
+</button>
+<button aria-label="account_circle" class="text-on-surface-variant hover:bg-surface-container-high transition-colors p-unit rounded-full active:scale-95 duration-75">
+<span class="material-symbols-outlined" data-weight="fill" style="font-variation-settings: 'FILL' 1;">account_circle</span>
+</button>
+</div>
+</header>
+<!-- SideNavBar -->
+<nav class="hidden md:flex flex-col h-screen w-64 fixed left-0 top-0 bg-surface-container border-r-2 border-on-background z-40 py-section-margin px-unit justify-between">
+<div>
+<div class="px-container-padding mb-section-margin">
+<h1 class="font-headline-md text-headline-md font-bold text-primary mb-item-gap">SupplySetu Vendor</h1>
+<div class="flex items-center gap-item-gap">
+<img alt="Vendor Profile" class="w-10 h-10 rounded-full hc-border object-cover" data-alt="A close-up portrait of a professional Indian logistics vendor standing in a bustling warehouse. The lighting is bright and industrial, casting strong, distinct shadows typical of a high-energy work environment. The color palette features deep indigo workwear contrasting with bright safety orange accents in the background. The mood is confident, experienced, and highly focused on operations." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBW6BvZ-28Wf7rHoTOcg4IUs3h9pK_EvoiewgaB37bdrtweXx6nPxRtZ5ZGAnggSPUDs9kOwXnad-neA19dFUzbbSZcMUmCXp-qSjzvZ-426oQrOJZt-5fzJBUkkW8cACW6IgOe9ZWgd2uaY7P8XlGRyEpCAYaye2NY321NP4TCSRFBoCVYNouWBlKVUpf7o1HGIgP48LwbRknYBDNlvgs1fiJy6iJoesEHUZXFpdLJkyzsL2c3pSEn1Fa9KoSQXqaeXRnX0-35a36F"/>
+<div>
+<p class="font-vernacular-md text-vernacular-md text-on-surface">ID: 99283-IN</p>
+</div>
+</div>
+</div>
+<ul class="flex flex-col gap-unit">
+<li>
+<a class="flex items-center gap-grid-gutter px-container-padding py-2 bg-secondary-container text-on-secondary-container border-b-4 border-secondary-fixed-dim font-bold active:translate-x-1 duration-150" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-vernacular-md text-vernacular-md">Dashboard / डैशबोर्ड</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-grid-gutter px-container-padding py-2 text-on-surface hover:bg-surface-variant transition-all active:translate-x-1 duration-150" href="#">
+<span class="material-symbols-outlined">local_shipping</span>
+<span class="font-vernacular-md text-vernacular-md">Shipments / शिपमेंट</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-grid-gutter px-container-padding py-2 text-on-surface hover:bg-surface-variant transition-all active:translate-x-1 duration-150" href="#">
+<span class="material-symbols-outlined">inventory_2</span>
+<span class="font-vernacular-md text-vernacular-md">Inventory / सूची</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-grid-gutter px-container-padding py-2 text-on-surface hover:bg-surface-variant transition-all active:translate-x-1 duration-150" href="#">
+<span class="material-symbols-outlined">gavel</span>
+<span class="font-vernacular-md text-vernacular-md">Bids / बोलियां</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-grid-gutter px-container-padding py-2 text-on-surface hover:bg-surface-variant transition-all active:translate-x-1 duration-150" href="#">
+<span class="material-symbols-outlined">leaderboard</span>
+<span class="font-vernacular-md text-vernacular-md">Analytics / विश्लेषण</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-grid-gutter px-container-padding py-2 text-on-surface hover:bg-surface-variant transition-all active:translate-x-1 duration-150" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="font-vernacular-md text-vernacular-md">Settings / सेटिंग्स</span>
+</a>
+</li>
+</ul>
+</div>
+<div>
+<button class="w-full mb-grid-gutter py-2 px-container-padding bg-primary text-on-primary font-label-lg text-label-lg font-bold hc-border hover:bg-primary-container transition-colors flex items-center justify-center gap-item-gap">
+<span class="material-symbols-outlined">add</span>
+                New Request / नया अनुरोध
+            </button>
+<ul class="flex flex-col gap-unit border-t-2 border-on-surface-variant pt-grid-gutter">
+<li>
+<a class="flex items-center gap-grid-gutter px-container-padding py-2 text-on-surface hover:bg-surface-variant transition-all active:translate-x-1 duration-150" href="#">
+<span class="material-symbols-outlined">help_outline</span>
+<span class="font-vernacular-md text-vernacular-md">Support / सहायता</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-grid-gutter px-container-padding py-2 text-error hover:bg-error-container transition-all active:translate-x-1 duration-150" href="#">
+<span class="material-symbols-outlined">logout</span>
+<span class="font-vernacular-md text-vernacular-md">Logout / लॉगआउट</span>
+</a>
+</li>
+</ul>
+</div>
+</nav>
+<!-- Main Content Canvas -->
+<main class="flex-1 md:ml-64 p-grid-gutter md:p-section-margin max-w-[1440px] mx-auto w-full flex flex-col gap-section-margin relative pb-24 md:pb-section-margin">
+<!-- Command Center (Voice Hero) -->
+<section class="bg-[#121212] hc-border rounded-xl p-section-margin flex flex-col items-center justify-center min-h-[200px] relative overflow-hidden border-b-4 border-b-secondary-container">
+<div class="absolute inset-0 opacity-10 pointer-events-none" style="background-image: radial-gradient(circle at center, #69ff87 0%, transparent 70%);"></div>
+<button aria-label="Voice Command" class="relative w-20 h-20 bg-primary-container text-on-primary-container rounded-full flex items-center justify-center hc-border ripple group z-10 focus:outline-none focus:ring-4 focus:ring-primary-fixed-dim">
+<span class="material-symbols-outlined text-4xl group-hover:scale-110 transition-transform">mic</span>
+</button>
+<div class="mt-grid-gutter text-center z-10">
+<h2 class="font-display-lg text-display-lg text-on-error mb-unit">बोलो (Speak)</h2>
+<p class="font-body-lg text-body-lg text-surface-dim">"Show today's pending orders" / "आज के पेंडिंग ऑर्डर दिखाएं"</p>
+</div>
+<!-- Real-time transcription area (simulated) -->
+<div class="mt-grid-gutter w-full max-w-2xl bg-inverse-surface text-on-error p-container-padding rounded hc-border font-vernacular-md text-vernacular-md text-center opacity-0 transition-opacity" id="transcription-box">
+                सुन रहा हूँ... (Listening...)
+            </div>
+</section>
+<!-- KPI Strip -->
+<section class="grid grid-cols-2 lg:grid-cols-4 gap-grid-gutter">
+<!-- KPI 1 -->
+<div class="bg-surface-container-highest hc-border p-container-padding rounded border-b-4 border-b-secondary-container flex flex-col justify-between h-full">
+<div class="flex justify-between items-start mb-item-gap">
+<span class="font-label-lg text-label-lg text-on-surface-variant uppercase">Pending / पेंडिंग</span>
+<span class="material-symbols-outlined text-on-surface-variant">hourglass_empty</span>
+</div>
+<div>
+<span class="font-headline-lg text-headline-lg font-bold text-on-surface block">42</span>
+<span class="font-body-sm text-body-sm text-error flex items-center gap-1 mt-1">
+<span class="material-symbols-outlined text-[16px]">arrow_upward</span> +12 from yesterday
+                    </span>
+</div>
+</div>
+<!-- KPI 2 -->
+<div class="bg-surface-container-highest hc-border p-container-padding rounded border-b-4 border-b-primary-container flex flex-col justify-between h-full">
+<div class="flex justify-between items-start mb-item-gap">
+<span class="font-label-lg text-label-lg text-on-surface-variant uppercase">Delivered / डिलीवर</span>
+<span class="material-symbols-outlined text-on-surface-variant">check_circle</span>
+</div>
+<div>
+<span class="font-headline-lg text-headline-lg font-bold text-on-surface block">128</span>
+<span class="font-body-sm text-body-sm text-primary flex items-center gap-1 mt-1">
+<span class="material-symbols-outlined text-[16px]">arrow_upward</span> +5% this week
+                    </span>
+</div>
+</div>
+<!-- KPI 3 -->
+<div class="bg-surface-container-highest hc-border p-container-padding rounded border-b-4 border-b-tertiary-container flex flex-col justify-between h-full">
+<div class="flex justify-between items-start mb-item-gap">
+<span class="font-label-lg text-label-lg text-on-surface-variant uppercase">Revenue / राजस्व</span>
+<span class="material-symbols-outlined text-on-surface-variant">payments</span>
+</div>
+<div>
+<span class="font-headline-lg text-headline-lg font-bold text-on-surface block">₹4.2L</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant flex items-center gap-1 mt-1">
+                        Expected today
+                    </span>
+</div>
+</div>
+<!-- KPI 4 -->
+<div class="bg-surface-container-highest hc-border p-container-padding rounded border-b-4 border-b-secondary flex flex-col justify-between h-full">
+<div class="flex justify-between items-start mb-item-gap">
+<span class="font-label-lg text-label-lg text-on-surface-variant uppercase">Active Bids / सक्रिय बोलियां</span>
+<span class="material-symbols-outlined text-on-surface-variant">gavel</span>
+</div>
+<div>
+<span class="font-headline-lg text-headline-lg font-bold text-on-surface block">14</span>
+<span class="font-body-sm text-body-sm text-secondary flex items-center gap-1 mt-1">
+<span class="material-symbols-outlined text-[16px]">warning</span> 3 need attention
+                    </span>
+</div>
+</div>
+</section>
+<!-- High Density Data Table: Today's Orders -->
+<section class="bg-surface hc-border rounded-lg overflow-hidden flex flex-col">
+<div class="p-container-padding hc-border-bottom bg-surface-container flex justify-between items-center">
+<h3 class="font-headline-md text-headline-md font-bold text-on-surface flex items-center gap-item-gap">
+<span class="material-symbols-outlined text-secondary">list_alt</span>
+                    आज के ऑर्डर / Today's Orders
+                </h3>
+<button class="text-label-lg font-label-lg font-bold text-primary hover:underline uppercase">View All / सभी देखें</button>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse min-w-[800px]">
+<thead class="bg-surface-variant font-label-lg text-label-lg text-on-surface-variant uppercase border-b-2 border-on-background">
+<tr>
+<th class="py-2 px-container-padding w-16">ID</th>
+<th class="py-2 px-container-padding">Status / स्थिति</th>
+<th class="py-2 px-container-padding">Origin / मूल</th>
+<th class="py-2 px-container-padding">Dest. / गंतव्य</th>
+<th class="py-2 px-container-padding">Vehicle / वाहन</th>
+<th class="py-2 px-container-padding w-24 text-right">Action</th>
+</tr>
+</thead>
+<tbody class="font-body-sm text-body-sm">
+<!-- Row 1: In Transit -->
+<tr class="zebra-row hc-border-bottom hover:bg-surface-container-high transition-colors">
+<td class="py-2 px-container-padding font-bold">#8821</td>
+<td class="py-2 px-container-padding">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 bg-secondary-fixed text-on-secondary-fixed rounded-sm font-bold text-[11px] uppercase whitespace-nowrap hc-border border-[1px]">
+<span class="material-symbols-outlined text-[14px]">local_shipping</span> मार्ग में / In Transit
+                                </span>
+</td>
+<td class="py-2 px-container-padding">
+<div class="font-bold text-on-surface text-[14px]">Mumbai</div>
+<div class="text-on-surface-variant text-[11px]">Bhiwandi Hub</div>
+</td>
+<td class="py-2 px-container-padding">
+<div class="font-bold text-on-surface text-[14px]">Delhi</div>
+<div class="text-on-surface-variant text-[11px]">Okhla Phase 1</div>
+</td>
+<td class="py-2 px-container-padding">
+<div class="font-bold text-on-surface text-[14px]">MH-04-AB-1234</div>
+<div class="text-on-surface-variant text-[11px]">32ft Multi-Axle</div>
+</td>
+<td class="py-2 px-container-padding text-right">
+<button aria-label="Track" class="p-1 text-on-surface hover:bg-surface-variant rounded hc-border border-[1px]">
+<span class="material-symbols-outlined text-[18px]">location_on</span>
+</button>
+</td>
+</tr>
+<!-- Row 2: Pending -->
+<tr class="zebra-row hc-border-bottom hover:bg-surface-container-high transition-colors">
+<td class="py-2 px-container-padding font-bold">#8822</td>
+<td class="py-2 px-container-padding">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 bg-tertiary-fixed text-on-tertiary-fixed rounded-sm font-bold text-[11px] uppercase whitespace-nowrap hc-border border-[1px]">
+<span class="material-symbols-outlined text-[14px]">pending_actions</span> पेंडिंग / Pending
+                                </span>
+</td>
+<td class="py-2 px-container-padding">
+<div class="font-bold text-on-surface text-[14px]">Pune</div>
+<div class="text-on-surface-variant text-[11px]">Chakan MIDC</div>
+</td>
+<td class="py-2 px-container-padding">
+<div class="font-bold text-on-surface text-[14px]">Bangalore</div>
+<div class="text-on-surface-variant text-[11px]">Peenya</div>
+</td>
+<td class="py-2 px-container-padding">
+<div class="font-bold text-on-surface text-[14px]">--</div>
+<div class="text-error text-[11px] font-bold">Assign Vehicle</div>
+</td>
+<td class="py-2 px-container-padding text-right">
+<button class="px-2 py-1 bg-secondary text-on-secondary font-bold text-[11px] uppercase rounded-sm hc-border border-[1px] whitespace-nowrap hover:bg-secondary-container hover:text-on-secondary-container transition-colors">
+                                    Assign
+                                </button>
+</td>
+</tr>
+<!-- Row 3: Loading -->
+<tr class="zebra-row hc-border-bottom hover:bg-surface-container-high transition-colors">
+<td class="py-2 px-container-padding font-bold">#8823</td>
+<td class="py-2 px-container-padding">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 bg-primary-fixed text-on-primary-fixed rounded-sm font-bold text-[11px] uppercase whitespace-nowrap hc-border border-[1px]">
+<span class="material-symbols-outlined text-[14px]">forklift</span> लोडिंग / Loading
+                                </span>
+</td>
+<td class="py-2 px-container-padding">
+<div class="font-bold text-on-surface text-[14px]">Ahmedabad</div>
+<div class="text-on-surface-variant text-[11px]">Sanand GIDC</div>
+</td>
+<td class="py-2 px-container-padding">
+<div class="font-bold text-on-surface text-[14px]">Jaipur</div>
+<div class="text-on-surface-variant text-[11px]">Sitapura</div>
+</td>
+<td class="py-2 px-container-padding">
+<div class="font-bold text-on-surface text-[14px]">GJ-01-XY-9876</div>
+<div class="text-on-surface-variant text-[11px]">20ft Container</div>
+</td>
+<td class="py-2 px-container-padding text-right">
+<button aria-label="Details" class="p-1 text-on-surface hover:bg-surface-variant rounded hc-border border-[1px]">
+<span class="material-symbols-outlined text-[18px]">visibility</span>
+</button>
+</td>
+</tr>
+<!-- Row 4: Delivered -->
+<tr class="zebra-row hc-border-bottom hover:bg-surface-container-high transition-colors">
+<td class="py-2 px-container-padding font-bold">#8820</td>
+<td class="py-2 px-container-padding">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 bg-surface-variant text-on-surface-variant rounded-sm font-bold text-[11px] uppercase whitespace-nowrap hc-border border-[1px]">
+<span class="material-symbols-outlined text-[14px]">check_circle</span> डिलीवर / Delivered
+                                </span>
+</td>
+<td class="py-2 px-container-padding">
+<div class="font-bold text-on-surface text-[14px]">Chennai</div>
+<div class="text-on-surface-variant text-[11px]">Sriperumbudur</div>
+</td>
+<td class="py-2 px-container-padding">
+<div class="font-bold text-on-surface text-[14px]">Hyderabad</div>
+<div class="text-on-surface-variant text-[11px]">Patancheru</div>
+</td>
+<td class="py-2 px-container-padding">
+<div class="font-bold text-on-surface text-[14px]">TN-09-CD-5544</div>
+<div class="text-on-surface-variant text-[11px]">24ft Open</div>
+</td>
+<td class="py-2 px-container-padding text-right">
+<button aria-label="Receipt" class="p-1 text-on-surface hover:bg-surface-variant rounded hc-border border-[1px]">
+<span class="material-symbols-outlined text-[18px]">receipt_long</span>
+</button>
+</td>
+</tr>
+<!-- Row 5: In Transit -->
+<tr class="zebra-row hc-border-bottom hover:bg-surface-container-high transition-colors">
+<td class="py-2 px-container-padding font-bold">#8824</td>
+<td class="py-2 px-container-padding">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 bg-secondary-fixed text-on-secondary-fixed rounded-sm font-bold text-[11px] uppercase whitespace-nowrap hc-border border-[1px]">
+<span class="material-symbols-outlined text-[14px]">local_shipping</span> मार्ग में / In Transit
+                                </span>
+</td>
+<td class="py-2 px-container-padding">
+<div class="font-bold text-on-surface text-[14px]">Delhi</div>
+<div class="text-on-surface-variant text-[11px]">Okhla Phase 2</div>
+</td>
+<td class="py-2 px-container-padding">
+<div class="font-bold text-on-surface text-[14px]">Chandigarh</div>
+<div class="text-on-surface-variant text-[11px]">Industrial Area</div>
+</td>
+<td class="py-2 px-container-padding">
+<div class="font-bold text-on-surface text-[14px]">DL-1M-AA-1122</div>
+<div class="text-on-surface-variant text-[11px]">LCV</div>
+</td>
+<td class="py-2 px-container-padding text-right">
+<button aria-label="Track" class="p-1 text-on-surface hover:bg-surface-variant rounded hc-border border-[1px]">
+<span class="material-symbols-outlined text-[18px]">location_on</span>
+</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="p-unit bg-surface-container-lowest flex justify-center items-center hc-border-top">
+<div class="flex gap-1">
+<button class="w-8 h-8 flex items-center justify-center hc-border bg-surface-variant text-on-surface-variant"><span class="material-symbols-outlined text-sm">chevron_left</span></button>
+<button class="w-8 h-8 flex items-center justify-center hc-border bg-primary text-on-primary font-bold">1</button>
+<button class="w-8 h-8 flex items-center justify-center hc-border bg-surface text-on-surface font-bold hover:bg-surface-variant">2</button>
+<button class="w-8 h-8 flex items-center justify-center hc-border bg-surface text-on-surface font-bold hover:bg-surface-variant">3</button>
+<button class="w-8 h-8 flex items-center justify-center hc-border bg-surface-variant text-on-surface-variant hover:bg-surface"><span class="material-symbols-outlined text-sm">chevron_right</span></button>
+</div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="md:hidden bg-surface flex justify-around items-center w-full py-2 fixed bottom-0 z-50 border-t border-surface-variant shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.1)]">
+<a class="flex flex-col items-center justify-center w-full py-1 text-primary dark:text-primary-fixed-dim font-bold" href="#">
+<span class="material-symbols-outlined mb-1" data-weight="fill" style="font-variation-settings: 'FILL' 1;">dashboard</span>
+<span class="font-label-lg text-label-lg">Dashboard</span>
+</a>
+<a class="flex flex-col items-center justify-center w-full py-1 text-on-surface-variant dark:text-surface-variant" href="#">
+<span class="material-symbols-outlined mb-1">local_shipping</span>
+<span class="font-label-lg text-label-lg">Shipments</span>
+</a>
+<a class="flex flex-col items-center justify-center w-full py-1 text-on-surface-variant dark:text-surface-variant" href="#">
+<span class="material-symbols-outlined mb-1">inventory_2</span>
+<span class="font-label-lg text-label-lg">Inventory</span>
+</a>
+<a class="flex flex-col items-center justify-center w-full py-1 text-on-surface-variant dark:text-surface-variant" href="#">
+<span class="material-symbols-outlined mb-1">gavel</span>
+<span class="font-label-lg text-label-lg">Bids</span>
+</a>
+</nav>
+<script>
+        // Simple interaction for voice command simulation
+        document.addEventListener('DOMContentLoaded', () => {
+            const micButtons = document.querySelectorAll('[aria-label="Voice Command"]');
+            const transcriptionBox = document.getElementById('transcription-box');
+            
+            micButtons.forEach(btn => {
+                btn.addEventListener('mousedown', () => {
+                    transcriptionBox.style.opacity = '1';
+                    btn.classList.add('scale-95');
+                });
+                
+                btn.addEventListener('mouseup', () => {
+                    setTimeout(() => {
+                        transcriptionBox.style.opacity = '0';
+                    }, 2000);
+                    btn.classList.remove('scale-95');
+                });
+                
+                btn.addEventListener('mouseleave', () => {
+                     btn.classList.remove('scale-95');
+                });
+            });
+        });
+    </script>
+</body></html>

@@ -1,0 +1,509 @@
+<!DOCTYPE html><html class="light" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>FINAL - Unified Orders Grid</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "surface-bright": "#fcf9f8",
+                        "background": "#fcf9f8",
+                        "primary-fixed": "#69ff87",
+                        "on-tertiary": "#ffffff",
+                        "tertiary": "#b02e00",
+                        "surface": "#fcf9f8",
+                        "surface-container-high": "#ebe7e7",
+                        "on-primary-fixed-variant": "#00531e",
+                        "on-background": "#1c1b1b",
+                        "on-error": "#ffffff",
+                        "primary-container": "#00c853",
+                        "tertiary-container": "#ff8f6f",
+                        "surface-dim": "#dcd9d9",
+                        "secondary-fixed-dim": "#fdbc13",
+                        "surface-container": "#f0edec",
+                        "surface-variant": "#e5e2e1",
+                        "secondary-container": "#fdbc13",
+                        "on-secondary-fixed": "#261900",
+                        "on-tertiary-fixed": "#3b0900",
+                        "on-secondary-container": "#6b4d00",
+                        "primary": "#006e2a",
+                        "tertiary-fixed": "#ffdbd1",
+                        "on-surface": "#1c1b1b",
+                        "on-tertiary-fixed-variant": "#872100",
+                        "tertiary-fixed-dim": "#ffb5a0",
+                        "surface-container-low": "#f6f3f2",
+                        "on-surface-variant": "#3c4a3c",
+                        "error-container": "#ffdad6",
+                        "secondary-fixed": "#ffdea3",
+                        "surface-container-highest": "#e5e2e1",
+                        "inverse-on-surface": "#f3f0ef",
+                        "on-primary-container": "#004c1b",
+                        "surface-tint": "#006e2a",
+                        "on-tertiary-container": "#7d1e00",
+                        "on-secondary-fixed-variant": "#5d4200",
+                        "primary-fixed-dim": "#3ce36a",
+                        "on-primary-fixed": "#002108",
+                        "on-error-container": "#93000a",
+                        "surface-container-lowest": "#ffffff",
+                        "error": "#ba1a1a",
+                        "inverse-primary": "#3ce36a",
+                        "on-secondary": "#ffffff",
+                        "secondary": "#7a5900",
+                        "outline-variant": "#bbcbb8",
+                        "inverse-surface": "#313030",
+                        "on-primary": "#ffffff",
+                        "outline": "#6c7b6a"
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    spacing: {
+                        "grid-gutter": "12px",
+                        "section-margin": "24px",
+                        "item-gap": "8px",
+                        "unit": "4px",
+                        "container-padding": "12px"
+                    },
+                    fontFamily: {
+                        "display-lg": ["Noto Sans"],
+                        "label-lg": ["Noto Sans"],
+                        "body-md": ["Noto Sans"],
+                        "body-lg": ["Noto Sans"],
+                        "vernacular-md": ["Noto Sans"],
+                        "headline-md": ["Noto Sans"],
+                        "headline-lg": ["Noto Sans"],
+                        "body-sm": ["Noto Sans"]
+                    },
+                    fontSize: {
+                        "display-lg": ["40px", { lineHeight: "48px", letterSpacing: "-0.02em", fontWeight: "700" }],
+                        "label-lg": ["14px", { lineHeight: "16px", letterSpacing: "0.05em", fontWeight: "700" }],
+                        "body-md": ["16px", { lineHeight: "24px", fontWeight: "400" }],
+                        "body-lg": ["18px", { lineHeight: "26px", fontWeight: "400" }],
+                        "vernacular-md": ["16px", { lineHeight: "24px", fontWeight: "500" }],
+                        "headline-md": ["22px", { lineHeight: "28px", fontWeight: "600" }],
+                        "headline-lg": ["28px", { lineHeight: "36px", fontWeight: "700" }],
+                        "body-sm": ["14px", { lineHeight: "20px", fontWeight: "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>.material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; } .material-symbols-outlined.fill { font-variation-settings: 'FILL' 1; } table { border-collapse: collapse; width: 100%; } th, td { padding: 4px 8px; text-align: left; border-bottom: 2px solid #1c1b1b; } th { border-bottom: 4px solid #1c1b1b; } tbody tr:nth-child(even) { background-color: #f6f3f2; } tbody tr:nth-child(odd) { background-color: #ffffff; } tbody tr:hover { background-color: #ebe7e7; }</style>
+<style>.material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; } .material-symbols-outlined.fill { font-variation-settings: 'FILL' 1; } table { border-collapse: collapse; width: 100%; } th, td { padding: 4px 8px; text-align: left; border-bottom: 2px solid #1c1b1b; } th { border-bottom: 4px solid #1c1b1b; } tbody tr:nth-child(even) { background-color: #f6f3f2; } tbody tr:nth-child(odd) { background-color: #ffffff; } tbody tr:hover { background-color: #ebe7e7; }</style></head>
+<body class="bg-background text-on-background min-h-screen flex font-body-md">
+<!-- SideNavBar -->
+<nav class="bg-surface-container dark:bg-surface-container-low border-r-2 border-on-background dark:border-on-surface-variant h-screen w-64 fixed left-0 top-0 flex flex-col py-section-margin px-unit hidden md:flex z-20">
+<div class="px-container-padding mb-8">
+<div class="flex items-center gap-3">
+<div class="w-12 h-12 rounded-full bg-primary-container flex items-center justify-center border-2 border-on-background overflow-hidden font-bold">
+<span class="material-symbols-outlined text-on-primary-container" style="font-size: 28px;">account_circle</span>
+</div>
+<div>
+<h2 class="font-headline-md text-headline-md font-bold text-primary dark:text-primary-fixed-dim leading-tight">SupplySetu Vendor</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant">ID: 99283-IN</p>
+</div>
+</div>
+<button class="mt-6 w-full bg-secondary-container text-on-secondary-container border-2 border-on-background py-3 px-4 rounded font-label-lg text-[16px] font-bold flex items-center justify-center gap-2 hover:bg-secondary-fixed-dim transition-colors shadow-[4px_4px_0px_0px_#1c1b1b] active:shadow-none active:translate-y-1 active:translate-x-1">
+<span class="material-symbols-outlined">add</span>
+<div class="flex flex-col items-center">
+<span class="font-vernacular-md text-[16px] leading-tight font-bold">नया अनुरोध</span>
+<span class="text-[12px]">New Request</span>
+</div>
+</button>
+</div>
+<ul class="flex-1 overflow-y-auto">
+<li class="">
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface dark:text-on-surface-variant hover:bg-surface-variant dark:hover:bg-surface-dim transition-all active:translate-x-1 duration-150" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<div class="flex flex-col">
+<span class="font-vernacular-md text-vernacular-md font-bold">डैशबोर्ड</span>
+<span class="font-label-lg text-[12px] text-on-surface-variant">Dashboard</span>
+</div>
+</a>
+</li>
+<li class="">
+<a class="flex items-center gap-3 px-4 py-3 bg-secondary-container dark:bg-secondary text-on-secondary-container dark:text-on-secondary border-b-4 border-secondary-fixed-dim font-bold transition-all active:translate-x-1 duration-150" href="#">
+<span class="material-symbols-outlined">local_shipping</span>
+<div class="flex flex-col">
+<span class="font-vernacular-md text-vernacular-md font-bold">शिपमेंट</span>
+<span class="font-label-lg text-[12px] opacity-80">Shipments</span>
+</div>
+</a>
+</li>
+<li class="">
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface dark:text-on-surface-variant hover:bg-surface-variant dark:hover:bg-surface-dim transition-all active:translate-x-1 duration-150" href="#">
+<span class="material-symbols-outlined">inventory_2</span>
+<div class="flex flex-col">
+<span class="font-vernacular-md text-vernacular-md font-bold">सूची</span>
+<span class="font-label-lg text-[12px] text-on-surface-variant">Inventory</span>
+</div>
+</a>
+</li>
+<li class="">
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface dark:text-on-surface-variant hover:bg-surface-variant dark:hover:bg-surface-dim transition-all active:translate-x-1 duration-150" href="#">
+<span class="material-symbols-outlined">gavel</span>
+<div class="flex flex-col">
+<span class="font-vernacular-md text-vernacular-md font-bold">बोलियां</span>
+<span class="font-label-lg text-[12px] text-on-surface-variant">Bids</span>
+</div>
+</a>
+</li>
+<li class="">
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface dark:text-on-surface-variant hover:bg-surface-variant dark:hover:bg-surface-dim transition-all active:translate-x-1 duration-150" href="#">
+<span class="material-symbols-outlined">leaderboard</span>
+<div class="flex flex-col">
+<span class="font-vernacular-md text-vernacular-md font-bold">विश्लेषण</span>
+<span class="font-label-lg text-[12px] text-on-surface-variant">Analytics</span>
+</div>
+</a>
+</li>
+<li class="">
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface dark:text-on-surface-variant hover:bg-surface-variant dark:hover:bg-surface-dim transition-all active:translate-x-1 duration-150" href="#">
+<span class="material-symbols-outlined">settings</span>
+<div class="flex flex-col">
+<span class="font-vernacular-md text-vernacular-md font-bold">सेटिंग्स</span>
+<span class="font-label-lg text-[12px] text-on-surface-variant">Settings</span>
+</div>
+</a>
+</li>
+</ul>
+<div class="mt-auto border-t-2 border-on-surface-variant pt-4">
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface dark:text-on-surface-variant hover:bg-surface-variant dark:hover:bg-surface-dim transition-all active:translate-x-1 duration-150" href="#">
+<span class="material-symbols-outlined">help_outline</span>
+<div class="flex flex-col">
+<span class="font-vernacular-md text-vernacular-md font-bold">सहायता</span>
+<span class="font-label-lg text-[12px] text-on-surface-variant">Support</span>
+</div>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface dark:text-on-surface-variant hover:bg-surface-variant dark:hover:bg-surface-dim transition-all active:translate-x-1 duration-150" href="#">
+<span class="material-symbols-outlined">logout</span>
+<div class="flex flex-col">
+<span class="font-vernacular-md text-vernacular-md font-bold">लॉगआउट</span>
+<span class="font-label-lg text-[12px] text-on-surface-variant">Logout</span>
+</div>
+</a>
+</div>
+</nav>
+<!-- Main Content Area -->
+<main class="flex-1 flex flex-col md:ml-64 min-w-0 bg-background">
+<!-- TopAppBar -->
+<header class="bg-surface dark:bg-surface-dim border-b-2 border-on-background dark:border-on-surface-variant sticky top-0 z-10 w-full">
+<div class="flex justify-between items-center w-full px-grid-gutter py-2 max-w-[1440px] mx-auto">
+<div class="flex items-center gap-4 flex-1">
+<span class="font-headline-lg text-headline-lg font-bold text-primary dark:text-primary-fixed-dim md:hidden">SS AI</span>
+<div class="relative w-full max-w-md hidden md:block">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant">search</span>
+<input class="w-full bg-surface border-2 border-on-background rounded py-2 pl-10 pr-4 text-body-md text-on-surface font-label-lg focus:border-primary focus:outline-none focus:ring-0 shadow-sm" placeholder="Search orders, trucks, drivers..." type="text">
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="bg-secondary-container text-on-secondary-container border-2 border-on-background px-4 py-2 rounded font-label-lg text-label-lg font-bold flex items-center gap-2 hover:bg-surface-container-high dark:hover:bg-surface-container-highest transition-colors active:scale-95 duration-75 shadow-sm hidden sm:flex shadow-[4px_4px_0px_0px_#1c1b1b] active:shadow-none active:translate-y-1 active:translate-x-1">
+<span class="material-symbols-outlined">mic</span>
+                        Command Center
+                    </button>
+<div class="flex items-center gap-2">
+<button class="p-2 text-on-surface-variant hover:bg-surface-container-high rounded-full transition-colors active:scale-95 duration-75">
+<span class="material-symbols-outlined">mic</span>
+</button>
+<button class="p-2 text-on-surface-variant hover:bg-surface-container-high rounded-full transition-colors active:scale-95 duration-75 relative">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-1 right-1 w-2.5 h-2.5 bg-error rounded-full border border-surface"></span>
+</button>
+<button class="p-2 text-on-surface-variant hover:bg-surface-container-high rounded-full transition-colors active:scale-95 duration-75 md:hidden">
+<span class="material-symbols-outlined">account_circle</span>
+</button>
+</div>
+</div>
+</div>
+</header>
+<!-- Page Content: Orders Data Grid -->
+<div class="flex-1 p-grid-gutter w-full max-w-[1440px] mx-auto overflow-x-auto">
+<div class="flex justify-between items-end mb-4 border-b-2 border-on-background pb-2">
+<div>
+<h1 class="font-headline-lg text-headline-lg font-bold text-on-background leading-none">सक्रिय शिपमेंट</h1>
+<h2 class="font-label-lg text-on-surface-variant mt-1 leading-none uppercase tracking-wide">Active Shipments</h2>
+</div>
+<div class="flex gap-2">
+<button class="px-3 py-1.5 border-2 border-on-background bg-surface text-on-surface font-label-lg text-label-lg rounded flex items-center gap-1 hover:bg-surface-variant shadow-sm">
+<span class="material-symbols-outlined text-[18px]">filter_list</span> Filter
+                    </button>
+<button class="px-3 py-1.5 border-2 border-on-background bg-surface text-on-surface font-label-lg text-label-lg rounded flex items-center gap-1 hover:bg-surface-variant shadow-sm">
+<span class="material-symbols-outlined text-[18px]">sort</span> Sort
+                    </button>
+</div>
+</div>
+<!-- Tight Data Grid -->
+<div class="border-2 border-on-background rounded overflow-hidden bg-surface bg-surface shadow-sm">
+<table class="w-full text-left whitespace-nowrap">
+<thead class="bg-surface-container-high text-on-surface font-label-lg text-label-lg uppercase tracking-wider">
+<tr>
+<th class="w-24"><span class="font-vernacular-md text-[14px] font-bold">ऑर्डर आईडी</span><br><span class="font-label-lg text-[10px] normal-case text-on-surface-variant">Order ID</span></th>
+<th class=""><span class="font-vernacular-md text-[14px] font-bold">मार्ग</span><br><span class="font-label-lg text-[10px] normal-case text-on-surface-variant">Route</span></th>
+<th class=""><span class="font-vernacular-md text-[14px] font-bold">ग्राहक / तारीख</span><br><span class="font-label-lg text-[10px] normal-case text-on-surface-variant">Client / Date</span></th>
+<th class="text-center w-32"><span class="font-vernacular-md text-[14px] font-bold">स्थिति</span><br><span class="font-label-lg text-[10px] normal-case text-on-surface-variant">Status</span></th>
+<th class="text-right w-48"><span class="font-vernacular-md text-[14px] font-bold">कार्रवाई</span><br><span class="font-label-lg text-[10px] normal-case text-on-surface-variant">Actions</span></th>
+</tr>
+</thead>
+<tbody class="font-body-md">
+<!-- Row 1: In Transit -->
+<tr class="group">
+<td class="font-label-lg text-on-background">#ORD-9021</td>
+<td class="">
+<div class="flex flex-col">
+<span class="font-vernacular-md text-on-surface text-[16px] leading-tight font-bold">मुंबई - दिल्ली</span>
+<span class="font-label-lg text-[12px] text-on-surface-variant">MUM → DEL</span>
+</div>
+</td>
+<td class="">
+<div class="flex flex-col">
+<span class="font-label-lg text-on-surface">Reliance Retail</span>
+<span class="text-on-surface-variant text-[12px]">24 Oct, 09:30 AM</span>
+</div>
+</td>
+<td class="text-center">
+<div class="inline-flex flex-col items-center justify-center p-1 px-3 bg-primary-container text-on-primary-container rounded border border-primary-fixed-dim font-bold">
+<span class="material-symbols-outlined text-[24px] fill">local_shipping</span>
+<span class="font-label-lg text-[10px] mt-0.5 uppercase tracking-wide">In Transit</span>
+</div>
+</td>
+<td class="text-right">
+<div class="flex justify-end gap-2 opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity">
+<button class="p-1 bg-surface border-2 border-outline rounded hover:bg-surface-variant text-on-surface" title="Call Driver">
+<span class="material-symbols-outlined text-[18px]">call</span>
+</button>
+<button class="p-1 bg-secondary-container border-2 border-on-background rounded hover:bg-secondary text-on-secondary-container font-label-lg text-[12px] px-3">
+                                        Update
+                                    </button>
+</div>
+</td>
+</tr>
+<!-- Row 2: Alert/Delayed -->
+<tr class="group border-l-4 border-l-error">
+<td class="font-label-lg text-on-background">#ORD-9022</td>
+<td class="">
+<div class="flex flex-col">
+<span class="font-vernacular-md text-on-surface text-[16px] leading-tight font-bold">बेंगलुरु - हैदराबाद</span>
+<span class="font-label-lg text-[12px] text-on-surface-variant">BLR → HYD</span>
+</div>
+</td>
+<td class="">
+<div class="flex flex-col">
+<span class="font-label-lg text-on-surface">Tata Motors</span>
+<span class="text-on-surface-variant text-[12px]">24 Oct, 11:15 AM</span>
+</div>
+</td>
+<td class="text-center">
+<div class="inline-flex flex-col items-center justify-center p-1 px-3 bg-error-container text-on-error-container rounded border border-error font-bold">
+<span class="material-symbols-outlined text-[24px] fill">warning</span>
+<span class="font-label-lg text-[10px] mt-0.5 uppercase tracking-wide">Delayed</span>
+</div>
+</td>
+<td class="text-right">
+<div class="flex justify-end gap-2 opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity">
+<button class="p-1 bg-error text-on-error border-2 border-on-background rounded hover:bg-error/90 font-label-lg text-[12px] px-3 flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">call</span> SOS
+                                    </button>
+</div>
+</td>
+</tr>
+<!-- Row 3: Delivered -->
+<tr class="group">
+<td class="font-label-lg text-on-background">#ORD-9019</td>
+<td class="">
+<div class="flex flex-col">
+<span class="font-vernacular-md text-on-surface text-[16px] leading-tight font-bold">पुणे - अहमदाबाद</span>
+<span class="font-label-lg text-[12px] text-on-surface-variant">PUN → AHM</span>
+</div>
+</td>
+<td class="">
+<div class="flex flex-col">
+<span class="font-label-lg text-on-surface">Adani Wilmar</span>
+<span class="text-on-surface-variant text-[12px]">23 Oct, 18:45 PM</span>
+</div>
+</td>
+<td class="text-center">
+<div class="inline-flex flex-col items-center justify-center p-1 px-3 bg-surface-variant text-on-surface-variant rounded border border-outline">
+<span class="material-symbols-outlined text-[24px] fill">check_circle</span>
+<span class="font-label-lg text-[10px] mt-0.5 uppercase tracking-wide">Delivered</span>
+</div>
+</td>
+<td class="text-right">
+<div class="flex justify-end gap-2 opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity">
+<button class="p-1 bg-surface border-2 border-outline rounded hover:bg-surface-variant text-on-surface font-label-lg text-[12px] px-3">
+                                        View POD
+                                    </button>
+</div>
+</td>
+</tr>
+<!-- Row 4: Pending Pickup -->
+<tr class="group">
+<td class="font-label-lg text-on-background">#ORD-9025</td>
+<td class="">
+<div class="flex flex-col">
+<span class="font-vernacular-md text-on-surface text-[16px] leading-tight font-bold">चेन्नई - कोयंबटूर</span>
+<span class="font-label-lg text-[12px] text-on-surface-variant">CHN → COI</span>
+</div>
+</td>
+<td class="">
+<div class="flex flex-col">
+<span class="font-label-lg text-on-surface">TVS Supply</span>
+<span class="text-on-surface-variant text-[12px]">25 Oct, 08:00 AM</span>
+</div>
+</td>
+<td class="text-center">
+<div class="inline-flex flex-col items-center justify-center p-1 px-3 bg-tertiary-container text-on-tertiary-container rounded border border-tertiary font-bold">
+<span class="material-symbols-outlined text-[24px] fill">schedule</span>
+<span class="font-label-lg text-[10px] mt-0.5 uppercase tracking-wide">Pending</span>
+</div>
+</td>
+<td class="text-right">
+<div class="flex justify-end gap-2 opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity">
+<button class="p-1 bg-primary border-2 border-on-background rounded hover:bg-primary/90 text-on-primary font-label-lg text-[12px] px-3 flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">check</span> Assign
+                                    </button>
+</div>
+</td>
+</tr>
+<!-- Repeated Row for Density Demo -->
+<tr class="group">
+<td class="font-label-lg text-on-background">#ORD-9026</td>
+<td class="">
+<div class="flex flex-col">
+<span class="font-vernacular-md text-on-surface text-[16px] leading-tight font-bold">मुंबई - सूरत</span>
+<span class="font-label-lg text-[12px] text-on-surface-variant">MUM → SUR</span>
+</div>
+</td>
+<td class="">
+<div class="flex flex-col">
+<span class="font-label-lg text-on-surface">BKT Tires</span>
+<span class="text-on-surface-variant text-[12px]">25 Oct, 10:30 AM</span>
+</div>
+</td>
+<td class="text-center">
+<div class="inline-flex flex-col items-center justify-center p-1 px-3 bg-primary-container text-on-primary-container rounded border border-primary-fixed-dim font-bold">
+<span class="material-symbols-outlined text-[24px] fill">local_shipping</span>
+<span class="font-label-lg text-[10px] mt-0.5 uppercase tracking-wide">In Transit</span>
+</div>
+</td>
+<td class="text-right">
+<div class="flex justify-end gap-2 opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity">
+<button class="p-1 bg-surface border-2 border-outline rounded hover:bg-surface-variant text-on-surface" title="Call Driver">
+<span class="material-symbols-outlined text-[18px]">call</span>
+</button>
+<button class="p-1 bg-secondary-container border-2 border-on-background rounded hover:bg-secondary text-on-secondary-container font-label-lg text-[12px] px-3">
+                                        Update
+                                    </button>
+</div>
+</td>
+</tr>
+<tr class="group">
+<td class="font-label-lg text-on-background">#ORD-9027</td>
+<td class="">
+<div class="flex flex-col">
+<span class="font-vernacular-md text-on-surface text-[16px] leading-tight font-bold">दिल्ली - जयपुर</span>
+<span class="font-label-lg text-[12px] text-on-surface-variant">DEL → JAI</span>
+</div>
+</td>
+<td class="">
+<div class="flex flex-col">
+<span class="font-label-lg text-on-surface">Hero MotoCorp</span>
+<span class="text-on-surface-variant text-[12px]">25 Oct, 12:00 PM</span>
+</div>
+</td>
+<td class="text-center">
+<div class="inline-flex flex-col items-center justify-center p-1 px-3 bg-surface-variant text-on-surface-variant rounded border border-outline">
+<span class="material-symbols-outlined text-[24px] fill">check_circle</span>
+<span class="font-label-lg text-[10px] mt-0.5 uppercase tracking-wide">Delivered</span>
+</div>
+</td>
+<td class="text-right">
+<div class="flex justify-end gap-2 opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity">
+<button class="p-1 bg-surface border-2 border-outline rounded hover:bg-surface-variant text-on-surface font-label-lg text-[12px] px-3">
+                                        View POD
+                                    </button>
+</div>
+</td>
+</tr>
+<tr class="group">
+<td class="font-label-lg text-on-background">#ORD-9028</td>
+<td class="">
+<div class="flex flex-col">
+<span class="font-vernacular-md text-on-surface text-[16px] leading-tight font-bold">कोलकाता - पटना</span>
+<span class="font-label-lg text-[12px] text-on-surface-variant">KOL → PAT</span>
+</div>
+</td>
+<td class="">
+<div class="flex flex-col">
+<span class="font-label-lg text-on-surface">ITC Ltd</span>
+<span class="text-on-surface-variant text-[12px]">25 Oct, 14:00 PM</span>
+</div>
+</td>
+<td class="text-center">
+<div class="inline-flex flex-col items-center justify-center p-1 px-3 bg-primary-container text-on-primary-container rounded border border-primary-fixed-dim font-bold">
+<span class="material-symbols-outlined text-[24px] fill">local_shipping</span>
+<span class="font-label-lg text-[10px] mt-0.5 uppercase tracking-wide">In Transit</span>
+</div>
+</td>
+<td class="text-right">
+<div class="flex justify-end gap-2 opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity">
+<button class="p-1 bg-surface border-2 border-outline rounded hover:bg-surface-variant text-on-surface" title="Call Driver">
+<span class="material-symbols-outlined text-[18px]">call</span>
+</button>
+<button class="p-1 bg-secondary-container border-2 border-on-background rounded hover:bg-secondary text-on-secondary-container font-label-lg text-[12px] px-3">
+                                        Update
+                                    </button>
+</div>
+</td>
+</tr>
+<tr class="group border-l-4 border-l-error">
+<td class="font-label-lg text-on-background">#ORD-9029</td>
+<td class="">
+<div class="flex flex-col">
+<span class="font-vernacular-md text-on-surface text-[16px] leading-tight font-bold">नागपुर - इंदौर</span>
+<span class="font-label-lg text-[12px] text-on-surface-variant">NAG → IND</span>
+</div>
+</td>
+<td class="">
+<div class="flex flex-col">
+<span class="font-label-lg text-on-surface">Haldiram's</span>
+<span class="text-on-surface-variant text-[12px]">25 Oct, 16:30 PM</span>
+</div>
+</td>
+<td class="text-center">
+<div class="inline-flex flex-col items-center justify-center p-1 px-3 bg-error-container text-on-error-container rounded border border-error font-bold">
+<span class="material-symbols-outlined text-[24px] fill">warning</span>
+<span class="font-label-lg text-[10px] mt-0.5 uppercase tracking-wide">Breakdown</span>
+</div>
+</td>
+<td class="text-right">
+<div class="flex justify-end gap-2 opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity">
+<button class="p-1 bg-error text-on-error border-2 border-on-background rounded hover:bg-error/90 font-label-lg text-[12px] px-3 flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">call</span> SOS
+                                    </button>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Pagination/Load More -->
+<div class="mt-4 flex justify-center pb-8">
+<button class="bg-surface border-2 border-on-background text-on-surface py-2 px-6 rounded font-label-lg text-label-lg font-bold hover:bg-surface-variant transition-colors flex items-center gap-2 shadow-sm">
+<span class="material-symbols-outlined">expand_more</span> Load More Routes (12 Remaining)
+                </button>
+</div>
+</div>
+</main>
+
+
+
+
+</body></html>

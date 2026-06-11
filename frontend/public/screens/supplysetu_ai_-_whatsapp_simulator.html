@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>WhatsApp Simulator — SupplySetu AI</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+    <style>
+        body {
+            font-family: 'Noto Sans', sans-serif;
+            background-color: #eae6df;
+            background-image: url('https://user-images.githubusercontent.com/15075759/28719144-86dc0f70-73b1-11e7-911d-60d70fcded21.png');
+        }
+        .whatsapp-green {
+            background-color: #008069;
+        }
+        .whatsapp-bubble-in {
+            background-color: #ffffff;
+        }
+        .whatsapp-bubble-out {
+            background-color: #d9fdd3;
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background-color: rgba(11, 20, 26, 0.2);
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body class="h-screen w-screen flex items-center justify-center p-0 m-0 overflow-hidden bg-[#eae6df]">
+    <div class="w-full h-full flex bg-[#f0f2f5] shadow-2xl relative overflow-hidden">
+        
+        <!-- Left Panel: Chat List -->
+        <aside class="w-[30%] h-full bg-white border-r border-[#e9edef] flex flex-col shrink-0">
+            <!-- Left Header -->
+            <header class="h-[60px] bg-[#f0f2f5] px-4 flex justify-between items-center border-b border-[#e9edef]">
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-full bg-[#008069] flex items-center justify-center text-white font-bold text-lg shadow-sm">
+                        SS
+                    </div>
+                    <span class="font-bold text-on-surface text-base text-[#111b21]">SupplySetu AI</span>
+                </div>
+                <div class="flex gap-4 text-[#54656f]">
+                    <button class="hover:bg-black/5 p-2 rounded-full"><span class="material-symbols-outlined">chat</span></button>
+                    <button class="hover:bg-black/5 p-2 rounded-full" onclick="location.href='/dashboard'"><span class="material-symbols-outlined">dashboard</span></button>
+                </div>
+            </header>
+
+            <!-- Search Bar -->
+            <div class="p-2 bg-white border-b border-[#e9edef] flex items-center gap-2">
+                <div class="flex-grow bg-[#f0f2f5] rounded-lg px-3 py-1.5 flex items-center gap-2">
+                    <span class="material-symbols-outlined text-[#667781] text-[20px]">search</span>
+                    <input class="w-full bg-transparent border-0 p-0 text-sm focus:ring-0 placeholder-[#667781] text-[#111b21]" placeholder="Search or start a new chat" type="text" />
+                </div>
+            </div>
+
+            <!-- Contacts List -->
+            <div class="flex-grow overflow-y-auto custom-scrollbar" id="contacts-list">
+                <!-- Seeded Contacts -->
+                <div onclick="selectContact('ABC Stores', '+919876543210')" class="contact-item flex items-center gap-3 px-4 py-3 hover:bg-[#f0f2f5] cursor-pointer border-b border-[#f0f2f5] transition-colors bg-[#f0f2f5]">
+                    <div class="w-12 h-12 rounded-full bg-[#00a884] text-white flex items-center justify-center font-bold text-md shadow-sm">ABC</div>
+                    <div class="flex-grow flex flex-col">
+                        <div class="flex justify-between">
+                            <span class="font-semibold text-[#111b21] text-base">ABC Stores</span>
+                            <span class="text-xs text-[#667781] font-medium">Today</span>
+                        </div>
+                        <span class="text-sm text-[#667781] truncate">Tap to open simulator chat</span>
+                    </div>
+                </div>
+                <div onclick="selectContact('Hotel Sai Ram', '+919876543212')" class="contact-item flex items-center gap-3 px-4 py-3 hover:bg-[#f0f2f5] cursor-pointer border-b border-[#f0f2f5] transition-colors">
+                    <div class="w-12 h-12 rounded-full bg-[#b02e00] text-white flex items-center justify-center font-bold text-md shadow-sm">HSR</div>
+                    <div class="flex-grow flex flex-col">
+                        <div class="flex justify-between">
+                            <span class="font-semibold text-[#111b21] text-base">Hotel Sai Ram</span>
+                            <span class="text-xs text-[#667781] font-medium">Today</span>
+                        </div>
+                        <span class="text-sm text-[#667781] truncate">Tap to open simulator chat</span>
+                    </div>
+                </div>
+                <div onclick="selectContact('Sharma Kirana', '+919876543211')" class="contact-item flex items-center gap-3 px-4 py-3 hover:bg-[#f0f2f5] cursor-pointer border-b border-[#f0f2f5] transition-colors">
+                    <div class="w-12 h-12 rounded-full bg-[#fdbc13] text-[#261900] flex items-center justify-center font-bold text-md shadow-sm">SK</div>
+                    <div class="flex-grow flex flex-col">
+                        <div class="flex justify-between">
+                            <span class="font-semibold text-[#111b21] text-base">Sharma Kirana</span>
+                            <span class="text-xs text-[#667781] font-medium">Today</span>
+                        </div>
+                        <span class="text-sm text-[#667781] truncate">Tap to open simulator chat</span>
+                    </div>
+                </div>
+                <div onclick="selectContact('Mehta Grocers', '+919876543213')" class="contact-item flex items-center gap-3 px-4 py-3 hover:bg-[#f0f2f5] cursor-pointer border-b border-[#f0f2f5] transition-colors">
+                    <div class="w-12 h-12 rounded-full bg-[#7a5900] text-white flex items-center justify-center font-bold text-md shadow-sm">MG</div>
+                    <div class="flex-grow flex flex-col">
+                        <div class="flex justify-between">
+                            <span class="font-semibold text-[#111b21] text-base">Mehta Grocers</span>
+                            <span class="text-xs text-[#667781] font-medium">Today</span>
+                        </div>
+                        <span class="text-sm text-[#667781] truncate">Tap to open simulator chat</span>
+                    </div>
+                </div>
+                <div onclick="selectContact('Green Leaf Deli', '+919876543214')" class="contact-item flex items-center gap-3 px-4 py-3 hover:bg-[#f0f2f5] cursor-pointer border-b border-[#f0f2f5] transition-colors">
+                    <div class="w-12 h-12 rounded-full bg-[#006e2a] text-white flex items-center justify-center font-bold text-md shadow-sm">GLD</div>
+                    <div class="flex-grow flex flex-col">
+                        <div class="flex justify-between">
+                            <span class="font-semibold text-[#111b21] text-base">Green Leaf Deli</span>
+                            <span class="text-xs text-[#667781] font-medium">Today</span>
+                        </div>
+                        <span class="text-sm text-[#667781] truncate">Tap to open simulator chat</span>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Right Panel: Conversation -->
+        <main class="w-[70%] h-full flex flex-col relative" id="conversation-panel">
+            <!-- Active Header -->
+            <header class="h-[60px] bg-[#f0f2f5] px-4 flex justify-between items-center border-b border-[#e9edef] shrink-0">
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-full bg-[#00a884] text-white flex items-center justify-center font-bold text-md shadow-sm" id="active-avatar">ABC</div>
+                    <div class="flex flex-col">
+                        <span class="font-semibold text-[#111b21] text-base" id="active-name">ABC Stores</span>
+                        <span class="text-xs text-[#667781]">online</span>
+                    </div>
+                </div>
+                <div class="flex gap-4 text-[#54656f]">
+                    <button class="hover:bg-black/5 p-2 rounded-full"><span class="material-symbols-outlined">videocam</span></button>
+                    <button class="hover:bg-black/5 p-2 rounded-full"><span class="material-symbols-outlined">call</span></button>
+                </div>
+            </header>
+
+            <!-- Chat Message Feed -->
+            <div class="flex-grow overflow-y-auto custom-scrollbar p-6 flex flex-col gap-3" id="chat-feed" style="background-image: url('https://user-images.githubusercontent.com/15075759/28719144-86dc0f70-73b1-11e7-911d-60d70fcded21.png'); background-blend-mode: overlay; background-color: #efeae2;">
+                <!-- Initial Welcome Banner -->
+                <div class="self-center bg-[#ffeecf] text-[#54656f] text-xs px-3 py-1.5 rounded-lg shadow-sm border border-[#e9edef] max-w-md text-center mb-4">
+                    🔒 Messages are processed by the SupplySetu AI local pipeline. Total cost = ₹0.
+                </div>
+
+                <!-- Live messages appended here -->
+            </div>
+
+            <!-- Bottom Action Input Bar -->
+            <footer class="bg-[#f0f2f5] p-3 flex items-center gap-3 border-t border-[#e9edef] shrink-0">
+                <!-- Attachment Disguised File Upload -->
+                <div class="relative">
+                    <input class="hidden" id="voice-upload-input" type="file" accept="audio/*" />
+                    <button class="text-[#54656f] hover:bg-black/5 p-2 rounded-full cursor-pointer" onclick="document.getElementById('voice-upload-input').click()">
+                        <span class="material-symbols-outlined">attach_file</span>
+                    </button>
+                </div>
+
+                <!-- Text Input -->
+                <div class="flex-grow bg-white rounded-lg px-4 py-2 flex items-center">
+                    <input class="w-full bg-transparent border-0 p-0 text-sm focus:ring-0 placeholder-[#667781] text-[#111b21]" id="message-text-input" placeholder="Type a message or select voice note file..." type="text" />
+                </div>
+
+                <!-- Send Button / Mic Button -->
+                <div class="flex items-center">
+                    <button class="bg-[#008069] text-white p-2.5 rounded-full flex items-center justify-center hover:bg-[#016954] shadow-md active:scale-95 duration-100" id="send-msg-btn">
+                        <span class="material-symbols-outlined text-[20px]" id="send-btn-icon">send</span>
+                    </button>
+                </div>
+            </footer>
+        </main>
+    </div>
+
+    <!-- Script Block -->
+    <script>
+        const API_BASE = 'http://localhost:8000';
+        let activeName = 'ABC Stores';
+        let activePhone = '+919876543210';
+
+        document.addEventListener('DOMContentLoaded', () => {
+            // Setup Text Enter listener
+            const textInput = document.getElementById('message-text-input');
+            textInput.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter') {
+                    sendMessage();
+                }
+            });
+
+            // Send button listener
+            document.getElementById('send-msg-btn').addEventListener('click', sendMessage);
+
+            // File upload listener (auto send when file chosen)
+            document.getElementById('voice-upload-input').addEventListener('change', sendVoiceNote);
+
+            // Load initial history
+            loadChatHistory(activePhone);
+        });
+
+        // Toggle active list highlights
+        function selectContact(name, phone) {
+            activeName = name;
+            activePhone = phone;
+
+            // Highlight in sidebar
+            const items = document.querySelectorAll('.contact-item');
+            items.forEach(item => {
+                item.classList.remove('bg-[#f0f2f5]');
+                if (item.querySelector('span').textContent === name) {
+                    item.classList.add('bg-[#f0f2f5]');
+                }
+            });
+
+            // Update chat header
+            document.getElementById('active-name').textContent = name;
+            
+            // Generate initials for avatar
+            const initials = name.split(' ').map(n => n[0]).join('');
+            document.getElementById('active-avatar').textContent = initials;
+
+            // Clear input and feed
+            document.getElementById('message-text-input').value = '';
+            document.getElementById('chat-feed').innerHTML = `
+                <div class="self-center bg-[#ffeecf] text-[#54656f] text-xs px-3 py-1.5 rounded-lg shadow-sm border border-[#e9edef] max-w-md text-center mb-4">
+                    🔒 Messages are processed by the SupplySetu AI local pipeline. Total cost = ₹0.
+                </div>
+            `;
+
+            // Load history
+            loadChatHistory(phone);
+        }
+
+        // Fetch past orders from simulator endpoint
+        async function loadChatHistory(phone) {
+            try {
+                const resp = await fetch(`${API_BASE}/api/simulator/history/${phone}`);
+                if (resp.ok) {
+                    const history = await resp.json();
+                    
+                    // Render in reverse (oldest first)
+                    history.reverse().forEach(order => {
+                        // Render incoming order message
+                        if (order.raw_transcript) {
+                            appendBubble('inbound', order.raw_transcript, order.created_at, order.source.includes('voice'));
+                        }
+                        
+                        // Render outgoing system reply
+                        const items = order.order_items || [];
+                        if (items.length > 0) {
+                            const lines = items.map(i => `  • ${i.quantity} ${i.unit} ${i.product_name}`).join('\n');
+                            const reply = `✅ *Order Confirmed!*\n\nHello ${order.customer_name}, I've noted your order:\n${lines}\n\nWe'll deliver soon. 🛵 - *SupplySetu AI*`;
+                            appendBubble('outbound', reply, order.created_at);
+                        }
+                    });
+                }
+            } catch (e) {
+                console.error("Error loading chat history:", e);
+            }
+        }
+
+        // Post Text Message
+        async function sendMessage() {
+            const input = document.getElementById('message-text-input');
+            const text = input.value.trim();
+            if (!text) return;
+
+            input.value = ''; // Clear input
+
+            // Render local inbound message
+            const time = new Date().toISOString();
+            appendBubble('inbound', text, time);
+
+            // Add placeholder loading reply bubble
+            const replyId = appendPlaceholderReply();
+
+            try {
+                const form = new FormData();
+                form.append('customer_name', activeName);
+                form.append('customer_phone', activePhone);
+                form.append('body', text);
+
+                const resp = await fetch(`${API_BASE}/api/simulator/message`, {
+                    method: 'POST',
+                    body: form
+                });
+
+                if (resp.ok) {
+                    const data = await resp.json();
+                    updatePlaceholderReply(replyId, data.reply);
+                } else {
+                    updatePlaceholderReply(replyId, "⚠️ Server Error. Please verify local backend API connection.");
+                }
+            } catch (e) {
+                updatePlaceholderReply(replyId, "⚠️ Connection failed. Please check if FastAPI is running on port 8000.");
+            }
+        }
+
+        // Post Voice note file
+        async function sendVoiceNote(e) {
+            const file = e.target.files[0];
+            if (!file) return;
+
+            // Render inbound local voice note loading bubble
+            const time = new Date().toISOString();
+            const msgId = appendVoiceLoadingBubble(file.name, time);
+
+            // Add placeholder loading reply bubble
+            const replyId = appendPlaceholderReply();
+
+            try {
+                const form = new FormData();
+                form.append('customer_name', activeName);
+                form.append('customer_phone', activePhone);
+                form.append('audio', file);
+
+                const resp = await fetch(`${API_BASE}/api/simulator/message`, {
+                    method: 'POST',
+                    body: form
+                });
+
+                if (resp.ok) {
+                    const data = await resp.json();
+                    
+                    // Update voice bubble with final transcription
+                    updateVoiceBubble(msgId, data.transcript);
+                    
+                    // Update reply bubble with structure
+                    updatePlaceholderReply(replyId, data.reply);
+                } else {
+                    updateVoiceBubble(msgId, "⚠️ Transcription failed.");
+                    updatePlaceholderReply(replyId, "⚠️ Server error processing voice file.");
+                }
+            } catch (err) {
+                updateVoiceBubble(msgId, "⚠️ Failed to reach backend.");
+                updatePlaceholderReply(replyId, "⚠️ Connection failed. Please check if FastAPI is running.");
+            } finally {
+                // Clear file input
+                document.getElementById('voice-upload-input').value = '';
+            }
+        }
+
+        // Dynamic feed DOM manipulators
+        function appendBubble(direction, text, timestamp, isVoice = false) {
+            const feed = document.getElementById('chat-feed');
+            const bubble = document.createElement('div');
+            
+            const isOut = direction === 'outbound';
+            bubble.className = `max-w-[65%] rounded-lg p-2.5 shadow-sm text-sm border border-black/5 flex flex-col gap-1 ${isOut ? 'self-end whatsapp-bubble-out' : 'self-start whatsapp-bubble-in'}`;
+            
+            const timeStr = new Date(timestamp).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+            
+            // Format markdown-like bold tags in WhatsApp replies
+            let formattedText = text.replace(/\n/g, '<br/>');
+            formattedText = formattedText.replace(/\*(.*?)\*/g, '<strong>$1</strong>');
+
+            if (isVoice && !isOut) {
+                bubble.innerHTML = `
+                    <div class="flex items-center gap-3 text-[#54656f]">
+                        <span class="material-symbols-outlined text-[26px]">play_circle</span>
+                        <div class="flex flex-col">
+                            <div class="h-2 w-32 bg-[#eae6df] rounded-full overflow-hidden relative"><div class="w-1/2 h-full bg-[#008069]"></div></div>
+                            <span class="text-xs mt-1 text-[#667781]">Voice Note: "${formattedText}"</span>
+                        </div>
+                    </div>
+                    <span class="text-[10px] text-[#667781] self-end mt-1">${timeStr}</span>
+                `;
+            } else {
+                bubble.innerHTML = `
+                    <span class="text-[#111b21] leading-relaxed">${formattedText}</span>
+                    <span class="text-[10px] text-[#667781] self-end mt-1">${timeStr}</span>
+                `;
+            }
+
+            feed.appendChild(bubble);
+            feed.scrollTop = feed.scrollHeight;
+        }
+
+        // Voice Upload Loading indicator
+        function appendVoiceLoadingBubble(fileName, timestamp) {
+            const feed = document.getElementById('chat-feed');
+            const bubble = document.createElement('div');
+            const id = 'voice-' + Math.random().toString(36).substr(2, 9);
+            
+            bubble.id = id;
+            bubble.className = "max-w-[65%] rounded-lg p-2.5 shadow-sm text-sm border border-black/5 flex flex-col gap-1 self-start whatsapp-bubble-in";
+            const timeStr = new Date(timestamp).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+
+            bubble.innerHTML = `
+                <div class="flex items-center gap-3 text-[#54656f]">
+                    <span class="material-symbols-outlined text-[26px] animate-pulse">mic</span>
+                    <div class="flex flex-col">
+                        <span class="text-xs text-[#667781] italic">Transcribing voice note...</span>
+                        <span class="text-xs text-secondary mt-0.5 font-semibold">${fileName}</span>
+                    </div>
+                </div>
+                <span class="text-[10px] text-[#667781] self-end mt-1">${timeStr}</span>
+            `;
+            feed.appendChild(bubble);
+            feed.scrollTop = feed.scrollHeight;
+            return id;
+        }
+
+        function updateVoiceBubble(id, transcript) {
+            const bubble = document.getElementById(id);
+            if (!bubble) return;
+            const timeStr = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+            
+            bubble.innerHTML = `
+                <div class="flex items-center gap-3 text-[#54656f]">
+                    <span class="material-symbols-outlined text-[26px]">play_circle</span>
+                    <div class="flex flex-col">
+                        <div class="h-2 w-32 bg-[#eae6df] rounded-full overflow-hidden relative"><div class="w-1/2 h-full bg-[#008069]"></div></div>
+                        <span class="text-xs mt-1 text-[#667781]">Voice Note: "${transcript}"</span>
+                    </div>
+                </div>
+                <span class="text-[10px] text-[#667781] self-end mt-1">${timeStr}</span>
+            `;
+        }
+
+        // Placeholder indicator for reply
+        function appendPlaceholderReply() {
+            const feed = document.getElementById('chat-feed');
+            const bubble = document.createElement('div');
+            const id = 'reply-' + Math.random().toString(36).substr(2, 9);
+            
+            bubble.id = id;
+            bubble.className = "max-w-[65%] rounded-lg p-2.5 shadow-sm text-sm border border-black/5 flex flex-col gap-1 self-end whatsapp-bubble-out";
+            const timeStr = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+
+            bubble.innerHTML = `
+                <div class="flex items-center gap-2 text-[#54656f]">
+                    <div class="flex gap-1 items-center">
+                        <span class="w-1.5 h-1.5 rounded-full bg-[#008069] animate-bounce"></span>
+                        <span class="w-1.5 h-1.5 rounded-full bg-[#008069] animate-bounce" style="animation-delay: 0.2s;"></span>
+                        <span class="w-1.5 h-1.5 rounded-full bg-[#008069] animate-bounce" style="animation-delay: 0.4s;"></span>
+                    </div>
+                    <span class="text-xs italic text-[#667781]">SupplySetu AI is thinking...</span>
+                </div>
+                <span class="text-[10px] text-[#667781] self-end mt-1">${timeStr}</span>
+            `;
+            feed.appendChild(bubble);
+            feed.scrollTop = feed.scrollHeight;
+            return id;
+        }
+
+        function updatePlaceholderReply(id, replyText) {
+            const bubble = document.getElementById(id);
+            if (!bubble) return;
+            const timeStr = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+
+            let formattedText = replyText.replace(/\n/g, '<br/>');
+            formattedText = formattedText.replace(/\*(.*?)\*/g, '<strong>$1</strong>');
+
+            bubble.innerHTML = `
+                <span class="text-[#111b21] leading-relaxed">${formattedText}</span>
+                <span class="text-[10px] text-[#667781] self-end mt-1">${timeStr}</span>
+            `;
+        }
+    </script>
+</body>
+</html>

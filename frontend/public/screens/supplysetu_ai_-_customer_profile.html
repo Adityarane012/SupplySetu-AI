@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Customer Profile - SupplySetu AI</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Noto+Sans:wght@400;600;700&amp;family=JetBrains+Mono:wght@400&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "secondary": "#006d34",
+                      "tertiary-container": "#825400",
+                      "on-tertiary-fixed-variant": "#633f00",
+                      "on-primary-fixed": "#00210d",
+                      "surface-container-high": "#e3e8f9",
+                      "on-surface-variant": "#404940",
+                      "primary-fixed-dim": "#89d89e",
+                      "background": "#f9f9ff",
+                      "surface-tint": "#1b6c3d",
+                      "on-primary-fixed-variant": "#005229",
+                      "on-background": "#161c27",
+                      "tertiary-fixed-dim": "#ffb955",
+                      "surface-variant": "#dde2f3",
+                      "inverse-primary": "#89d89e",
+                      "on-tertiary": "#ffffff",
+                      "tertiary": "#623f00",
+                      "primary": "#005129",
+                      "surface-container-highest": "#dde2f3",
+                      "surface-container-low": "#f1f3ff",
+                      "on-secondary-fixed-variant": "#005225",
+                      "on-secondary-container": "#007437",
+                      "error": "#ba1a1a",
+                      "surface-container-lowest": "#ffffff",
+                      "on-error-container": "#93000a",
+                      "secondary-fixed-dim": "#67de88",
+                      "secondary-fixed": "#83fba2",
+                      "on-secondary-fixed": "#00210b",
+                      "surface-dim": "#d4daea",
+                      "surface-container": "#e8eeff",
+                      "tertiary-fixed": "#ffddb4",
+                      "on-tertiary-fixed": "#291800",
+                      "primary-fixed": "#a5f4b8",
+                      "outline-variant": "#bfc9be",
+                      "outline": "#707a70",
+                      "secondary-container": "#83fba2",
+                      "on-error": "#ffffff",
+                      "on-tertiary-container": "#ffcf92",
+                      "on-primary-container": "#9ae9ae",
+                      "on-primary": "#ffffff",
+                      "error-container": "#ffdad6",
+                      "primary-container": "#1a6b3c",
+                      "inverse-surface": "#2a303d",
+                      "inverse-on-surface": "#ecf0ff",
+                      "surface-bright": "#f9f9ff",
+                      "surface": "#f9f9ff",
+                      "on-secondary": "#ffffff",
+                      "on-surface": "#161c27"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "stack-lg": "24px",
+                      "margin-desktop": "32px",
+                      "gutter": "16px",
+                      "base": "4px",
+                      "stack-sm": "8px",
+                      "stack-md": "16px",
+                      "margin-mobile": "16px"
+              },
+              "fontFamily": {
+                      "headline-lg": [
+                              "Noto Sans"
+                      ],
+                      "code-sm": [
+                              "JetBrains Mono"
+                      ],
+                      "headline-md": [
+                              "Noto Sans"
+                      ],
+                      "data-value": [
+                              "Inter"
+                      ],
+                      "body-lg": [
+                              "Noto Sans"
+                      ],
+                      "headline-lg-mobile": [
+                              "Noto Sans"
+                      ],
+                      "data-label": [
+                              "Inter"
+                      ],
+                      "body-md": [
+                              "Noto Sans"
+                      ]
+              },
+              "fontSize": {
+                      "headline-lg": [
+                              "28px",
+                              {
+                                      "lineHeight": "36px",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "code-sm": [
+                              "12px",
+                              {
+                                      "lineHeight": "18px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "headline-md": [
+                              "20px",
+                              {
+                                      "lineHeight": "28px",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "data-value": [
+                              "14px",
+                              {
+                                      "lineHeight": "20px",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "body-lg": [
+                              "16px",
+                              {
+                                      "lineHeight": "24px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "headline-lg-mobile": [
+                              "24px",
+                              {
+                                      "lineHeight": "32px",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "data-label": [
+                              "12px",
+                              {
+                                      "lineHeight": "16px",
+                                      "letterSpacing": "0.02em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "body-md": [
+                              "14px",
+                              {
+                                      "lineHeight": "20px",
+                                      "fontWeight": "400"
+                              }
+                      ]
+              }
+            },
+          },
+        }
+    </script>
+<style>
+        .shadow-soft {
+            box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.04);
+        }
+        .shadow-raised {
+            box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.08);
+        }
+        /* Custom scrollbar for webkit */
+        ::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f3ff;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #bfc9be;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #707a70;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background min-h-screen flex antialiased">
+<!-- SideNavBar -->
+<nav class="hidden md:flex flex-col w-[240px] bg-on-background text-on-background shadow-md fixed left-0 top-0 h-full py-6 z-50">
+<div class="px-4 mb-8">
+<h1 class="font-headline-md text-headline-md font-bold text-on-primary">SupplySetu AI</h1>
+<p class="font-body-md text-body-md text-outline-variant mt-1">Logistics Intelligence</p>
+</div>
+<ul class="flex-col w-full space-y-1">
+<li>
+<a class="flex items-center gap-3 text-surface-variant pl-4 py-2 hover:bg-primary/20 hover:text-primary-fixed transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="font-data-label text-data-label">Dashboard</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-3 text-surface-variant pl-4 py-2 hover:bg-primary/20 hover:text-primary-fixed transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="package_2">package_2</span>
+<span class="font-data-label text-data-label">Orders</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-3 text-surface-variant pl-4 py-2 hover:bg-primary/20 hover:text-primary-fixed transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="map">map</span>
+<span class="font-data-label text-data-label">Route Map</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-3 text-primary-fixed font-bold border-l-4 border-primary-fixed pl-3 py-2 bg-primary/10 opacity-90 transition-all duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="groups">groups</span>
+<span class="font-data-label text-data-label">Customers</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-3 text-surface-variant pl-4 py-2 hover:bg-primary/20 hover:text-primary-fixed transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="analytics">analytics</span>
+<span class="font-data-label text-data-label">Analytics</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-3 text-surface-variant pl-4 py-2 hover:bg-primary/20 hover:text-primary-fixed transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="font-data-label text-data-label">Settings</span>
+</a>
+</li>
+</ul>
+</nav>
+<!-- Main Content Area -->
+<div class="flex-1 md:ml-[240px] flex flex-col w-full min-h-screen">
+<!-- TopAppBar -->
+<header class="flex justify-between items-center w-full px-margin-desktop h-16 bg-surface-container-low shadow-sm sticky top-0 z-40">
+<div class="flex items-center">
+<h2 class="font-headline-md text-headline-md font-bold text-primary md:hidden">SupplySetu AI</h2>
+<div class="hidden md:block">
+<!-- Breadcrumbs / Page Title Context -->
+<span class="font-body-lg text-body-lg text-on-surface-variant">Customers / </span>
+<span class="font-body-lg text-body-lg text-on-background font-semibold">Rajesh Kirana Store</span>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<div class="relative hidden sm:block">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline-variant text-sm">search</span>
+<input class="pl-9 pr-4 py-1.5 bg-surface rounded-md border border-outline-variant/30 text-body-md focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary w-64" placeholder="Search orders..." type="text"/>
+</div>
+<button class="text-on-surface-variant hover:text-primary transition-colors p-2 rounded-full hover:bg-surface-container">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+<img alt="User Profile" class="w-8 h-8 rounded-full border border-outline-variant/30 object-cover cursor-pointer" data-alt="A small, circular profile picture of a professional individual with a neutral expression, suitable for a corporate dashboard top navigation bar. The lighting is bright and even, set against a clean, light-mode background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuANgik85m4GgDsIPzmMfe-SEGd8snmcJYp8Ndhi6lTSnsD1xb4FFIKPftFnbYBuHZUYzcewJxG0SnJ404axYNCUAKG8W11OAmR1Zf8drR634R6i2xlpPm857RfChoK4xXb_d865aqtEndlSrPHdMHK-dm_tvcBI5Y4VlDCh4gDFgyw4LBiWc69dc3awMn3wCvz0ymcNWxJi_-6PpRRtJfSQH6LBkpRpCAjwCko800sY-Wgl2Gk3j6FzjPD_cfg18d-PMzvd52_5SHen"/>
+</div>
+</header>
+<main class="p-margin-mobile md:p-margin-desktop flex-1 overflow-y-auto">
+<div class="max-w-7xl mx-auto space-y-stack-lg">
+<!-- Bento Grid Layout for Profile Header & Stats -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter">
+<!-- Profile Identity Card (Spans 4) -->
+<div class="lg:col-span-4 bg-surface rounded-xl shadow-soft p-stack-md flex flex-col items-center text-center justify-center relative overflow-hidden group">
+<div class="absolute top-0 w-full h-16 bg-gradient-to-r from-primary-container/20 to-secondary-container/20"></div>
+<img alt="Rajesh Kumar" class="w-24 h-24 rounded-full border-4 border-surface shadow-sm object-cover relative z-10 mt-4 mb-4" data-alt="A portrait of a reliable, approachable middle-aged Indian store owner named Rajesh. He has a warm smile and is wearing casual, neat clothing. The portrait is a headshot used as a profile avatar in a digital logistics application. The background is a soft, solid light color." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBwH7GJSh3DHjrw61PNt2VP0CGS5TjJCakwGe2GDG_jRKshwp1z3b8-nYdhKGoDpkkgK4zUcxgtvHgqPBvNY-DLdN1ZABC4jxEiaemrzfIeS2VZOU8YOm_BXiyT9yxFwZMdJ9SG5v85eGD4RwJ_yWr61CzVhiZFYgDG6GTFVcfhyggU9dNk1Zw-V-eMEzZ_aHe6-fV97byBaIhHiiKewFWjjuOYk5uzqt7yFwAoUMEo4X4SYIe7aGkTi94Nlks9uKhSPKBA-gfHR-8O"/>
+<h2 class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-background">Rajesh Kirana Store</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant mt-1">Rajesh Kumar • Retail Partner</p>
+<div class="flex items-center gap-2 mt-2 px-3 py-1 bg-surface-container-high rounded-full">
+<div class="w-2 h-2 rounded-full bg-secondary-fixed"></div>
+<span class="font-data-label text-data-label text-on-surface-variant">Active Vendor</span>
+</div>
+<div class="flex gap-3 w-full mt-stack-md pt-4 border-t border-outline-variant/20">
+<button class="flex-1 flex items-center justify-center gap-2 bg-primary-container text-on-primary font-data-label text-data-label py-2 px-4 rounded-lg hover:bg-primary transition-colors">
+<span class="material-symbols-outlined text-[18px]">call</span>
+                                Call
+                            </button>
+<button class="flex-1 flex items-center justify-center gap-2 border-[1.5px] border-primary-container text-primary-container font-data-label text-data-label py-2 px-4 rounded-lg hover:bg-primary-container/10 transition-colors">
+<svg class="w-[18px] h-[18px]" fill="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"></path></svg>
+                                WhatsApp
+                            </button>
+</div>
+</div>
+<!-- Address & Map Card (Spans 8) -->
+<div class="lg:col-span-8 bg-surface rounded-xl shadow-soft flex flex-col md:flex-row overflow-hidden">
+<div class="p-stack-md flex-1 flex flex-col justify-center">
+<div class="flex items-center gap-2 text-on-surface-variant mb-2">
+<span class="material-symbols-outlined text-[20px]">location_on</span>
+<h3 class="font-headline-md text-headline-md text-on-background">Delivery Address</h3>
+</div>
+<address class="font-body-md text-body-md text-on-surface-variant not-italic mt-2 space-y-1">
+<p class="font-semibold text-on-background">Shop No. 42, Ground Floor</p>
+<p>Siddhivinayak Commercial Complex</p>
+<p>Near APMC Market, Vashi</p>
+<p>Navi Mumbai, Maharashtra 400703</p>
+</address>
+<div class="mt-4 grid grid-cols-2 gap-4">
+<div>
+<span class="font-data-label text-data-label text-outline block">Delivery Zone</span>
+<span class="font-data-value text-data-value text-on-background">Vashi East (Z-12)</span>
+</div>
+<div>
+<span class="font-data-label text-data-label text-outline block">Preferred Timing</span>
+<span class="font-data-value text-data-value text-on-background">10:00 AM - 1:00 PM</span>
+</div>
+</div>
+</div>
+<div class="h-48 md:h-auto md:w-2/5 bg-surface-container relative">
+<!-- Map Image Placeholder with detailed prompt -->
+<img alt="Map Location" class="w-full h-full object-cover opacity-80" data-alt="A clean, modern digital map interface focusing on the Navi Mumbai area in Maharashtra, India. The map uses a light-mode color palette with subtle greys for roads, soft blues for water bodies, and a distinct primary green pin marker dropping onto a commercial district. The UI style is corporate modern, clean, and legible." data-location="Navi Mumbai" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB_zrnsESnGF4AUvkIyh3P4Vi6DRfKonCD5E2-bys0zy5Erg29wmQBdqA3DNWlAEkRCJq1J9YMyJgyR1bSCRdczyoKwrWllmwoDulPYSRtOoqD6cqgU_oWiy6C_ebRI_KUqs9tCN-CcoTpG_Czed3EJYczhZbWUWdO0Q5cMGJsy0ClcpJjAH7uE3Jq-cuphXZM1PCRwcXv9_Y1LQ1NV9U1QUcQZzB442r_lKMbyLlDOl-J5OVOG3NLJZwtoW6PYMeKGJ4riYPu-tBgG"/>
+<div class="absolute inset-0 bg-gradient-to-t md:bg-gradient-to-l from-transparent to-surface/80"></div>
+<div class="absolute inset-0 flex items-center justify-center">
+<div class="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center animate-pulse">
+<span class="material-symbols-outlined text-primary-container" data-weight="fill">location_on</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- KPI Stats Row (4 columns) -->
+<div class="grid grid-cols-2 lg:grid-cols-4 gap-gutter">
+<div class="bg-surface rounded-xl shadow-soft p-stack-md border-l-4 border-secondary">
+<div class="flex items-center gap-2 mb-2">
+<span class="material-symbols-outlined text-secondary text-[20px]">shopping_cart</span>
+<span class="font-data-label text-data-label text-on-surface-variant">Total Orders</span>
+</div>
+<div class="flex items-end gap-2">
+<span class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-background font-bold">1,248</span>
+<span class="font-data-label text-data-label text-secondary-container bg-secondary-container/10 px-1.5 py-0.5 rounded text-secondary">+12% YTD</span>
+</div>
+</div>
+<div class="bg-surface rounded-xl shadow-soft p-stack-md border-l-4 border-tertiary-container">
+<div class="flex items-center gap-2 mb-2">
+<span class="material-symbols-outlined text-tertiary-container text-[20px]">inventory_2</span>
+<span class="font-data-label text-data-label text-on-surface-variant">Total Items</span>
+</div>
+<div class="flex items-end gap-2">
+<span class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-background font-bold">14.2k</span>
+</div>
+</div>
+<div class="bg-surface rounded-xl shadow-soft p-stack-md border-l-4 border-primary">
+<div class="flex items-center gap-2 mb-2">
+<span class="material-symbols-outlined text-primary text-[20px]">currency_rupee</span>
+<span class="font-data-label text-data-label text-on-surface-variant">Total Value</span>
+</div>
+<div class="flex items-end gap-2">
+<span class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-background font-bold">₹4.8M</span>
+<span class="font-data-label text-data-label text-secondary bg-secondary/10 px-1.5 py-0.5 rounded text-secondary">+5% YTD</span>
+</div>
+</div>
+<div class="bg-surface rounded-xl shadow-soft p-stack-md border-l-4 border-outline">
+<div class="flex items-center gap-2 mb-2">
+<span class="material-symbols-outlined text-outline text-[20px]">equalizer</span>
+<span class="font-data-label text-data-label text-on-surface-variant">Avg Order Size</span>
+</div>
+<div class="flex items-end gap-2">
+<span class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-background font-bold">₹3,840</span>
+</div>
+</div>
+</div>
+<!-- Lower Layout: Table & Auxiliary Insights -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-gutter">
+<!-- Order History Table (Spans 2) -->
+<div class="lg:col-span-2 bg-surface rounded-xl shadow-soft flex flex-col h-full">
+<div class="p-4 border-b border-outline-variant/30 flex justify-between items-center">
+<h3 class="font-headline-md text-headline-md text-on-background">Recent Orders</h3>
+<button class="font-data-label text-data-label text-primary hover:text-primary-container transition-colors">View All</button>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-low border-b border-outline-variant/30">
+<th class="py-3 px-4 font-data-label text-data-label text-on-surface-variant">Order ID</th>
+<th class="py-3 px-4 font-data-label text-data-label text-on-surface-variant">Date</th>
+<th class="py-3 px-4 font-data-label text-data-label text-on-surface-variant">Items</th>
+<th class="py-3 px-4 font-data-label text-data-label text-on-surface-variant">Total</th>
+<th class="py-3 px-4 font-data-label text-data-label text-on-surface-variant">Status</th>
+</tr>
+</thead>
+<tbody class="font-data-value text-data-value text-on-background">
+<tr class="border-b border-outline-variant/20 hover:bg-surface-container-lowest transition-colors">
+<td class="py-3 px-4 font-code-sm text-code-sm text-on-surface-variant">#ORD-9024</td>
+<td class="py-3 px-4">Oct 24, 2023</td>
+<td class="py-3 px-4">12 boxes</td>
+<td class="py-3 px-4">₹4,250</td>
+<td class="py-3 px-4">
+<span class="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-secondary-fixed/20 text-on-secondary-fixed-variant">Delivered</span>
+</td>
+</tr>
+<tr class="border-b border-outline-variant/20 hover:bg-surface-container-lowest transition-colors">
+<td class="py-3 px-4 font-code-sm text-code-sm text-on-surface-variant">#ORD-8991</td>
+<td class="py-3 px-4">Oct 18, 2023</td>
+<td class="py-3 px-4">8 boxes</td>
+<td class="py-3 px-4">₹2,800</td>
+<td class="py-3 px-4">
+<span class="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-secondary-fixed/20 text-on-secondary-fixed-variant">Delivered</span>
+</td>
+</tr>
+<tr class="border-b border-outline-variant/20 hover:bg-surface-container-lowest transition-colors">
+<td class="py-3 px-4 font-code-sm text-code-sm text-on-surface-variant">#ORD-8850</td>
+<td class="py-3 px-4">Oct 10, 2023</td>
+<td class="py-3 px-4">15 boxes</td>
+<td class="py-3 px-4">₹5,100</td>
+<td class="py-3 px-4">
+<span class="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-secondary-fixed/20 text-on-secondary-fixed-variant">Delivered</span>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-lowest transition-colors">
+<td class="py-3 px-4 font-code-sm text-code-sm text-on-surface-variant">#ORD-8712</td>
+<td class="py-3 px-4">Oct 02, 2023</td>
+<td class="py-3 px-4">5 boxes</td>
+<td class="py-3 px-4">₹1,750</td>
+<td class="py-3 px-4">
+<span class="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-surface-dim text-on-surface-variant">Returned</span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Pagination -->
+<div class="mt-auto p-4 border-t border-outline-variant/30 flex justify-between items-center bg-surface-container-lowest rounded-b-xl">
+<span class="font-data-label text-data-label text-on-surface-variant">Showing 1 to 4 of 24 entries</span>
+<div class="flex gap-1">
+<button class="w-8 h-8 flex items-center justify-center rounded border border-outline-variant/50 text-on-surface-variant hover:bg-surface-container disabled:opacity-50" disabled="">
+<span class="material-symbols-outlined text-[18px]">chevron_left</span>
+</button>
+<button class="w-8 h-8 flex items-center justify-center rounded bg-primary-container text-on-primary font-data-label text-data-label">1</button>
+<button class="w-8 h-8 flex items-center justify-center rounded border border-outline-variant/50 text-on-surface-variant hover:bg-surface-container font-data-label text-data-label">2</button>
+<button class="w-8 h-8 flex items-center justify-center rounded border border-outline-variant/50 text-on-surface-variant hover:bg-surface-container font-data-label text-data-label">3</button>
+<button class="w-8 h-8 flex items-center justify-center rounded border border-outline-variant/50 text-on-surface-variant hover:bg-surface-container">
+<span class="material-symbols-outlined text-[18px]">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Right Column: AI Insights & Notes -->
+<div class="lg:col-span-1 space-y-gutter flex flex-col">
+<!-- AI Insights: Preferred Items Tag Cloud -->
+<div class="bg-[#E8F5EE] rounded-xl shadow-soft p-4 relative overflow-hidden flex-1 border border-primary-fixed-dim/30">
+<!-- AI sparkle accent -->
+<div class="absolute top-4 right-4 text-primary-container/30">
+<span class="material-symbols-outlined text-[32px]">auto_awesome</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-primary-fixed-variant mb-3 flex items-center gap-2">
+                                Preferred Items
+                            </h3>
+<p class="font-body-md text-body-md text-on-primary-fixed-variant/80 mb-4 text-sm">AI analysis of past 6 months ordering patterns.</p>
+<div class="flex flex-wrap gap-2">
+<span class="bg-primary/10 text-primary-container border border-primary/20 px-3 py-1 rounded-full font-data-label text-data-label">Aashirvaad Atta (5kg)</span>
+<span class="bg-primary/10 text-primary-container border border-primary/20 px-3 py-1 rounded-full font-data-label text-data-label">Tata Salt</span>
+<span class="bg-primary/10 text-primary-container border border-primary/20 px-3 py-1 rounded-full font-data-label text-data-label">Fortune Sunflower Oil</span>
+<span class="bg-primary/10 text-primary-container border border-primary/20 px-3 py-1 rounded-full font-data-label text-data-label">Maggi Masala</span>
+<span class="bg-surface-container text-on-surface-variant border border-outline-variant/30 px-3 py-1 rounded-full font-data-label text-data-label">Surf Excel</span>
+<span class="bg-surface-container text-on-surface-variant border border-outline-variant/30 px-3 py-1 rounded-full font-data-label text-data-label">Brooke Bond Red Label</span>
+<span class="bg-surface-container text-on-surface-variant border border-outline-variant/30 px-3 py-1 rounded-full font-data-label text-data-label">Parle-G</span>
+</div>
+</div>
+<!-- Private Notes Field -->
+<div class="bg-surface rounded-xl shadow-soft p-4 border border-outline-variant/20 flex-1">
+<div class="flex items-center gap-2 mb-3">
+<span class="material-symbols-outlined text-outline text-[20px]">edit_note</span>
+<h3 class="font-headline-md text-headline-md text-on-background">Private Notes</h3>
+</div>
+<div class="relative">
+<textarea class="w-full h-32 p-3 bg-surface-container-lowest border border-outline-variant/50 rounded-md font-body-md text-body-md text-on-surface-variant resize-none focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary shadow-inner" placeholder="Add internal notes about this vendor...">Prefers deliveries before noon. Usually pays in cash upon delivery. Owner is planning to expand the shop next quarter, might increase order volume.</textarea>
+</div>
+<div class="mt-3 flex justify-end">
+<button class="bg-surface-variant text-on-surface-variant font-data-label text-data-label py-1.5 px-4 rounded hover:bg-outline-variant transition-colors">Save Note</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+</body></html>

@@ -1,0 +1,373 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Settings - LogiSmart</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;600;700&amp;family=JetBrains+Mono:wght@400&amp;family=Inter:wght@500;600&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-bright": "#f9f9ff",
+                        "surface": "#f9f9ff",
+                        "on-tertiary-fixed": "#291800",
+                        "on-tertiary": "#ffffff",
+                        "on-error-container": "#93000a",
+                        "on-secondary-container": "#007437",
+                        "on-background": "#161c27",
+                        "error-container": "#ffdad6",
+                        "error": "#ba1a1a",
+                        "on-primary": "#ffffff",
+                        "tertiary-fixed": "#ffddb4",
+                        "surface-variant": "#dde2f3",
+                        "surface-container-low": "#f1f3ff",
+                        "on-primary-container": "#9ae9ae",
+                        "surface-tint": "#1b6c3d",
+                        "surface-dim": "#d4daea",
+                        "surface-container": "#e8eeff",
+                        "on-secondary": "#ffffff",
+                        "secondary-fixed": "#83fba2",
+                        "surface-container-highest": "#dde2f3",
+                        "tertiary": "#623f00",
+                        "surface-container-lowest": "#ffffff",
+                        "secondary": "#006d34",
+                        "inverse-on-surface": "#ecf0ff",
+                        "surface-container-high": "#e3e8f9",
+                        "secondary-fixed-dim": "#67de88",
+                        "primary": "#005129",
+                        "on-tertiary-fixed-variant": "#633f00",
+                        "on-primary-fixed-variant": "#005229",
+                        "primary-container": "#1a6b3c",
+                        "inverse-primary": "#89d89e",
+                        "outline-variant": "#bfc9be",
+                        "on-primary-fixed": "#00210d",
+                        "tertiary-container": "#825400",
+                        "on-secondary-fixed": "#00210b",
+                        "tertiary-fixed-dim": "#ffb955",
+                        "on-tertiary-container": "#ffcf92",
+                        "on-surface": "#161c27",
+                        "on-error": "#ffffff",
+                        "background": "#f9f9ff",
+                        "primary-fixed-dim": "#89d89e",
+                        "outline": "#707a70",
+                        "on-surface-variant": "#404940",
+                        "secondary-container": "#83fba2",
+                        "primary-fixed": "#a5f4b8",
+                        "on-secondary-fixed-variant": "#005225",
+                        "inverse-surface": "#2a303d"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "stack-sm": "8px",
+                        "gutter": "16px",
+                        "margin-desktop": "32px",
+                        "stack-lg": "24px",
+                        "margin-mobile": "16px",
+                        "base": "4px",
+                        "stack-md": "16px"
+                    },
+                    "fontFamily": {
+                        "code-sm": ["JetBrains Mono"],
+                        "body-lg": ["Noto Sans"],
+                        "headline-lg": ["Noto Sans"],
+                        "headline-lg-mobile": ["Noto Sans"],
+                        "headline-md": ["Noto Sans"],
+                        "body-md": ["Noto Sans"],
+                        "data-value": ["Inter"],
+                        "data-label": ["Inter"]
+                    },
+                    "fontSize": {
+                        "code-sm": ["12px", { "lineHeight": "18px", "fontWeight": "400" }],
+                        "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "headline-lg": ["28px", { "lineHeight": "36px", "fontWeight": "700" }],
+                        "headline-lg-mobile": ["24px", { "lineHeight": "32px", "fontWeight": "700" }],
+                        "headline-md": ["20px", { "lineHeight": "28px", "fontWeight": "600" }],
+                        "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "data-value": ["14px", { "lineHeight": "20px", "fontWeight": "500" }],
+                        "data-label": ["12px", { "lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "600" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body { background-color: #F4F6F8; }
+        .tab-content { display: none; }
+        .tab-content.active { display: block; }
+        .nav-shell-transition { transition: all 0.2s ease-in-out; }
+    </style>
+</head>
+<body class="bg-[#F4F6F8] text-on-background font-body-md min-h-screen flex">
+<!-- SideNavBar (Desktop) -->
+<nav class="hidden md:flex bg-primary dark:bg-primary font-body-md text-body-md h-full w-64 fixed left-0 top-0 shadow-sm flex-col py-6 z-50">
+<div class="px-6 mb-8 flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-primary-container flex items-center justify-center text-on-primary font-bold">L</div>
+<div>
+<div class="font-headline-md text-headline-md font-bold text-on-primary">LogiSmart India</div>
+<div class="text-on-primary/70 text-sm">Vendor Portal</div>
+</div>
+</div>
+<div class="flex flex-col gap-1 px-2 flex-grow">
+<a class="flex items-center gap-3 px-4 py-3 text-on-primary/70 hover:text-on-primary hover:bg-primary-container/20 rounded-lg mx-2 my-1 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" data-weight="fill">dashboard</span>
+                Dashboard
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-primary/70 hover:text-on-primary hover:bg-primary-container/20 rounded-lg mx-2 my-1 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" data-weight="fill">package_2</span>
+                Orders
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-primary/70 hover:text-on-primary hover:bg-primary-container/20 rounded-lg mx-2 my-1 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" data-weight="fill">map</span>
+                Route Map
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-primary/70 hover:text-on-primary hover:bg-primary-container/20 rounded-lg mx-2 my-1 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" data-weight="fill">groups</span>
+                Customers
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-primary/70 hover:text-on-primary hover:bg-primary-container/20 rounded-lg mx-2 my-1 transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" data-weight="fill">analytics</span>
+                Analytics
+            </a>
+<a class="flex items-center gap-3 px-4 py-3 bg-primary-container text-on-primary-container rounded-lg mx-2 my-1 transition-colors duration-200 transform hover:scale-95" href="#">
+<span class="material-symbols-outlined" data-weight="fill">settings</span>
+                Settings
+            </a>
+</div>
+</nav>
+<!-- TopAppBar (Desktop) -->
+<header class="hidden md:flex fixed top-0 right-0 w-[calc(100%-16rem)] z-40 bg-surface dark:bg-surface-container-low text-primary dark:text-primary-fixed font-body-lg text-body-lg shadow-sm justify-between items-center px-8 py-4 h-16">
+<div class="font-headline-lg text-headline-lg font-bold text-primary dark:text-primary-fixed flex-1">FINAL - Settings</div>
+<div class="flex items-center gap-4">
+<button class="p-2 text-on-surface-variant hover:text-primary hover:bg-surface-container-high rounded-full transition-all">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="p-2 text-on-surface-variant hover:text-primary hover:bg-surface-container-high rounded-full transition-all">
+<span class="material-symbols-outlined">help</span>
+</button>
+<div class="w-8 h-8 rounded-full bg-surface-variant overflow-hidden">
+<img alt="Vendor User Profile" class="w-full h-full object-cover" data-alt="A close-up portrait of an Indian logistics vendor in a smart casual shirt, smiling warmly against a bright, clean industrial background. Soft, natural light mode aesthetic with subtle green and white tones, reflecting trust and competence. High-quality corporate modern photography." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBCu_NzjvtT0NWZUtFxSGBgyci3RXgR4v38sw7bMNvIf6ba2JpGum8CniLVw52ue0Ea143XW49xdvsFcQCT04yejx9dxwIKfDL3e25B1_KoOPMXwztWJ8vf3mMEEvIHyXAOJDUdZguMORIO6TZ2rRWk66L_Qj15z2yC1fAskgPFR6jmeqZezbW36HUbSebhWJ3te0R-fE24KDhgjKO8fV3Ps38jMyoe2vv24IjuG74TSYMaVP0SnFnKkkpsHaD6pH1MpcMA-hiEzgCW">
+</div>
+</div>
+</header>
+<!-- Main Content Area -->
+<main class="w-full md:pl-64 md:pt-16 min-h-screen">
+<div class="max-w-4xl mx-auto p-margin-mobile md:p-margin-desktop">
+<!-- Mobile Header (Hidden on Desktop) -->
+<div class="md:hidden flex items-center justify-between mb-stack-lg">
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile text-primary font-bold">FINAL - Settings</h1>
+</div>
+<!-- Tabs Navigation -->
+<div class="flex gap-4 border-b border-surface-dim mb-stack-lg overflow-x-auto pb-2 scrollbar-hide">
+<button class="font-body-md text-body-md font-semibold px-4 py-2 text-primary border-b-2 border-primary whitespace-nowrap" id="tab-btn-profile" onclick="switchTab('profile')">Business Profile</button>
+<button class="font-body-md text-body-md font-semibold px-4 py-2 text-on-surface-variant hover:text-primary whitespace-nowrap" id="tab-btn-whatsapp" onclick="switchTab('whatsapp')">WhatsApp Integration</button>
+<button class="font-body-md text-body-md font-semibold px-4 py-2 text-on-surface-variant hover:text-primary whitespace-nowrap" id="tab-btn-preferences" onclick="switchTab('preferences')">Preferences</button>
+</div>
+<!-- Tab 1: Business Profile -->
+<div class="tab-content active space-y-stack-md" id="tab-profile">
+<div class="bg-surface rounded-xl p-6 shadow-sm">
+<h2 class="font-headline-md text-headline-md text-on-surface mb-6">Business Information</h2>
+<form class="space-y-4">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<div>
+<label class="block font-data-label text-data-label text-on-surface-variant mb-1">Business Name</label>
+<input class="w-full bg-surface-bright border border-outline-variant rounded-lg px-3 py-2 text-on-surface focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent font-data-value text-data-value" type="text" value="LogiSmart India">
+</div>
+<div>
+<label class="block font-data-label text-data-label text-on-surface-variant mb-1">Owner Name</label>
+<input class="w-full bg-surface-bright border border-outline-variant rounded-lg px-3 py-2 text-on-surface focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent font-data-value text-data-value" type="text" value="Rajesh Kumar">
+</div>
+<div>
+<label class="block font-data-label text-data-label text-on-surface-variant mb-1">Phone Number</label>
+<input class="w-full bg-surface-bright border border-outline-variant rounded-lg px-3 py-2 text-on-surface focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent font-data-value text-data-value" type="tel" value="+91 98765 43210">
+</div>
+<div>
+<label class="block font-data-label text-data-label text-on-surface-variant mb-1">GSTIN</label>
+<input class="w-full bg-surface-bright border border-outline-variant rounded-lg px-3 py-2 text-on-surface focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent font-data-value text-data-value" type="text" value="27AABCU9603R1Z2">
+</div>
+</div>
+<div class="pt-4">
+<label class="block font-data-label text-data-label text-on-surface-variant mb-1">Depot Address</label>
+<textarea class="w-full bg-surface-bright border border-outline-variant rounded-lg px-3 py-2 text-on-surface focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent font-data-value text-data-value mb-2" rows="2">Plot 42, MIDC Industrial Area, Andheri East, Mumbai</textarea>
+<!-- Map Picker Placeholder -->
+<div class="h-48 w-full bg-surface-variant rounded-lg overflow-hidden relative border border-outline-variant">
+<img alt="Map View" class="w-full h-full object-cover opacity-80" data-alt="A clean, modern digital map interface centered on Mumbai, India. The map uses a light-mode color palette with soft greys for landmasses, pale blue for water, and primary green accent lines denoting a key logistics route. The style is flat, technical, and highly legible, fitting a professional supply-chain dashboard." data-location="Mumbai" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAER0V_wBzvFDXKnnPudijumvXVCHalcq9UFogJUBDr7MGUVqEDcmsItAWZ5O7Ie9Tk0-7rPcV4S0hLpegXsWCMLSdUFa-faIBQTVdwHwPpi-R-VLK5Vbi2-X0EJwx09Ro4mhr5aSJTCLuRYvVn62IJG_4OjlNuaV9Wuf_h3X9l9euGfXL6Pja5hvMo5_flUohrxtvMJQcn7nsN_CpmLPy5cnq9z4wYfbDZavaPjR4Qcae9nObfH2jJy1p-aVffaB3vjomHD9y_1OVy">
+<div class="absolute inset-0 flex items-center justify-center pointer-events-none">
+<span class="material-symbols-outlined text-primary text-4xl drop-shadow-md">location_on</span>
+</div>
+<button class="absolute bottom-2 right-2 bg-surface text-primary px-3 py-1 rounded shadow-sm font-data-label text-data-label hover:bg-surface-container-low transition-colors" type="button">Edit Location</button>
+</div>
+</div>
+<div class="flex justify-end pt-4">
+<button class="bg-primary-container text-on-primary px-6 py-2 rounded-lg font-body-md text-body-md hover:opacity-90 transition-opacity" type="button">Save Profile</button>
+</div>
+</form>
+</div>
+</div>
+<!-- Tab 2: WhatsApp Integration -->
+<div class="tab-content space-y-stack-md" id="tab-whatsapp">
+<div class="bg-surface rounded-xl p-6 shadow-sm">
+<div class="flex items-center justify-between mb-6">
+<h2 class="font-headline-md text-headline-md text-on-surface flex items-center gap-2">
+<span class="material-symbols-outlined text-[#25D366]">forum</span>
+                            WhatsApp Assistant
+                        </h2>
+<div class="bg-[#E8F5EE] text-[#1A6B3C] px-3 py-1 rounded-full font-data-label text-data-label flex items-center gap-1">
+                            Connected <span class="material-symbols-outlined text-[14px]">check_circle</span>
+</div>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant mb-6 max-w-2xl">
+                        Your WhatsApp bot is active. Drivers and customers can send messages to your registered business number to get automated updates on orders and routes.
+                    </p>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-center bg-surface-container-low p-6 rounded-lg border border-surface-dim">
+<div class="space-y-4">
+<h3 class="font-headline-sm text-on-surface font-semibold">Test Sandbox Access</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Scan this QR code with your phone to send a test message to the AI assistant in the sandbox environment.</p>
+<div class="flex gap-3">
+<button class="bg-surface text-primary border-1.5 border-primary px-4 py-2 rounded-lg font-body-md text-body-md hover:bg-surface-container transition-colors flex items-center gap-2 shadow-sm">
+<span class="material-symbols-outlined">send</span> Test Message
+                                </button>
+</div>
+</div>
+<div class="flex justify-center md:justify-end">
+<div class="bg-white p-3 rounded-xl shadow-sm border border-surface-dim">
+<img alt="QR Code Placeholder" class="w-32 h-32 opacity-70 grayscale" data-alt="A clean, high-contrast digital QR code centered on a pure white background. The QR code pattern is crisp and black, designed for easy scanning. Subtle rounded corners on the code modules give it a slightly friendly, modern tech appearance typical of current mobile apps." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA0lIHsmTduW5S7CH4L0XK9-GiwQGMl8OLV_SZVVu1y_-aUwFFEq2smXL5ckbao7HZ_n1Uwp4MyFFq6Jvtk_7Nrj_JciOIt2Yk8ECtQ2rcCZ0q9UUJLc6T7bW0W6DEnyLMJtGbX-fStBnHwpEdu8okFbxc-SbU-iAdVitf3NN9mz5j7HhMGnZpP5mMv_owv_XoaR2HYlzNWGY6cDpfjc8F84guM2r15OCiST22gmlUBpAFODCO35y3fk4WMGrqRnw2vxhlcydC8Gkx7">
+</div>
+</div>
+</div>
+<div class="mt-6">
+<h3 class="font-body-md text-body-md font-semibold text-on-surface mb-3">Recent AI Activity</h3>
+<div class="bg-surface-bright border border-outline-variant rounded-lg p-4 font-code-sm text-code-sm text-on-surface-variant space-y-2">
+<div class="flex gap-2">
+<span class="text-primary-container">[10:42 AM]</span> <span class="">Received text: "Where is truck MH04-1234?"</span>
+</div>
+<div class="flex gap-2">
+<span class="text-secondary">[10:42 AM]</span> <span class="">AI Match: Intent=TRACK_VEHICLE, Entity=MH04-1234</span>
+</div>
+<div class="flex gap-2">
+<span class="text-tertiary-container">[10:43 AM]</span> <span class="">Sent response: "Truck MH04-1234 is currently at Depot 2. Est. departure in 15 mins."</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Tab 3: Preferences -->
+<div class="tab-content space-y-stack-md" id="tab-preferences">
+<div class="bg-surface rounded-xl p-6 shadow-sm">
+<h2 class="font-headline-md text-headline-md text-on-surface mb-6">App Preferences</h2>
+<div class="space-y-6">
+<!-- Language -->
+<div class="border-b border-surface-dim pb-6">
+<div class="flex justify-between items-center">
+<div>
+<h3 class="font-body-md text-body-md font-semibold text-on-surface">Display Language</h3>
+<p class="font-body-md text-body-md text-on-surface-variant text-sm mt-1">Select the primary language for the dashboard interface.</p>
+</div>
+<select class="bg-surface-bright border border-outline-variant rounded-lg px-3 py-2 text-on-surface focus:outline-none focus:ring-2 focus:ring-primary font-data-value text-data-value">
+<option value="en">English</option>
+<option value="hi">Hindi (हिन्दी)</option>
+<option value="mr">Marathi (मराठी)</option>
+</select>
+</div>
+</div>
+<!-- Notifications -->
+<div class="border-b border-surface-dim pb-6">
+<h3 class="font-body-md text-body-md font-semibold text-on-surface mb-4">Notifications</h3>
+<div class="space-y-4">
+<label class="flex items-center justify-between cursor-pointer">
+<div>
+<div class="font-data-value text-data-value text-on-surface">Order Updates</div>
+<div class="font-body-md text-body-md text-on-surface-variant text-xs">Get notified when an order status changes.</div>
+</div>
+<div class="relative">
+<input checked="" class="sr-only peer" type="checkbox">
+<div class="w-11 h-6 bg-surface-dim rounded-full peer peer-checked:bg-primary-container peer-checked:after:translate-x-full after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all"></div>
+</div>
+</label>
+<label class="flex items-center justify-between cursor-pointer">
+<div>
+<div class="font-data-value text-data-value text-on-surface">AI Insights</div>
+<div class="font-body-md text-body-md text-on-surface-variant text-xs">Alerts for AI-detected route optimizations or delays.</div>
+</div>
+<div class="relative">
+<input checked="" class="sr-only peer" type="checkbox">
+<div class="w-11 h-6 bg-surface-dim rounded-full peer peer-checked:bg-primary-container peer-checked:after:translate-x-full after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all"></div>
+</div>
+</label>
+<label class="flex items-center justify-between cursor-pointer">
+<div>
+<div class="font-data-value text-data-value text-on-surface">Marketing Emails</div>
+<div class="font-body-md text-body-md text-on-surface-variant text-xs">Receive updates about new SupplySetu features.</div>
+</div>
+<div class="relative">
+<input class="sr-only peer" type="checkbox">
+<div class="w-11 h-6 bg-surface-dim rounded-full peer peer-checked:bg-primary-container peer-checked:after:translate-x-full after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all"></div>
+</div>
+</label>
+</div>
+</div>
+<!-- Appearance -->
+<div>
+<div class="flex justify-between items-center">
+<div>
+<h3 class="font-body-md text-body-md font-semibold text-on-surface">Dark Mode</h3>
+<p class="font-body-md text-body-md text-on-surface-variant text-sm mt-1">Switch between light and dark themes.</p>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input class="sr-only peer" type="checkbox">
+<div class="w-11 h-6 bg-surface-dim rounded-full peer peer-checked:bg-primary-container peer-checked:after:translate-x-full after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all"></div>
+</label>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- BottomNavBar (Mobile) -->
+<nav class="md:hidden fixed bottom-0 w-full bg-surface dark:bg-surface-container-low shadow-[0_-2px_10px_rgba(0,0,0,0.05)] z-50 flex justify-around py-3 pb-safe">
+<a class="flex flex-col items-center gap-1 text-on-surface-variant hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined text-[24px]">dashboard</span>
+<span class="font-data-label text-[10px]">Home</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-on-surface-variant hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined text-[24px]">package_2</span>
+<span class="font-data-label text-[10px]">Orders</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-primary transition-colors" href="#">
+<span class="material-symbols-outlined text-[24px]" data-weight="fill">settings</span>
+<span class="font-data-label text-[10px] font-bold">Settings</span>
+</a>
+</nav>
+<script>
+        function switchTab(tabId) {
+            // Hide all tabs
+            document.querySelectorAll('.tab-content').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            // Reset all buttons
+            document.querySelectorAll('[id^="tab-btn-"]').forEach(btn => {
+                btn.classList.remove('text-primary', 'border-b-2', 'border-primary');
+                btn.classList.add('text-on-surface-variant');
+            });
+
+            // Show selected tab
+            document.getElementById('tab-' + tabId).classList.add('active');
+            
+            // Highlight selected button
+            const activeBtn = document.getElementById('tab-btn-' + tabId);
+            activeBtn.classList.remove('text-on-surface-variant');
+            activeBtn.classList.add('text-primary', 'border-b-2', 'border-primary');
+        }
+    </script>
+
+
+</body></html>

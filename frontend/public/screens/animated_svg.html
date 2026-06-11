@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body {
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      background: #000;
+    }
+  </style>
+</head>
+<body>
+<!-- STITCH_SVG_START:ANIMATION_2 class="fixed inset-0 w-full h-full" --><div class="fixed inset-0 w-full h-full" id="animated-svg-ANIMATION_2" style="display:block;"><svg viewbox="0 0 800 600" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<lineargradient id="phoneGrad" x1="0%" x2="100%" y1="0%" y2="100%">
+<stop offset="0%" style="stop-color:#2d3748;stop-opacity:1"></stop>
+<stop offset="100%" style="stop-color:#1a202c;stop-opacity:1"></stop>
+</lineargradient>
+</defs>
+<!-- Phone Frame -->
+<rect fill="url(#phoneGrad)" height="400" rx="30" width="200" x="300" y="50"></rect>
+<rect fill="#f4f6f8" height="380" rx="20" width="180" x="310" y="60"></rect>
+<!-- WhatsApp Bubble Animation -->
+<g id="whatsapp-bubbles">
+<rect fill="#dcf8c6" height="40" rx="10" width="120" x="320" y="100">
+<animate attributename="opacity" dur="4s" repeatcount="indefinite" values="0;1;1;0"></animate>
+<animate attributename="y" dur="4s" repeatcount="indefinite" values="120;100;100;80"></animate>
+</rect>
+<path d="M330 115 h20 M330 125 h15" opacity="0.5" stroke="#1A6B3C" stroke-width="2">
+<animate attributename="opacity" dur="4s" repeatcount="indefinite" values="0;0.5;0.5;0"></animate>
+</path>
+<circle cx="340" cy="120" fill="#1A6B3C" r="8">
+<animate attributename="r" dur="2s" repeatcount="indefinite" values="6;9;6"></animate>
+</circle>
+</g>
+<!-- AI Connection Lines -->
+<g id="connections" stroke="#1A6B3C" stroke-dasharray="5,5">
+<path d="M500 250 Q 600 250 650 150" fill="none">
+<animate attributename="stroke-dashoffset" dur="3s" from="100" repeatcount="indefinite" to="0"></animate>
+</path>
+<path d="M500 250 Q 600 250 650 350" fill="none">
+<animate attributename="stroke-dashoffset" dur="3s" from="100" repeatcount="indefinite" to="0"></animate>
+</path>
+</g>
+<!-- Dashboard Cards Floating -->
+<g id="cards">
+<rect fill="white" height="60" rx="8" stroke="#E2E8F0" width="100" x="650" y="100">
+<animatetransform attributename="transform" dur="3s" repeatcount="indefinite" type="translate" values="0,0; 0,-10; 0,0"></animatetransform>
+</rect>
+<rect fill="white" height="60" rx="8" stroke="#E2E8F0" width="100" x="650" y="300">
+<animatetransform attributename="transform" dur="4s" repeatcount="indefinite" type="translate" values="0,0; 0,10; 0,0"></animatetransform>
+</rect>
+</g>
+</svg></div><!-- STITCH_SVG_END:ANIMATION_2 -->
+</body>
+</html>
