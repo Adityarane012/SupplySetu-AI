@@ -110,7 +110,7 @@ export default function OrdersPage() {
             </select>
             <a href="/orders/new" className="flex items-center space-x-2 bg-green-600 text-white px-4 py-2 rounded-lg font-medium hover:bg-green-700 transition-colors shadow-sm">
               <Plus size={18} />
-              <span>New Voice Order</span>
+              <span>New Order</span>
             </a>
           </div>
         </div>
