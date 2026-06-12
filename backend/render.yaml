@@ -11,5 +11,7 @@ services:
         sync: false
       - key: SUPABASE_SERVICE_ROLE_KEY
         sync: false
-      - key: OLLAMA_BASE_URL
-        value: "http://localhost:11434" # Note: Ollama might not run on Render free tier natively without Docker, update if using external Ollama
+      - key: GROQ_API_KEY
+        sync: false
+      - key: USE_LOCAL_MODEL
+        value: "false"
