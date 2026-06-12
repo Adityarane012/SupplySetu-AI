@@ -9,13 +9,14 @@ OLLAMA_URL = os.getenv("OLLAMA_BASE_URL", "http://localhost:11434")
 OLLAMA_MODEL = os.getenv("OLLAMA_MODEL", "llama3.2:3b")
 
 EXTRACT_PROMPT = """\
-You are an intelligent order extraction assistant for an Indian vegetable and grocery supplier.
-The customer's message may be in Hindi, Marathi, English, or Hinglish (mixed Hindi-English).
+You are an intelligent, fault-tolerant order extraction assistant for an Indian vegetable and grocery supplier.
+The customer's message may be in Hindi, Marathi, English, or Hinglish (mixed). It may contain emojis, customer names, delivery dates, or prices.
 
-Your task: Extract the order details and return ONLY valid JSON — no explanation, no markdown, no extra text.
+Your task: Extract the order details and return ONLY valid JSON. Ignore prices, greetings, emojis, and irrelevant text.
 
-Output format:
+Output format MUST match exactly:
 {{
+  "customer": "<extracted name or 'Unknown'>",
   "items": [
     {{"product_name": "<English name>", "quantity": <number>, "unit": "<kg|piece|dozen|litre|bundle|gram>"}}
   ],
@@ -24,23 +25,19 @@ Output format:
   "confidence": <0.0 to 1.0>
 }}
 
-Translation rules:
-- tamatar / tamaatar = Tomato
-- pyaz / pyaaz / kanda = Onion  
-- aalu / aloo / batata = Potato
-- lahsun / lasun = Garlic
-- adrak = Ginger
-- palak = Spinach
-- methi = Fenugreek
-- kela / kele = Banana
-- kilo / kg / किलो = kg
-- darjan / dozen = dozen
-- pao / pav = 250g (convert to grams)
+Extraction Rules:
+1. Extract ALL food/grocery items requested. Ignore non-food items.
+2. If a quantity is decimal (e.g. "2.5"), preserve it as a float.
+3. If no quantity is specified for an item, default to 1.
+4. Ignore prices (e.g., "Rs 30/kg", "50 rupees"). Do NOT confuse price with quantity.
+5. Translate all product names to English (tamatar -> Tomato, pyaz -> Onion, etc).
+6. If the message contains no food/grocery items, return an empty "items" array: []
 
 Examples:
-- "20 kilo tamatar aur 15 kg pyaz" → items: [{{"product_name":"Tomato","quantity":20,"unit":"kg"}},{{"product_name":"Onion","quantity":15,"unit":"kg"}}]
-- "ek darjan kela chahiye" → items: [{{"product_name":"Banana","quantity":1,"unit":"dozen"}}]
-- "bhaiya 2 dozen palak aur 3 kg methi kal tak" → items: [{{"product_name":"Spinach","quantity":2,"unit":"dozen"}},{{"product_name":"Fenugreek","quantity":3,"unit":"kg"}}], delivery_date: tomorrow's date
+- "20 kg tamatar aur 15 kg pyaz" → items: [{{"product_name":"Tomato","quantity":20,"unit":"kg"}},{{"product_name":"Onion","quantity":15,"unit":"kg"}}]
+- "Ramesh here - need 10 kg tomato" → customer: "Ramesh", items: [{{"product_name":"Tomato","quantity":10,"unit":"kg"}}]
+- "10 kg tomato at Rs 30 per kg" → items: [{{"product_name":"Tomato","quantity":10,"unit":"kg"}}] (price ignored)
+- "🍅 20 kg tamatar please" → items: [{{"product_name":"Tomato","quantity":20,"unit":"kg"}}] (emoji ignored)
 
 Customer message: {transcript}"""
 
