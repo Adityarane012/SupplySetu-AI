@@ -12,7 +12,7 @@ export default function Home() {
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-50">
       <div className="text-center">
-        <h1 className="text-3xl font-bold text-green-700 mb-2">SupplySetu AI</h1>
+        <img src="/logo-main.png" alt="SupplySetu AI" className="h-14 w-auto mx-auto mb-2" />
         <p className="text-gray-500">Redirecting to dashboard...</p>
       </div>
     </div>

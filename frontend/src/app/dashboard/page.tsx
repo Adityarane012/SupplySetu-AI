@@ -55,8 +55,8 @@ export default function DashboardPage() {
     <div className="min-h-screen bg-gray-50 flex flex-col md:flex-row font-sans">
       {/* Sidebar */}
       <div className="w-64 bg-white border-r border-gray-200 hidden md:flex flex-col">
-        <div className="p-6 border-b border-gray-200">
-          <h1 className="text-2xl font-bold text-green-700">SupplySetu AI</h1>
+        <div className="p-5 border-b border-gray-200 flex items-center">
+          <img src="/logo-main.png" alt="SupplySetu AI" className="h-10 w-auto" />
         </div>
         <nav className="flex-1 p-4 space-y-2">
           <a href="/dashboard" className="flex items-center space-x-3 text-green-700 bg-green-50 px-4 py-3 rounded-lg font-medium">

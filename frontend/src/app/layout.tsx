@@ -16,6 +16,10 @@ const notoSans = Noto_Sans({
 export const metadata: Metadata = {
   title: "SupplySetu AI",
   description: "WhatsApp-native Autonomous Logistics Assistant",
+  icons: {
+    icon: "/favicon.png",
+    apple: "/favicon.png",
+  },
 };
 
 export default function RootLayout({
