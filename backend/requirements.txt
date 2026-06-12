@@ -38,7 +38,7 @@ packaging==26.2
 pandas==3.0.3
 postgrest==0.18.0
 # protobuf pulled automatically by ortools
-pydantic==2.10.3
+pydantic
 # pydantic_core pulled automatically by pydantic
 Pygments==2.20.0
 PyJWT==2.13.0
