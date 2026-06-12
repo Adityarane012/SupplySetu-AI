@@ -1,7 +1,7 @@
 "use client";
 
-import { useState, useRef } from "react";
-import { Mic, Send, Paperclip, StopCircle, User } from "lucide-react";
+import { useState, useRef, useEffect } from "react";
+import { Mic, Send, Paperclip, StopCircle, User, ArrowLeft } from "lucide-react";
 
 type Message = {
   id: string;
@@ -28,6 +28,12 @@ export default function SimulatorPage() {
   
   const mediaRecorderRef = useRef<MediaRecorder | null>(null);
   const audioChunksRef = useRef<Blob[]>([]);
+  const chatEndRef = useRef<HTMLDivElement | null>(null);
+
+  // Auto-scroll to newest message
+  useEffect(() => {
+    chatEndRef.current?.scrollIntoView({ behavior: "smooth" });
+  }, [messages, isSending]);
 
   const handleSendMessage = async (text: string, audioBlob?: Blob) => {
     if (!text.trim() && !audioBlob) return;
@@ -125,8 +131,12 @@ export default function SimulatorPage() {
     <div className="flex h-screen bg-[#ece5dd] font-sans">
       {/* Left Sidebar */}
       <div className="w-1/3 bg-white border-r border-gray-300 flex flex-col">
-        <div className="bg-[#f0f2f5] h-16 flex items-center px-4 font-bold text-gray-700">
-          WhatsApp Simulator
+        <div className="bg-[#f0f2f5] h-16 flex items-center px-4 font-bold text-gray-700 justify-between">
+          <span>WhatsApp Simulator</span>
+          <a href="/dashboard" className="text-xs text-green-600 hover:text-green-700 font-medium flex items-center space-x-1">
+            <ArrowLeft size={14} />
+            <span>Dashboard</span>
+          </a>
         </div>
         <div className="flex-1 overflow-y-auto">
           {CONTACTS.map((contact) => (
@@ -190,6 +200,7 @@ export default function SimulatorPage() {
               </div>
             </div>
           )}
+          <div ref={chatEndRef} />
         </div>
 
         {/* Chat Input Bar */}

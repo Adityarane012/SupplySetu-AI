@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useRef } from "react";
-import { Mic, Check, RotateCcw, Save, Loader2 } from "lucide-react";
+import { Mic, Check, RotateCcw, Save, Loader2, ArrowLeft } from "lucide-react";
 
 export default function NewOrderVoicePage() {
   const [step, setStep] = useState<"idle" | "recording" | "uploading" | "transcribing" | "extracting" | "review" | "done">("idle");
@@ -93,6 +93,12 @@ export default function NewOrderVoicePage() {
 
   return (
     <div className="min-h-screen bg-gray-50 flex flex-col items-center py-12 font-sans">
+      <div className="w-full max-w-2xl mb-4 px-4">
+        <a href="/orders" className="inline-flex items-center space-x-2 text-gray-500 hover:text-green-700 transition-colors text-sm font-medium">
+          <ArrowLeft size={16} />
+          <span>Back to Orders</span>
+        </a>
+      </div>
       <h1 className="text-3xl font-bold text-gray-800 mb-8">New Voice Order</h1>
 
       <div className="bg-white p-8 rounded-2xl shadow-sm border border-gray-200 w-full max-w-2xl text-center">

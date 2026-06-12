@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { supabase } from "@/lib/supabase";
-import { Package, Truck, DollarSign, CheckCircle, Clock, BarChart3 } from "lucide-react";
+import { Package, Truck, DollarSign, CheckCircle, Clock, BarChart3, Filter, Plus } from "lucide-react";
 
 export default function DashboardPage() {
   const [orders, setOrders] = useState<any[]>([]);
@@ -61,6 +61,10 @@ export default function DashboardPage() {
             <Package size={20} />
             <span>Dashboard</span>
           </a>
+          <a href="/orders" className="flex items-center space-x-3 text-gray-600 hover:bg-gray-50 px-4 py-3 rounded-lg font-medium transition-colors">
+            <Filter size={20} />
+            <span>All Orders</span>
+          </a>
           <a href="/route-map" className="flex items-center space-x-3 text-gray-600 hover:bg-gray-50 px-4 py-3 rounded-lg font-medium transition-colors">
             <Truck size={20} />
             <span>Route Optimization</span>
@@ -80,12 +84,18 @@ export default function DashboardPage() {
       <main className="flex-1 p-8">
         <div className="flex justify-between items-center mb-8">
           <h2 className="text-3xl font-bold text-gray-800">Vendor Dashboard</h2>
-          <div className="text-gray-500 flex items-center space-x-2">
+          <div className="flex items-center space-x-4">
+            <a href="/orders/new" className="flex items-center space-x-2 bg-green-600 text-white px-4 py-2 rounded-lg font-medium hover:bg-green-700 transition-colors shadow-sm">
+              <Plus size={18} />
+              <span>New Voice Order</span>
+            </a>
+            <div className="text-gray-500 flex items-center space-x-2">
             <span className="relative flex h-3 w-3">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
               <span className="relative inline-flex rounded-full h-3 w-3 bg-green-500"></span>
             </span>
             <span className="text-sm font-medium">Live Sync Active</span>
+          </div>
           </div>
         </div>
 

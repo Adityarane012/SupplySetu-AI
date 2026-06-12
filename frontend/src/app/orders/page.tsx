@@ -2,11 +2,12 @@
 
 import { useEffect, useState } from "react";
 import { supabase } from "@/lib/supabase";
-import { Package, Truck, Clock, Filter, BarChart3 } from "lucide-react";
+import { Package, Truck, Clock, Filter, BarChart3, Plus, ChevronRight } from "lucide-react";
 
 export default function OrdersPage() {
   const [orders, setOrders] = useState<any[]>([]);
   const [filter, setFilter] = useState("all");
+  const [updatingId, setUpdatingId] = useState<string | null>(null);
 
   const fetchOrders = async () => {
     try {
@@ -18,6 +19,23 @@ export default function OrdersPage() {
     }
   };
 
+  const updateStatus = async (orderId: string, newStatus: string) => {
+    setUpdatingId(orderId);
+    try {
+      await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/orders/${orderId}`, {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ status: newStatus }),
+      });
+      // Realtime will handle the refresh, but also refetch to be safe
+      await fetchOrders();
+    } catch (err) {
+      console.error("Error updating order:", err);
+    } finally {
+      setUpdatingId(null);
+    }
+  };
+
   useEffect(() => {
     fetchOrders();
 
@@ -26,18 +44,24 @@ export default function OrdersPage() {
       .on(
         "postgres_changes",
         { event: "*", schema: "public", table: "orders" },
-        (payload) => {
-          fetchOrders();
-        }
+        () => { fetchOrders(); }
       )
       .subscribe();
 
-    return () => {
-      supabase.removeChannel(channel);
-    };
+    return () => { supabase.removeChannel(channel); };
   }, []);
 
   const filteredOrders = filter === "all" ? orders : orders.filter(o => o.status === filter);
+
+  const nextStatus: Record<string, string> = {
+    pending: "in_transit",
+    in_transit: "delivered",
+  };
+
+  const statusLabel: Record<string, string> = {
+    pending: "Mark In Transit",
+    in_transit: "Mark Delivered",
+  };
 
   return (
     <div className="min-h-screen bg-gray-50 flex flex-col md:flex-row font-sans">
@@ -73,16 +97,22 @@ export default function OrdersPage() {
       <main className="flex-1 p-8">
         <div className="flex justify-between items-center mb-8">
           <h2 className="text-3xl font-bold text-gray-800">Order Management</h2>
-          <select 
-            value={filter} 
-            onChange={(e) => setFilter(e.target.value)}
-            className="bg-white border border-gray-300 text-gray-700 py-2 px-4 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
-          >
-            <option value="all">All Orders</option>
-            <option value="pending">Pending</option>
-            <option value="in_transit">In Transit</option>
-            <option value="delivered">Delivered</option>
-          </select>
+          <div className="flex items-center space-x-3">
+            <select 
+              value={filter} 
+              onChange={(e) => setFilter(e.target.value)}
+              className="bg-white border border-gray-300 text-gray-700 py-2 px-4 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
+            >
+              <option value="all">All Orders</option>
+              <option value="pending">Pending</option>
+              <option value="in_transit">In Transit</option>
+              <option value="delivered">Delivered</option>
+            </select>
+            <a href="/orders/new" className="flex items-center space-x-2 bg-green-600 text-white px-4 py-2 rounded-lg font-medium hover:bg-green-700 transition-colors shadow-sm">
+              <Plus size={18} />
+              <span>New Voice Order</span>
+            </a>
+          </div>
         </div>
 
         <div className="bg-white rounded-xl border border-gray-200 shadow-sm overflow-hidden">
@@ -106,7 +136,7 @@ export default function OrdersPage() {
                       ${order.status === 'pending' ? 'bg-orange-100 text-orange-700' : 
                         order.status === 'in_transit' ? 'bg-blue-100 text-blue-700' : 
                         'bg-green-100 text-green-700'}`}>
-                      {order.status.toUpperCase()}
+                      {order.status === 'in_transit' ? 'IN TRANSIT' : order.status.toUpperCase()}
                     </span>
                   </td>
                   <td className="px-6 py-4 text-sm text-gray-500">
@@ -115,14 +145,34 @@ export default function OrdersPage() {
                     ))}
                   </td>
                   <td className="px-6 py-4 text-right text-sm font-medium">
-                    <button className="text-green-600 hover:text-green-900 bg-green-50 px-3 py-1 rounded-lg mr-2">Edit</button>
+                    {nextStatus[order.status] ? (
+                      <button
+                        onClick={() => updateStatus(order.id, nextStatus[order.status])}
+                        disabled={updatingId === order.id}
+                        className={`inline-flex items-center space-x-1 px-3 py-1.5 rounded-lg text-white font-medium text-xs transition-colors shadow-sm ${
+                          order.status === 'pending' 
+                            ? 'bg-blue-500 hover:bg-blue-600' 
+                            : 'bg-green-500 hover:bg-green-600'
+                        } ${updatingId === order.id ? 'opacity-50 cursor-not-allowed' : ''}`}
+                      >
+                        <span>{updatingId === order.id ? 'Updating...' : statusLabel[order.status]}</span>
+                        <ChevronRight size={14} />
+                      </button>
+                    ) : (
+                      <span className="text-green-600 text-xs font-semibold">✓ Completed</span>
+                    )}
                   </td>
                 </tr>
               ))}
             </tbody>
           </table>
           {filteredOrders.length === 0 && (
-            <div className="p-8 text-center text-gray-500">No orders match this filter.</div>
+            <div className="p-12 text-center">
+              <p className="text-gray-500 mb-4">No orders match this filter.</p>
+              <a href="/orders/new" className="text-green-600 font-medium hover:text-green-700">
+                + Create a new voice order
+              </a>
+            </div>
           )}
         </div>
       </main>
