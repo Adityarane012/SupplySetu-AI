@@ -45,10 +45,25 @@ def get_forecast():
     """Simple 7-day rolling average demand forecast per product."""
     seven_days_ago = str((datetime.today() - timedelta(days=7)).date())
 
+    # Fetch orders from the last 7 days first, then get their items
+    recent_orders = (
+        supabase.table("orders")
+        .select("id")
+        .gte("scheduled_date", seven_days_ago)
+        .execute()
+        .data
+    ) or []
+
+    if not recent_orders:
+        return {"forecast_daily_avg": {}, "based_on_days": 7}
+
+    order_ids = [o["id"] for o in recent_orders]
+
+    # Fetch items for those orders (simple query, no join issues)
     items = (
         supabase.table("order_items")
-        .select("product_name, quantity, orders!inner(scheduled_date)")
-        .gte("orders.scheduled_date", seven_days_ago)
+        .select("product_name, quantity")
+        .in_("order_id", order_ids)
         .execute()
         .data
     ) or []
@@ -62,6 +77,7 @@ def get_forecast():
     sorted_forecast = dict(sorted(forecast.items(), key=lambda x: -x[1])[:10])
 
     return {"forecast_daily_avg": sorted_forecast, "based_on_days": 7}
+
 
 
 @router.get("/weekly")

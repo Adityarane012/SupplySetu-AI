@@ -1,8 +1,9 @@
 import shutil
 import tempfile
 import os
-from datetime import date
-from fastapi import APIRouter, Form, UploadFile, File, HTTPException
+import re
+from datetime import date, datetime, timedelta
+from fastapi import APIRouter, Form, UploadFile, File
 from typing import Optional, Annotated
 from services.whisper_service import transcribe_audio
 from services.llm_service import extract_order
@@ -11,6 +12,7 @@ from db.supabase_client import supabase
 router = APIRouter()
 
 ALLOWED_AUDIO_EXT = {".ogg", ".mp3", ".wav", ".m4a", ".webm", ".opus", ".flac"}
+MIN_AUDIO_BYTES = 1024  # < 1 KB = effectively empty/silent recording
 
 
 def _upsert_customer(name: str, phone: str) -> dict:
@@ -25,7 +27,41 @@ def _upsert_customer(name: str, phone: str) -> dict:
     return supabase.table("customers").insert({"name": name, "phone": phone}).execute().data[0]
 
 
-def _build_reply(customer_name: str, items: list, transcript: str, delivery_date: str | None, notes: str | None) -> str:
+def _sanitise_delivery_date(raw: str | None) -> str | None:
+    """
+    Parse and validate delivery_date from LLM output.
+    - Must be a valid ISO date (YYYY-MM-DD)
+    - Must not be in the past
+    - Handles relative strings like 'tomorrow', 'kal'
+    Returns None if unparseable or invalid.
+    """
+    if not raw:
+        return None
+
+    today = date.today()
+
+    # Handle common relative strings
+    lower = raw.strip().lower()
+    if lower in ("tomorrow", "kal", "aaj kal", "next day"):
+        return str(today + timedelta(days=1))
+    if lower in ("today", "aaj"):
+        return str(today)
+    if lower in ("day after tomorrow", "parso"):
+        return str(today + timedelta(days=2))
+
+    # Try ISO format
+    try:
+        parsed = date.fromisoformat(raw.strip())
+        if parsed < today:
+            print(f"[Simulator] delivery_date '{raw}' is in the past — using today")
+            return str(today)
+        return str(parsed)
+    except (ValueError, TypeError):
+        print(f"[Simulator] Unparseable delivery_date '{raw}' — ignoring")
+        return None
+
+
+def _build_reply(customer_name: str, items: list, delivery_date: str | None, notes: str | None) -> str:
     """Build a natural, WhatsApp-style reply."""
     if not items:
         return (
@@ -34,7 +70,7 @@ def _build_reply(customer_name: str, items: list, transcript: str, delivery_date
             f"Please try:\n"
             f"  • _\"20 kg tamatar aur 10 kg pyaz\"_\n"
             f"  • _\"I need 5 kg potato and 2 dozen banana\"_\n\n"
-            f"- *SupplySetu AI* 🌿"
+            f"— *SupplySetu AI* 🌿"
         )
 
     item_lines = "\n".join(
@@ -48,7 +84,7 @@ def _build_reply(customer_name: str, items: list, transcript: str, delivery_date
             d = date.fromisoformat(delivery_date)
             date_line = f"\n📅 *Delivery:* {d.strftime('%A, %d %b %Y')}"
         except ValueError:
-            date_line = f"\n📅 *Delivery:* {delivery_date}"
+            pass
 
     notes_line = f"\n📝 *Notes:* {notes}" if notes else ""
 
@@ -73,12 +109,13 @@ async def receive_simulator_message(
     transcript = None
     source = "whatsapp_text"
     transcription_meta = {}
+    audio_duration = 0.0
 
     # ── 1. Handle audio upload ──────────────────────────────────────────────
     if audio and audio.filename:
         ext = os.path.splitext(audio.filename)[1].lower()
         if ext not in ALLOWED_AUDIO_EXT:
-            ext = ".webm"  # sensible default for browser recordings
+            ext = ".webm"
 
         tmp_path = None
         try:
@@ -86,11 +123,26 @@ async def receive_simulator_message(
                 shutil.copyfileobj(audio.file, tmp)
                 tmp_path = tmp.name
 
+            # Reject empty / near-silent recordings
+            file_size = os.path.getsize(tmp_path)
+            if file_size < MIN_AUDIO_BYTES:
+                print(f"[Simulator] Audio too small ({file_size} bytes) — rejecting")
+                return {
+                    "reply": (
+                        "🎤 *Voice note too short!*\n\n"
+                        "Please hold the mic button and speak your order clearly.\n"
+                        "Example: _\"20 kg tamatar aur 10 kg pyaz\"_"
+                    ),
+                    "order": None,
+                    "transcript": None,
+                }
+
             result = transcribe_audio(tmp_path)
             transcript = result["transcript"]
+            audio_duration = result.get("duration_seconds", 0.0)
             transcription_meta = {
                 "language": result.get("language"),
-                "duration_seconds": result.get("duration_seconds"),
+                "duration_seconds": audio_duration,
                 "source": result.get("source"),
             }
             source = "whatsapp_voice"
@@ -126,14 +178,27 @@ async def receive_simulator_message(
     # ── 4. Extract structured order via LLM ────────────────────────────────
     extracted = await extract_order(transcript)
     items = extracted.get("items", [])
-    delivery_date = extracted.get("delivery_date")
+    raw_delivery_date = extracted.get("delivery_date")
     notes = extracted.get("notes")
     confidence = extracted.get("confidence", 0.0)
 
-    # ── 5. Upsert customer ──────────────────────────────────────────────────
+    # Sanitise delivery date — reject bad/past dates from LLM
+    delivery_date = _sanitise_delivery_date(raw_delivery_date)
+
+    # ── 5. If no items extracted — return clarification, skip DB save ──────
+    if not items:
+        print(f"[Simulator] No items extracted from: '{transcript[:80]}' — skipping order save")
+        return {
+            "reply": _build_reply(customer_name, [], delivery_date, notes),
+            "order": None,
+            "transcript": transcript,
+            "extracted": extracted,
+        }
+
+    # ── 6. Upsert customer ──────────────────────────────────────────────────
     customer = _upsert_customer(customer_name, customer_phone)
 
-    # ── 6. Save order to DB ─────────────────────────────────────────────────
+    # ── 7. Save order to DB ─────────────────────────────────────────────────
     order_row = supabase.table("orders").insert({
         "customer_id": customer["id"],
         "customer_name": customer["name"],
@@ -144,19 +209,18 @@ async def receive_simulator_message(
         "notes": notes,
     }).execute().data[0]
 
-    if items:
-        supabase.table("order_items").insert([
-            {
-                "order_id": order_row["id"],
-                "product_name": item.get("product_name", "Unknown"),
-                "quantity": max(float(item.get("quantity", 1)), 0),
-                "unit": item.get("unit", "kg"),
-            }
-            for item in items
-        ]).execute()
+    supabase.table("order_items").insert([
+        {
+            "order_id": order_row["id"],
+            "product_name": item.get("product_name", "Unknown"),
+            "quantity": max(float(item.get("quantity", 1)), 0.01),
+            "unit": item.get("unit", "kg"),
+        }
+        for item in items
+    ]).execute()
 
-    # ── 7. Build and return reply ───────────────────────────────────────────
-    reply = _build_reply(customer["name"], items, transcript, delivery_date, notes)
+    # ── 8. Build and return reply ───────────────────────────────────────────
+    reply = _build_reply(customer["name"], items, delivery_date, notes)
 
     print(f"[Simulator] Order {order_row['id'][:8]} — {len(items)} items, confidence={confidence:.2f}, source={source}")
 
@@ -167,6 +231,7 @@ async def receive_simulator_message(
         "extracted": extracted,
         "customer": customer,
         "transcription": transcription_meta,
+        "audio_duration": audio_duration,
     }
 
 
