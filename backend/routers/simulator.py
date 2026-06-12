@@ -33,8 +33,17 @@ async def receive_simulator_message(
         try:
             result = transcribe_audio(tmp_path)
             transcript = result["transcript"]
-        finally:
+        except Exception as e:
+            print(f"[Simulator] Audio transcription failed: {e}")
             os.unlink(tmp_path)
+            return {
+                "reply": "⚠️ Sorry, I couldn't process that voice note. Please try typing your order instead!",
+                "order": None,
+                "transcript": None,
+            }
+        finally:
+            if os.path.exists(tmp_path):
+                os.unlink(tmp_path)
         source = "whatsapp_voice"
     elif body.strip():
         transcript = body.strip()

@@ -18,9 +18,9 @@ def get_model():
     return _model
 
 def transcribe_audio(file_path: str) -> dict:
-    # Toggle logic: If USE_LOCAL_MODEL is false and we have a Groq key, use cloud.
-    # Otherwise, fallback to the local Whisper model.
-    if not USE_LOCAL_MODEL and GROQ_API_KEY:
+    # Always prefer Groq cloud when key is available (fast + no local deps needed).
+    # Only fall back to local Whisper if there's no GROQ_API_KEY.
+    if GROQ_API_KEY:
         print("[Whisper] Using Groq Cloud API for transcription...")
         with open(file_path, "rb") as f:
             files = {
