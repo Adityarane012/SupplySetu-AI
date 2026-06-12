@@ -17,6 +17,8 @@ export default function AnalyticsPage() {
   useEffect(() => {
     async function fetchData() {
       try {
+        // Wake up Render backend (free tier spins down after inactivity)
+        await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/health`).catch(() => {});
         const [sumRes, weekRes, foreRes] = await Promise.all([
           fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/analytics/summary`),
           fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/analytics/weekly`),
@@ -110,7 +112,7 @@ export default function AnalyticsPage() {
             {/* KPI Summary Cards */}
             <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
               <div className="bg-white p-6 rounded-xl border border-gray-200 shadow-sm">
-                <p className="text-sm font-medium text-gray-500 uppercase">Total Orders Today</p>
+                <p className="text-sm font-medium text-gray-500 uppercase">Total Orders</p>
                 <p className="text-3xl font-bold text-gray-800 mt-2">{summary?.total_orders || 0}</p>
               </div>
               <div className="bg-white p-6 rounded-xl border border-gray-200 shadow-sm">
@@ -166,7 +168,7 @@ export default function AnalyticsPage() {
 
             {/* Top Products Table */}
             <div className="bg-white p-6 rounded-xl border border-gray-200 shadow-sm">
-              <h3 className="text-lg font-bold text-gray-800 mb-4">Today's Top Products</h3>
+              <h3 className="text-lg font-bold text-gray-800 mb-4">Top Products (All Time)</h3>
               <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
                 {summary?.top_products?.map((prod: any, i: number) => (
                   <div key={i} className="bg-gray-50 p-4 rounded-lg border border-gray-100 flex flex-col items-center justify-center text-center">

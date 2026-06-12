@@ -7,14 +7,11 @@ router = APIRouter()
 
 
 @router.get("/summary")
-def get_summary(target_date: Optional[str] = Query(None)):
-    """KPI summary for a specific date (defaults to today)."""
-    d = target_date or str(date.today())
-
+def get_summary():
+    """KPI summary across all orders (all-time)."""
     orders = (
         supabase.table("orders")
         .select("*, order_items(*)")
-        .eq("scheduled_date", d)
         .execute()
         .data
     ) or []
@@ -24,7 +21,7 @@ def get_summary(target_date: Optional[str] = Query(None)):
     in_transit = sum(1 for o in orders if o["status"] == "in_transit")
     delivered = sum(1 for o in orders if o["status"] == "delivered")
 
-    # Top products by quantity
+    # Top products by quantity (all-time)
     product_totals: dict[str, float] = {}
     for order in orders:
         for item in order.get("order_items") or []:
@@ -34,7 +31,6 @@ def get_summary(target_date: Optional[str] = Query(None)):
     top_products = sorted(product_totals.items(), key=lambda x: -x[1])[:5]
 
     return {
-        "date": d,
         "total_orders": total,
         "pending": pending,
         "in_transit": in_transit,

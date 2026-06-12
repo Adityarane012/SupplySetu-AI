@@ -14,6 +14,8 @@ export default function DashboardPage() {
 
   const fetchOrders = async () => {
     try {
+      // Wake up Render backend (free tier spins down after inactivity)
+      await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/health`).catch(() => {});
       const res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/orders`);
       const data = await res.json();
       setOrders(data);
