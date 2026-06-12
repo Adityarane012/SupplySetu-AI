@@ -22,8 +22,8 @@ export default function DeliveryMap() {
         let orderIds = ordersData.map((o: any) => o.id);
         
         if (orderIds.length === 0) {
-          // Fallback to mock order if no pending orders exist yet
-          orderIds = ["a1000000-0000-0000-0000-000000000001"];
+          setRoute([]);
+          return;
         }
 
         const response = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/route/`, {

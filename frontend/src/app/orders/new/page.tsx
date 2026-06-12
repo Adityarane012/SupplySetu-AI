@@ -81,7 +81,7 @@ export default function NewOrderVoicePage() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           customer_name: extractedData.customer || "Unknown Voice Customer",
-          source: "manual_voice",
+          source: "manual",
           items: extractedData.items || [],
         }),
       });

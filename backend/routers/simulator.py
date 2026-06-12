@@ -20,7 +20,7 @@ async def receive_simulator_message(
     audio: Optional[UploadFile] = File(None),
 ):
     transcript = None
-    source = "simulator_text"
+    source = "whatsapp_text"
 
     # Handle voice note upload
     if audio and audio.filename:
@@ -35,7 +35,7 @@ async def receive_simulator_message(
             transcript = result["transcript"]
         finally:
             os.unlink(tmp_path)
-        source = "simulator_voice"
+        source = "whatsapp_voice"
     elif body.strip():
         transcript = body.strip()
 
