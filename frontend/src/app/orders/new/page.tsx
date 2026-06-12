@@ -1,4 +1,5 @@
 "use client";
+// Force Vercel to rebuild frontend
 
 import { useState, useRef } from "react";
 import { Mic, Check, RotateCcw, Save, Loader2, ArrowLeft, Type, AlertCircle } from "lucide-react";
