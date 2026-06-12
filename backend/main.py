@@ -1,3 +1,6 @@
+from dotenv import load_dotenv
+load_dotenv()  # Loads variables from .env
+
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from routers import orders, customers, route, transcribe, simulator, analytics

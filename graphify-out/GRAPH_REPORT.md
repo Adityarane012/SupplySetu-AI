@@ -1,16 +1,16 @@
-# Graph Report - FarAway Hackathon  (2026-06-11)
+# Graph Report - FarAway Hackathon  (2026-06-12)
 
 ## Corpus Check
-- 41 files · ~100,795 words
+- 58 files · ~107,975 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 374 nodes · 351 edges · 41 communities (33 shown, 8 thin omitted)
+- 429 nodes · 396 edges · 54 communities (43 shown, 11 thin omitted)
 - Extraction: 98% EXTRACTED · 2% INFERRED · 0% AMBIGUOUS · INFERRED: 6 edges (avg confidence: 0.8)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `c12ba548`
+- Built from commit: `8ed1965c`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -45,6 +45,10 @@
 - [[_COMMUNITY_Community 30|Community 30]]
 - [[_COMMUNITY_Community 31|Community 31]]
 - [[_COMMUNITY_Community 32|Community 32]]
+- [[_COMMUNITY_Community 41|Community 41]]
+- [[_COMMUNITY_Community 42|Community 42]]
+- [[_COMMUNITY_Community 43|Community 43]]
+- [[_COMMUNITY_Community 44|Community 44]]
 
 ## God Nodes (most connected - your core abstractions)
 1. `SupplySetu AI — Comprehensive Phase-wise Implementation Plan` - 17 edges
@@ -54,9 +58,9 @@
 5. `4. Screen-by-Screen Design Specifications` - 12 edges
 6. `Implementation Plan` - 11 edges
 7. `Component Descriptions` - 9 edges
-8. `5. Reusable Components Specification` - 8 edges
-9. `Phase 7 — Next.js Frontend Integration 🖥️` - 8 edges
-10. `Problem Overview and Context` - 8 edges
+8. `SupplySetu AI` - 8 edges
+9. `5. Reusable Components Specification` - 8 edges
+10. `Phase 7 — Next.js Frontend Integration 🖥️` - 8 edges
 
 ## Surprising Connections (you probably didn't know these)
 - `compute_route()` --calls--> `build_distance_matrix()`  [INFERRED]
@@ -70,11 +74,11 @@
 - `transcribe()` --calls--> `transcribe_audio()`  [INFERRED]
   backend/routers/transcribe.py → backend/services/whisper_service.py
 
-## Communities (41 total, 8 thin omitted)
+## Communities (54 total, 11 thin omitted)
 
 ### Community 0 - "Community 0"
-Cohesion: 0.05
-Nodes (38): 2.1 — Core Schema (run in Supabase SQL Editor), 2.2 — Seed Mock Data, 📅 3-Day Sprint Calendar, 5.1 — Geocoding Service (`backend/services/geocoder.py`), 5.2 — OR-Tools Route Optimizer (`backend/services/route_optimizer.py`), 5.3 — Route Router (`backend/routers/route.py`), 6.1 — WhatsApp Router (`backend/routers/whatsapp.py`), 6.2 — Local Webhook Testing with ngrok (+30 more)
+Cohesion: 0.06
+Nodes (31): 2.1 — Core Schema (run in Supabase SQL Editor), 2.2 — Seed Mock Data, 📅 3-Day Sprint Calendar, 6.1 — WhatsApp Router (`backend/routers/whatsapp.py`), 6.2 — Local Webhook Testing with ngrok, 6.3 — Twilio Sandbox Setup Steps, 8.1 — Analytics Endpoint (`backend/routers/analytics.py`), 8.2 — Demand Forecasting (Stretch) (+23 more)
 
 ### Community 1 - "Community 1"
 Cohesion: 0.07
@@ -89,8 +93,8 @@ Cohesion: 0.07
 Nodes (27): dependencies, leaflet, lucide-react, next, react, react-dom, react-leaflet, recharts (+19 more)
 
 ### Community 4 - "Community 4"
-Cohesion: 0.07
-Nodes (26): 10. Screen Priority for Stitch Generation, 11. Dark Mode Specification, 12. Tech Integration Notes for Frontend, 13. Sample Component Descriptions for Stitch Prompts, 1. Product Vision & Design Philosophy, 2.1 Color Palette, 2.2 Typography, 2.3 Spacing & Layout (+18 more)
+Cohesion: 0.06
+Nodes (33): 10. Screen Priority for Stitch Generation, 11. Dark Mode Specification, 12. Tech Integration Notes for Frontend, 13. Sample Component Descriptions for Stitch Prompts, 1. Product Vision & Design Philosophy, 2.1 Color Palette, 2.2 Typography, 2.3 Spacing & Layout (+25 more)
 
 ### Community 5 - "Community 5"
 Cohesion: 0.10
@@ -145,8 +149,8 @@ Cohesion: 0.25
 Nodes (8): 3.1 — `backend/main.py`, 3.2 — All API Endpoints, 3.3 — Pydantic Schemas (`backend/models/schemas.py`), 3.4 — Supabase Client (`backend/db/supabase_client.py`), code:python (from fastapi import FastAPI), code:python (from pydantic import BaseModel), code:python (import os), Phase 3 — FastAPI Backend 🐍
 
 ### Community 18 - "Community 18"
-Cohesion: 0.29
-Nodes (7): 9. Key User Flows (Stitch Screen Sequences), code:block10 (Screen 1: Dashboard → Click "Upload Voice Note" FAB), code:block11 (Screen 1: Dashboard → Click "Open Full Map" on route card), code:block12 (Screen 1: Orders → "+ New Order" → Manual Mode), Flow A: Voice Order Capture, Flow B: Route Optimization & Delivery, Flow C: New Customer + Manual Order
+Cohesion: 0.11
+Nodes (18): 1. Backend Setup, 2. Frontend Setup, 3. Environment Configuration, Backend & AI Pipeline, code:bash (cd backend), code:bash (cd frontend), code:env (# Judging Toggle (Set to false and provide Groq key for inst), code:env (NEXT_PUBLIC_SUPABASE_URL=https://<your-project>.supabase.co) (+10 more)
 
 ### Community 19 - "Community 19"
 Cohesion: 0.29
@@ -157,27 +161,31 @@ Cohesion: 0.40
 Nodes (4): code:bash (npm run dev), Deploy on Vercel, Getting Started, Learn More
 
 ### Community 23 - "Community 23"
-Cohesion: 0.40
-Nodes (3): geistMono, geistSans, metadata
+Cohesion: 0.29
+Nodes (5): geistMono, geistSans, inter, metadata, notoSans
+
+### Community 42 - "Community 42"
+Cohesion: 0.29
+Nodes (7): 5.1 — Geocoding Service (`backend/services/geocoder.py`), 5.2 — OR-Tools Route Optimizer (`backend/services/route_optimizer.py`), 5.3 — Route Router (`backend/routers/route.py`), code:python (from geopy.geocoders import Nominatim), code:python (from ortools.constraint_solver import routing_enums_pb2, pyw), code:python (from fastapi import APIRouter), Phase 5 — Route Optimization Engine 🗺️
 
 ## Knowledge Gaps
-- **196 isolated node(s):** `BeforeTool`, `eslintConfig`, `nextConfig`, `name`, `version` (+191 more)
+- **213 isolated node(s):** `BeforeTool`, `eslintConfig`, `nextConfig`, `name`, `version` (+208 more)
   These have ≤1 connection - possible missing edges or undocumented components.
-- **8 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
+- **11 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `SupplySetu AI — Comprehensive Phase-wise Implementation Plan` connect `Community 0` to `Community 7`, `Community 11`, `Community 13`, `Community 14`, `Community 15`, `Community 17`?**
-  _High betweenness centrality (0.069) - this node is a cross-community bridge._
-- **Why does `SupplySetu AI — Frontend Design Document` connect `Community 4` to `Community 2`, `Community 18`, `Community 6`?**
-  _High betweenness centrality (0.034) - this node is a cross-community bridge._
+- **Why does `SupplySetu AI — Comprehensive Phase-wise Implementation Plan` connect `Community 0` to `Community 7`, `Community 42`, `Community 11`, `Community 13`, `Community 14`, `Community 15`, `Community 17`?**
+  _High betweenness centrality (0.052) - this node is a cross-community bridge._
+- **Why does `SupplySetu AI — Frontend Design Document` connect `Community 4` to `Community 2`, `Community 6`?**
+  _High betweenness centrality (0.026) - this node is a cross-community bridge._
 - **Why does `4. Screen-by-Screen Design Specifications` connect `Community 2` to `Community 4`?**
-  _High betweenness centrality (0.025) - this node is a cross-community bridge._
+  _High betweenness centrality (0.019) - this node is a cross-community bridge._
 - **What connects `BeforeTool`, `KPI summary for a specific date (defaults to today).`, `Simple 7-day rolling average demand forecast per product.` to the rest of the system?**
-  _202 weakly-connected nodes found - possible documentation gaps or missing edges._
+  _219 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `Community 0` be split into smaller, more focused modules?**
-  _Cohesion score 0.05128205128205128 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.0625 - nodes in this community are weakly interconnected._
 - **Should `Community 1` be split into smaller, more focused modules?**
   _Cohesion score 0.06666666666666667 - nodes in this community are weakly interconnected._
 - **Should `Community 2` be split into smaller, more focused modules?**

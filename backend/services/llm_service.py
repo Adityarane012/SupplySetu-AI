@@ -28,21 +28,43 @@ Examples:
 Customer message: {transcript}"""
 
 
+GROQ_API_KEY = os.getenv("GROQ_API_KEY")
+# Default to cloud if key exists, otherwise local. Explicit toggle overrides this.
+USE_LOCAL_MODEL = os.getenv("USE_LOCAL_MODEL", "false" if GROQ_API_KEY else "true").lower() == "true"
+
 async def extract_order(transcript: str) -> dict:
     prompt = EXTRACT_PROMPT.format(transcript=transcript)
-    async with httpx.AsyncClient(timeout=120.0) as client:
-        resp = await client.post(
-            f"{OLLAMA_URL}/api/generate",
-            json={
-                "model": MODEL,
-                "prompt": prompt,
-                "stream": False,
-                "format": "json",
-            },
-        )
-        resp.raise_for_status()
     
-    raw = resp.json().get("response", "{}")
+    # Toggle logic: If USE_LOCAL_MODEL is false and we have a Groq key, use cloud.
+    # Otherwise, fallback to the local Ollama model.
+    if not USE_LOCAL_MODEL and GROQ_API_KEY:
+        print("[LLM] Using Groq Cloud API for extraction...")
+        async with httpx.AsyncClient(timeout=30.0) as client:
+            resp = await client.post(
+                "https://api.groq.com/openai/v1/chat/completions",
+                headers={"Authorization": f"Bearer {GROQ_API_KEY}"},
+                json={
+                    "model": "llama3-8b-8192",
+                    "messages": [{"role": "user", "content": prompt}],
+                    "response_format": {"type": "json_object"}
+                }
+            )
+            resp.raise_for_status()
+            raw = resp.json()["choices"][0]["message"]["content"]
+    else:
+        print("[LLM] Using local Ollama model...")
+        async with httpx.AsyncClient(timeout=120.0) as client:
+            resp = await client.post(
+                f"{OLLAMA_URL}/api/generate",
+                json={
+                    "model": MODEL,
+                    "prompt": prompt,
+                    "stream": False,
+                    "format": "json",
+                },
+            )
+            resp.raise_for_status()
+            raw = resp.json().get("response", "{}")
     try:
         return json.loads(raw)
     except json.JSONDecodeError:

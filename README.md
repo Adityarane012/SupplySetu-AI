@@ -8,6 +8,19 @@ Built for the **FarAway Hackathon**.
 
 ---
 
+## 🏆 Note for Hackathon Judges
+
+This project is built prioritizing privacy and zero operational costs by running **entirely locally** using open-weight models (`Ollama` + `Llama3.2` and `faster-whisper`). 
+
+However, we understand you have limited time and downloading large model weights is not ideal for judging. We have built in a **Fast Cloud Toggle** specifically for you to evaluate the pipeline instantly.
+
+**To test the app instantly (No downloads required):**
+1. In the `backend/.env` file, set `USE_LOCAL_MODEL=false`.
+2. Add a `GROQ_API_KEY` (we have provided a temporary one in our Devpost submission, or you can use your own).
+3. The app will seamlessly switch to lightning-fast cloud APIs for both Speech-to-Text and LLM extraction!
+
+---
+
 ## The Problem & Our Solution
 
 In emerging markets, commerce runs on WhatsApp. Wholesalers and vendors receive hundreds of voice notes a day: *"Kal subah 20 kilo tamatar aur 15 kilo pyaz bhejna."* Processing these manually leads to missed orders, inefficient routing, and chaotic operations.
@@ -69,7 +82,14 @@ npm run dev
 ### 3. Environment Configuration
 Create a `.env` file in the `backend/` directory:
 ```env
+# Judging Toggle (Set to false and provide Groq key for instant testing)
+USE_LOCAL_MODEL=true
+GROQ_API_KEY=
+
+# Local Models (if USE_LOCAL_MODEL=true)
 OLLAMA_BASE_URL=http://localhost:11434
+
+# Supabase
 SUPABASE_URL=https://<your-project>.supabase.co
 SUPABASE_SERVICE_ROLE_KEY=<your-secret-key>
 ```

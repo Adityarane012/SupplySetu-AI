@@ -13,6 +13,33 @@
       "norm_label": "download_screens.py"
     },
     {
+      "label": "fix_quotes.py",
+      "file_type": "code",
+      "source_file": "fix_quotes.py",
+      "source_location": "L1",
+      "id": "fix_quotes_py",
+      "community": 53,
+      "norm_label": "fix_quotes.py"
+    },
+    {
+      "label": "test_extract.py",
+      "file_type": "code",
+      "source_file": "test_extract.py",
+      "source_location": "L1",
+      "id": "test_extract_py",
+      "community": 50,
+      "norm_label": "test_extract.py"
+    },
+    {
+      "label": "test_extract()",
+      "file_type": "code",
+      "source_file": "test_extract.py",
+      "source_location": "L5",
+      "id": "faraway_hackathon_test_extract_test_extract",
+      "community": 50,
+      "norm_label": "test_extract()"
+    },
+    {
       "label": "settings.json",
       "file_type": "code",
       "source_file": ".gemini/settings.json",
@@ -40,6 +67,15 @@
       "norm_label": "beforetool"
     },
     {
+      "label": "generate_audio.py",
+      "file_type": "code",
+      "source_file": "backend/generate_audio.py",
+      "source_location": "L1",
+      "id": "backend_generate_audio_py",
+      "community": 52,
+      "norm_label": "generate_audio.py"
+    },
+    {
       "label": "main.py",
       "file_type": "code",
       "source_file": "backend/main.py",
@@ -56,6 +92,60 @@
       "id": "backend_main_health",
       "community": 26,
       "norm_label": "health()"
+    },
+    {
+      "label": "test_db.py",
+      "file_type": "code",
+      "source_file": "backend/test_db.py",
+      "source_location": "L1",
+      "id": "backend_test_db_py",
+      "community": 47,
+      "norm_label": "test_db.py"
+    },
+    {
+      "label": "test_db()",
+      "file_type": "code",
+      "source_file": "backend/test_db.py",
+      "source_location": "L11",
+      "id": "backend_test_db_test_db",
+      "community": 47,
+      "norm_label": "test_db()"
+    },
+    {
+      "label": "test_route.py",
+      "file_type": "code",
+      "source_file": "backend/test_route.py",
+      "source_location": "L1",
+      "id": "backend_test_route_py",
+      "community": 48,
+      "norm_label": "test_route.py"
+    },
+    {
+      "label": "test_route()",
+      "file_type": "code",
+      "source_file": "backend/test_route.py",
+      "source_location": "L4",
+      "id": "backend_test_route_test_route",
+      "community": 48,
+      "norm_label": "test_route()"
+    },
+    {
+      "label": "test_transcribe.py",
+      "file_type": "code",
+      "source_file": "backend/test_transcribe.py",
+      "source_location": "L1",
+      "id": "backend_test_transcribe_py",
+      "community": 49,
+      "norm_label": "test_transcribe.py"
+    },
+    {
+      "label": "test_transcribe()",
+      "file_type": "code",
+      "source_file": "backend/test_transcribe.py",
+      "source_location": "L4",
+      "id": "backend_test_transcribe_test_transcribe",
+      "community": 49,
+      "norm_label": "test_transcribe()"
     },
     {
       "label": "supabase_client.py",
@@ -475,7 +565,7 @@
       "label": "extract_order()",
       "file_type": "code",
       "source_file": "backend/services/llm_service.py",
-      "source_location": "L31",
+      "source_location": "L34",
       "id": "services_llm_service_extract_order",
       "community": 10,
       "norm_label": "extract_order()"
@@ -520,7 +610,7 @@
       "label": "get_model()",
       "file_type": "code",
       "source_file": "backend/services/whisper_service.py",
-      "source_location": "L8",
+      "source_location": "L10",
       "id": "services_whisper_service_get_model",
       "community": 10,
       "norm_label": "get_model()"
@@ -529,7 +619,7 @@
       "label": "transcribe_audio()",
       "file_type": "code",
       "source_file": "backend/services/whisper_service.py",
-      "source_location": "L17",
+      "source_location": "L19",
       "id": "services_whisper_service_transcribe_audio",
       "community": 10,
       "norm_label": "transcribe_audio()"
@@ -1048,28 +1138,28 @@
       "norm_label": "layout.tsx"
     },
     {
-      "label": "geistSans",
+      "label": "inter",
       "file_type": "code",
       "source_file": "frontend/src/app/layout.tsx",
       "source_location": "L5",
-      "id": "app_layout_geistsans",
+      "id": "app_layout_inter",
       "community": 23,
-      "norm_label": "geistsans"
+      "norm_label": "inter"
     },
     {
-      "label": "geistMono",
+      "label": "notoSans",
       "file_type": "code",
       "source_file": "frontend/src/app/layout.tsx",
       "source_location": "L10",
-      "id": "app_layout_geistmono",
+      "id": "app_layout_notosans",
       "community": 23,
-      "norm_label": "geistmono"
+      "norm_label": "notosans"
     },
     {
       "label": "metadata",
       "file_type": "code",
       "source_file": "frontend/src/app/layout.tsx",
-      "source_location": "L15",
+      "source_location": "L16",
       "id": "app_layout_metadata",
       "community": 23,
       "norm_label": "metadata"
@@ -1078,10 +1168,226 @@
       "label": "RootLayout()",
       "file_type": "code",
       "source_file": "frontend/src/app/layout.tsx",
-      "source_location": "L20",
+      "source_location": "L21",
       "id": "app_layout_rootlayout",
       "community": 23,
       "norm_label": "rootlayout()"
+    },
+    {
+      "label": "page.tsx",
+      "file_type": "code",
+      "source_file": "frontend/src/app/page.tsx",
+      "source_location": "L1",
+      "id": "frontend_src_app_page_tsx",
+      "community": 46,
+      "norm_label": "page.tsx"
+    },
+    {
+      "label": "Home()",
+      "file_type": "code",
+      "source_file": "frontend/src/app/page.tsx",
+      "source_location": "L6",
+      "id": "app_page_home",
+      "community": 46,
+      "norm_label": "home()"
+    },
+    {
+      "label": "page.tsx",
+      "file_type": "code",
+      "source_file": "frontend/src/app/analytics/page.tsx",
+      "source_location": "L1",
+      "id": "frontend_src_app_analytics_page_tsx",
+      "community": 41,
+      "norm_label": "page.tsx"
+    },
+    {
+      "label": "AnalyticsPage()",
+      "file_type": "code",
+      "source_file": "frontend/src/app/analytics/page.tsx",
+      "source_location": "L11",
+      "id": "analytics_page_analyticspage",
+      "community": 41,
+      "norm_label": "analyticspage()"
+    },
+    {
+      "label": "page.tsx",
+      "file_type": "code",
+      "source_file": "frontend/src/app/dashboard/page.tsx",
+      "source_location": "L1",
+      "id": "frontend_src_app_dashboard_page_tsx",
+      "community": 41,
+      "norm_label": "page.tsx"
+    },
+    {
+      "label": "DashboardPage()",
+      "file_type": "code",
+      "source_file": "frontend/src/app/dashboard/page.tsx",
+      "source_location": "L7",
+      "id": "dashboard_page_dashboardpage",
+      "community": 41,
+      "norm_label": "dashboardpage()"
+    },
+    {
+      "label": "page.tsx",
+      "file_type": "code",
+      "source_file": "frontend/src/app/orders/page.tsx",
+      "source_location": "L1",
+      "id": "frontend_src_app_orders_page_tsx",
+      "community": 41,
+      "norm_label": "page.tsx"
+    },
+    {
+      "label": "OrdersPage()",
+      "file_type": "code",
+      "source_file": "frontend/src/app/orders/page.tsx",
+      "source_location": "L7",
+      "id": "orders_page_orderspage",
+      "community": 41,
+      "norm_label": "orderspage()"
+    },
+    {
+      "label": "page.tsx",
+      "file_type": "code",
+      "source_file": "frontend/src/app/orders/new/page.tsx",
+      "source_location": "L1",
+      "id": "frontend_src_app_orders_new_page_tsx",
+      "community": 51,
+      "norm_label": "page.tsx"
+    },
+    {
+      "label": "NewOrderVoicePage()",
+      "file_type": "code",
+      "source_file": "frontend/src/app/orders/new/page.tsx",
+      "source_location": "L6",
+      "id": "new_page_newordervoicepage",
+      "community": 51,
+      "norm_label": "newordervoicepage()"
+    },
+    {
+      "label": "page.tsx",
+      "file_type": "code",
+      "source_file": "frontend/src/app/route-map/page.tsx",
+      "source_location": "L1",
+      "id": "frontend_src_app_route_map_page_tsx",
+      "community": 43,
+      "norm_label": "page.tsx"
+    },
+    {
+      "label": "RouteMapPage()",
+      "file_type": "code",
+      "source_file": "frontend/src/app/route-map/page.tsx",
+      "source_location": "L3",
+      "id": "route_map_page_routemappage",
+      "community": 43,
+      "norm_label": "routemappage()"
+    },
+    {
+      "label": "page.tsx",
+      "file_type": "code",
+      "source_file": "frontend/src/app/simulator/page.tsx",
+      "source_location": "L1",
+      "id": "frontend_src_app_simulator_page_tsx",
+      "community": 44,
+      "norm_label": "page.tsx"
+    },
+    {
+      "label": "Message",
+      "file_type": "code",
+      "source_file": "frontend/src/app/simulator/page.tsx",
+      "source_location": "L6",
+      "id": "simulator_page_message",
+      "community": 44,
+      "norm_label": "message"
+    },
+    {
+      "label": "CONTACTS",
+      "file_type": "code",
+      "source_file": "frontend/src/app/simulator/page.tsx",
+      "source_location": "L14",
+      "id": "simulator_page_contacts",
+      "community": 44,
+      "norm_label": "contacts"
+    },
+    {
+      "label": "SimulatorPage()",
+      "file_type": "code",
+      "source_file": "frontend/src/app/simulator/page.tsx",
+      "source_location": "L22",
+      "id": "simulator_page_simulatorpage",
+      "community": 44,
+      "norm_label": "simulatorpage()"
+    },
+    {
+      "label": "DeliveryMap.tsx",
+      "file_type": "code",
+      "source_file": "frontend/src/components/DeliveryMap.tsx",
+      "source_location": "L1",
+      "id": "frontend_src_components_deliverymap_tsx",
+      "community": 45,
+      "norm_label": "deliverymap.tsx"
+    },
+    {
+      "label": "MapBoundsFitter()",
+      "file_type": "code",
+      "source_file": "frontend/src/components/DeliveryMap.tsx",
+      "source_location": "L16",
+      "id": "components_deliverymap_mapboundsfitter",
+      "community": 45,
+      "norm_label": "mapboundsfitter()"
+    },
+    {
+      "label": "DeliveryMap()",
+      "file_type": "code",
+      "source_file": "frontend/src/components/DeliveryMap.tsx",
+      "source_location": "L27",
+      "id": "components_deliverymap_deliverymap",
+      "community": 45,
+      "norm_label": "deliverymap()"
+    },
+    {
+      "label": "MapWrapper.tsx",
+      "file_type": "code",
+      "source_file": "frontend/src/components/MapWrapper.tsx",
+      "source_location": "L1",
+      "id": "frontend_src_components_mapwrapper_tsx",
+      "community": 43,
+      "norm_label": "mapwrapper.tsx"
+    },
+    {
+      "label": "DeliveryMap",
+      "file_type": "code",
+      "source_file": "frontend/src/components/MapWrapper.tsx",
+      "source_location": "L4",
+      "id": "components_mapwrapper_deliverymap",
+      "community": 43,
+      "norm_label": "deliverymap"
+    },
+    {
+      "label": "MapWrapper()",
+      "file_type": "code",
+      "source_file": "frontend/src/components/MapWrapper.tsx",
+      "source_location": "L9",
+      "id": "components_mapwrapper_mapwrapper",
+      "community": 43,
+      "norm_label": "mapwrapper()"
+    },
+    {
+      "label": "supabase.ts",
+      "file_type": "code",
+      "source_file": "frontend/src/lib/supabase.ts",
+      "source_location": "L1",
+      "id": "frontend_src_lib_supabase_ts",
+      "community": 41,
+      "norm_label": "supabase.ts"
+    },
+    {
+      "label": "supabase",
+      "file_type": "code",
+      "source_file": "frontend/src/lib/supabase.ts",
+      "source_location": "L6",
+      "id": "lib_supabase_supabase",
+      "community": 41,
+      "norm_label": "supabase"
     },
     {
       "label": "GEMINI.md",
@@ -1100,6 +1406,177 @@
       "id": "faraway_hackathon_gemini_graphify",
       "community": 31,
       "norm_label": "graphify"
+    },
+    {
+      "label": "README.md",
+      "file_type": "document",
+      "source_file": "README.md",
+      "source_location": "L1",
+      "id": "readme_md",
+      "community": 18,
+      "norm_label": "readme.md"
+    },
+    {
+      "label": "SupplySetu AI",
+      "file_type": "document",
+      "source_file": "README.md",
+      "source_location": "L1",
+      "id": "faraway_hackathon_readme_supplysetu_ai",
+      "community": 18,
+      "norm_label": "supplysetu ai"
+    },
+    {
+      "label": "\ud83c\udfc6 Note for Hackathon Judges",
+      "file_type": "document",
+      "source_file": "README.md",
+      "source_location": "L11",
+      "id": "faraway_hackathon_readme_note_for_hackathon_judges",
+      "community": 18,
+      "norm_label": "\ud83c\udfc6 note for hackathon judges"
+    },
+    {
+      "label": "The Problem & Our Solution",
+      "file_type": "document",
+      "source_file": "README.md",
+      "source_location": "L24",
+      "id": "faraway_hackathon_readme_the_problem_our_solution",
+      "community": 18,
+      "norm_label": "the problem & our solution"
+    },
+    {
+      "label": "Key Features",
+      "file_type": "document",
+      "source_file": "README.md",
+      "source_location": "L30",
+      "id": "faraway_hackathon_readme_key_features",
+      "community": 18,
+      "norm_label": "key features"
+    },
+    {
+      "label": "Technical Architecture",
+      "file_type": "document",
+      "source_file": "README.md",
+      "source_location": "L39",
+      "id": "faraway_hackathon_readme_technical_architecture",
+      "community": 18,
+      "norm_label": "technical architecture"
+    },
+    {
+      "label": "Frontend",
+      "file_type": "document",
+      "source_file": "README.md",
+      "source_location": "L41",
+      "id": "faraway_hackathon_readme_frontend",
+      "community": 18,
+      "norm_label": "frontend"
+    },
+    {
+      "label": "Backend & AI Pipeline",
+      "file_type": "document",
+      "source_file": "README.md",
+      "source_location": "L46",
+      "id": "faraway_hackathon_readme_backend_ai_pipeline",
+      "community": 18,
+      "norm_label": "backend & ai pipeline"
+    },
+    {
+      "label": "Getting Started",
+      "file_type": "document",
+      "source_file": "README.md",
+      "source_location": "L55",
+      "id": "faraway_hackathon_readme_getting_started",
+      "community": 18,
+      "norm_label": "getting started"
+    },
+    {
+      "label": "Prerequisites",
+      "file_type": "document",
+      "source_file": "README.md",
+      "source_location": "L57",
+      "id": "faraway_hackathon_readme_prerequisites",
+      "community": 18,
+      "norm_label": "prerequisites"
+    },
+    {
+      "label": "1. Backend Setup",
+      "file_type": "document",
+      "source_file": "README.md",
+      "source_location": "L64",
+      "id": "faraway_hackathon_readme_1_backend_setup",
+      "community": 18,
+      "norm_label": "1. backend setup"
+    },
+    {
+      "label": "code:bash (cd backend)",
+      "file_type": "document",
+      "source_file": "README.md",
+      "source_location": "L66",
+      "id": "faraway_hackathon_readme_codeblock_1",
+      "community": 18,
+      "norm_label": "code:bash (cd backend)"
+    },
+    {
+      "label": "2. Frontend Setup",
+      "file_type": "document",
+      "source_file": "README.md",
+      "source_location": "L74",
+      "id": "faraway_hackathon_readme_2_frontend_setup",
+      "community": 18,
+      "norm_label": "2. frontend setup"
+    },
+    {
+      "label": "code:bash (cd frontend)",
+      "file_type": "document",
+      "source_file": "README.md",
+      "source_location": "L76",
+      "id": "faraway_hackathon_readme_codeblock_2",
+      "community": 18,
+      "norm_label": "code:bash (cd frontend)"
+    },
+    {
+      "label": "3. Environment Configuration",
+      "file_type": "document",
+      "source_file": "README.md",
+      "source_location": "L82",
+      "id": "faraway_hackathon_readme_3_environment_configuration",
+      "community": 18,
+      "norm_label": "3. environment configuration"
+    },
+    {
+      "label": "code:env (# Judging Toggle (Set to false and provide Groq key for inst)",
+      "file_type": "document",
+      "source_file": "README.md",
+      "source_location": "L84",
+      "id": "faraway_hackathon_readme_codeblock_3",
+      "community": 18,
+      "norm_label": "code:env (# judging toggle (set to false and provide groq key for inst)"
+    },
+    {
+      "label": "code:env (NEXT_PUBLIC_SUPABASE_URL=https://<your-project>.supabase.co)",
+      "file_type": "document",
+      "source_file": "README.md",
+      "source_location": "L97",
+      "id": "faraway_hackathon_readme_codeblock_4",
+      "community": 18,
+      "norm_label": "code:env (next_public_supabase_url=https://<your-project>.supabase.co)"
+    },
+    {
+      "label": "Try the Simulator!",
+      "file_type": "document",
+      "source_file": "README.md",
+      "source_location": "L104",
+      "id": "faraway_hackathon_readme_try_the_simulator",
+      "community": 18,
+      "norm_label": "try the simulator!"
+    },
+    {
+      "label": "License",
+      "file_type": "document",
+      "source_file": "README.md",
+      "source_location": "L109",
+      "id": "faraway_hackathon_readme_license",
+      "community": 18,
+      "norm_label": "license"
     },
     {
       "label": "graphify.md",
@@ -1989,7 +2466,7 @@
       "source_file": "docs/Frontend_Design_Doc.md",
       "source_location": "L569",
       "id": "docs_frontend_design_doc_9_key_user_flows_stitch_screen_sequences",
-      "community": 18,
+      "community": 4,
       "norm_label": "9. key user flows (stitch screen sequences)"
     },
     {
@@ -1998,7 +2475,7 @@
       "source_file": "docs/Frontend_Design_Doc.md",
       "source_location": "L571",
       "id": "docs_frontend_design_doc_flow_a_voice_order_capture",
-      "community": 18,
+      "community": 4,
       "norm_label": "flow a: voice order capture"
     },
     {
@@ -2007,7 +2484,7 @@
       "source_file": "docs/Frontend_Design_Doc.md",
       "source_location": "L572",
       "id": "docs_frontend_design_doc_codeblock_10",
-      "community": 18,
+      "community": 4,
       "norm_label": "code:block10 (screen 1: dashboard \u2192 click \"upload voice note\" fab)"
     },
     {
@@ -2016,7 +2493,7 @@
       "source_file": "docs/Frontend_Design_Doc.md",
       "source_location": "L580",
       "id": "docs_frontend_design_doc_flow_b_route_optimization_delivery",
-      "community": 18,
+      "community": 4,
       "norm_label": "flow b: route optimization & delivery"
     },
     {
@@ -2025,7 +2502,7 @@
       "source_file": "docs/Frontend_Design_Doc.md",
       "source_location": "L581",
       "id": "docs_frontend_design_doc_codeblock_11",
-      "community": 18,
+      "community": 4,
       "norm_label": "code:block11 (screen 1: dashboard \u2192 click \"open full map\" on route card)"
     },
     {
@@ -2034,7 +2511,7 @@
       "source_file": "docs/Frontend_Design_Doc.md",
       "source_location": "L590",
       "id": "docs_frontend_design_doc_flow_c_new_customer_manual_order",
-      "community": 18,
+      "community": 4,
       "norm_label": "flow c: new customer + manual order"
     },
     {
@@ -2043,7 +2520,7 @@
       "source_file": "docs/Frontend_Design_Doc.md",
       "source_location": "L591",
       "id": "docs_frontend_design_doc_codeblock_12",
-      "community": 18,
+      "community": 4,
       "norm_label": "code:block12 (screen 1: orders \u2192 \"+ new order\" \u2192 manual mode)"
     },
     {
@@ -2583,7 +3060,7 @@
       "source_file": "docs/implementation_plan.md",
       "source_location": "L494",
       "id": "docs_implementation_plan_phase_5_route_optimization_engine",
-      "community": 0,
+      "community": 42,
       "norm_label": "phase 5 \u2014 route optimization engine \ud83d\uddfa\ufe0f"
     },
     {
@@ -2592,7 +3069,7 @@
       "source_file": "docs/implementation_plan.md",
       "source_location": "L498",
       "id": "docs_implementation_plan_5_1_geocoding_service_backend_services_geocoder_py",
-      "community": 0,
+      "community": 42,
       "norm_label": "5.1 \u2014 geocoding service (`backend/services/geocoder.py`)"
     },
     {
@@ -2601,7 +3078,7 @@
       "source_file": "docs/implementation_plan.md",
       "source_location": "L499",
       "id": "docs_implementation_plan_codeblock_22",
-      "community": 0,
+      "community": 42,
       "norm_label": "code:python (from geopy.geocoders import nominatim)"
     },
     {
@@ -2610,7 +3087,7 @@
       "source_file": "docs/implementation_plan.md",
       "source_location": "L526",
       "id": "docs_implementation_plan_5_2_or_tools_route_optimizer_backend_services_route_optimizer_py",
-      "community": 0,
+      "community": 42,
       "norm_label": "5.2 \u2014 or-tools route optimizer (`backend/services/route_optimizer.py`)"
     },
     {
@@ -2619,7 +3096,7 @@
       "source_file": "docs/implementation_plan.md",
       "source_location": "L527",
       "id": "docs_implementation_plan_codeblock_23",
-      "community": 0,
+      "community": 42,
       "norm_label": "code:python (from ortools.constraint_solver import routing_enums_pb2, pyw)"
     },
     {
@@ -2628,7 +3105,7 @@
       "source_file": "docs/implementation_plan.md",
       "source_location": "L569",
       "id": "docs_implementation_plan_5_3_route_router_backend_routers_route_py",
-      "community": 0,
+      "community": 42,
       "norm_label": "5.3 \u2014 route router (`backend/routers/route.py`)"
     },
     {
@@ -2637,7 +3114,7 @@
       "source_file": "docs/implementation_plan.md",
       "source_location": "L570",
       "id": "docs_implementation_plan_codeblock_24",
-      "community": 0,
+      "community": 42,
       "norm_label": "code:python (from fastapi import apirouter)"
     },
     {
@@ -3368,18 +3845,46 @@
       "id": "frontend_readme_deploy_on_vercel",
       "community": 22,
       "norm_label": "deploy on vercel"
+    },
+    {
+      "label": "geistSans",
+      "file_type": "code",
+      "source_file": "frontend/src/app/layout.tsx",
+      "source_location": "L5",
+      "community": 23,
+      "norm_label": "geistsans",
+      "id": "app_layout_geistsans"
+    },
+    {
+      "label": "geistMono",
+      "file_type": "code",
+      "source_file": "frontend/src/app/layout.tsx",
+      "source_location": "L10",
+      "community": 23,
+      "norm_label": "geistmono",
+      "id": "app_layout_geistmono"
     }
   ],
   "links": [
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
+      "source_file": "test_extract.py",
+      "source_location": "L5",
+      "weight": 1.0,
+      "source": "test_extract_py",
+      "target": "faraway_hackathon_test_extract_test_extract",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
       "source_file": ".gemini/settings.json",
       "source_location": "L2",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "gemini_settings_json",
-      "target": "gemini_settings_hooks",
-      "confidence_score": 1.0
+      "target": "gemini_settings_hooks"
     },
     {
       "relation": "contains",
@@ -3387,9 +3892,9 @@
       "source_file": ".gemini/settings.json",
       "source_location": "L3",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "gemini_settings_hooks",
-      "target": "gemini_settings_hooks_beforetool",
-      "confidence_score": 1.0
+      "target": "gemini_settings_hooks_beforetool"
     },
     {
       "relation": "contains",
@@ -3397,8 +3902,38 @@
       "source_file": "backend/main.py",
       "source_location": "L23",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "backend_main_py",
-      "target": "backend_main_health",
+      "target": "backend_main_health"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/test_db.py",
+      "source_location": "L11",
+      "weight": 1.0,
+      "source": "backend_test_db_py",
+      "target": "backend_test_db_test_db",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/test_route.py",
+      "source_location": "L4",
+      "weight": 1.0,
+      "source": "backend_test_route_py",
+      "target": "backend_test_route_test_route",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/test_transcribe.py",
+      "source_location": "L4",
+      "weight": 1.0,
+      "source": "backend_test_transcribe_py",
+      "target": "backend_test_transcribe_test_transcribe",
       "confidence_score": 1.0
     },
     {
@@ -3407,9 +3942,9 @@
       "source_file": "backend/models/schemas.py",
       "source_location": "L7",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "backend_models_schemas_py",
-      "target": "models_schemas_orderitem",
-      "confidence_score": 1.0
+      "target": "models_schemas_orderitem"
     },
     {
       "relation": "contains",
@@ -3417,9 +3952,9 @@
       "source_file": "backend/models/schemas.py",
       "source_location": "L13",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "backend_models_schemas_py",
-      "target": "models_schemas_ordercreate",
-      "confidence_score": 1.0
+      "target": "models_schemas_ordercreate"
     },
     {
       "relation": "contains",
@@ -3427,9 +3962,9 @@
       "source_file": "backend/models/schemas.py",
       "source_location": "L22",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "backend_models_schemas_py",
-      "target": "models_schemas_orderupdate",
-      "confidence_score": 1.0
+      "target": "models_schemas_orderupdate"
     },
     {
       "relation": "contains",
@@ -3437,9 +3972,9 @@
       "source_file": "backend/models/schemas.py",
       "source_location": "L27",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "backend_models_schemas_py",
-      "target": "models_schemas_customercreate",
-      "confidence_score": 1.0
+      "target": "models_schemas_customercreate"
     },
     {
       "relation": "contains",
@@ -3447,9 +3982,9 @@
       "source_file": "backend/models/schemas.py",
       "source_location": "L36",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "backend_models_schemas_py",
-      "target": "models_schemas_routerequest",
-      "confidence_score": 1.0
+      "target": "models_schemas_routerequest"
     },
     {
       "relation": "contains",
@@ -3457,9 +3992,9 @@
       "source_file": "backend/models/schemas.py",
       "source_location": "L41",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "backend_models_schemas_py",
-      "target": "models_schemas_transcriberesponse",
-      "confidence_score": 1.0
+      "target": "models_schemas_transcriberesponse"
     },
     {
       "relation": "contains",
@@ -3467,9 +4002,9 @@
       "source_file": "backend/models/schemas.py",
       "source_location": "L47",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "backend_models_schemas_py",
-      "target": "models_schemas_extractresponse",
-      "confidence_score": 1.0
+      "target": "models_schemas_extractresponse"
     },
     {
       "relation": "contains",
@@ -3477,9 +4012,9 @@
       "source_file": "backend/models/schemas.py",
       "source_location": "L54",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "backend_models_schemas_py",
-      "target": "models_schemas_simulatormessagerequest",
-      "confidence_score": 1.0
+      "target": "models_schemas_simulatormessagerequest"
     },
     {
       "relation": "inherits",
@@ -3487,9 +4022,9 @@
       "source_file": "backend/models/schemas.py",
       "source_location": "L7",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "models_schemas_orderitem",
-      "target": "basemodel",
-      "confidence_score": 1.0
+      "target": "basemodel"
     },
     {
       "relation": "inherits",
@@ -3497,9 +4032,9 @@
       "source_file": "backend/models/schemas.py",
       "source_location": "L13",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "models_schemas_ordercreate",
-      "target": "basemodel",
-      "confidence_score": 1.0
+      "target": "basemodel"
     },
     {
       "relation": "inherits",
@@ -3507,9 +4042,9 @@
       "source_file": "backend/models/schemas.py",
       "source_location": "L22",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "models_schemas_orderupdate",
-      "target": "basemodel",
-      "confidence_score": 1.0
+      "target": "basemodel"
     },
     {
       "relation": "inherits",
@@ -3517,9 +4052,9 @@
       "source_file": "backend/models/schemas.py",
       "source_location": "L27",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "models_schemas_customercreate",
-      "target": "basemodel",
-      "confidence_score": 1.0
+      "target": "basemodel"
     },
     {
       "relation": "inherits",
@@ -3527,9 +4062,9 @@
       "source_file": "backend/models/schemas.py",
       "source_location": "L36",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "models_schemas_routerequest",
-      "target": "basemodel",
-      "confidence_score": 1.0
+      "target": "basemodel"
     },
     {
       "relation": "inherits",
@@ -3537,9 +4072,9 @@
       "source_file": "backend/models/schemas.py",
       "source_location": "L41",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "models_schemas_transcriberesponse",
-      "target": "basemodel",
-      "confidence_score": 1.0
+      "target": "basemodel"
     },
     {
       "relation": "inherits",
@@ -3547,9 +4082,9 @@
       "source_file": "backend/models/schemas.py",
       "source_location": "L47",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "models_schemas_extractresponse",
-      "target": "basemodel",
-      "confidence_score": 1.0
+      "target": "basemodel"
     },
     {
       "relation": "inherits",
@@ -3557,9 +4092,9 @@
       "source_file": "backend/models/schemas.py",
       "source_location": "L54",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "models_schemas_simulatormessagerequest",
-      "target": "basemodel",
-      "confidence_score": 1.0
+      "target": "basemodel"
     },
     {
       "relation": "contains",
@@ -3567,9 +4102,9 @@
       "source_file": "backend/routers/analytics.py",
       "source_location": "L10",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "backend_routers_analytics_py",
-      "target": "routers_analytics_get_summary",
-      "confidence_score": 1.0
+      "target": "routers_analytics_get_summary"
     },
     {
       "relation": "contains",
@@ -3577,9 +4112,9 @@
       "source_file": "backend/routers/analytics.py",
       "source_location": "L48",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "backend_routers_analytics_py",
-      "target": "routers_analytics_get_forecast",
-      "confidence_score": 1.0
+      "target": "routers_analytics_get_forecast"
     },
     {
       "relation": "contains",
@@ -3587,9 +4122,9 @@
       "source_file": "backend/routers/analytics.py",
       "source_location": "L72",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "backend_routers_analytics_py",
-      "target": "routers_analytics_get_weekly_stats",
-      "confidence_score": 1.0
+      "target": "routers_analytics_get_weekly_stats"
     },
     {
       "relation": "rationale_for",
@@ -3597,9 +4132,9 @@
       "source_file": "backend/routers/analytics.py",
       "source_location": "L11",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "routers_analytics_rationale_11",
-      "target": "routers_analytics_get_summary",
-      "confidence_score": 1.0
+      "target": "routers_analytics_get_summary"
     },
     {
       "relation": "rationale_for",
@@ -3607,9 +4142,9 @@
       "source_file": "backend/routers/analytics.py",
       "source_location": "L49",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "routers_analytics_rationale_49",
-      "target": "routers_analytics_get_forecast",
-      "confidence_score": 1.0
+      "target": "routers_analytics_get_forecast"
     },
     {
       "relation": "rationale_for",
@@ -3617,9 +4152,9 @@
       "source_file": "backend/routers/analytics.py",
       "source_location": "L73",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "routers_analytics_rationale_73",
-      "target": "routers_analytics_get_weekly_stats",
-      "confidence_score": 1.0
+      "target": "routers_analytics_get_weekly_stats"
     },
     {
       "relation": "contains",
@@ -3627,9 +4162,9 @@
       "source_file": "backend/routers/customers.py",
       "source_location": "L10",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "backend_routers_customers_py",
-      "target": "routers_customers_list_customers",
-      "confidence_score": 1.0
+      "target": "routers_customers_list_customers"
     },
     {
       "relation": "contains",
@@ -3637,9 +4172,9 @@
       "source_file": "backend/routers/customers.py",
       "source_location": "L19",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "backend_routers_customers_py",
-      "target": "routers_customers_get_customer",
-      "confidence_score": 1.0
+      "target": "routers_customers_get_customer"
     },
     {
       "relation": "contains",
@@ -3647,9 +4182,9 @@
       "source_file": "backend/routers/customers.py",
       "source_location": "L27",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "backend_routers_customers_py",
-      "target": "routers_customers_create_customer",
-      "confidence_score": 1.0
+      "target": "routers_customers_create_customer"
     },
     {
       "relation": "contains",
@@ -3657,9 +4192,9 @@
       "source_file": "backend/routers/customers.py",
       "source_location": "L33",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "backend_routers_customers_py",
-      "target": "routers_customers_update_customer",
-      "confidence_score": 1.0
+      "target": "routers_customers_update_customer"
     },
     {
       "relation": "contains",
@@ -3667,9 +4202,9 @@
       "source_file": "backend/routers/orders.py",
       "source_location": "L11",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "backend_routers_orders_py",
-      "target": "routers_orders_list_orders",
-      "confidence_score": 1.0
+      "target": "routers_orders_list_orders"
     },
     {
       "relation": "contains",
@@ -3677,9 +4212,9 @@
       "source_file": "backend/routers/orders.py",
       "source_location": "L28",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "backend_routers_orders_py",
-      "target": "routers_orders_get_order",
-      "confidence_score": 1.0
+      "target": "routers_orders_get_order"
     },
     {
       "relation": "contains",
@@ -3687,9 +4222,9 @@
       "source_file": "backend/routers/orders.py",
       "source_location": "L36",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "backend_routers_orders_py",
-      "target": "routers_orders_create_order",
-      "confidence_score": 1.0
+      "target": "routers_orders_create_order"
     },
     {
       "relation": "contains",
@@ -3697,9 +4232,9 @@
       "source_file": "backend/routers/orders.py",
       "source_location": "L67",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "backend_routers_orders_py",
-      "target": "routers_orders_update_order",
-      "confidence_score": 1.0
+      "target": "routers_orders_update_order"
     },
     {
       "relation": "contains",
@@ -3707,9 +4242,9 @@
       "source_file": "backend/routers/orders.py",
       "source_location": "L76",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "backend_routers_orders_py",
-      "target": "routers_orders_delete_order",
-      "confidence_score": 1.0
+      "target": "routers_orders_delete_order"
     },
     {
       "relation": "contains",
@@ -3717,9 +4252,9 @@
       "source_file": "backend/routers/route.py",
       "source_location": "L14",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "backend_routers_route_py",
-      "target": "routers_route_compute_route",
-      "confidence_score": 1.0
+      "target": "routers_route_compute_route"
     },
     {
       "relation": "calls",
@@ -3749,9 +4284,9 @@
       "source_file": "backend/routers/simulator.py",
       "source_location": "L16",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "backend_routers_simulator_py",
-      "target": "routers_simulator_receive_simulator_message",
-      "confidence_score": 1.0
+      "target": "routers_simulator_receive_simulator_message"
     },
     {
       "relation": "contains",
@@ -3759,9 +4294,9 @@
       "source_file": "backend/routers/simulator.py",
       "source_location": "L108",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "backend_routers_simulator_py",
-      "target": "routers_simulator_get_chat_history",
-      "confidence_score": 1.0
+      "target": "routers_simulator_get_chat_history"
     },
     {
       "relation": "calls",
@@ -3791,9 +4326,9 @@
       "source_file": "backend/routers/simulator.py",
       "source_location": "L109",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "routers_simulator_rationale_109",
-      "target": "routers_simulator_get_chat_history",
-      "confidence_score": 1.0
+      "target": "routers_simulator_get_chat_history"
     },
     {
       "relation": "contains",
@@ -3801,9 +4336,9 @@
       "source_file": "backend/routers/transcribe.py",
       "source_location": "L14",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "backend_routers_transcribe_py",
-      "target": "routers_transcribe_transcribe",
-      "confidence_score": 1.0
+      "target": "routers_transcribe_transcribe"
     },
     {
       "relation": "contains",
@@ -3811,9 +4346,9 @@
       "source_file": "backend/routers/transcribe.py",
       "source_location": "L33",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "backend_routers_transcribe_py",
-      "target": "routers_transcribe_extract",
-      "confidence_score": 1.0
+      "target": "routers_transcribe_extract"
     },
     {
       "relation": "calls",
@@ -3843,9 +4378,9 @@
       "source_file": "backend/services/geocoder.py",
       "source_location": "L7",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "backend_services_geocoder_py",
-      "target": "services_geocoder_geocode_address",
-      "confidence_score": 1.0
+      "target": "services_geocoder_geocode_address"
     },
     {
       "relation": "contains",
@@ -3853,9 +4388,9 @@
       "source_file": "backend/services/geocoder.py",
       "source_location": "L17",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "backend_services_geocoder_py",
-      "target": "services_geocoder_build_distance_matrix",
-      "confidence_score": 1.0
+      "target": "services_geocoder_build_distance_matrix"
     },
     {
       "relation": "rationale_for",
@@ -3863,9 +4398,9 @@
       "source_file": "backend/services/geocoder.py",
       "source_location": "L18",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "services_geocoder_rationale_18",
-      "target": "services_geocoder_build_distance_matrix",
-      "confidence_score": 1.0
+      "target": "services_geocoder_build_distance_matrix"
     },
     {
       "relation": "contains",
@@ -3873,9 +4408,9 @@
       "source_file": "backend/services/llm_service.py",
       "source_location": "L31",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "backend_services_llm_service_py",
-      "target": "services_llm_service_extract_order",
-      "confidence_score": 1.0
+      "target": "services_llm_service_extract_order"
     },
     {
       "relation": "contains",
@@ -3883,9 +4418,9 @@
       "source_file": "backend/services/route_optimizer.py",
       "source_location": "L4",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "backend_services_route_optimizer_py",
-      "target": "services_route_optimizer_solve_tsp",
-      "confidence_score": 1.0
+      "target": "services_route_optimizer_solve_tsp"
     },
     {
       "relation": "rationale_for",
@@ -3893,9 +4428,9 @@
       "source_file": "backend/services/route_optimizer.py",
       "source_location": "L5",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "services_route_optimizer_rationale_5",
-      "target": "services_route_optimizer_solve_tsp",
-      "confidence_score": 1.0
+      "target": "services_route_optimizer_solve_tsp"
     },
     {
       "relation": "contains",
@@ -3903,9 +4438,9 @@
       "source_file": "backend/services/whisper_service.py",
       "source_location": "L8",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "backend_services_whisper_service_py",
-      "target": "services_whisper_service_get_model",
-      "confidence_score": 1.0
+      "target": "services_whisper_service_get_model"
     },
     {
       "relation": "contains",
@@ -3913,9 +4448,9 @@
       "source_file": "backend/services/whisper_service.py",
       "source_location": "L17",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "backend_services_whisper_service_py",
-      "target": "services_whisper_service_transcribe_audio",
-      "confidence_score": 1.0
+      "target": "services_whisper_service_transcribe_audio"
     },
     {
       "relation": "calls",
@@ -3924,9 +4459,9 @@
       "source_file": "backend/services/whisper_service.py",
       "source_location": "L18",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "services_whisper_service_transcribe_audio",
-      "target": "services_whisper_service_get_model",
-      "confidence_score": 1.0
+      "target": "services_whisper_service_get_model"
     },
     {
       "relation": "contains",
@@ -3934,9 +4469,9 @@
       "source_file": "frontend/eslint.config.mjs",
       "source_location": "L5",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "frontend_eslint_config_mjs",
-      "target": "frontend_eslint_config_eslintconfig",
-      "confidence_score": 1.0
+      "target": "frontend_eslint_config_eslintconfig"
     },
     {
       "relation": "contains",
@@ -3944,9 +4479,9 @@
       "source_file": "frontend/next.config.ts",
       "source_location": "L3",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "frontend_next_config_ts",
-      "target": "frontend_next_config_nextconfig",
-      "confidence_score": 1.0
+      "target": "frontend_next_config_nextconfig"
     },
     {
       "relation": "contains",
@@ -3954,9 +4489,9 @@
       "source_file": "frontend/package.json",
       "source_location": "L2",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "frontend_package_json",
-      "target": "frontend_package_name",
-      "confidence_score": 1.0
+      "target": "frontend_package_name"
     },
     {
       "relation": "contains",
@@ -3964,9 +4499,9 @@
       "source_file": "frontend/package.json",
       "source_location": "L3",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "frontend_package_json",
-      "target": "frontend_package_version",
-      "confidence_score": 1.0
+      "target": "frontend_package_version"
     },
     {
       "relation": "contains",
@@ -3974,9 +4509,9 @@
       "source_file": "frontend/package.json",
       "source_location": "L4",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "frontend_package_json",
-      "target": "frontend_package_private",
-      "confidence_score": 1.0
+      "target": "frontend_package_private"
     },
     {
       "relation": "contains",
@@ -3984,9 +4519,9 @@
       "source_file": "frontend/package.json",
       "source_location": "L5",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "frontend_package_json",
-      "target": "frontend_package_scripts",
-      "confidence_score": 1.0
+      "target": "frontend_package_scripts"
     },
     {
       "relation": "contains",
@@ -3994,9 +4529,9 @@
       "source_file": "frontend/package.json",
       "source_location": "L11",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "frontend_package_json",
-      "target": "frontend_package_dependencies",
-      "confidence_score": 1.0
+      "target": "frontend_package_dependencies"
     },
     {
       "relation": "contains",
@@ -4004,9 +4539,9 @@
       "source_file": "frontend/package.json",
       "source_location": "L22",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "frontend_package_json",
-      "target": "frontend_package_devdependencies",
-      "confidence_score": 1.0
+      "target": "frontend_package_devdependencies"
     },
     {
       "relation": "contains",
@@ -4014,9 +4549,9 @@
       "source_file": "frontend/package.json",
       "source_location": "L6",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "frontend_package_scripts",
-      "target": "frontend_package_scripts_dev",
-      "confidence_score": 1.0
+      "target": "frontend_package_scripts_dev"
     },
     {
       "relation": "contains",
@@ -4024,9 +4559,9 @@
       "source_file": "frontend/package.json",
       "source_location": "L7",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "frontend_package_scripts",
-      "target": "frontend_package_scripts_build",
-      "confidence_score": 1.0
+      "target": "frontend_package_scripts_build"
     },
     {
       "relation": "contains",
@@ -4034,9 +4569,9 @@
       "source_file": "frontend/package.json",
       "source_location": "L8",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "frontend_package_scripts",
-      "target": "frontend_package_scripts_start",
-      "confidence_score": 1.0
+      "target": "frontend_package_scripts_start"
     },
     {
       "relation": "contains",
@@ -4044,9 +4579,9 @@
       "source_file": "frontend/package.json",
       "source_location": "L9",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "frontend_package_scripts",
-      "target": "frontend_package_scripts_lint",
-      "confidence_score": 1.0
+      "target": "frontend_package_scripts_lint"
     },
     {
       "relation": "contains",
@@ -4054,9 +4589,9 @@
       "source_file": "frontend/package.json",
       "source_location": "L12",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "frontend_package_dependencies",
-      "target": "frontend_package_dependencies_supabase_supabase_js",
-      "confidence_score": 1.0
+      "target": "frontend_package_dependencies_supabase_supabase_js"
     },
     {
       "relation": "contains",
@@ -4064,9 +4599,9 @@
       "source_file": "frontend/package.json",
       "source_location": "L13",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "frontend_package_dependencies",
-      "target": "frontend_package_dependencies_types_leaflet",
-      "confidence_score": 1.0
+      "target": "frontend_package_dependencies_types_leaflet"
     },
     {
       "relation": "contains",
@@ -4074,9 +4609,9 @@
       "source_file": "frontend/package.json",
       "source_location": "L14",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "frontend_package_dependencies",
-      "target": "frontend_package_dependencies_leaflet",
-      "confidence_score": 1.0
+      "target": "frontend_package_dependencies_leaflet"
     },
     {
       "relation": "contains",
@@ -4084,9 +4619,9 @@
       "source_file": "frontend/package.json",
       "source_location": "L15",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "frontend_package_dependencies",
-      "target": "frontend_package_dependencies_lucide_react",
-      "confidence_score": 1.0
+      "target": "frontend_package_dependencies_lucide_react"
     },
     {
       "relation": "contains",
@@ -4094,9 +4629,9 @@
       "source_file": "frontend/package.json",
       "source_location": "L16",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "frontend_package_dependencies",
-      "target": "frontend_package_dependencies_next",
-      "confidence_score": 1.0
+      "target": "frontend_package_dependencies_next"
     },
     {
       "relation": "contains",
@@ -4104,9 +4639,9 @@
       "source_file": "frontend/package.json",
       "source_location": "L17",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "frontend_package_dependencies",
-      "target": "frontend_package_dependencies_react",
-      "confidence_score": 1.0
+      "target": "frontend_package_dependencies_react"
     },
     {
       "relation": "contains",
@@ -4114,9 +4649,9 @@
       "source_file": "frontend/package.json",
       "source_location": "L18",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "frontend_package_dependencies",
-      "target": "frontend_package_dependencies_react_dom",
-      "confidence_score": 1.0
+      "target": "frontend_package_dependencies_react_dom"
     },
     {
       "relation": "contains",
@@ -4124,9 +4659,9 @@
       "source_file": "frontend/package.json",
       "source_location": "L19",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "frontend_package_dependencies",
-      "target": "frontend_package_dependencies_react_leaflet",
-      "confidence_score": 1.0
+      "target": "frontend_package_dependencies_react_leaflet"
     },
     {
       "relation": "contains",
@@ -4134,9 +4669,9 @@
       "source_file": "frontend/package.json",
       "source_location": "L20",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "frontend_package_dependencies",
-      "target": "frontend_package_dependencies_recharts",
-      "confidence_score": 1.0
+      "target": "frontend_package_dependencies_recharts"
     },
     {
       "relation": "contains",
@@ -4144,9 +4679,9 @@
       "source_file": "frontend/package.json",
       "source_location": "L23",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "frontend_package_devdependencies",
-      "target": "frontend_package_devdependencies_tailwindcss_postcss",
-      "confidence_score": 1.0
+      "target": "frontend_package_devdependencies_tailwindcss_postcss"
     },
     {
       "relation": "contains",
@@ -4154,9 +4689,9 @@
       "source_file": "frontend/package.json",
       "source_location": "L24",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "frontend_package_devdependencies",
-      "target": "frontend_package_devdependencies_types_node",
-      "confidence_score": 1.0
+      "target": "frontend_package_devdependencies_types_node"
     },
     {
       "relation": "contains",
@@ -4164,9 +4699,9 @@
       "source_file": "frontend/package.json",
       "source_location": "L25",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "frontend_package_devdependencies",
-      "target": "frontend_package_devdependencies_types_react",
-      "confidence_score": 1.0
+      "target": "frontend_package_devdependencies_types_react"
     },
     {
       "relation": "contains",
@@ -4174,9 +4709,9 @@
       "source_file": "frontend/package.json",
       "source_location": "L26",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "frontend_package_devdependencies",
-      "target": "frontend_package_devdependencies_types_react_dom",
-      "confidence_score": 1.0
+      "target": "frontend_package_devdependencies_types_react_dom"
     },
     {
       "relation": "contains",
@@ -4184,9 +4719,9 @@
       "source_file": "frontend/package.json",
       "source_location": "L27",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "frontend_package_devdependencies",
-      "target": "frontend_package_devdependencies_eslint",
-      "confidence_score": 1.0
+      "target": "frontend_package_devdependencies_eslint"
     },
     {
       "relation": "contains",
@@ -4194,9 +4729,9 @@
       "source_file": "frontend/package.json",
       "source_location": "L28",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "frontend_package_devdependencies",
-      "target": "frontend_package_devdependencies_eslint_config_next",
-      "confidence_score": 1.0
+      "target": "frontend_package_devdependencies_eslint_config_next"
     },
     {
       "relation": "contains",
@@ -4204,9 +4739,9 @@
       "source_file": "frontend/package.json",
       "source_location": "L29",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "frontend_package_devdependencies",
-      "target": "frontend_package_devdependencies_tailwindcss",
-      "confidence_score": 1.0
+      "target": "frontend_package_devdependencies_tailwindcss"
     },
     {
       "relation": "contains",
@@ -4214,9 +4749,9 @@
       "source_file": "frontend/package.json",
       "source_location": "L30",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "frontend_package_devdependencies",
-      "target": "frontend_package_devdependencies_typescript",
-      "confidence_score": 1.0
+      "target": "frontend_package_devdependencies_typescript"
     },
     {
       "relation": "contains",
@@ -4224,9 +4759,9 @@
       "source_file": "frontend/postcss.config.mjs",
       "source_location": "L1",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "frontend_postcss_config_mjs",
-      "target": "frontend_postcss_config_config",
-      "confidence_score": 1.0
+      "target": "frontend_postcss_config_config"
     },
     {
       "relation": "contains",
@@ -4234,9 +4769,9 @@
       "source_file": "frontend/tsconfig.json",
       "source_location": "L2",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "frontend_tsconfig_json",
-      "target": "frontend_tsconfig_compileroptions",
-      "confidence_score": 1.0
+      "target": "frontend_tsconfig_compileroptions"
     },
     {
       "relation": "contains",
@@ -4244,9 +4779,9 @@
       "source_file": "frontend/tsconfig.json",
       "source_location": "L25",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "frontend_tsconfig_json",
-      "target": "frontend_tsconfig_include",
-      "confidence_score": 1.0
+      "target": "frontend_tsconfig_include"
     },
     {
       "relation": "contains",
@@ -4254,9 +4789,9 @@
       "source_file": "frontend/tsconfig.json",
       "source_location": "L33",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "frontend_tsconfig_json",
-      "target": "frontend_tsconfig_exclude",
-      "confidence_score": 1.0
+      "target": "frontend_tsconfig_exclude"
     },
     {
       "relation": "contains",
@@ -4264,9 +4799,9 @@
       "source_file": "frontend/tsconfig.json",
       "source_location": "L3",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "frontend_tsconfig_compileroptions",
-      "target": "frontend_tsconfig_compileroptions_target",
-      "confidence_score": 1.0
+      "target": "frontend_tsconfig_compileroptions_target"
     },
     {
       "relation": "contains",
@@ -4274,9 +4809,9 @@
       "source_file": "frontend/tsconfig.json",
       "source_location": "L4",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "frontend_tsconfig_compileroptions",
-      "target": "frontend_tsconfig_compileroptions_lib",
-      "confidence_score": 1.0
+      "target": "frontend_tsconfig_compileroptions_lib"
     },
     {
       "relation": "contains",
@@ -4284,9 +4819,9 @@
       "source_file": "frontend/tsconfig.json",
       "source_location": "L5",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "frontend_tsconfig_compileroptions",
-      "target": "frontend_tsconfig_compileroptions_allowjs",
-      "confidence_score": 1.0
+      "target": "frontend_tsconfig_compileroptions_allowjs"
     },
     {
       "relation": "contains",
@@ -4294,9 +4829,9 @@
       "source_file": "frontend/tsconfig.json",
       "source_location": "L6",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "frontend_tsconfig_compileroptions",
-      "target": "frontend_tsconfig_compileroptions_skiplibcheck",
-      "confidence_score": 1.0
+      "target": "frontend_tsconfig_compileroptions_skiplibcheck"
     },
     {
       "relation": "contains",
@@ -4304,9 +4839,9 @@
       "source_file": "frontend/tsconfig.json",
       "source_location": "L7",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "frontend_tsconfig_compileroptions",
-      "target": "frontend_tsconfig_compileroptions_strict",
-      "confidence_score": 1.0
+      "target": "frontend_tsconfig_compileroptions_strict"
     },
     {
       "relation": "contains",
@@ -4314,9 +4849,9 @@
       "source_file": "frontend/tsconfig.json",
       "source_location": "L8",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "frontend_tsconfig_compileroptions",
-      "target": "frontend_tsconfig_compileroptions_noemit",
-      "confidence_score": 1.0
+      "target": "frontend_tsconfig_compileroptions_noemit"
     },
     {
       "relation": "contains",
@@ -4324,9 +4859,9 @@
       "source_file": "frontend/tsconfig.json",
       "source_location": "L9",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "frontend_tsconfig_compileroptions",
-      "target": "frontend_tsconfig_compileroptions_esmoduleinterop",
-      "confidence_score": 1.0
+      "target": "frontend_tsconfig_compileroptions_esmoduleinterop"
     },
     {
       "relation": "contains",
@@ -4334,9 +4869,9 @@
       "source_file": "frontend/tsconfig.json",
       "source_location": "L10",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "frontend_tsconfig_compileroptions",
-      "target": "frontend_tsconfig_compileroptions_module",
-      "confidence_score": 1.0
+      "target": "frontend_tsconfig_compileroptions_module"
     },
     {
       "relation": "contains",
@@ -4344,9 +4879,9 @@
       "source_file": "frontend/tsconfig.json",
       "source_location": "L11",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "frontend_tsconfig_compileroptions",
-      "target": "frontend_tsconfig_compileroptions_moduleresolution",
-      "confidence_score": 1.0
+      "target": "frontend_tsconfig_compileroptions_moduleresolution"
     },
     {
       "relation": "contains",
@@ -4354,9 +4889,9 @@
       "source_file": "frontend/tsconfig.json",
       "source_location": "L12",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "frontend_tsconfig_compileroptions",
-      "target": "frontend_tsconfig_compileroptions_resolvejsonmodule",
-      "confidence_score": 1.0
+      "target": "frontend_tsconfig_compileroptions_resolvejsonmodule"
     },
     {
       "relation": "contains",
@@ -4364,9 +4899,9 @@
       "source_file": "frontend/tsconfig.json",
       "source_location": "L13",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "frontend_tsconfig_compileroptions",
-      "target": "frontend_tsconfig_compileroptions_isolatedmodules",
-      "confidence_score": 1.0
+      "target": "frontend_tsconfig_compileroptions_isolatedmodules"
     },
     {
       "relation": "contains",
@@ -4374,9 +4909,9 @@
       "source_file": "frontend/tsconfig.json",
       "source_location": "L14",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "frontend_tsconfig_compileroptions",
-      "target": "frontend_tsconfig_compileroptions_jsx",
-      "confidence_score": 1.0
+      "target": "frontend_tsconfig_compileroptions_jsx"
     },
     {
       "relation": "contains",
@@ -4384,9 +4919,9 @@
       "source_file": "frontend/tsconfig.json",
       "source_location": "L15",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "frontend_tsconfig_compileroptions",
-      "target": "frontend_tsconfig_compileroptions_incremental",
-      "confidence_score": 1.0
+      "target": "frontend_tsconfig_compileroptions_incremental"
     },
     {
       "relation": "contains",
@@ -4394,9 +4929,9 @@
       "source_file": "frontend/tsconfig.json",
       "source_location": "L16",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "frontend_tsconfig_compileroptions",
-      "target": "frontend_tsconfig_compileroptions_plugins",
-      "confidence_score": 1.0
+      "target": "frontend_tsconfig_compileroptions_plugins"
     },
     {
       "relation": "contains",
@@ -4404,9 +4939,9 @@
       "source_file": "frontend/tsconfig.json",
       "source_location": "L21",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "frontend_tsconfig_compileroptions",
-      "target": "frontend_tsconfig_compileroptions_paths",
-      "confidence_score": 1.0
+      "target": "frontend_tsconfig_compileroptions_paths"
     },
     {
       "relation": "contains",
@@ -4414,9 +4949,9 @@
       "source_file": "frontend/tsconfig.json",
       "source_location": "L22",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "frontend_tsconfig_compileroptions_paths",
-      "target": "frontend_tsconfig_paths",
-      "confidence_score": 1.0
+      "target": "frontend_tsconfig_paths"
     },
     {
       "relation": "contains",
@@ -4425,7 +4960,7 @@
       "source_location": "L5",
       "weight": 1.0,
       "source": "frontend_src_app_layout_tsx",
-      "target": "app_layout_geistsans",
+      "target": "app_layout_inter",
       "confidence_score": 1.0
     },
     {
@@ -4435,7 +4970,7 @@
       "source_location": "L10",
       "weight": 1.0,
       "source": "frontend_src_app_layout_tsx",
-      "target": "app_layout_geistmono",
+      "target": "app_layout_notosans",
       "confidence_score": 1.0
     },
     {
@@ -4444,9 +4979,9 @@
       "source_file": "frontend/src/app/layout.tsx",
       "source_location": "L15",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "frontend_src_app_layout_tsx",
-      "target": "app_layout_metadata",
-      "confidence_score": 1.0
+      "target": "app_layout_metadata"
     },
     {
       "relation": "contains",
@@ -4454,8 +4989,245 @@
       "source_file": "frontend/src/app/layout.tsx",
       "source_location": "L20",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "frontend_src_app_layout_tsx",
-      "target": "app_layout_rootlayout",
+      "target": "app_layout_rootlayout"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/src/app/layout.tsx",
+      "source_location": "L5",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "frontend_src_app_layout_tsx",
+      "target": "app_layout_geistsans"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/src/app/layout.tsx",
+      "source_location": "L10",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "frontend_src_app_layout_tsx",
+      "target": "app_layout_geistmono"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/src/app/page.tsx",
+      "source_location": "L6",
+      "weight": 1.0,
+      "source": "frontend_src_app_page_tsx",
+      "target": "app_page_home",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/src/app/analytics/page.tsx",
+      "source_location": "L4",
+      "weight": 1.0,
+      "source": "frontend_src_app_analytics_page_tsx",
+      "target": "frontend_src_lib_supabase_ts",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/src/app/analytics/page.tsx",
+      "source_location": "L4",
+      "weight": 1.0,
+      "source": "frontend_src_app_analytics_page_tsx",
+      "target": "lib_supabase_supabase",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/src/app/analytics/page.tsx",
+      "source_location": "L11",
+      "weight": 1.0,
+      "source": "frontend_src_app_analytics_page_tsx",
+      "target": "analytics_page_analyticspage",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/src/app/dashboard/page.tsx",
+      "source_location": "L4",
+      "weight": 1.0,
+      "source": "frontend_src_app_dashboard_page_tsx",
+      "target": "frontend_src_lib_supabase_ts",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/src/app/dashboard/page.tsx",
+      "source_location": "L4",
+      "weight": 1.0,
+      "source": "frontend_src_app_dashboard_page_tsx",
+      "target": "lib_supabase_supabase",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/src/app/dashboard/page.tsx",
+      "source_location": "L7",
+      "weight": 1.0,
+      "source": "frontend_src_app_dashboard_page_tsx",
+      "target": "dashboard_page_dashboardpage",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/src/app/orders/page.tsx",
+      "source_location": "L4",
+      "weight": 1.0,
+      "source": "frontend_src_app_orders_page_tsx",
+      "target": "frontend_src_lib_supabase_ts",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/src/app/orders/page.tsx",
+      "source_location": "L4",
+      "weight": 1.0,
+      "source": "frontend_src_app_orders_page_tsx",
+      "target": "lib_supabase_supabase",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/src/app/orders/page.tsx",
+      "source_location": "L7",
+      "weight": 1.0,
+      "source": "frontend_src_app_orders_page_tsx",
+      "target": "orders_page_orderspage",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/src/app/orders/new/page.tsx",
+      "source_location": "L6",
+      "weight": 1.0,
+      "source": "frontend_src_app_orders_new_page_tsx",
+      "target": "new_page_newordervoicepage",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/src/app/route-map/page.tsx",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "frontend_src_app_route_map_page_tsx",
+      "target": "frontend_src_components_mapwrapper_tsx",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/src/app/route-map/page.tsx",
+      "source_location": "L3",
+      "weight": 1.0,
+      "source": "frontend_src_app_route_map_page_tsx",
+      "target": "route_map_page_routemappage",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/src/app/simulator/page.tsx",
+      "source_location": "L6",
+      "weight": 1.0,
+      "source": "frontend_src_app_simulator_page_tsx",
+      "target": "simulator_page_message",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/src/app/simulator/page.tsx",
+      "source_location": "L14",
+      "weight": 1.0,
+      "source": "frontend_src_app_simulator_page_tsx",
+      "target": "simulator_page_contacts",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/src/app/simulator/page.tsx",
+      "source_location": "L22",
+      "weight": 1.0,
+      "source": "frontend_src_app_simulator_page_tsx",
+      "target": "simulator_page_simulatorpage",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/src/components/DeliveryMap.tsx",
+      "source_location": "L16",
+      "weight": 1.0,
+      "source": "frontend_src_components_deliverymap_tsx",
+      "target": "components_deliverymap_mapboundsfitter",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/src/components/DeliveryMap.tsx",
+      "source_location": "L27",
+      "weight": 1.0,
+      "source": "frontend_src_components_deliverymap_tsx",
+      "target": "components_deliverymap_deliverymap",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/src/components/MapWrapper.tsx",
+      "source_location": "L4",
+      "weight": 1.0,
+      "source": "frontend_src_components_mapwrapper_tsx",
+      "target": "components_mapwrapper_deliverymap",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/src/components/MapWrapper.tsx",
+      "source_location": "L9",
+      "weight": 1.0,
+      "source": "frontend_src_components_mapwrapper_tsx",
+      "target": "components_mapwrapper_mapwrapper",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/src/lib/supabase.ts",
+      "source_location": "L6",
+      "weight": 1.0,
+      "source": "frontend_src_lib_supabase_ts",
+      "target": "lib_supabase_supabase",
       "confidence_score": 1.0
     },
     {
@@ -4464,8 +5236,188 @@
       "source_file": "GEMINI.md",
       "source_location": "L1",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "gemini_md",
-      "target": "faraway_hackathon_gemini_graphify",
+      "target": "faraway_hackathon_gemini_graphify"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "README.md",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "readme_md",
+      "target": "faraway_hackathon_readme_supplysetu_ai",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "README.md",
+      "source_location": "L11",
+      "weight": 1.0,
+      "source": "faraway_hackathon_readme_supplysetu_ai",
+      "target": "faraway_hackathon_readme_note_for_hackathon_judges",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "README.md",
+      "source_location": "L24",
+      "weight": 1.0,
+      "source": "faraway_hackathon_readme_supplysetu_ai",
+      "target": "faraway_hackathon_readme_the_problem_our_solution",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "README.md",
+      "source_location": "L30",
+      "weight": 1.0,
+      "source": "faraway_hackathon_readme_supplysetu_ai",
+      "target": "faraway_hackathon_readme_key_features",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "README.md",
+      "source_location": "L39",
+      "weight": 1.0,
+      "source": "faraway_hackathon_readme_supplysetu_ai",
+      "target": "faraway_hackathon_readme_technical_architecture",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "README.md",
+      "source_location": "L55",
+      "weight": 1.0,
+      "source": "faraway_hackathon_readme_supplysetu_ai",
+      "target": "faraway_hackathon_readme_getting_started",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "README.md",
+      "source_location": "L104",
+      "weight": 1.0,
+      "source": "faraway_hackathon_readme_supplysetu_ai",
+      "target": "faraway_hackathon_readme_try_the_simulator",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "README.md",
+      "source_location": "L109",
+      "weight": 1.0,
+      "source": "faraway_hackathon_readme_supplysetu_ai",
+      "target": "faraway_hackathon_readme_license",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "README.md",
+      "source_location": "L41",
+      "weight": 1.0,
+      "source": "faraway_hackathon_readme_technical_architecture",
+      "target": "faraway_hackathon_readme_frontend",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "README.md",
+      "source_location": "L46",
+      "weight": 1.0,
+      "source": "faraway_hackathon_readme_technical_architecture",
+      "target": "faraway_hackathon_readme_backend_ai_pipeline",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "README.md",
+      "source_location": "L57",
+      "weight": 1.0,
+      "source": "faraway_hackathon_readme_getting_started",
+      "target": "faraway_hackathon_readme_prerequisites",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "README.md",
+      "source_location": "L64",
+      "weight": 1.0,
+      "source": "faraway_hackathon_readme_getting_started",
+      "target": "faraway_hackathon_readme_1_backend_setup",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "README.md",
+      "source_location": "L74",
+      "weight": 1.0,
+      "source": "faraway_hackathon_readme_getting_started",
+      "target": "faraway_hackathon_readme_2_frontend_setup",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "README.md",
+      "source_location": "L82",
+      "weight": 1.0,
+      "source": "faraway_hackathon_readme_getting_started",
+      "target": "faraway_hackathon_readme_3_environment_configuration",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "README.md",
+      "source_location": "L66",
+      "weight": 1.0,
+      "source": "faraway_hackathon_readme_1_backend_setup",
+      "target": "faraway_hackathon_readme_codeblock_1",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "README.md",
+      "source_location": "L76",
+      "weight": 1.0,
+      "source": "faraway_hackathon_readme_2_frontend_setup",
+      "target": "faraway_hackathon_readme_codeblock_2",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "README.md",
+      "source_location": "L84",
+      "weight": 1.0,
+      "source": "faraway_hackathon_readme_3_environment_configuration",
+      "target": "faraway_hackathon_readme_codeblock_3",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "README.md",
+      "source_location": "L97",
+      "weight": 1.0,
+      "source": "faraway_hackathon_readme_3_environment_configuration",
+      "target": "faraway_hackathon_readme_codeblock_4",
       "confidence_score": 1.0
     },
     {
@@ -4474,9 +5426,9 @@
       "source_file": ".agents/rules/graphify.md",
       "source_location": "L6",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "agents_rules_graphify_md",
-      "target": "rules_graphify_graphify",
-      "confidence_score": 1.0
+      "target": "rules_graphify_graphify"
     },
     {
       "relation": "contains",
@@ -4484,9 +5436,9 @@
       "source_file": ".agents/workflows/graphify.md",
       "source_location": "L6",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "agents_workflows_graphify_md",
-      "target": "workflows_graphify_workflow_graphify",
-      "confidence_score": 1.0
+      "target": "workflows_graphify_workflow_graphify"
     },
     {
       "relation": "contains",
@@ -4494,9 +5446,9 @@
       "source_file": "docs/Architecture.md",
       "source_location": "L1",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_architecture_md",
-      "target": "docs_architecture_architecture_of_supplysetu_ai_autonomous_order_to_delivery_agent",
-      "confidence_score": 1.0
+      "target": "docs_architecture_architecture_of_supplysetu_ai_autonomous_order_to_delivery_agent"
     },
     {
       "relation": "contains",
@@ -4504,9 +5456,9 @@
       "source_file": "docs/Architecture.md",
       "source_location": "L311",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_architecture_md",
-      "target": "docs_architecture_architecture",
-      "confidence_score": 1.0
+      "target": "docs_architecture_architecture"
     },
     {
       "relation": "contains",
@@ -4514,9 +5466,9 @@
       "source_file": "docs/Architecture.md",
       "source_location": "L3",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_architecture_architecture_of_supplysetu_ai_autonomous_order_to_delivery_agent",
-      "target": "docs_architecture_executive_summary",
-      "confidence_score": 1.0
+      "target": "docs_architecture_executive_summary"
     },
     {
       "relation": "contains",
@@ -4524,9 +5476,9 @@
       "source_file": "docs/Architecture.md",
       "source_location": "L7",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_architecture_architecture_of_supplysetu_ai_autonomous_order_to_delivery_agent",
-      "target": "docs_architecture_goals_and_non_goals",
-      "confidence_score": 1.0
+      "target": "docs_architecture_goals_and_non_goals"
     },
     {
       "relation": "contains",
@@ -4534,9 +5486,9 @@
       "source_file": "docs/Architecture.md",
       "source_location": "L27",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_architecture_architecture_of_supplysetu_ai_autonomous_order_to_delivery_agent",
-      "target": "docs_architecture_high_level_architecture",
-      "confidence_score": 1.0
+      "target": "docs_architecture_high_level_architecture"
     },
     {
       "relation": "contains",
@@ -4544,9 +5496,9 @@
       "source_file": "docs/Architecture.md",
       "source_location": "L73",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_architecture_architecture_of_supplysetu_ai_autonomous_order_to_delivery_agent",
-      "target": "docs_architecture_component_descriptions",
-      "confidence_score": 1.0
+      "target": "docs_architecture_component_descriptions"
     },
     {
       "relation": "contains",
@@ -4554,9 +5506,9 @@
       "source_file": "docs/Architecture.md",
       "source_location": "L133",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_architecture_architecture_of_supplysetu_ai_autonomous_order_to_delivery_agent",
-      "target": "docs_architecture_api_endpoints",
-      "confidence_score": 1.0
+      "target": "docs_architecture_api_endpoints"
     },
     {
       "relation": "contains",
@@ -4564,9 +5516,9 @@
       "source_file": "docs/Architecture.md",
       "source_location": "L150",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_architecture_architecture_of_supplysetu_ai_autonomous_order_to_delivery_agent",
-      "target": "docs_architecture_database_schema",
-      "confidence_score": 1.0
+      "target": "docs_architecture_database_schema"
     },
     {
       "relation": "contains",
@@ -4574,9 +5526,9 @@
       "source_file": "docs/Architecture.md",
       "source_location": "L177",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_architecture_architecture_of_supplysetu_ai_autonomous_order_to_delivery_agent",
-      "target": "docs_architecture_component_responsibilities",
-      "confidence_score": 1.0
+      "target": "docs_architecture_component_responsibilities"
     },
     {
       "relation": "contains",
@@ -4584,9 +5536,9 @@
       "source_file": "docs/Architecture.md",
       "source_location": "L192",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_architecture_architecture_of_supplysetu_ai_autonomous_order_to_delivery_agent",
-      "target": "docs_architecture_core_use_case_sequences",
-      "confidence_score": 1.0
+      "target": "docs_architecture_core_use_case_sequences"
     },
     {
       "relation": "contains",
@@ -4594,9 +5546,9 @@
       "source_file": "docs/Architecture.md",
       "source_location": "L252",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_architecture_architecture_of_supplysetu_ai_autonomous_order_to_delivery_agent",
-      "target": "docs_architecture_technology_choices_and_trade_offs",
-      "confidence_score": 1.0
+      "target": "docs_architecture_technology_choices_and_trade_offs"
     },
     {
       "relation": "contains",
@@ -4604,9 +5556,9 @@
       "source_file": "docs/Architecture.md",
       "source_location": "L265",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_architecture_architecture_of_supplysetu_ai_autonomous_order_to_delivery_agent",
-      "target": "docs_architecture_deployment_and_development_workflow",
-      "confidence_score": 1.0
+      "target": "docs_architecture_deployment_and_development_workflow"
     },
     {
       "relation": "contains",
@@ -4614,9 +5566,9 @@
       "source_file": "docs/Architecture.md",
       "source_location": "L274",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_architecture_architecture_of_supplysetu_ai_autonomous_order_to_delivery_agent",
-      "target": "docs_architecture_security_privacy_and_data_retention",
-      "confidence_score": 1.0
+      "target": "docs_architecture_security_privacy_and_data_retention"
     },
     {
       "relation": "contains",
@@ -4624,9 +5576,9 @@
       "source_file": "docs/Architecture.md",
       "source_location": "L286",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_architecture_architecture_of_supplysetu_ai_autonomous_order_to_delivery_agent",
-      "target": "docs_architecture_performance_and_scalability",
-      "confidence_score": 1.0
+      "target": "docs_architecture_performance_and_scalability"
     },
     {
       "relation": "contains",
@@ -4634,9 +5586,9 @@
       "source_file": "docs/Architecture.md",
       "source_location": "L295",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_architecture_architecture_of_supplysetu_ai_autonomous_order_to_delivery_agent",
-      "target": "docs_architecture_testing_strategy_and_observability",
-      "confidence_score": 1.0
+      "target": "docs_architecture_testing_strategy_and_observability"
     },
     {
       "relation": "contains",
@@ -4644,9 +5596,9 @@
       "source_file": "docs/Architecture.md",
       "source_location": "L31",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_architecture_high_level_architecture",
-      "target": "docs_architecture_codeblock_1",
-      "confidence_score": 1.0
+      "target": "docs_architecture_codeblock_1"
     },
     {
       "relation": "contains",
@@ -4654,9 +5606,9 @@
       "source_file": "docs/Architecture.md",
       "source_location": "L75",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_architecture_component_descriptions",
-      "target": "docs_architecture_frontend_next_js_leaflet",
-      "confidence_score": 1.0
+      "target": "docs_architecture_frontend_next_js_leaflet"
     },
     {
       "relation": "contains",
@@ -4664,9 +5616,9 @@
       "source_file": "docs/Architecture.md",
       "source_location": "L81",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_architecture_component_descriptions",
-      "target": "docs_architecture_backend_fastapi",
-      "confidence_score": 1.0
+      "target": "docs_architecture_backend_fastapi"
     },
     {
       "relation": "contains",
@@ -4674,9 +5626,9 @@
       "source_file": "docs/Architecture.md",
       "source_location": "L92",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_architecture_component_descriptions",
-      "target": "docs_architecture_transcription_service_whisper",
-      "confidence_score": 1.0
+      "target": "docs_architecture_transcription_service_whisper"
     },
     {
       "relation": "contains",
@@ -4684,9 +5636,9 @@
       "source_file": "docs/Architecture.md",
       "source_location": "L98",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_architecture_component_descriptions",
-      "target": "docs_architecture_order_extraction_llm",
-      "confidence_score": 1.0
+      "target": "docs_architecture_order_extraction_llm"
     },
     {
       "relation": "contains",
@@ -4694,9 +5646,9 @@
       "source_file": "docs/Architecture.md",
       "source_location": "L104",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_architecture_component_descriptions",
-      "target": "docs_architecture_route_optimization_or_tools",
-      "confidence_score": 1.0
+      "target": "docs_architecture_route_optimization_or_tools"
     },
     {
       "relation": "contains",
@@ -4704,9 +5656,9 @@
       "source_file": "docs/Architecture.md",
       "source_location": "L110",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_architecture_component_descriptions",
-      "target": "docs_architecture_database_supabase_postgres",
-      "confidence_score": 1.0
+      "target": "docs_architecture_database_supabase_postgres"
     },
     {
       "relation": "contains",
@@ -4714,9 +5666,9 @@
       "source_file": "docs/Architecture.md",
       "source_location": "L120",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_architecture_component_descriptions",
-      "target": "docs_architecture_external_integration_twilio_whatsapp",
-      "confidence_score": 1.0
+      "target": "docs_architecture_external_integration_twilio_whatsapp"
     },
     {
       "relation": "contains",
@@ -4724,9 +5676,9 @@
       "source_file": "docs/Architecture.md",
       "source_location": "L127",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_architecture_component_descriptions",
-      "target": "docs_architecture_hosting_and_deployment",
-      "confidence_score": 1.0
+      "target": "docs_architecture_hosting_and_deployment"
     },
     {
       "relation": "contains",
@@ -4734,9 +5686,9 @@
       "source_file": "docs/Architecture.md",
       "source_location": "L194",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_architecture_core_use_case_sequences",
-      "target": "docs_architecture_sequence_voice_order_processing",
-      "confidence_score": 1.0
+      "target": "docs_architecture_sequence_voice_order_processing"
     },
     {
       "relation": "contains",
@@ -4744,9 +5696,9 @@
       "source_file": "docs/Architecture.md",
       "source_location": "L224",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_architecture_core_use_case_sequences",
-      "target": "docs_architecture_sequence_route_optimization_delivery",
-      "confidence_score": 1.0
+      "target": "docs_architecture_sequence_route_optimization_delivery"
     },
     {
       "relation": "contains",
@@ -4754,9 +5706,9 @@
       "source_file": "docs/Architecture.md",
       "source_location": "L195",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_architecture_sequence_voice_order_processing",
-      "target": "docs_architecture_codeblock_2",
-      "confidence_score": 1.0
+      "target": "docs_architecture_codeblock_2"
     },
     {
       "relation": "contains",
@@ -4764,9 +5716,9 @@
       "source_file": "docs/Architecture.md",
       "source_location": "L225",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_architecture_sequence_route_optimization_delivery",
-      "target": "docs_architecture_codeblock_3",
-      "confidence_score": 1.0
+      "target": "docs_architecture_codeblock_3"
     },
     {
       "relation": "contains",
@@ -4774,9 +5726,9 @@
       "source_file": "docs/Architecture.md",
       "source_location": "L325",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_architecture_architecture",
-      "target": "docs_architecture_codeblock_4",
-      "confidence_score": 1.0
+      "target": "docs_architecture_codeblock_4"
     },
     {
       "relation": "contains",
@@ -4784,9 +5736,9 @@
       "source_file": "docs/Frontend_Design_Doc.md",
       "source_location": "L1",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_frontend_design_doc_md",
-      "target": "docs_frontend_design_doc_supplysetu_ai_frontend_design_document",
-      "confidence_score": 1.0
+      "target": "docs_frontend_design_doc_supplysetu_ai_frontend_design_document"
     },
     {
       "relation": "contains",
@@ -4794,9 +5746,9 @@
       "source_file": "docs/Frontend_Design_Doc.md",
       "source_location": "L7",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_frontend_design_doc_supplysetu_ai_frontend_design_document",
-      "target": "docs_frontend_design_doc_1_product_vision_design_philosophy",
-      "confidence_score": 1.0
+      "target": "docs_frontend_design_doc_1_product_vision_design_philosophy"
     },
     {
       "relation": "contains",
@@ -4804,9 +5756,9 @@
       "source_file": "docs/Frontend_Design_Doc.md",
       "source_location": "L23",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_frontend_design_doc_supplysetu_ai_frontend_design_document",
-      "target": "docs_frontend_design_doc_2_design_tokens_brand_system",
-      "confidence_score": 1.0
+      "target": "docs_frontend_design_doc_2_design_tokens_brand_system"
     },
     {
       "relation": "contains",
@@ -4814,9 +5766,9 @@
       "source_file": "docs/Frontend_Design_Doc.md",
       "source_location": "L88",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_frontend_design_doc_supplysetu_ai_frontend_design_document",
-      "target": "docs_frontend_design_doc_3_application_structure_pages",
-      "confidence_score": 1.0
+      "target": "docs_frontend_design_doc_3_application_structure_pages"
     },
     {
       "relation": "contains",
@@ -4824,9 +5776,9 @@
       "source_file": "docs/Frontend_Design_Doc.md",
       "source_location": "L121",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_frontend_design_doc_supplysetu_ai_frontend_design_document",
-      "target": "docs_frontend_design_doc_4_screen_by_screen_design_specifications",
-      "confidence_score": 1.0
+      "target": "docs_frontend_design_doc_4_screen_by_screen_design_specifications"
     },
     {
       "relation": "contains",
@@ -4834,9 +5786,9 @@
       "source_file": "docs/Frontend_Design_Doc.md",
       "source_location": "L454",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_frontend_design_doc_supplysetu_ai_frontend_design_document",
-      "target": "docs_frontend_design_doc_5_reusable_components_specification",
-      "confidence_score": 1.0
+      "target": "docs_frontend_design_doc_5_reusable_components_specification"
     },
     {
       "relation": "contains",
@@ -4844,9 +5796,9 @@
       "source_file": "docs/Frontend_Design_Doc.md",
       "source_location": "L515",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_frontend_design_doc_supplysetu_ai_frontend_design_document",
-      "target": "docs_frontend_design_doc_6_interaction_animation_patterns",
-      "confidence_score": 1.0
+      "target": "docs_frontend_design_doc_6_interaction_animation_patterns"
     },
     {
       "relation": "contains",
@@ -4854,9 +5806,9 @@
       "source_file": "docs/Frontend_Design_Doc.md",
       "source_location": "L546",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_frontend_design_doc_supplysetu_ai_frontend_design_document",
-      "target": "docs_frontend_design_doc_7_responsive_breakpoints",
-      "confidence_score": 1.0
+      "target": "docs_frontend_design_doc_7_responsive_breakpoints"
     },
     {
       "relation": "contains",
@@ -4864,9 +5816,9 @@
       "source_file": "docs/Frontend_Design_Doc.md",
       "source_location": "L557",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_frontend_design_doc_supplysetu_ai_frontend_design_document",
-      "target": "docs_frontend_design_doc_8_accessibility_a11y_requirements",
-      "confidence_score": 1.0
+      "target": "docs_frontend_design_doc_8_accessibility_a11y_requirements"
     },
     {
       "relation": "contains",
@@ -4874,9 +5826,9 @@
       "source_file": "docs/Frontend_Design_Doc.md",
       "source_location": "L569",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_frontend_design_doc_supplysetu_ai_frontend_design_document",
-      "target": "docs_frontend_design_doc_9_key_user_flows_stitch_screen_sequences",
-      "confidence_score": 1.0
+      "target": "docs_frontend_design_doc_9_key_user_flows_stitch_screen_sequences"
     },
     {
       "relation": "contains",
@@ -4884,9 +5836,9 @@
       "source_file": "docs/Frontend_Design_Doc.md",
       "source_location": "L601",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_frontend_design_doc_supplysetu_ai_frontend_design_document",
-      "target": "docs_frontend_design_doc_10_screen_priority_for_stitch_generation",
-      "confidence_score": 1.0
+      "target": "docs_frontend_design_doc_10_screen_priority_for_stitch_generation"
     },
     {
       "relation": "contains",
@@ -4894,9 +5846,9 @@
       "source_file": "docs/Frontend_Design_Doc.md",
       "source_location": "L621",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_frontend_design_doc_supplysetu_ai_frontend_design_document",
-      "target": "docs_frontend_design_doc_11_dark_mode_specification",
-      "confidence_score": 1.0
+      "target": "docs_frontend_design_doc_11_dark_mode_specification"
     },
     {
       "relation": "contains",
@@ -4904,9 +5856,9 @@
       "source_file": "docs/Frontend_Design_Doc.md",
       "source_location": "L638",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_frontend_design_doc_supplysetu_ai_frontend_design_document",
-      "target": "docs_frontend_design_doc_12_tech_integration_notes_for_frontend",
-      "confidence_score": 1.0
+      "target": "docs_frontend_design_doc_12_tech_integration_notes_for_frontend"
     },
     {
       "relation": "contains",
@@ -4914,9 +5866,9 @@
       "source_file": "docs/Frontend_Design_Doc.md",
       "source_location": "L653",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_frontend_design_doc_supplysetu_ai_frontend_design_document",
-      "target": "docs_frontend_design_doc_13_sample_component_descriptions_for_stitch_prompts",
-      "confidence_score": 1.0
+      "target": "docs_frontend_design_doc_13_sample_component_descriptions_for_stitch_prompts"
     },
     {
       "relation": "contains",
@@ -4924,9 +5876,9 @@
       "source_file": "docs/Frontend_Design_Doc.md",
       "source_location": "L16",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_frontend_design_doc_1_product_vision_design_philosophy",
-      "target": "docs_frontend_design_doc_brand_personality",
-      "confidence_score": 1.0
+      "target": "docs_frontend_design_doc_brand_personality"
     },
     {
       "relation": "contains",
@@ -4934,9 +5886,9 @@
       "source_file": "docs/Frontend_Design_Doc.md",
       "source_location": "L25",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_frontend_design_doc_2_design_tokens_brand_system",
-      "target": "docs_frontend_design_doc_2_1_color_palette",
-      "confidence_score": 1.0
+      "target": "docs_frontend_design_doc_2_1_color_palette"
     },
     {
       "relation": "contains",
@@ -4944,9 +5896,9 @@
       "source_file": "docs/Frontend_Design_Doc.md",
       "source_location": "L47",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_frontend_design_doc_2_design_tokens_brand_system",
-      "target": "docs_frontend_design_doc_2_2_typography",
-      "confidence_score": 1.0
+      "target": "docs_frontend_design_doc_2_2_typography"
     },
     {
       "relation": "contains",
@@ -4954,9 +5906,9 @@
       "source_file": "docs/Frontend_Design_Doc.md",
       "source_location": "L64",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_frontend_design_doc_2_design_tokens_brand_system",
-      "target": "docs_frontend_design_doc_2_3_spacing_layout",
-      "confidence_score": 1.0
+      "target": "docs_frontend_design_doc_2_3_spacing_layout"
     },
     {
       "relation": "contains",
@@ -4964,9 +5916,9 @@
       "source_file": "docs/Frontend_Design_Doc.md",
       "source_location": "L71",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_frontend_design_doc_2_design_tokens_brand_system",
-      "target": "docs_frontend_design_doc_2_4_iconography",
-      "confidence_score": 1.0
+      "target": "docs_frontend_design_doc_2_4_iconography"
     },
     {
       "relation": "contains",
@@ -4974,9 +5926,9 @@
       "source_file": "docs/Frontend_Design_Doc.md",
       "source_location": "L90",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_frontend_design_doc_3_application_structure_pages",
-      "target": "docs_frontend_design_doc_3_1_page_map",
-      "confidence_score": 1.0
+      "target": "docs_frontend_design_doc_3_1_page_map"
     },
     {
       "relation": "contains",
@@ -4984,9 +5936,9 @@
       "source_file": "docs/Frontend_Design_Doc.md",
       "source_location": "L106",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_frontend_design_doc_3_application_structure_pages",
-      "target": "docs_frontend_design_doc_3_2_navigation_structure",
-      "confidence_score": 1.0
+      "target": "docs_frontend_design_doc_3_2_navigation_structure"
     },
     {
       "relation": "contains",
@@ -4994,9 +5946,9 @@
       "source_file": "docs/Frontend_Design_Doc.md",
       "source_location": "L92",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_frontend_design_doc_3_1_page_map",
-      "target": "docs_frontend_design_doc_codeblock_1",
-      "confidence_score": 1.0
+      "target": "docs_frontend_design_doc_codeblock_1"
     },
     {
       "relation": "contains",
@@ -5004,9 +5956,9 @@
       "source_file": "docs/Frontend_Design_Doc.md",
       "source_location": "L125",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_frontend_design_doc_4_screen_by_screen_design_specifications",
-      "target": "docs_frontend_design_doc_screen_1_landing_page",
-      "confidence_score": 1.0
+      "target": "docs_frontend_design_doc_screen_1_landing_page"
     },
     {
       "relation": "contains",
@@ -5014,9 +5966,9 @@
       "source_file": "docs/Frontend_Design_Doc.md",
       "source_location": "L153",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_frontend_design_doc_4_screen_by_screen_design_specifications",
-      "target": "docs_frontend_design_doc_screen_2_login_otp_login",
-      "confidence_score": 1.0
+      "target": "docs_frontend_design_doc_screen_2_login_otp_login"
     },
     {
       "relation": "contains",
@@ -5024,9 +5976,9 @@
       "source_file": "docs/Frontend_Design_Doc.md",
       "source_location": "L174",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_frontend_design_doc_4_screen_by_screen_design_specifications",
-      "target": "docs_frontend_design_doc_screen_3_main_dashboard_dashboard",
-      "confidence_score": 1.0
+      "target": "docs_frontend_design_doc_screen_3_main_dashboard_dashboard"
     },
     {
       "relation": "contains",
@@ -5034,9 +5986,9 @@
       "source_file": "docs/Frontend_Design_Doc.md",
       "source_location": "L231",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_frontend_design_doc_4_screen_by_screen_design_specifications",
-      "target": "docs_frontend_design_doc_screen_4_orders_list_orders",
-      "confidence_score": 1.0
+      "target": "docs_frontend_design_doc_screen_4_orders_list_orders"
     },
     {
       "relation": "contains",
@@ -5044,9 +5996,9 @@
       "source_file": "docs/Frontend_Design_Doc.md",
       "source_location": "L257",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_frontend_design_doc_4_screen_by_screen_design_specifications",
-      "target": "docs_frontend_design_doc_screen_5_new_order_orders_new",
-      "confidence_score": 1.0
+      "target": "docs_frontend_design_doc_screen_5_new_order_orders_new"
     },
     {
       "relation": "contains",
@@ -5054,9 +6006,9 @@
       "source_file": "docs/Frontend_Design_Doc.md",
       "source_location": "L297",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_frontend_design_doc_4_screen_by_screen_design_specifications",
-      "target": "docs_frontend_design_doc_screen_6_order_detail_orders_id",
-      "confidence_score": 1.0
+      "target": "docs_frontend_design_doc_screen_6_order_detail_orders_id"
     },
     {
       "relation": "contains",
@@ -5064,9 +6016,9 @@
       "source_file": "docs/Frontend_Design_Doc.md",
       "source_location": "L329",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_frontend_design_doc_4_screen_by_screen_design_specifications",
-      "target": "docs_frontend_design_doc_screen_7_route_map_route",
-      "confidence_score": 1.0
+      "target": "docs_frontend_design_doc_screen_7_route_map_route"
     },
     {
       "relation": "contains",
@@ -5074,9 +6026,9 @@
       "source_file": "docs/Frontend_Design_Doc.md",
       "source_location": "L373",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_frontend_design_doc_4_screen_by_screen_design_specifications",
-      "target": "docs_frontend_design_doc_screen_8_customer_directory_customers",
-      "confidence_score": 1.0
+      "target": "docs_frontend_design_doc_screen_8_customer_directory_customers"
     },
     {
       "relation": "contains",
@@ -5084,9 +6036,9 @@
       "source_file": "docs/Frontend_Design_Doc.md",
       "source_location": "L393",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_frontend_design_doc_4_screen_by_screen_design_specifications",
-      "target": "docs_frontend_design_doc_screen_9_customer_profile_customers_id",
-      "confidence_score": 1.0
+      "target": "docs_frontend_design_doc_screen_9_customer_profile_customers_id"
     },
     {
       "relation": "contains",
@@ -5094,9 +6046,9 @@
       "source_file": "docs/Frontend_Design_Doc.md",
       "source_location": "L407",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_frontend_design_doc_4_screen_by_screen_design_specifications",
-      "target": "docs_frontend_design_doc_screen_10_analytics_analytics",
-      "confidence_score": 1.0
+      "target": "docs_frontend_design_doc_screen_10_analytics_analytics"
     },
     {
       "relation": "contains",
@@ -5104,9 +6056,9 @@
       "source_file": "docs/Frontend_Design_Doc.md",
       "source_location": "L442",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_frontend_design_doc_4_screen_by_screen_design_specifications",
-      "target": "docs_frontend_design_doc_screen_11_settings_settings",
-      "confidence_score": 1.0
+      "target": "docs_frontend_design_doc_screen_11_settings_settings"
     },
     {
       "relation": "contains",
@@ -5114,9 +6066,9 @@
       "source_file": "docs/Frontend_Design_Doc.md",
       "source_location": "L129",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_frontend_design_doc_screen_1_landing_page",
-      "target": "docs_frontend_design_doc_layout",
-      "confidence_score": 1.0
+      "target": "docs_frontend_design_doc_layout"
     },
     {
       "relation": "contains",
@@ -5124,9 +6076,9 @@
       "source_file": "docs/Frontend_Design_Doc.md",
       "source_location": "L146",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_frontend_design_doc_screen_1_landing_page",
-      "target": "docs_frontend_design_doc_visual_style",
-      "confidence_score": 1.0
+      "target": "docs_frontend_design_doc_visual_style"
     },
     {
       "relation": "contains",
@@ -5134,9 +6086,9 @@
       "source_file": "docs/Frontend_Design_Doc.md",
       "source_location": "L157",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_frontend_design_doc_screen_2_login_otp_login",
-      "target": "docs_frontend_design_doc_layout_157",
-      "confidence_score": 1.0
+      "target": "docs_frontend_design_doc_layout_157"
     },
     {
       "relation": "contains",
@@ -5144,9 +6096,9 @@
       "source_file": "docs/Frontend_Design_Doc.md",
       "source_location": "L167",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_frontend_design_doc_screen_2_login_otp_login",
-      "target": "docs_frontend_design_doc_visual_style_167",
-      "confidence_score": 1.0
+      "target": "docs_frontend_design_doc_visual_style_167"
     },
     {
       "relation": "contains",
@@ -5154,9 +6106,9 @@
       "source_file": "docs/Frontend_Design_Doc.md",
       "source_location": "L178",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_frontend_design_doc_screen_3_main_dashboard_dashboard",
-      "target": "docs_frontend_design_doc_layout_desktop_3_column",
-      "confidence_score": 1.0
+      "target": "docs_frontend_design_doc_layout_desktop_3_column"
     },
     {
       "relation": "contains",
@@ -5164,9 +6116,9 @@
       "source_file": "docs/Frontend_Design_Doc.md",
       "source_location": "L215",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_frontend_design_doc_screen_3_main_dashboard_dashboard",
-      "target": "docs_frontend_design_doc_layout_mobile",
-      "confidence_score": 1.0
+      "target": "docs_frontend_design_doc_layout_mobile"
     },
     {
       "relation": "contains",
@@ -5174,9 +6126,9 @@
       "source_file": "docs/Frontend_Design_Doc.md",
       "source_location": "L223",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_frontend_design_doc_screen_3_main_dashboard_dashboard",
-      "target": "docs_frontend_design_doc_visual_style_223",
-      "confidence_score": 1.0
+      "target": "docs_frontend_design_doc_visual_style_223"
     },
     {
       "relation": "contains",
@@ -5184,9 +6136,9 @@
       "source_file": "docs/Frontend_Design_Doc.md",
       "source_location": "L235",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_frontend_design_doc_screen_4_orders_list_orders",
-      "target": "docs_frontend_design_doc_layout_235",
-      "confidence_score": 1.0
+      "target": "docs_frontend_design_doc_layout_235"
     },
     {
       "relation": "contains",
@@ -5194,9 +6146,9 @@
       "source_file": "docs/Frontend_Design_Doc.md",
       "source_location": "L250",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_frontend_design_doc_screen_4_orders_list_orders",
-      "target": "docs_frontend_design_doc_empty_state",
-      "confidence_score": 1.0
+      "target": "docs_frontend_design_doc_empty_state"
     },
     {
       "relation": "contains",
@@ -5204,9 +6156,9 @@
       "source_file": "docs/Frontend_Design_Doc.md",
       "source_location": "L261",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_frontend_design_doc_screen_5_new_order_orders_new",
-      "target": "docs_frontend_design_doc_layout_261",
-      "confidence_score": 1.0
+      "target": "docs_frontend_design_doc_layout_261"
     },
     {
       "relation": "contains",
@@ -5214,9 +6166,9 @@
       "source_file": "docs/Frontend_Design_Doc.md",
       "source_location": "L301",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_frontend_design_doc_screen_6_order_detail_orders_id",
-      "target": "docs_frontend_design_doc_layout_301",
-      "confidence_score": 1.0
+      "target": "docs_frontend_design_doc_layout_301"
     },
     {
       "relation": "contains",
@@ -5224,9 +6176,9 @@
       "source_file": "docs/Frontend_Design_Doc.md",
       "source_location": "L333",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_frontend_design_doc_screen_7_route_map_route",
-      "target": "docs_frontend_design_doc_layout_split_view",
-      "confidence_score": 1.0
+      "target": "docs_frontend_design_doc_layout_split_view"
     },
     {
       "relation": "contains",
@@ -5234,9 +6186,9 @@
       "source_file": "docs/Frontend_Design_Doc.md",
       "source_location": "L340",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_frontend_design_doc_layout_split_view",
-      "target": "docs_frontend_design_doc_codeblock_2",
-      "confidence_score": 1.0
+      "target": "docs_frontend_design_doc_codeblock_2"
     },
     {
       "relation": "contains",
@@ -5244,9 +6196,9 @@
       "source_file": "docs/Frontend_Design_Doc.md",
       "source_location": "L377",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_frontend_design_doc_screen_8_customer_directory_customers",
-      "target": "docs_frontend_design_doc_layout_377",
-      "confidence_score": 1.0
+      "target": "docs_frontend_design_doc_layout_377"
     },
     {
       "relation": "contains",
@@ -5254,9 +6206,9 @@
       "source_file": "docs/Frontend_Design_Doc.md",
       "source_location": "L397",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_frontend_design_doc_screen_9_customer_profile_customers_id",
-      "target": "docs_frontend_design_doc_layout_397",
-      "confidence_score": 1.0
+      "target": "docs_frontend_design_doc_layout_397"
     },
     {
       "relation": "contains",
@@ -5264,9 +6216,9 @@
       "source_file": "docs/Frontend_Design_Doc.md",
       "source_location": "L411",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_frontend_design_doc_screen_10_analytics_analytics",
-      "target": "docs_frontend_design_doc_layout_411",
-      "confidence_score": 1.0
+      "target": "docs_frontend_design_doc_layout_411"
     },
     {
       "relation": "contains",
@@ -5274,9 +6226,9 @@
       "source_file": "docs/Frontend_Design_Doc.md",
       "source_location": "L446",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_frontend_design_doc_screen_11_settings_settings",
-      "target": "docs_frontend_design_doc_layout_tabbed",
-      "confidence_score": 1.0
+      "target": "docs_frontend_design_doc_layout_tabbed"
     },
     {
       "relation": "contains",
@@ -5284,9 +6236,9 @@
       "source_file": "docs/Frontend_Design_Doc.md",
       "source_location": "L456",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_frontend_design_doc_5_reusable_components_specification",
-      "target": "docs_frontend_design_doc_5_1_statusbadge",
-      "confidence_score": 1.0
+      "target": "docs_frontend_design_doc_5_1_statusbadge"
     },
     {
       "relation": "contains",
@@ -5294,9 +6246,9 @@
       "source_file": "docs/Frontend_Design_Doc.md",
       "source_location": "L467",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_frontend_design_doc_5_reusable_components_specification",
-      "target": "docs_frontend_design_doc_5_2_ordercard_mobile",
-      "confidence_score": 1.0
+      "target": "docs_frontend_design_doc_5_2_ordercard_mobile"
     },
     {
       "relation": "contains",
@@ -5304,9 +6256,9 @@
       "source_file": "docs/Frontend_Design_Doc.md",
       "source_location": "L473",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_frontend_design_doc_5_reusable_components_specification",
-      "target": "docs_frontend_design_doc_5_3_voiceuploadzone",
-      "confidence_score": 1.0
+      "target": "docs_frontend_design_doc_5_3_voiceuploadzone"
     },
     {
       "relation": "contains",
@@ -5314,9 +6266,9 @@
       "source_file": "docs/Frontend_Design_Doc.md",
       "source_location": "L483",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_frontend_design_doc_5_reusable_components_specification",
-      "target": "docs_frontend_design_doc_5_4_transcriptioncard",
-      "confidence_score": 1.0
+      "target": "docs_frontend_design_doc_5_4_transcriptioncard"
     },
     {
       "relation": "contains",
@@ -5324,9 +6276,9 @@
       "source_file": "docs/Frontend_Design_Doc.md",
       "source_location": "L489",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_frontend_design_doc_5_reusable_components_specification",
-      "target": "docs_frontend_design_doc_5_5_routestopcard",
-      "confidence_score": 1.0
+      "target": "docs_frontend_design_doc_5_5_routestopcard"
     },
     {
       "relation": "contains",
@@ -5334,9 +6286,9 @@
       "source_file": "docs/Frontend_Design_Doc.md",
       "source_location": "L498",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_frontend_design_doc_5_reusable_components_specification",
-      "target": "docs_frontend_design_doc_5_6_kpicard",
-      "confidence_score": 1.0
+      "target": "docs_frontend_design_doc_5_6_kpicard"
     },
     {
       "relation": "contains",
@@ -5344,9 +6296,9 @@
       "source_file": "docs/Frontend_Design_Doc.md",
       "source_location": "L505",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_frontend_design_doc_5_reusable_components_specification",
-      "target": "docs_frontend_design_doc_5_7_mapmarker_leaflet_custom",
-      "confidence_score": 1.0
+      "target": "docs_frontend_design_doc_5_7_mapmarker_leaflet_custom"
     },
     {
       "relation": "contains",
@@ -5354,9 +6306,9 @@
       "source_file": "docs/Frontend_Design_Doc.md",
       "source_location": "L457",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_frontend_design_doc_5_1_statusbadge",
-      "target": "docs_frontend_design_doc_codeblock_3",
-      "confidence_score": 1.0
+      "target": "docs_frontend_design_doc_codeblock_3"
     },
     {
       "relation": "contains",
@@ -5364,9 +6316,9 @@
       "source_file": "docs/Frontend_Design_Doc.md",
       "source_location": "L468",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_frontend_design_doc_5_2_ordercard_mobile",
-      "target": "docs_frontend_design_doc_codeblock_4",
-      "confidence_score": 1.0
+      "target": "docs_frontend_design_doc_codeblock_4"
     },
     {
       "relation": "contains",
@@ -5374,9 +6326,9 @@
       "source_file": "docs/Frontend_Design_Doc.md",
       "source_location": "L474",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_frontend_design_doc_5_3_voiceuploadzone",
-      "target": "docs_frontend_design_doc_codeblock_5",
-      "confidence_score": 1.0
+      "target": "docs_frontend_design_doc_codeblock_5"
     },
     {
       "relation": "contains",
@@ -5384,9 +6336,9 @@
       "source_file": "docs/Frontend_Design_Doc.md",
       "source_location": "L484",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_frontend_design_doc_5_4_transcriptioncard",
-      "target": "docs_frontend_design_doc_codeblock_6",
-      "confidence_score": 1.0
+      "target": "docs_frontend_design_doc_codeblock_6"
     },
     {
       "relation": "contains",
@@ -5394,9 +6346,9 @@
       "source_file": "docs/Frontend_Design_Doc.md",
       "source_location": "L490",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_frontend_design_doc_5_5_routestopcard",
-      "target": "docs_frontend_design_doc_codeblock_7",
-      "confidence_score": 1.0
+      "target": "docs_frontend_design_doc_codeblock_7"
     },
     {
       "relation": "contains",
@@ -5404,9 +6356,9 @@
       "source_file": "docs/Frontend_Design_Doc.md",
       "source_location": "L499",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_frontend_design_doc_5_6_kpicard",
-      "target": "docs_frontend_design_doc_codeblock_8",
-      "confidence_score": 1.0
+      "target": "docs_frontend_design_doc_codeblock_8"
     },
     {
       "relation": "contains",
@@ -5414,9 +6366,9 @@
       "source_file": "docs/Frontend_Design_Doc.md",
       "source_location": "L506",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_frontend_design_doc_5_7_mapmarker_leaflet_custom",
-      "target": "docs_frontend_design_doc_codeblock_9",
-      "confidence_score": 1.0
+      "target": "docs_frontend_design_doc_codeblock_9"
     },
     {
       "relation": "contains",
@@ -5424,9 +6376,9 @@
       "source_file": "docs/Frontend_Design_Doc.md",
       "source_location": "L517",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_frontend_design_doc_6_interaction_animation_patterns",
-      "target": "docs_frontend_design_doc_6_1_micro_interactions",
-      "confidence_score": 1.0
+      "target": "docs_frontend_design_doc_6_1_micro_interactions"
     },
     {
       "relation": "contains",
@@ -5434,9 +6386,9 @@
       "source_file": "docs/Frontend_Design_Doc.md",
       "source_location": "L524",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_frontend_design_doc_6_interaction_animation_patterns",
-      "target": "docs_frontend_design_doc_6_2_loading_states",
-      "confidence_score": 1.0
+      "target": "docs_frontend_design_doc_6_2_loading_states"
     },
     {
       "relation": "contains",
@@ -5444,9 +6396,9 @@
       "source_file": "docs/Frontend_Design_Doc.md",
       "source_location": "L529",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_frontend_design_doc_6_interaction_animation_patterns",
-      "target": "docs_frontend_design_doc_6_3_transitions",
-      "confidence_score": 1.0
+      "target": "docs_frontend_design_doc_6_3_transitions"
     },
     {
       "relation": "contains",
@@ -5454,9 +6406,9 @@
       "source_file": "docs/Frontend_Design_Doc.md",
       "source_location": "L534",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_frontend_design_doc_6_interaction_animation_patterns",
-      "target": "docs_frontend_design_doc_6_4_toast_notifications",
-      "confidence_score": 1.0
+      "target": "docs_frontend_design_doc_6_4_toast_notifications"
     },
     {
       "relation": "contains",
@@ -5464,9 +6416,9 @@
       "source_file": "docs/Frontend_Design_Doc.md",
       "source_location": "L571",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_frontend_design_doc_9_key_user_flows_stitch_screen_sequences",
-      "target": "docs_frontend_design_doc_flow_a_voice_order_capture",
-      "confidence_score": 1.0
+      "target": "docs_frontend_design_doc_flow_a_voice_order_capture"
     },
     {
       "relation": "contains",
@@ -5474,9 +6426,9 @@
       "source_file": "docs/Frontend_Design_Doc.md",
       "source_location": "L580",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_frontend_design_doc_9_key_user_flows_stitch_screen_sequences",
-      "target": "docs_frontend_design_doc_flow_b_route_optimization_delivery",
-      "confidence_score": 1.0
+      "target": "docs_frontend_design_doc_flow_b_route_optimization_delivery"
     },
     {
       "relation": "contains",
@@ -5484,9 +6436,9 @@
       "source_file": "docs/Frontend_Design_Doc.md",
       "source_location": "L590",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_frontend_design_doc_9_key_user_flows_stitch_screen_sequences",
-      "target": "docs_frontend_design_doc_flow_c_new_customer_manual_order",
-      "confidence_score": 1.0
+      "target": "docs_frontend_design_doc_flow_c_new_customer_manual_order"
     },
     {
       "relation": "contains",
@@ -5494,9 +6446,9 @@
       "source_file": "docs/Frontend_Design_Doc.md",
       "source_location": "L572",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_frontend_design_doc_flow_a_voice_order_capture",
-      "target": "docs_frontend_design_doc_codeblock_10",
-      "confidence_score": 1.0
+      "target": "docs_frontend_design_doc_codeblock_10"
     },
     {
       "relation": "contains",
@@ -5504,9 +6456,9 @@
       "source_file": "docs/Frontend_Design_Doc.md",
       "source_location": "L581",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_frontend_design_doc_flow_b_route_optimization_delivery",
-      "target": "docs_frontend_design_doc_codeblock_11",
-      "confidence_score": 1.0
+      "target": "docs_frontend_design_doc_codeblock_11"
     },
     {
       "relation": "contains",
@@ -5514,9 +6466,9 @@
       "source_file": "docs/Frontend_Design_Doc.md",
       "source_location": "L591",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_frontend_design_doc_flow_c_new_customer_manual_order",
-      "target": "docs_frontend_design_doc_codeblock_12",
-      "confidence_score": 1.0
+      "target": "docs_frontend_design_doc_codeblock_12"
     },
     {
       "relation": "contains",
@@ -5524,9 +6476,9 @@
       "source_file": "docs/Frontend_Design_Doc.md",
       "source_location": "L657",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_frontend_design_doc_13_sample_component_descriptions_for_stitch_prompts",
-      "target": "docs_frontend_design_doc_dashboard_prompt",
-      "confidence_score": 1.0
+      "target": "docs_frontend_design_doc_dashboard_prompt"
     },
     {
       "relation": "contains",
@@ -5534,9 +6486,9 @@
       "source_file": "docs/Frontend_Design_Doc.md",
       "source_location": "L660",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_frontend_design_doc_13_sample_component_descriptions_for_stitch_prompts",
-      "target": "docs_frontend_design_doc_route_map_prompt",
-      "confidence_score": 1.0
+      "target": "docs_frontend_design_doc_route_map_prompt"
     },
     {
       "relation": "contains",
@@ -5544,9 +6496,9 @@
       "source_file": "docs/Frontend_Design_Doc.md",
       "source_location": "L663",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_frontend_design_doc_13_sample_component_descriptions_for_stitch_prompts",
-      "target": "docs_frontend_design_doc_new_order_voice_upload_prompt",
-      "confidence_score": 1.0
+      "target": "docs_frontend_design_doc_new_order_voice_upload_prompt"
     },
     {
       "relation": "contains",
@@ -5554,9 +6506,9 @@
       "source_file": "docs/implementation_plan.md",
       "source_location": "L1",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_implementation_plan_md",
-      "target": "docs_implementation_plan_supplysetu_ai_comprehensive_phase_wise_implementation_plan",
-      "confidence_score": 1.0
+      "target": "docs_implementation_plan_supplysetu_ai_comprehensive_phase_wise_implementation_plan"
     },
     {
       "relation": "contains",
@@ -5564,9 +6516,9 @@
       "source_file": "docs/implementation_plan.md",
       "source_location": "L10",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_implementation_plan_supplysetu_ai_comprehensive_phase_wise_implementation_plan",
-      "target": "docs_implementation_plan_project_overview",
-      "confidence_score": 1.0
+      "target": "docs_implementation_plan_project_overview"
     },
     {
       "relation": "contains",
@@ -5574,9 +6526,9 @@
       "source_file": "docs/implementation_plan.md",
       "source_location": "L36",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_implementation_plan_supplysetu_ai_comprehensive_phase_wise_implementation_plan",
-      "target": "docs_implementation_plan_architecture_recap",
-      "confidence_score": 1.0
+      "target": "docs_implementation_plan_architecture_recap"
     },
     {
       "relation": "contains",
@@ -5584,9 +6536,9 @@
       "source_file": "docs/implementation_plan.md",
       "source_location": "L53",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_implementation_plan_supplysetu_ai_comprehensive_phase_wise_implementation_plan",
-      "target": "docs_implementation_plan_phase_0_graphify_knowledge_graph_setup",
-      "confidence_score": 1.0
+      "target": "docs_implementation_plan_phase_0_graphify_knowledge_graph_setup"
     },
     {
       "relation": "contains",
@@ -5594,9 +6546,9 @@
       "source_file": "docs/implementation_plan.md",
       "source_location": "L96",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_implementation_plan_supplysetu_ai_comprehensive_phase_wise_implementation_plan",
-      "target": "docs_implementation_plan_phase_1_project_foundation_monorepo_structure",
-      "confidence_score": 1.0
+      "target": "docs_implementation_plan_phase_1_project_foundation_monorepo_structure"
     },
     {
       "relation": "contains",
@@ -5604,9 +6556,9 @@
       "source_file": "docs/implementation_plan.md",
       "source_location": "L194",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_implementation_plan_supplysetu_ai_comprehensive_phase_wise_implementation_plan",
-      "target": "docs_implementation_plan_phase_2_supabase_database_schema",
-      "confidence_score": 1.0
+      "target": "docs_implementation_plan_phase_2_supabase_database_schema"
     },
     {
       "relation": "contains",
@@ -5614,9 +6566,9 @@
       "source_file": "docs/implementation_plan.md",
       "source_location": "L297",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_implementation_plan_supplysetu_ai_comprehensive_phase_wise_implementation_plan",
-      "target": "docs_implementation_plan_phase_3_fastapi_backend",
-      "confidence_score": 1.0
+      "target": "docs_implementation_plan_phase_3_fastapi_backend"
     },
     {
       "relation": "contains",
@@ -5624,9 +6576,9 @@
       "source_file": "docs/implementation_plan.md",
       "source_location": "L388",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_implementation_plan_supplysetu_ai_comprehensive_phase_wise_implementation_plan",
-      "target": "docs_implementation_plan_phase_4_ai_pipeline",
-      "confidence_score": 1.0
+      "target": "docs_implementation_plan_phase_4_ai_pipeline"
     },
     {
       "relation": "contains",
@@ -5634,9 +6586,9 @@
       "source_file": "docs/implementation_plan.md",
       "source_location": "L494",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_implementation_plan_supplysetu_ai_comprehensive_phase_wise_implementation_plan",
-      "target": "docs_implementation_plan_phase_5_route_optimization_engine",
-      "confidence_score": 1.0
+      "target": "docs_implementation_plan_phase_5_route_optimization_engine"
     },
     {
       "relation": "contains",
@@ -5644,9 +6596,9 @@
       "source_file": "docs/implementation_plan.md",
       "source_location": "L619",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_implementation_plan_supplysetu_ai_comprehensive_phase_wise_implementation_plan",
-      "target": "docs_implementation_plan_phase_6_twilio_whatsapp_integration",
-      "confidence_score": 1.0
+      "target": "docs_implementation_plan_phase_6_twilio_whatsapp_integration"
     },
     {
       "relation": "contains",
@@ -5654,9 +6606,9 @@
       "source_file": "docs/implementation_plan.md",
       "source_location": "L730",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_implementation_plan_supplysetu_ai_comprehensive_phase_wise_implementation_plan",
-      "target": "docs_implementation_plan_phase_7_next_js_frontend_integration",
-      "confidence_score": 1.0
+      "target": "docs_implementation_plan_phase_7_next_js_frontend_integration"
     },
     {
       "relation": "contains",
@@ -5664,9 +6616,9 @@
       "source_file": "docs/implementation_plan.md",
       "source_location": "L867",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_implementation_plan_supplysetu_ai_comprehensive_phase_wise_implementation_plan",
-      "target": "docs_implementation_plan_phase_8_analytics_observability",
-      "confidence_score": 1.0
+      "target": "docs_implementation_plan_phase_8_analytics_observability"
     },
     {
       "relation": "contains",
@@ -5674,9 +6626,9 @@
       "source_file": "docs/implementation_plan.md",
       "source_location": "L928",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_implementation_plan_supplysetu_ai_comprehensive_phase_wise_implementation_plan",
-      "target": "docs_implementation_plan_phase_9_deployment_production_readiness",
-      "confidence_score": 1.0
+      "target": "docs_implementation_plan_phase_9_deployment_production_readiness"
     },
     {
       "relation": "contains",
@@ -5684,9 +6636,9 @@
       "source_file": "docs/implementation_plan.md",
       "source_location": "L986",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_implementation_plan_supplysetu_ai_comprehensive_phase_wise_implementation_plan",
-      "target": "docs_implementation_plan_graphify_ongoing_workflow",
-      "confidence_score": 1.0
+      "target": "docs_implementation_plan_graphify_ongoing_workflow"
     },
     {
       "relation": "contains",
@@ -5694,9 +6646,9 @@
       "source_file": "docs/implementation_plan.md",
       "source_location": "L1007",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_implementation_plan_supplysetu_ai_comprehensive_phase_wise_implementation_plan",
-      "target": "docs_implementation_plan_3_day_sprint_calendar",
-      "confidence_score": 1.0
+      "target": "docs_implementation_plan_3_day_sprint_calendar"
     },
     {
       "relation": "contains",
@@ -5704,9 +6656,9 @@
       "source_file": "docs/implementation_plan.md",
       "source_location": "L1036",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_implementation_plan_supplysetu_ai_comprehensive_phase_wise_implementation_plan",
-      "target": "docs_implementation_plan_verification_checklist",
-      "confidence_score": 1.0
+      "target": "docs_implementation_plan_verification_checklist"
     },
     {
       "relation": "contains",
@@ -5714,9 +6666,9 @@
       "source_file": "docs/implementation_plan.md",
       "source_location": "L1056",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_implementation_plan_supplysetu_ai_comprehensive_phase_wise_implementation_plan",
-      "target": "docs_implementation_plan_key_file_references",
-      "confidence_score": 1.0
+      "target": "docs_implementation_plan_key_file_references"
     },
     {
       "relation": "contains",
@@ -5724,9 +6676,9 @@
       "source_file": "docs/implementation_plan.md",
       "source_location": "L14",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_implementation_plan_project_overview",
-      "target": "docs_implementation_plan_codeblock_1",
-      "confidence_score": 1.0
+      "target": "docs_implementation_plan_codeblock_1"
     },
     {
       "relation": "contains",
@@ -5734,9 +6686,9 @@
       "source_file": "docs/implementation_plan.md",
       "source_location": "L18",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_implementation_plan_project_overview",
-      "target": "docs_implementation_plan_what_s_already_done",
-      "confidence_score": 1.0
+      "target": "docs_implementation_plan_what_s_already_done"
     },
     {
       "relation": "contains",
@@ -5744,9 +6696,9 @@
       "source_file": "docs/implementation_plan.md",
       "source_location": "L24",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_implementation_plan_project_overview",
-      "target": "docs_implementation_plan_what_needs_to_be_built",
-      "confidence_score": 1.0
+      "target": "docs_implementation_plan_what_needs_to_be_built"
     },
     {
       "relation": "contains",
@@ -5754,9 +6706,9 @@
       "source_file": "docs/implementation_plan.md",
       "source_location": "L38",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_implementation_plan_architecture_recap",
-      "target": "docs_implementation_plan_codeblock_2",
-      "confidence_score": 1.0
+      "target": "docs_implementation_plan_codeblock_2"
     },
     {
       "relation": "contains",
@@ -5764,9 +6716,9 @@
       "source_file": "docs/implementation_plan.md",
       "source_location": "L59",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_implementation_plan_phase_0_graphify_knowledge_graph_setup",
-      "target": "docs_implementation_plan_0_1_complete_graph_generation",
-      "confidence_score": 1.0
+      "target": "docs_implementation_plan_0_1_complete_graph_generation"
     },
     {
       "relation": "contains",
@@ -5774,9 +6726,9 @@
       "source_file": "docs/implementation_plan.md",
       "source_location": "L65",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_implementation_plan_phase_0_graphify_knowledge_graph_setup",
-      "target": "docs_implementation_plan_0_2_install_graphify_into_antigravity",
-      "confidence_score": 1.0
+      "target": "docs_implementation_plan_0_2_install_graphify_into_antigravity"
     },
     {
       "relation": "contains",
@@ -5784,9 +6736,9 @@
       "source_file": "docs/implementation_plan.md",
       "source_location": "L71",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_implementation_plan_phase_0_graphify_knowledge_graph_setup",
-      "target": "docs_implementation_plan_0_3_install_into_gemini_cli_bonus",
-      "confidence_score": 1.0
+      "target": "docs_implementation_plan_0_3_install_into_gemini_cli_bonus"
     },
     {
       "relation": "contains",
@@ -5794,9 +6746,9 @@
       "source_file": "docs/implementation_plan.md",
       "source_location": "L76",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_implementation_plan_phase_0_graphify_knowledge_graph_setup",
-      "target": "docs_implementation_plan_0_4_verify_graph_quality",
-      "confidence_score": 1.0
+      "target": "docs_implementation_plan_0_4_verify_graph_quality"
     },
     {
       "relation": "contains",
@@ -5804,9 +6756,9 @@
       "source_file": "docs/implementation_plan.md",
       "source_location": "L88",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_implementation_plan_phase_0_graphify_knowledge_graph_setup",
-      "target": "docs_implementation_plan_0_5_watch_mode_ongoing",
-      "confidence_score": 1.0
+      "target": "docs_implementation_plan_0_5_watch_mode_ongoing"
     },
     {
       "relation": "contains",
@@ -5814,9 +6766,9 @@
       "source_file": "docs/implementation_plan.md",
       "source_location": "L66",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_implementation_plan_0_2_install_graphify_into_antigravity",
-      "target": "docs_implementation_plan_codeblock_3",
-      "confidence_score": 1.0
+      "target": "docs_implementation_plan_codeblock_3"
     },
     {
       "relation": "contains",
@@ -5824,9 +6776,9 @@
       "source_file": "docs/implementation_plan.md",
       "source_location": "L72",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_implementation_plan_0_3_install_into_gemini_cli_bonus",
-      "target": "docs_implementation_plan_codeblock_4",
-      "confidence_score": 1.0
+      "target": "docs_implementation_plan_codeblock_4"
     },
     {
       "relation": "contains",
@@ -5834,9 +6786,9 @@
       "source_file": "docs/implementation_plan.md",
       "source_location": "L77",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_implementation_plan_0_4_verify_graph_quality",
-      "target": "docs_implementation_plan_codeblock_5",
-      "confidence_score": 1.0
+      "target": "docs_implementation_plan_codeblock_5"
     },
     {
       "relation": "contains",
@@ -5844,9 +6796,9 @@
       "source_file": "docs/implementation_plan.md",
       "source_location": "L89",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_implementation_plan_0_5_watch_mode_ongoing",
-      "target": "docs_implementation_plan_codeblock_6",
-      "confidence_score": 1.0
+      "target": "docs_implementation_plan_codeblock_6"
     },
     {
       "relation": "contains",
@@ -5854,9 +6806,9 @@
       "source_file": "docs/implementation_plan.md",
       "source_location": "L100",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_implementation_plan_phase_1_project_foundation_monorepo_structure",
-      "target": "docs_implementation_plan_1_1_monorepo_layout",
-      "confidence_score": 1.0
+      "target": "docs_implementation_plan_1_1_monorepo_layout"
     },
     {
       "relation": "contains",
@@ -5864,9 +6816,9 @@
       "source_file": "docs/implementation_plan.md",
       "source_location": "L131",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_implementation_plan_phase_1_project_foundation_monorepo_structure",
-      "target": "docs_implementation_plan_1_2_frontend_dependencies",
-      "confidence_score": 1.0
+      "target": "docs_implementation_plan_1_2_frontend_dependencies"
     },
     {
       "relation": "contains",
@@ -5874,9 +6826,9 @@
       "source_file": "docs/implementation_plan.md",
       "source_location": "L138",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_implementation_plan_phase_1_project_foundation_monorepo_structure",
-      "target": "docs_implementation_plan_1_3_backend_setup",
-      "confidence_score": 1.0
+      "target": "docs_implementation_plan_1_3_backend_setup"
     },
     {
       "relation": "contains",
@@ -5884,9 +6836,9 @@
       "source_file": "docs/implementation_plan.md",
       "source_location": "L147",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_implementation_plan_phase_1_project_foundation_monorepo_structure",
-      "target": "docs_implementation_plan_1_4_copy_stitch_screens_to_public",
-      "confidence_score": 1.0
+      "target": "docs_implementation_plan_1_4_copy_stitch_screens_to_public"
     },
     {
       "relation": "contains",
@@ -5894,9 +6846,9 @@
       "source_file": "docs/implementation_plan.md",
       "source_location": "L167",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_implementation_plan_phase_1_project_foundation_monorepo_structure",
-      "target": "docs_implementation_plan_1_5_environment_variables",
-      "confidence_score": 1.0
+      "target": "docs_implementation_plan_1_5_environment_variables"
     },
     {
       "relation": "contains",
@@ -5904,9 +6856,9 @@
       "source_file": "docs/implementation_plan.md",
       "source_location": "L101",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_implementation_plan_1_1_monorepo_layout",
-      "target": "docs_implementation_plan_codeblock_7",
-      "confidence_score": 1.0
+      "target": "docs_implementation_plan_codeblock_7"
     },
     {
       "relation": "contains",
@@ -5914,9 +6866,9 @@
       "source_file": "docs/implementation_plan.md",
       "source_location": "L132",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_implementation_plan_1_2_frontend_dependencies",
-      "target": "docs_implementation_plan_codeblock_8",
-      "confidence_score": 1.0
+      "target": "docs_implementation_plan_codeblock_8"
     },
     {
       "relation": "contains",
@@ -5924,9 +6876,9 @@
       "source_file": "docs/implementation_plan.md",
       "source_location": "L139",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_implementation_plan_1_3_backend_setup",
-      "target": "docs_implementation_plan_codeblock_9",
-      "confidence_score": 1.0
+      "target": "docs_implementation_plan_codeblock_9"
     },
     {
       "relation": "contains",
@@ -5934,9 +6886,9 @@
       "source_file": "docs/implementation_plan.md",
       "source_location": "L148",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_implementation_plan_1_4_copy_stitch_screens_to_public",
-      "target": "docs_implementation_plan_codeblock_10",
-      "confidence_score": 1.0
+      "target": "docs_implementation_plan_codeblock_10"
     },
     {
       "relation": "contains",
@@ -5944,9 +6896,9 @@
       "source_file": "docs/implementation_plan.md",
       "source_location": "L153",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_implementation_plan_1_4_copy_stitch_screens_to_public",
-      "target": "docs_implementation_plan_codeblock_11",
-      "confidence_score": 1.0
+      "target": "docs_implementation_plan_codeblock_11"
     },
     {
       "relation": "contains",
@@ -5954,9 +6906,9 @@
       "source_file": "docs/implementation_plan.md",
       "source_location": "L169",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_implementation_plan_1_5_environment_variables",
-      "target": "docs_implementation_plan_codeblock_12",
-      "confidence_score": 1.0
+      "target": "docs_implementation_plan_codeblock_12"
     },
     {
       "relation": "contains",
@@ -5964,9 +6916,9 @@
       "source_file": "docs/implementation_plan.md",
       "source_location": "L198",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_implementation_plan_phase_2_supabase_database_schema",
-      "target": "docs_implementation_plan_2_1_core_schema_run_in_supabase_sql_editor",
-      "confidence_score": 1.0
+      "target": "docs_implementation_plan_2_1_core_schema_run_in_supabase_sql_editor"
     },
     {
       "relation": "contains",
@@ -5974,9 +6926,9 @@
       "source_file": "docs/implementation_plan.md",
       "source_location": "L284",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_implementation_plan_phase_2_supabase_database_schema",
-      "target": "docs_implementation_plan_2_2_seed_mock_data",
-      "confidence_score": 1.0
+      "target": "docs_implementation_plan_2_2_seed_mock_data"
     },
     {
       "relation": "contains",
@@ -5984,9 +6936,9 @@
       "source_file": "docs/implementation_plan.md",
       "source_location": "L200",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_implementation_plan_2_1_core_schema_run_in_supabase_sql_editor",
-      "target": "docs_implementation_plan_codeblock_13",
-      "confidence_score": 1.0
+      "target": "docs_implementation_plan_codeblock_13"
     },
     {
       "relation": "contains",
@@ -5994,9 +6946,9 @@
       "source_file": "docs/implementation_plan.md",
       "source_location": "L286",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_implementation_plan_2_2_seed_mock_data",
-      "target": "docs_implementation_plan_codeblock_14",
-      "confidence_score": 1.0
+      "target": "docs_implementation_plan_codeblock_14"
     },
     {
       "relation": "contains",
@@ -6004,9 +6956,9 @@
       "source_file": "docs/implementation_plan.md",
       "source_location": "L301",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_implementation_plan_phase_3_fastapi_backend",
-      "target": "docs_implementation_plan_3_1_backend_main_py",
-      "confidence_score": 1.0
+      "target": "docs_implementation_plan_3_1_backend_main_py"
     },
     {
       "relation": "contains",
@@ -6014,9 +6966,9 @@
       "source_file": "docs/implementation_plan.md",
       "source_location": "L322",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_implementation_plan_phase_3_fastapi_backend",
-      "target": "docs_implementation_plan_3_2_all_api_endpoints",
-      "confidence_score": 1.0
+      "target": "docs_implementation_plan_3_2_all_api_endpoints"
     },
     {
       "relation": "contains",
@@ -6024,9 +6976,9 @@
       "source_file": "docs/implementation_plan.md",
       "source_location": "L340",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_implementation_plan_phase_3_fastapi_backend",
-      "target": "docs_implementation_plan_3_3_pydantic_schemas_backend_models_schemas_py",
-      "confidence_score": 1.0
+      "target": "docs_implementation_plan_3_3_pydantic_schemas_backend_models_schemas_py"
     },
     {
       "relation": "contains",
@@ -6034,9 +6986,9 @@
       "source_file": "docs/implementation_plan.md",
       "source_location": "L376",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_implementation_plan_phase_3_fastapi_backend",
-      "target": "docs_implementation_plan_3_4_supabase_client_backend_db_supabase_client_py",
-      "confidence_score": 1.0
+      "target": "docs_implementation_plan_3_4_supabase_client_backend_db_supabase_client_py"
     },
     {
       "relation": "contains",
@@ -6044,9 +6996,9 @@
       "source_file": "docs/implementation_plan.md",
       "source_location": "L302",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_implementation_plan_3_1_backend_main_py",
-      "target": "docs_implementation_plan_codeblock_15",
-      "confidence_score": 1.0
+      "target": "docs_implementation_plan_codeblock_15"
     },
     {
       "relation": "contains",
@@ -6054,9 +7006,9 @@
       "source_file": "docs/implementation_plan.md",
       "source_location": "L341",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_implementation_plan_3_3_pydantic_schemas_backend_models_schemas_py",
-      "target": "docs_implementation_plan_codeblock_16",
-      "confidence_score": 1.0
+      "target": "docs_implementation_plan_codeblock_16"
     },
     {
       "relation": "contains",
@@ -6064,9 +7016,9 @@
       "source_file": "docs/implementation_plan.md",
       "source_location": "L377",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_implementation_plan_3_4_supabase_client_backend_db_supabase_client_py",
-      "target": "docs_implementation_plan_codeblock_17",
-      "confidence_score": 1.0
+      "target": "docs_implementation_plan_codeblock_17"
     },
     {
       "relation": "contains",
@@ -6074,9 +7026,9 @@
       "source_file": "docs/implementation_plan.md",
       "source_location": "L392",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_implementation_plan_phase_4_ai_pipeline",
-      "target": "docs_implementation_plan_4_1_whisper_transcription_service_backend_services_whisper_service_py",
-      "confidence_score": 1.0
+      "target": "docs_implementation_plan_4_1_whisper_transcription_service_backend_services_whisper_service_py"
     },
     {
       "relation": "contains",
@@ -6084,9 +7036,9 @@
       "source_file": "docs/implementation_plan.md",
       "source_location": "L411",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_implementation_plan_phase_4_ai_pipeline",
-      "target": "docs_implementation_plan_4_2_llm_order_extraction_backend_services_llm_service_py",
-      "confidence_score": 1.0
+      "target": "docs_implementation_plan_4_2_llm_order_extraction_backend_services_llm_service_py"
     },
     {
       "relation": "contains",
@@ -6094,9 +7046,9 @@
       "source_file": "docs/implementation_plan.md",
       "source_location": "L447",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_implementation_plan_phase_4_ai_pipeline",
-      "target": "docs_implementation_plan_4_3_transcribe_router_backend_routers_transcribe_py",
-      "confidence_score": 1.0
+      "target": "docs_implementation_plan_4_3_transcribe_router_backend_routers_transcribe_py"
     },
     {
       "relation": "contains",
@@ -6104,9 +7056,9 @@
       "source_file": "docs/implementation_plan.md",
       "source_location": "L476",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_implementation_plan_phase_4_ai_pipeline",
-      "target": "docs_implementation_plan_4_4_full_pipeline_test",
-      "confidence_score": 1.0
+      "target": "docs_implementation_plan_4_4_full_pipeline_test"
     },
     {
       "relation": "contains",
@@ -6114,9 +7066,9 @@
       "source_file": "docs/implementation_plan.md",
       "source_location": "L393",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_implementation_plan_4_1_whisper_transcription_service_backend_services_whisper_service_py",
-      "target": "docs_implementation_plan_codeblock_18",
-      "confidence_score": 1.0
+      "target": "docs_implementation_plan_codeblock_18"
     },
     {
       "relation": "contains",
@@ -6124,9 +7076,9 @@
       "source_file": "docs/implementation_plan.md",
       "source_location": "L412",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_implementation_plan_4_2_llm_order_extraction_backend_services_llm_service_py",
-      "target": "docs_implementation_plan_codeblock_19",
-      "confidence_score": 1.0
+      "target": "docs_implementation_plan_codeblock_19"
     },
     {
       "relation": "contains",
@@ -6134,9 +7086,9 @@
       "source_file": "docs/implementation_plan.md",
       "source_location": "L448",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_implementation_plan_4_3_transcribe_router_backend_routers_transcribe_py",
-      "target": "docs_implementation_plan_codeblock_20",
-      "confidence_score": 1.0
+      "target": "docs_implementation_plan_codeblock_20"
     },
     {
       "relation": "contains",
@@ -6144,9 +7096,9 @@
       "source_file": "docs/implementation_plan.md",
       "source_location": "L477",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_implementation_plan_4_4_full_pipeline_test",
-      "target": "docs_implementation_plan_codeblock_21",
-      "confidence_score": 1.0
+      "target": "docs_implementation_plan_codeblock_21"
     },
     {
       "relation": "contains",
@@ -6154,9 +7106,9 @@
       "source_file": "docs/implementation_plan.md",
       "source_location": "L498",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_implementation_plan_phase_5_route_optimization_engine",
-      "target": "docs_implementation_plan_5_1_geocoding_service_backend_services_geocoder_py",
-      "confidence_score": 1.0
+      "target": "docs_implementation_plan_5_1_geocoding_service_backend_services_geocoder_py"
     },
     {
       "relation": "contains",
@@ -6164,9 +7116,9 @@
       "source_file": "docs/implementation_plan.md",
       "source_location": "L526",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_implementation_plan_phase_5_route_optimization_engine",
-      "target": "docs_implementation_plan_5_2_or_tools_route_optimizer_backend_services_route_optimizer_py",
-      "confidence_score": 1.0
+      "target": "docs_implementation_plan_5_2_or_tools_route_optimizer_backend_services_route_optimizer_py"
     },
     {
       "relation": "contains",
@@ -6174,9 +7126,9 @@
       "source_file": "docs/implementation_plan.md",
       "source_location": "L569",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_implementation_plan_phase_5_route_optimization_engine",
-      "target": "docs_implementation_plan_5_3_route_router_backend_routers_route_py",
-      "confidence_score": 1.0
+      "target": "docs_implementation_plan_5_3_route_router_backend_routers_route_py"
     },
     {
       "relation": "contains",
@@ -6184,9 +7136,9 @@
       "source_file": "docs/implementation_plan.md",
       "source_location": "L499",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_implementation_plan_5_1_geocoding_service_backend_services_geocoder_py",
-      "target": "docs_implementation_plan_codeblock_22",
-      "confidence_score": 1.0
+      "target": "docs_implementation_plan_codeblock_22"
     },
     {
       "relation": "contains",
@@ -6194,9 +7146,9 @@
       "source_file": "docs/implementation_plan.md",
       "source_location": "L527",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_implementation_plan_5_2_or_tools_route_optimizer_backend_services_route_optimizer_py",
-      "target": "docs_implementation_plan_codeblock_23",
-      "confidence_score": 1.0
+      "target": "docs_implementation_plan_codeblock_23"
     },
     {
       "relation": "contains",
@@ -6204,9 +7156,9 @@
       "source_file": "docs/implementation_plan.md",
       "source_location": "L570",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_implementation_plan_5_3_route_router_backend_routers_route_py",
-      "target": "docs_implementation_plan_codeblock_24",
-      "confidence_score": 1.0
+      "target": "docs_implementation_plan_codeblock_24"
     },
     {
       "relation": "contains",
@@ -6214,9 +7166,9 @@
       "source_file": "docs/implementation_plan.md",
       "source_location": "L623",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_implementation_plan_phase_6_twilio_whatsapp_integration",
-      "target": "docs_implementation_plan_6_1_whatsapp_router_backend_routers_whatsapp_py",
-      "confidence_score": 1.0
+      "target": "docs_implementation_plan_6_1_whatsapp_router_backend_routers_whatsapp_py"
     },
     {
       "relation": "contains",
@@ -6224,9 +7176,9 @@
       "source_file": "docs/implementation_plan.md",
       "source_location": "L711",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_implementation_plan_phase_6_twilio_whatsapp_integration",
-      "target": "docs_implementation_plan_6_2_local_webhook_testing_with_ngrok",
-      "confidence_score": 1.0
+      "target": "docs_implementation_plan_6_2_local_webhook_testing_with_ngrok"
     },
     {
       "relation": "contains",
@@ -6234,9 +7186,9 @@
       "source_file": "docs/implementation_plan.md",
       "source_location": "L722",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_implementation_plan_phase_6_twilio_whatsapp_integration",
-      "target": "docs_implementation_plan_6_3_twilio_sandbox_setup_steps",
-      "confidence_score": 1.0
+      "target": "docs_implementation_plan_6_3_twilio_sandbox_setup_steps"
     },
     {
       "relation": "contains",
@@ -6244,9 +7196,9 @@
       "source_file": "docs/implementation_plan.md",
       "source_location": "L624",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_implementation_plan_6_1_whatsapp_router_backend_routers_whatsapp_py",
-      "target": "docs_implementation_plan_codeblock_25",
-      "confidence_score": 1.0
+      "target": "docs_implementation_plan_codeblock_25"
     },
     {
       "relation": "contains",
@@ -6254,9 +7206,9 @@
       "source_file": "docs/implementation_plan.md",
       "source_location": "L712",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_implementation_plan_6_2_local_webhook_testing_with_ngrok",
-      "target": "docs_implementation_plan_codeblock_26",
-      "confidence_score": 1.0
+      "target": "docs_implementation_plan_codeblock_26"
     },
     {
       "relation": "contains",
@@ -6264,9 +7216,9 @@
       "source_file": "docs/implementation_plan.md",
       "source_location": "L734",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_implementation_plan_phase_7_next_js_frontend_integration",
-      "target": "docs_implementation_plan_7_1_stitch_html_integration_strategy",
-      "confidence_score": 1.0
+      "target": "docs_implementation_plan_7_1_stitch_html_integration_strategy"
     },
     {
       "relation": "contains",
@@ -6274,9 +7226,9 @@
       "source_file": "docs/implementation_plan.md",
       "source_location": "L750",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_implementation_plan_phase_7_next_js_frontend_integration",
-      "target": "docs_implementation_plan_7_2_supabase_client_setup",
-      "confidence_score": 1.0
+      "target": "docs_implementation_plan_7_2_supabase_client_setup"
     },
     {
       "relation": "contains",
@@ -6284,9 +7236,9 @@
       "source_file": "docs/implementation_plan.md",
       "source_location": "L761",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_implementation_plan_phase_7_next_js_frontend_integration",
-      "target": "docs_implementation_plan_7_3_dashboard_page_with_live_data",
-      "confidence_score": 1.0
+      "target": "docs_implementation_plan_7_3_dashboard_page_with_live_data"
     },
     {
       "relation": "contains",
@@ -6294,9 +7246,9 @@
       "source_file": "docs/implementation_plan.md",
       "source_location": "L781",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_implementation_plan_phase_7_next_js_frontend_integration",
-      "target": "docs_implementation_plan_7_4_voice_upload_page_with_pipeline",
-      "confidence_score": 1.0
+      "target": "docs_implementation_plan_7_4_voice_upload_page_with_pipeline"
     },
     {
       "relation": "contains",
@@ -6304,9 +7256,9 @@
       "source_file": "docs/implementation_plan.md",
       "source_location": "L814",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_implementation_plan_phase_7_next_js_frontend_integration",
-      "target": "docs_implementation_plan_7_5_route_map_page_leaflet",
-      "confidence_score": 1.0
+      "target": "docs_implementation_plan_7_5_route_map_page_leaflet"
     },
     {
       "relation": "contains",
@@ -6314,9 +7266,9 @@
       "source_file": "docs/implementation_plan.md",
       "source_location": "L841",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_implementation_plan_phase_7_next_js_frontend_integration",
-      "target": "docs_implementation_plan_7_6_dark_mode_support",
-      "confidence_score": 1.0
+      "target": "docs_implementation_plan_7_6_dark_mode_support"
     },
     {
       "relation": "contains",
@@ -6324,9 +7276,9 @@
       "source_file": "docs/implementation_plan.md",
       "source_location": "L857",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_implementation_plan_phase_7_next_js_frontend_integration",
-      "target": "docs_implementation_plan_7_7_google_fonts_setup",
-      "confidence_score": 1.0
+      "target": "docs_implementation_plan_7_7_google_fonts_setup"
     },
     {
       "relation": "contains",
@@ -6334,9 +7286,9 @@
       "source_file": "docs/implementation_plan.md",
       "source_location": "L751",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_implementation_plan_7_2_supabase_client_setup",
-      "target": "docs_implementation_plan_codeblock_27",
-      "confidence_score": 1.0
+      "target": "docs_implementation_plan_codeblock_27"
     },
     {
       "relation": "contains",
@@ -6344,9 +7296,9 @@
       "source_file": "docs/implementation_plan.md",
       "source_location": "L765",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_implementation_plan_7_3_dashboard_page_with_live_data",
-      "target": "docs_implementation_plan_codeblock_28",
-      "confidence_score": 1.0
+      "target": "docs_implementation_plan_codeblock_28"
     },
     {
       "relation": "contains",
@@ -6354,9 +7306,9 @@
       "source_file": "docs/implementation_plan.md",
       "source_location": "L785",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_implementation_plan_7_4_voice_upload_page_with_pipeline",
-      "target": "docs_implementation_plan_codeblock_29",
-      "confidence_score": 1.0
+      "target": "docs_implementation_plan_codeblock_29"
     },
     {
       "relation": "contains",
@@ -6364,9 +7316,9 @@
       "source_file": "docs/implementation_plan.md",
       "source_location": "L788",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_implementation_plan_7_4_voice_upload_page_with_pipeline",
-      "target": "docs_implementation_plan_codeblock_30",
-      "confidence_score": 1.0
+      "target": "docs_implementation_plan_codeblock_30"
     },
     {
       "relation": "contains",
@@ -6374,9 +7326,9 @@
       "source_file": "docs/implementation_plan.md",
       "source_location": "L817",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_implementation_plan_7_5_route_map_page_leaflet",
-      "target": "docs_implementation_plan_codeblock_31",
-      "confidence_score": 1.0
+      "target": "docs_implementation_plan_codeblock_31"
     },
     {
       "relation": "contains",
@@ -6384,9 +7336,9 @@
       "source_file": "docs/implementation_plan.md",
       "source_location": "L843",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_implementation_plan_7_6_dark_mode_support",
-      "target": "docs_implementation_plan_codeblock_32",
-      "confidence_score": 1.0
+      "target": "docs_implementation_plan_codeblock_32"
     },
     {
       "relation": "contains",
@@ -6394,9 +7346,9 @@
       "source_file": "docs/implementation_plan.md",
       "source_location": "L858",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_implementation_plan_7_7_google_fonts_setup",
-      "target": "docs_implementation_plan_codeblock_33",
-      "confidence_score": 1.0
+      "target": "docs_implementation_plan_codeblock_33"
     },
     {
       "relation": "contains",
@@ -6404,9 +7356,9 @@
       "source_file": "docs/implementation_plan.md",
       "source_location": "L871",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_implementation_plan_phase_8_analytics_observability",
-      "target": "docs_implementation_plan_8_1_analytics_endpoint_backend_routers_analytics_py",
-      "confidence_score": 1.0
+      "target": "docs_implementation_plan_8_1_analytics_endpoint_backend_routers_analytics_py"
     },
     {
       "relation": "contains",
@@ -6414,9 +7366,9 @@
       "source_file": "docs/implementation_plan.md",
       "source_location": "L906",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_implementation_plan_phase_8_analytics_observability",
-      "target": "docs_implementation_plan_8_2_demand_forecasting_stretch",
-      "confidence_score": 1.0
+      "target": "docs_implementation_plan_8_2_demand_forecasting_stretch"
     },
     {
       "relation": "contains",
@@ -6424,9 +7376,9 @@
       "source_file": "docs/implementation_plan.md",
       "source_location": "L872",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_implementation_plan_8_1_analytics_endpoint_backend_routers_analytics_py",
-      "target": "docs_implementation_plan_codeblock_34",
-      "confidence_score": 1.0
+      "target": "docs_implementation_plan_codeblock_34"
     },
     {
       "relation": "contains",
@@ -6434,9 +7386,9 @@
       "source_file": "docs/implementation_plan.md",
       "source_location": "L908",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_implementation_plan_8_2_demand_forecasting_stretch",
-      "target": "docs_implementation_plan_codeblock_35",
-      "confidence_score": 1.0
+      "target": "docs_implementation_plan_codeblock_35"
     },
     {
       "relation": "contains",
@@ -6444,9 +7396,9 @@
       "source_file": "docs/implementation_plan.md",
       "source_location": "L932",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_implementation_plan_phase_9_deployment_production_readiness",
-      "target": "docs_implementation_plan_9_1_frontend_deployment_vercel",
-      "confidence_score": 1.0
+      "target": "docs_implementation_plan_9_1_frontend_deployment_vercel"
     },
     {
       "relation": "contains",
@@ -6454,9 +7406,9 @@
       "source_file": "docs/implementation_plan.md",
       "source_location": "L943",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_implementation_plan_phase_9_deployment_production_readiness",
-      "target": "docs_implementation_plan_9_2_backend_deployment_render",
-      "confidence_score": 1.0
+      "target": "docs_implementation_plan_9_2_backend_deployment_render"
     },
     {
       "relation": "contains",
@@ -6464,9 +7416,9 @@
       "source_file": "docs/implementation_plan.md",
       "source_location": "L966",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_implementation_plan_phase_9_deployment_production_readiness",
-      "target": "docs_implementation_plan_9_3_supabase_production_migration",
-      "confidence_score": 1.0
+      "target": "docs_implementation_plan_9_3_supabase_production_migration"
     },
     {
       "relation": "contains",
@@ -6474,9 +7426,9 @@
       "source_file": "docs/implementation_plan.md",
       "source_location": "L972",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_implementation_plan_phase_9_deployment_production_readiness",
-      "target": "docs_implementation_plan_9_4_twilio_production_webhook_update",
-      "confidence_score": 1.0
+      "target": "docs_implementation_plan_9_4_twilio_production_webhook_update"
     },
     {
       "relation": "contains",
@@ -6484,9 +7436,9 @@
       "source_file": "docs/implementation_plan.md",
       "source_location": "L975",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_implementation_plan_phase_9_deployment_production_readiness",
-      "target": "docs_implementation_plan_9_5_final_health_check",
-      "confidence_score": 1.0
+      "target": "docs_implementation_plan_9_5_final_health_check"
     },
     {
       "relation": "contains",
@@ -6494,9 +7446,9 @@
       "source_file": "docs/implementation_plan.md",
       "source_location": "L933",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_implementation_plan_9_1_frontend_deployment_vercel",
-      "target": "docs_implementation_plan_codeblock_36",
-      "confidence_score": 1.0
+      "target": "docs_implementation_plan_codeblock_36"
     },
     {
       "relation": "contains",
@@ -6504,9 +7456,9 @@
       "source_file": "docs/implementation_plan.md",
       "source_location": "L945",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_implementation_plan_9_2_backend_deployment_render",
-      "target": "docs_implementation_plan_codeblock_37",
-      "confidence_score": 1.0
+      "target": "docs_implementation_plan_codeblock_37"
     },
     {
       "relation": "contains",
@@ -6514,9 +7466,9 @@
       "source_file": "docs/implementation_plan.md",
       "source_location": "L967",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_implementation_plan_9_3_supabase_production_migration",
-      "target": "docs_implementation_plan_codeblock_38",
-      "confidence_score": 1.0
+      "target": "docs_implementation_plan_codeblock_38"
     },
     {
       "relation": "contains",
@@ -6524,9 +7476,9 @@
       "source_file": "docs/implementation_plan.md",
       "source_location": "L976",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_implementation_plan_9_5_final_health_check",
-      "target": "docs_implementation_plan_codeblock_39",
-      "confidence_score": 1.0
+      "target": "docs_implementation_plan_codeblock_39"
     },
     {
       "relation": "contains",
@@ -6534,9 +7486,9 @@
       "source_file": "docs/implementation_plan.md",
       "source_location": "L990",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_implementation_plan_graphify_ongoing_workflow",
-      "target": "docs_implementation_plan_codeblock_40",
-      "confidence_score": 1.0
+      "target": "docs_implementation_plan_codeblock_40"
     },
     {
       "relation": "contains",
@@ -6544,9 +7496,9 @@
       "source_file": "docs/implementation_plan.md",
       "source_location": "L1009",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_implementation_plan_3_day_sprint_calendar",
-      "target": "docs_implementation_plan_codeblock_41",
-      "confidence_score": 1.0
+      "target": "docs_implementation_plan_codeblock_41"
     },
     {
       "relation": "contains",
@@ -6554,9 +7506,9 @@
       "source_file": "docs/implementation_plan.md",
       "source_location": "L1038",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_implementation_plan_verification_checklist",
-      "target": "docs_implementation_plan_core_mvp_must_pass",
-      "confidence_score": 1.0
+      "target": "docs_implementation_plan_core_mvp_must_pass"
     },
     {
       "relation": "contains",
@@ -6564,9 +7516,9 @@
       "source_file": "docs/implementation_plan.md",
       "source_location": "L1047",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_implementation_plan_verification_checklist",
-      "target": "docs_implementation_plan_stretch_goals",
-      "confidence_score": 1.0
+      "target": "docs_implementation_plan_stretch_goals"
     },
     {
       "relation": "contains",
@@ -6574,9 +7526,9 @@
       "source_file": "docs/PS.md",
       "source_location": "L2",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_ps_md",
-      "target": "docs_ps_executive_summary",
-      "confidence_score": 1.0
+      "target": "docs_ps_executive_summary"
     },
     {
       "relation": "contains",
@@ -6584,9 +7536,9 @@
       "source_file": "docs/PS.md",
       "source_location": "L8",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_ps_md",
-      "target": "docs_ps_problem_overview_and_context",
-      "confidence_score": 1.0
+      "target": "docs_ps_problem_overview_and_context"
     },
     {
       "relation": "contains",
@@ -6594,9 +7546,9 @@
       "source_file": "docs/PS.md",
       "source_location": "L80",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_ps_md",
-      "target": "docs_ps_assumptions",
-      "confidence_score": 1.0
+      "target": "docs_ps_assumptions"
     },
     {
       "relation": "contains",
@@ -6604,9 +7556,9 @@
       "source_file": "docs/PS.md",
       "source_location": "L89",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_ps_md",
-      "target": "docs_ps_prioritized_action_items_problem_validation",
-      "confidence_score": 1.0
+      "target": "docs_ps_prioritized_action_items_problem_validation"
     },
     {
       "relation": "contains",
@@ -6614,9 +7566,9 @@
       "source_file": "docs/PS.md",
       "source_location": "L98",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_ps_md",
-      "target": "docs_ps_example_scenario_minimal_reproducible_example",
-      "confidence_score": 1.0
+      "target": "docs_ps_example_scenario_minimal_reproducible_example"
     },
     {
       "relation": "contains",
@@ -6624,9 +7576,9 @@
       "source_file": "docs/PS.md",
       "source_location": "L12",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_ps_problem_overview_and_context",
-      "target": "docs_ps_current_workflows",
-      "confidence_score": 1.0
+      "target": "docs_ps_current_workflows"
     },
     {
       "relation": "contains",
@@ -6634,9 +7586,9 @@
       "source_file": "docs/PS.md",
       "source_location": "L20",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_ps_problem_overview_and_context",
-      "target": "docs_ps_target_users_and_personas",
-      "confidence_score": 1.0
+      "target": "docs_ps_target_users_and_personas"
     },
     {
       "relation": "contains",
@@ -6644,9 +7596,9 @@
       "source_file": "docs/PS.md",
       "source_location": "L27",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_ps_problem_overview_and_context",
-      "target": "docs_ps_pain_points_and_scale",
-      "confidence_score": 1.0
+      "target": "docs_ps_pain_points_and_scale"
     },
     {
       "relation": "contains",
@@ -6654,9 +7606,9 @@
       "source_file": "docs/PS.md",
       "source_location": "L41",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_ps_problem_overview_and_context",
-      "target": "docs_ps_market_context",
-      "confidence_score": 1.0
+      "target": "docs_ps_market_context"
     },
     {
       "relation": "contains",
@@ -6664,9 +7616,9 @@
       "source_file": "docs/PS.md",
       "source_location": "L45",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_ps_problem_overview_and_context",
-      "target": "docs_ps_key_performance_indicators_kpis",
-      "confidence_score": 1.0
+      "target": "docs_ps_key_performance_indicators_kpis"
     },
     {
       "relation": "contains",
@@ -6674,9 +7626,9 @@
       "source_file": "docs/PS.md",
       "source_location": "L57",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_ps_problem_overview_and_context",
-      "target": "docs_ps_constraints_and_assumptions",
-      "confidence_score": 1.0
+      "target": "docs_ps_constraints_and_assumptions"
     },
     {
       "relation": "contains",
@@ -6684,9 +7636,9 @@
       "source_file": "docs/PS.md",
       "source_location": "L67",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_ps_problem_overview_and_context",
-      "target": "docs_ps_success_criteria_for_mvp",
-      "confidence_score": 1.0
+      "target": "docs_ps_success_criteria_for_mvp"
     },
     {
       "relation": "contains",
@@ -6694,9 +7646,9 @@
       "source_file": "docs/PS.md",
       "source_location": "L103",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_ps_example_scenario_minimal_reproducible_example",
-      "target": "docs_ps_codeblock_1",
-      "confidence_score": 1.0
+      "target": "docs_ps_codeblock_1"
     },
     {
       "relation": "contains",
@@ -6704,9 +7656,9 @@
       "source_file": "docs/PS.md",
       "source_location": "L116",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_ps_example_scenario_minimal_reproducible_example",
-      "target": "docs_ps_codeblock_2",
-      "confidence_score": 1.0
+      "target": "docs_ps_codeblock_2"
     },
     {
       "relation": "contains",
@@ -6714,9 +7666,9 @@
       "source_file": "docs/SA_Implementation.md",
       "source_location": "L1",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_sa_implementation_md",
-      "target": "docs_sa_implementation_system_architecture",
-      "confidence_score": 1.0
+      "target": "docs_sa_implementation_system_architecture"
     },
     {
       "relation": "contains",
@@ -6724,9 +7676,9 @@
       "source_file": "docs/SA_Implementation.md",
       "source_location": "L38",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_sa_implementation_md",
-      "target": "docs_sa_implementation_implementation_plan",
-      "confidence_score": 1.0
+      "target": "docs_sa_implementation_implementation_plan"
     },
     {
       "relation": "contains",
@@ -6734,9 +7686,9 @@
       "source_file": "docs/SA_Implementation.md",
       "source_location": "L40",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_sa_implementation_implementation_plan",
-      "target": "docs_sa_implementation_executive_summary",
-      "confidence_score": 1.0
+      "target": "docs_sa_implementation_executive_summary"
     },
     {
       "relation": "contains",
@@ -6744,9 +7696,9 @@
       "source_file": "docs/SA_Implementation.md",
       "source_location": "L44",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_sa_implementation_implementation_plan",
-      "target": "docs_sa_implementation_phase_breakdown_and_task_timeline",
-      "confidence_score": 1.0
+      "target": "docs_sa_implementation_phase_breakdown_and_task_timeline"
     },
     {
       "relation": "contains",
@@ -6754,9 +7706,9 @@
       "source_file": "docs/SA_Implementation.md",
       "source_location": "L64",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_sa_implementation_implementation_plan",
-      "target": "docs_sa_implementation_deliverables_by_phase",
-      "confidence_score": 1.0
+      "target": "docs_sa_implementation_deliverables_by_phase"
     },
     {
       "relation": "contains",
@@ -6764,9 +7716,9 @@
       "source_file": "docs/SA_Implementation.md",
       "source_location": "L76",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_sa_implementation_implementation_plan",
-      "target": "docs_sa_implementation_data_models_database_schema",
-      "confidence_score": 1.0
+      "target": "docs_sa_implementation_data_models_database_schema"
     },
     {
       "relation": "contains",
@@ -6774,9 +7726,9 @@
       "source_file": "docs/SA_Implementation.md",
       "source_location": "L94",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_sa_implementation_implementation_plan",
-      "target": "docs_sa_implementation_api_endpoints",
-      "confidence_score": 1.0
+      "target": "docs_sa_implementation_api_endpoints"
     },
     {
       "relation": "contains",
@@ -6784,9 +7736,9 @@
       "source_file": "docs/SA_Implementation.md",
       "source_location": "L115",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_sa_implementation_implementation_plan",
-      "target": "docs_sa_implementation_development_deployment_workflow",
-      "confidence_score": 1.0
+      "target": "docs_sa_implementation_development_deployment_workflow"
     },
     {
       "relation": "contains",
@@ -6794,9 +7746,9 @@
       "source_file": "docs/SA_Implementation.md",
       "source_location": "L125",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_sa_implementation_implementation_plan",
-      "target": "docs_sa_implementation_testing_checklist",
-      "confidence_score": 1.0
+      "target": "docs_sa_implementation_testing_checklist"
     },
     {
       "relation": "contains",
@@ -6804,9 +7756,9 @@
       "source_file": "docs/SA_Implementation.md",
       "source_location": "L134",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_sa_implementation_implementation_plan",
-      "target": "docs_sa_implementation_demo_script_3_5_minutes",
-      "confidence_score": 1.0
+      "target": "docs_sa_implementation_demo_script_3_5_minutes"
     },
     {
       "relation": "contains",
@@ -6814,9 +7766,9 @@
       "source_file": "docs/SA_Implementation.md",
       "source_location": "L147",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_sa_implementation_implementation_plan",
-      "target": "docs_sa_implementation_risks_mitigations",
-      "confidence_score": 1.0
+      "target": "docs_sa_implementation_risks_mitigations"
     },
     {
       "relation": "contains",
@@ -6824,9 +7776,9 @@
       "source_file": "docs/SA_Implementation.md",
       "source_location": "L156",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_sa_implementation_implementation_plan",
-      "target": "docs_sa_implementation_phase_timeline_mermaid_gantt",
-      "confidence_score": 1.0
+      "target": "docs_sa_implementation_phase_timeline_mermaid_gantt"
     },
     {
       "relation": "contains",
@@ -6834,9 +7786,9 @@
       "source_file": "docs/SA_Implementation.md",
       "source_location": "L158",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "docs_sa_implementation_phase_timeline_mermaid_gantt",
-      "target": "docs_sa_implementation_codeblock_1",
-      "confidence_score": 1.0
+      "target": "docs_sa_implementation_codeblock_1"
     },
     {
       "relation": "contains",
@@ -6844,9 +7796,9 @@
       "source_file": "frontend/AGENTS.md",
       "source_location": "L2",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "frontend_agents_md",
-      "target": "frontend_agents_this_is_not_the_next_js_you_know",
-      "confidence_score": 1.0
+      "target": "frontend_agents_this_is_not_the_next_js_you_know"
     },
     {
       "relation": "contains",
@@ -6854,9 +7806,9 @@
       "source_file": "frontend/README.md",
       "source_location": "L3",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "frontend_readme_md",
-      "target": "frontend_readme_getting_started",
-      "confidence_score": 1.0
+      "target": "frontend_readme_getting_started"
     },
     {
       "relation": "contains",
@@ -6864,9 +7816,9 @@
       "source_file": "frontend/README.md",
       "source_location": "L23",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "frontend_readme_md",
-      "target": "frontend_readme_learn_more",
-      "confidence_score": 1.0
+      "target": "frontend_readme_learn_more"
     },
     {
       "relation": "contains",
@@ -6874,9 +7826,9 @@
       "source_file": "frontend/README.md",
       "source_location": "L32",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "frontend_readme_md",
-      "target": "frontend_readme_deploy_on_vercel",
-      "confidence_score": 1.0
+      "target": "frontend_readme_deploy_on_vercel"
     },
     {
       "relation": "contains",
@@ -6884,11 +7836,11 @@
       "source_file": "frontend/README.md",
       "source_location": "L7",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "frontend_readme_getting_started",
-      "target": "frontend_readme_codeblock_1",
-      "confidence_score": 1.0
+      "target": "frontend_readme_codeblock_1"
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "c12ba5485ed16b067921271bce0306823af02c8e"
+  "built_at_commit": "8ed1965cf57c35318c0bbede0a3ca76774033193"
 }
