@@ -32,14 +32,14 @@ immutabledict==4.3.1
 markdown-it-py==4.2.0
 mdurl==0.1.2
 numpy==2.4.6
-onnxruntime==1.26.0
+# onnxruntime pulled automatically by faster-whisper
 ortools>=9.11.4210
 packaging==26.2
 pandas==3.0.3
 postgrest==0.18.0
 protobuf==5.26.1
 pydantic==2.10.3
-pydantic_core==2.27.1
+# pydantic_core pulled automatically by pydantic
 Pygments==2.20.0
 PyJWT==2.13.0
 python-dateutil==2.9.0.post0
