@@ -22,7 +22,7 @@ async def transcribe(file: UploadFile = File(...)):
         tmp_path = tmp.name
 
     try:
-        result = transcribe_audio(tmp_path)
+        result = await transcribe_audio(tmp_path)
     finally:
         os.unlink(tmp_path)
 

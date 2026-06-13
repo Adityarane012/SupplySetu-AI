@@ -47,14 +47,14 @@ We allocate ~3 full working days (~24–30 hours total) across phases:
 
 | Phase               | Tasks (Key Steps)                                        | Estimated Hours |
 |---------------------|----------------------------------------------------------|----------------:|
-| **1: Project Setup**| Initialize code repos; scaffold Next.js front end; scaffold FastAPI backend; define DB schema and models; install core libraries (FastAPI, Next.js, Supabase client) | 6h  |
-| **2: Local CRUD & UI** | Build basic UI/pages (e.g. orders dashboard); implement stub FastAPI endpoints (e.g. GET/POST orders, customers); connect frontend calls to backend; verify DB read/write via API (using SQLite or Supabase free tier) | 4h  |
-| **3: Audio & Transcription** | Add file upload UI; integrate **faster-whisper** in FastAPI (file upload endpoint); test audio->text transcription; handle transcription results in backend | 4h  |
-| **4: Order Extraction** | Integrate LLM (Ollama or GPT API) to parse transcripts into JSON orders; implement `/extract` endpoint; design `orders` and `order_items` tables; save structured orders in DB | 4h  |
-| **5: Route Optimization** | Write endpoint `/route` that fetches pending orders, geocodes addresses (or uses pre-set lat/lng), builds distance matrix, runs **OR-Tools**; return optimized route sequence | 5h  |
-| **6: Map Visualization** | Integrate Leaflet in front end; fetch route & customer coords; display map with markers and polyline route; polish UI (map legend, status) | 4h  |
-| **7: Delivery Status** | Add “Mark Delivered” button per order; backend updates order/delivery status; optional notification to customer; ensure DB reflects changes | 3h  |
-| **8: (Optional) WhatsApp Integration** | Configure Twilio WhatsApp Sandbox; set webhook to FastAPI; implement sending/receiving messages for orders; test end-to-end with WhatsApp | 4h  |
+| **✅ 1: Project Setup**| Initialize code repos; scaffold Next.js front end; scaffold FastAPI backend; define DB schema and models; install core libraries (FastAPI, Next.js, Supabase client) | 6h  |
+| **✅ 2: Local CRUD & UI** | Build basic UI/pages (e.g. orders dashboard); implement stub FastAPI endpoints (e.g. GET/POST orders, customers); connect frontend calls to backend; verify DB read/write via API (using SQLite or Supabase free tier) | 4h  |
+| **✅ 3: Audio & Transcription** | Add file upload UI; integrate **faster-whisper** in FastAPI (file upload endpoint); test audio->text transcription; handle transcription results in backend | 4h  |
+| **✅ 4: Order Extraction** | Integrate LLM (Ollama or GPT API) to parse transcripts into JSON orders; implement `/extract` endpoint; design `orders` and `order_items` tables; save structured orders in DB | 4h  |
+| **✅ 5: Route Optimization** | Write endpoint `/route` that fetches pending orders, geocodes addresses (or uses pre-set lat/lng), builds distance matrix, runs **OR-Tools**; return optimized route sequence | 5h  |
+| **✅ 6: Map Visualization** | Integrate Leaflet in front end; fetch route & customer coords; display map with markers and polyline route; polish UI (map legend, status) | 4h  |
+| **✅ 7: Delivery Status** | Add “Mark Delivered” button per order; backend updates order/delivery status; optional notification to customer; ensure DB reflects changes | 3h  |
+| **✅ 8: WhatsApp Integration** | Configure Twilio WhatsApp Sandbox; set webhook to FastAPI; implement sending/receiving messages for orders; test end-to-end with WhatsApp | 4h  |
 | **9: Testing & Polish** | Write basic tests or manual checks; fix UI bugs; add loading/error states; prepare demo data; write docs; deploy small fixes | 3h  |
 
 *Total ~33 hours (approx 4 days), but core MVP fits in 3 days (~24h) by dropping optional tasks or overlapping.  Hours include development and brief testing; tasks may run in parallel (e.g. backlog tasks and quick UI polish).*

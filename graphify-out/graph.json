@@ -139,10 +139,19 @@
       "norm_label": "main.py"
     },
     {
+      "label": "lifespan()",
+      "file_type": "code",
+      "source_file": "backend/main.py",
+      "source_location": "L12",
+      "id": "backend_main_lifespan",
+      "community": 26,
+      "norm_label": "lifespan()"
+    },
+    {
       "label": "health()",
       "file_type": "code",
       "source_file": "backend/main.py",
-      "source_location": "L26",
+      "source_location": "L37",
       "id": "backend_main_health",
       "community": 26,
       "norm_label": "health()"
@@ -421,7 +430,7 @@
       "label": "get_forecast()",
       "file_type": "code",
       "source_file": "backend/routers/analytics.py",
-      "source_location": "L44",
+      "source_location": "L47",
       "id": "routers_analytics_get_forecast",
       "community": 19,
       "norm_label": "get_forecast()"
@@ -430,7 +439,7 @@
       "label": "get_weekly_stats()",
       "file_type": "code",
       "source_file": "backend/routers/analytics.py",
-      "source_location": "L84",
+      "source_location": "L87",
       "id": "routers_analytics_get_weekly_stats",
       "community": 19,
       "norm_label": "get_weekly_stats()"
@@ -448,8 +457,8 @@
       "label": "Simple 7-day rolling average demand forecast per product.",
       "file_type": "rationale",
       "source_file": "backend/routers/analytics.py",
-      "source_location": "L45",
-      "id": "routers_analytics_rationale_45",
+      "source_location": "L48",
+      "id": "routers_analytics_rationale_48",
       "community": 19,
       "norm_label": "simple 7-day rolling average demand forecast per product."
     },
@@ -457,8 +466,8 @@
       "label": "Daily order counts for the last 7 days for charts.",
       "file_type": "rationale",
       "source_file": "backend/routers/analytics.py",
-      "source_location": "L85",
-      "id": "routers_analytics_rationale_85",
+      "source_location": "L88",
+      "id": "routers_analytics_rationale_88",
       "community": 19,
       "norm_label": "daily order counts for the last 7 days for charts."
     },
@@ -585,7 +594,7 @@
       "source_file": "backend/routers/simulator.py",
       "source_location": "L1",
       "id": "backend_routers_simulator_py",
-      "community": 10,
+      "community": 15,
       "norm_label": "simulator.py"
     },
     {
@@ -594,7 +603,7 @@
       "source_file": "backend/routers/simulator.py",
       "source_location": "L18",
       "id": "routers_simulator_upsert_customer",
-      "community": 10,
+      "community": 15,
       "norm_label": "_upsert_customer()"
     },
     {
@@ -603,7 +612,7 @@
       "source_file": "backend/routers/simulator.py",
       "source_location": "L30",
       "id": "routers_simulator_sanitise_delivery_date",
-      "community": 10,
+      "community": 15,
       "norm_label": "_sanitise_delivery_date()"
     },
     {
@@ -612,7 +621,7 @@
       "source_file": "backend/routers/simulator.py",
       "source_location": "L64",
       "id": "routers_simulator_build_reply",
-      "community": 10,
+      "community": 15,
       "norm_label": "_build_reply()"
     },
     {
@@ -621,7 +630,7 @@
       "source_file": "backend/routers/simulator.py",
       "source_location": "L103",
       "id": "routers_simulator_receive_simulator_message",
-      "community": 10,
+      "community": 15,
       "norm_label": "receive_simulator_message()"
     },
     {
@@ -630,7 +639,7 @@
       "source_file": "backend/routers/simulator.py",
       "source_location": "L239",
       "id": "routers_simulator_get_chat_history",
-      "community": 10,
+      "community": 15,
       "norm_label": "get_chat_history()"
     },
     {
@@ -639,7 +648,7 @@
       "source_file": "backend/routers/simulator.py",
       "source_location": "L19",
       "id": "routers_simulator_rationale_19",
-      "community": 10,
+      "community": 15,
       "norm_label": "get or create customer record, updating name if it changed."
     },
     {
@@ -648,7 +657,7 @@
       "source_file": "backend/routers/simulator.py",
       "source_location": "L31",
       "id": "routers_simulator_rationale_31",
-      "community": 10,
+      "community": 15,
       "norm_label": "parse and validate delivery_date from llm output.     - must be a valid iso date"
     },
     {
@@ -657,7 +666,7 @@
       "source_file": "backend/routers/simulator.py",
       "source_location": "L65",
       "id": "routers_simulator_rationale_65",
-      "community": 10,
+      "community": 15,
       "norm_label": "build a natural, whatsapp-style reply."
     },
     {
@@ -666,7 +675,7 @@
       "source_file": "backend/routers/simulator.py",
       "source_location": "L240",
       "id": "routers_simulator_rationale_240",
-      "community": 10,
+      "community": 15,
       "norm_label": "return recent orders for a customer phone number."
     },
     {
@@ -675,7 +684,7 @@
       "source_file": "backend/routers/transcribe.py",
       "source_location": "L1",
       "id": "backend_routers_transcribe_py",
-      "community": 14,
+      "community": 10,
       "norm_label": "transcribe.py"
     },
     {
@@ -684,7 +693,7 @@
       "source_file": "backend/routers/transcribe.py",
       "source_location": "L14",
       "id": "routers_transcribe_transcribe",
-      "community": 14,
+      "community": 10,
       "norm_label": "transcribe()"
     },
     {
@@ -693,8 +702,71 @@
       "source_file": "backend/routers/transcribe.py",
       "source_location": "L33",
       "id": "routers_transcribe_extract",
-      "community": 14,
+      "community": 10,
       "norm_label": "extract()"
+    },
+    {
+      "label": "whatsapp.py",
+      "file_type": "code",
+      "source_file": "backend/routers/whatsapp.py",
+      "source_location": "L1",
+      "id": "backend_routers_whatsapp_py",
+      "community": 15,
+      "norm_label": "whatsapp.py"
+    },
+    {
+      "label": "download_twilio_media()",
+      "file_type": "code",
+      "source_file": "backend/routers/whatsapp.py",
+      "source_location": "L21",
+      "id": "routers_whatsapp_download_twilio_media",
+      "community": 15,
+      "norm_label": "download_twilio_media()"
+    },
+    {
+      "label": "twilio_whatsapp_webhook()",
+      "file_type": "code",
+      "source_file": "backend/routers/whatsapp.py",
+      "source_location": "L44",
+      "id": "routers_whatsapp_twilio_whatsapp_webhook",
+      "community": 15,
+      "norm_label": "twilio_whatsapp_webhook()"
+    },
+    {
+      "label": "_send_twiml()",
+      "file_type": "code",
+      "source_file": "backend/routers/whatsapp.py",
+      "source_location": "L144",
+      "id": "routers_whatsapp_send_twiml",
+      "community": 15,
+      "norm_label": "_send_twiml()"
+    },
+    {
+      "label": "Securely downloads Twilio media to a temporary file.",
+      "file_type": "rationale",
+      "source_file": "backend/routers/whatsapp.py",
+      "source_location": "L22",
+      "id": "routers_whatsapp_rationale_22",
+      "community": 15,
+      "norm_label": "securely downloads twilio media to a temporary file."
+    },
+    {
+      "label": "Webhook endpoint to receive incoming WhatsApp messages from Twilio Sandbox.",
+      "file_type": "rationale",
+      "source_file": "backend/routers/whatsapp.py",
+      "source_location": "L45",
+      "id": "routers_whatsapp_rationale_45",
+      "community": 15,
+      "norm_label": "webhook endpoint to receive incoming whatsapp messages from twilio sandbox."
+    },
+    {
+      "label": "Helper to format text as a valid Twilio XML response.",
+      "file_type": "rationale",
+      "source_file": "backend/routers/whatsapp.py",
+      "source_location": "L145",
+      "id": "routers_whatsapp_rationale_145",
+      "community": 15,
+      "norm_label": "helper to format text as a valid twilio xml response."
     },
     {
       "label": "__init__.py",
@@ -704,6 +776,24 @@
       "id": "backend_routers_init_py",
       "community": 37,
       "norm_label": "__init__.py"
+    },
+    {
+      "label": "seed_db.py",
+      "file_type": "code",
+      "source_file": "backend/scripts/seed_db.py",
+      "source_location": "L1",
+      "id": "backend_scripts_seed_db_py",
+      "community": 56,
+      "norm_label": "seed_db.py"
+    },
+    {
+      "label": "seed()",
+      "file_type": "code",
+      "source_file": "backend/scripts/seed_db.py",
+      "source_location": "L18",
+      "id": "scripts_seed_db_seed",
+      "community": 56,
+      "norm_label": "seed()"
     },
     {
       "label": "geocoder.py",
@@ -871,7 +961,7 @@
       "label": "_get_local_model()",
       "file_type": "code",
       "source_file": "backend/services/whisper_service.py",
-      "source_location": "L23",
+      "source_location": "L29",
       "id": "services_whisper_service_get_local_model",
       "community": 14,
       "norm_label": "_get_local_model()"
@@ -880,7 +970,7 @@
       "label": "_groq_transcribe()",
       "file_type": "code",
       "source_file": "backend/services/whisper_service.py",
-      "source_location": "L35",
+      "source_location": "L85",
       "id": "services_whisper_service_groq_transcribe",
       "community": 14,
       "norm_label": "_groq_transcribe()"
@@ -889,7 +979,7 @@
       "label": "_local_transcribe()",
       "file_type": "code",
       "source_file": "backend/services/whisper_service.py",
-      "source_location": "L80",
+      "source_location": "L133",
       "id": "services_whisper_service_local_transcribe",
       "community": 14,
       "norm_label": "_local_transcribe()"
@@ -898,17 +988,26 @@
       "label": "transcribe_audio()",
       "file_type": "code",
       "source_file": "backend/services/whisper_service.py",
-      "source_location": "L95",
+      "source_location": "L157",
       "id": "services_whisper_service_transcribe_audio",
       "community": 14,
       "norm_label": "transcribe_audio()"
     },
     {
+      "label": "preload_model()",
+      "file_type": "code",
+      "source_file": "backend/services/whisper_service.py",
+      "source_location": "L176",
+      "id": "services_whisper_service_preload_model",
+      "community": 14,
+      "norm_label": "preload_model()"
+    },
+    {
       "label": "Lazy-load faster-whisper model (only used as last resort).",
       "file_type": "rationale",
       "source_file": "backend/services/whisper_service.py",
-      "source_location": "L24",
-      "id": "services_whisper_service_rationale_24",
+      "source_location": "L30",
+      "id": "services_whisper_service_rationale_30",
       "community": 14,
       "norm_label": "lazy-load faster-whisper model (only used as last resort)."
     },
@@ -916,8 +1015,8 @@
       "label": "Transcribe via Groq Whisper-large-v3 cloud API with retry.",
       "file_type": "rationale",
       "source_file": "backend/services/whisper_service.py",
-      "source_location": "L36",
-      "id": "services_whisper_service_rationale_36",
+      "source_location": "L86",
+      "id": "services_whisper_service_rationale_86",
       "community": 14,
       "norm_label": "transcribe via groq whisper-large-v3 cloud api with retry."
     },
@@ -925,8 +1024,8 @@
       "label": "Fallback: transcribe locally with faster-whisper.",
       "file_type": "rationale",
       "source_file": "backend/services/whisper_service.py",
-      "source_location": "L81",
-      "id": "services_whisper_service_rationale_81",
+      "source_location": "L134",
+      "id": "services_whisper_service_rationale_134",
       "community": 14,
       "norm_label": "fallback: transcribe locally with faster-whisper."
     },
@@ -934,10 +1033,19 @@
       "label": "Transcribe audio file to text.     Strategy:       1. If GROQ_API_KEY is set \u2192 u",
       "file_type": "rationale",
       "source_file": "backend/services/whisper_service.py",
-      "source_location": "L96",
-      "id": "services_whisper_service_rationale_96",
+      "source_location": "L158",
+      "id": "services_whisper_service_rationale_158",
       "community": 14,
       "norm_label": "transcribe audio file to text.     strategy:       1. if groq_api_key is set \u2192 u"
+    },
+    {
+      "label": "Preloads the local model into memory if local inference is enabled.     This pre",
+      "file_type": "rationale",
+      "source_file": "backend/services/whisper_service.py",
+      "source_location": "L177",
+      "id": "services_whisper_service_rationale_177",
+      "community": 14,
+      "norm_label": "preloads the local model into memory if local inference is enabled.     this pre"
     },
     {
       "label": "__init__.py",
@@ -1611,16 +1719,16 @@
       "source_file": "frontend/src/app/route-map/page.tsx",
       "source_location": "L1",
       "id": "frontend_src_app_route_map_page_tsx",
-      "community": 43,
+      "community": 41,
       "norm_label": "page.tsx"
     },
     {
       "label": "RouteMapPage()",
       "file_type": "code",
       "source_file": "frontend/src/app/route-map/page.tsx",
-      "source_location": "L3",
+      "source_location": "L7",
       "id": "route_map_page_routemappage",
-      "community": 43,
+      "community": 41,
       "norm_label": "routemappage()"
     },
     {
@@ -1690,7 +1798,7 @@
       "label": "MapBoundsFitter()",
       "file_type": "code",
       "source_file": "frontend/src/components/DeliveryMap.tsx",
-      "source_location": "L16",
+      "source_location": "L15",
       "id": "components_deliverymap_mapboundsfitter",
       "community": 45,
       "norm_label": "mapboundsfitter()"
@@ -1699,7 +1807,7 @@
       "label": "DeliveryMap()",
       "file_type": "code",
       "source_file": "frontend/src/components/DeliveryMap.tsx",
-      "source_location": "L27",
+      "source_location": "L26",
       "id": "components_deliverymap_deliverymap",
       "community": 45,
       "norm_label": "deliverymap()"
@@ -1710,7 +1818,7 @@
       "source_file": "frontend/src/components/MapWrapper.tsx",
       "source_location": "L1",
       "id": "frontend_src_components_mapwrapper_tsx",
-      "community": 43,
+      "community": 41,
       "norm_label": "mapwrapper.tsx"
     },
     {
@@ -1719,7 +1827,7 @@
       "source_file": "frontend/src/components/MapWrapper.tsx",
       "source_location": "L4",
       "id": "components_mapwrapper_deliverymap",
-      "community": 43,
+      "community": 41,
       "norm_label": "deliverymap"
     },
     {
@@ -1728,7 +1836,7 @@
       "source_file": "frontend/src/components/MapWrapper.tsx",
       "source_location": "L9",
       "id": "components_mapwrapper_mapwrapper",
-      "community": 43,
+      "community": 41,
       "norm_label": "mapwrapper()"
     },
     {
@@ -3339,7 +3447,7 @@
       "source_file": "docs/implementation_plan.md",
       "source_location": "L388",
       "id": "docs_implementation_plan_phase_4_ai_pipeline",
-      "community": 15,
+      "community": 0,
       "norm_label": "phase 4 \u2014 ai pipeline \ud83e\udd16"
     },
     {
@@ -3348,7 +3456,7 @@
       "source_file": "docs/implementation_plan.md",
       "source_location": "L392",
       "id": "docs_implementation_plan_4_1_whisper_transcription_service_backend_services_whisper_service_py",
-      "community": 15,
+      "community": 0,
       "norm_label": "4.1 \u2014 whisper transcription service (`backend/services/whisper_service.py`)"
     },
     {
@@ -3357,7 +3465,7 @@
       "source_file": "docs/implementation_plan.md",
       "source_location": "L393",
       "id": "docs_implementation_plan_codeblock_18",
-      "community": 15,
+      "community": 0,
       "norm_label": "code:python (from faster_whisper import whispermodel)"
     },
     {
@@ -3366,7 +3474,7 @@
       "source_file": "docs/implementation_plan.md",
       "source_location": "L411",
       "id": "docs_implementation_plan_4_2_llm_order_extraction_backend_services_llm_service_py",
-      "community": 15,
+      "community": 0,
       "norm_label": "4.2 \u2014 llm order extraction (`backend/services/llm_service.py`)"
     },
     {
@@ -3375,7 +3483,7 @@
       "source_file": "docs/implementation_plan.md",
       "source_location": "L412",
       "id": "docs_implementation_plan_codeblock_19",
-      "community": 15,
+      "community": 0,
       "norm_label": "code:python (import httpx, json, os)"
     },
     {
@@ -3384,7 +3492,7 @@
       "source_file": "docs/implementation_plan.md",
       "source_location": "L447",
       "id": "docs_implementation_plan_4_3_transcribe_router_backend_routers_transcribe_py",
-      "community": 15,
+      "community": 0,
       "norm_label": "4.3 \u2014 transcribe router (`backend/routers/transcribe.py`)"
     },
     {
@@ -3393,7 +3501,7 @@
       "source_file": "docs/implementation_plan.md",
       "source_location": "L448",
       "id": "docs_implementation_plan_codeblock_20",
-      "community": 15,
+      "community": 0,
       "norm_label": "code:python (import shutil, tempfile)"
     },
     {
@@ -3402,7 +3510,7 @@
       "source_file": "docs/implementation_plan.md",
       "source_location": "L476",
       "id": "docs_implementation_plan_4_4_full_pipeline_test",
-      "community": 15,
+      "community": 0,
       "norm_label": "4.4 \u2014 full pipeline test"
     },
     {
@@ -3411,7 +3519,7 @@
       "source_file": "docs/implementation_plan.md",
       "source_location": "L477",
       "id": "docs_implementation_plan_codeblock_21",
-      "community": 15,
+      "community": 0,
       "norm_label": "code:bash (# test voice upload end-to-end)"
     },
     {
@@ -3420,7 +3528,7 @@
       "source_file": "docs/implementation_plan.md",
       "source_location": "L494",
       "id": "docs_implementation_plan_phase_5_route_optimization_engine",
-      "community": 0,
+      "community": 54,
       "norm_label": "phase 5 \u2014 route optimization engine \ud83d\uddfa\ufe0f"
     },
     {
@@ -3429,7 +3537,7 @@
       "source_file": "docs/implementation_plan.md",
       "source_location": "L498",
       "id": "docs_implementation_plan_5_1_geocoding_service_backend_services_geocoder_py",
-      "community": 0,
+      "community": 54,
       "norm_label": "5.1 \u2014 geocoding service (`backend/services/geocoder.py`)"
     },
     {
@@ -3438,7 +3546,7 @@
       "source_file": "docs/implementation_plan.md",
       "source_location": "L499",
       "id": "docs_implementation_plan_codeblock_22",
-      "community": 0,
+      "community": 54,
       "norm_label": "code:python (from geopy.geocoders import nominatim)"
     },
     {
@@ -3447,7 +3555,7 @@
       "source_file": "docs/implementation_plan.md",
       "source_location": "L526",
       "id": "docs_implementation_plan_5_2_or_tools_route_optimizer_backend_services_route_optimizer_py",
-      "community": 0,
+      "community": 54,
       "norm_label": "5.2 \u2014 or-tools route optimizer (`backend/services/route_optimizer.py`)"
     },
     {
@@ -3456,7 +3564,7 @@
       "source_file": "docs/implementation_plan.md",
       "source_location": "L527",
       "id": "docs_implementation_plan_codeblock_23",
-      "community": 0,
+      "community": 54,
       "norm_label": "code:python (from ortools.constraint_solver import routing_enums_pb2, pyw)"
     },
     {
@@ -3465,7 +3573,7 @@
       "source_file": "docs/implementation_plan.md",
       "source_location": "L569",
       "id": "docs_implementation_plan_5_3_route_router_backend_routers_route_py",
-      "community": 0,
+      "community": 54,
       "norm_label": "5.3 \u2014 route router (`backend/routers/route.py`)"
     },
     {
@@ -3474,7 +3582,7 @@
       "source_file": "docs/implementation_plan.md",
       "source_location": "L570",
       "id": "docs_implementation_plan_codeblock_24",
-      "community": 0,
+      "community": 54,
       "norm_label": "code:python (from fastapi import apirouter)"
     },
     {
@@ -3717,7 +3825,7 @@
       "source_file": "docs/implementation_plan.md",
       "source_location": "L928",
       "id": "docs_implementation_plan_phase_9_deployment_production_readiness",
-      "community": 0,
+      "community": 43,
       "norm_label": "phase 9 \u2014 deployment & production readiness \ud83d\ude80"
     },
     {
@@ -3726,7 +3834,7 @@
       "source_file": "docs/implementation_plan.md",
       "source_location": "L932",
       "id": "docs_implementation_plan_9_1_frontend_deployment_vercel",
-      "community": 0,
+      "community": 43,
       "norm_label": "9.1 \u2014 frontend deployment (vercel)"
     },
     {
@@ -3735,7 +3843,7 @@
       "source_file": "docs/implementation_plan.md",
       "source_location": "L933",
       "id": "docs_implementation_plan_codeblock_36",
-      "community": 0,
+      "community": 43,
       "norm_label": "code:bash (cd frontend)"
     },
     {
@@ -3744,7 +3852,7 @@
       "source_file": "docs/implementation_plan.md",
       "source_location": "L943",
       "id": "docs_implementation_plan_9_2_backend_deployment_render",
-      "community": 0,
+      "community": 43,
       "norm_label": "9.2 \u2014 backend deployment (render)"
     },
     {
@@ -3753,7 +3861,7 @@
       "source_file": "docs/implementation_plan.md",
       "source_location": "L945",
       "id": "docs_implementation_plan_codeblock_37",
-      "community": 0,
+      "community": 43,
       "norm_label": "code:yaml (services:)"
     },
     {
@@ -3762,7 +3870,7 @@
       "source_file": "docs/implementation_plan.md",
       "source_location": "L966",
       "id": "docs_implementation_plan_9_3_supabase_production_migration",
-      "community": 0,
+      "community": 43,
       "norm_label": "9.3 \u2014 supabase production migration"
     },
     {
@@ -3771,7 +3879,7 @@
       "source_file": "docs/implementation_plan.md",
       "source_location": "L967",
       "id": "docs_implementation_plan_codeblock_38",
-      "community": 0,
+      "community": 43,
       "norm_label": "code:bash (# use supabase cli)"
     },
     {
@@ -3780,7 +3888,7 @@
       "source_file": "docs/implementation_plan.md",
       "source_location": "L972",
       "id": "docs_implementation_plan_9_4_twilio_production_webhook_update",
-      "community": 0,
+      "community": 43,
       "norm_label": "9.4 \u2014 twilio production webhook update"
     },
     {
@@ -3789,7 +3897,7 @@
       "source_file": "docs/implementation_plan.md",
       "source_location": "L975",
       "id": "docs_implementation_plan_9_5_final_health_check",
-      "community": 0,
+      "community": 43,
       "norm_label": "9.5 \u2014 final health check"
     },
     {
@@ -3798,7 +3906,7 @@
       "source_file": "docs/implementation_plan.md",
       "source_location": "L976",
       "id": "docs_implementation_plan_codeblock_39",
-      "community": 0,
+      "community": 43,
       "norm_label": "code:bash (curl https://supplysetu-backend.onrender.com/health)"
     },
     {
@@ -3872,6 +3980,60 @@
       "id": "docs_implementation_plan_key_file_references",
       "community": 0,
       "norm_label": "\ud83d\udd17 key file references"
+    },
+    {
+      "label": "improve.md",
+      "file_type": "document",
+      "source_file": "docs/improve.md",
+      "source_location": "L1",
+      "id": "docs_improve_md",
+      "community": 55,
+      "norm_label": "improve.md"
+    },
+    {
+      "label": "Whisper Service Improvements",
+      "file_type": "document",
+      "source_file": "docs/improve.md",
+      "source_location": "L1",
+      "id": "docs_improve_whisper_service_improvements",
+      "community": 55,
+      "norm_label": "whisper service improvements"
+    },
+    {
+      "label": "\u2705 [COMPLETED] 1. Enable GPU Acceleration for `faster-whisper`",
+      "file_type": "document",
+      "source_file": "docs/improve.md",
+      "source_location": "L5",
+      "id": "docs_improve_completed_1_enable_gpu_acceleration_for_faster_whisper",
+      "community": 55,
+      "norm_label": "\u2705 [completed] 1. enable gpu acceleration for `faster-whisper`"
+    },
+    {
+      "label": "\u2705 [COMPLETED] 2. Make Transcription Asynchronous (Non-Blocking)",
+      "file_type": "document",
+      "source_file": "docs/improve.md",
+      "source_location": "L11",
+      "id": "docs_improve_completed_2_make_transcription_asynchronous_non_blocking",
+      "community": 55,
+      "norm_label": "\u2705 [completed] 2. make transcription asynchronous (non-blocking)"
+    },
+    {
+      "label": "\u2705 [COMPLETED] 3. Replace `print()` with Structured Logging and Metrics",
+      "file_type": "document",
+      "source_file": "docs/improve.md",
+      "source_location": "L16",
+      "id": "docs_improve_completed_3_replace_print_with_structured_logging_and_metrics",
+      "community": 55,
+      "norm_label": "\u2705 [completed] 3. replace `print()` with structured logging and metrics"
+    },
+    {
+      "label": "\u2705 [COMPLETED] 4. Application Startup Pre-loading",
+      "file_type": "document",
+      "source_file": "docs/improve.md",
+      "source_location": "L21",
+      "id": "docs_improve_completed_4_application_startup_pre_loading",
+      "community": 55,
+      "norm_label": "\u2705 [completed] 4. application startup pre-loading"
     },
     {
       "label": "PS.md",
@@ -4210,6 +4372,60 @@
       "label": "Simple 7-day rolling average demand forecast per product.",
       "file_type": "rationale",
       "source_file": "backend/routers/analytics.py",
+      "source_location": "L45",
+      "community": 19,
+      "norm_label": "simple 7-day rolling average demand forecast per product.",
+      "id": "routers_analytics_rationale_45"
+    },
+    {
+      "label": "Daily order counts for the last 7 days for charts.",
+      "file_type": "rationale",
+      "source_file": "backend/routers/analytics.py",
+      "source_location": "L85",
+      "community": 19,
+      "norm_label": "daily order counts for the last 7 days for charts.",
+      "id": "routers_analytics_rationale_85"
+    },
+    {
+      "label": "Lazy-load faster-whisper model (only used as last resort).",
+      "file_type": "rationale",
+      "source_file": "backend/services/whisper_service.py",
+      "source_location": "L24",
+      "community": 14,
+      "norm_label": "lazy-load faster-whisper model (only used as last resort).",
+      "id": "services_whisper_service_rationale_24"
+    },
+    {
+      "label": "Transcribe via Groq Whisper-large-v3 cloud API with retry.",
+      "file_type": "rationale",
+      "source_file": "backend/services/whisper_service.py",
+      "source_location": "L36",
+      "community": 14,
+      "norm_label": "transcribe via groq whisper-large-v3 cloud api with retry.",
+      "id": "services_whisper_service_rationale_36"
+    },
+    {
+      "label": "Fallback: transcribe locally with faster-whisper.",
+      "file_type": "rationale",
+      "source_file": "backend/services/whisper_service.py",
+      "source_location": "L81",
+      "community": 14,
+      "norm_label": "fallback: transcribe locally with faster-whisper.",
+      "id": "services_whisper_service_rationale_81"
+    },
+    {
+      "label": "Transcribe audio file to text.     Strategy:       1. If GROQ_API_KEY is set \u2192 u",
+      "file_type": "rationale",
+      "source_file": "backend/services/whisper_service.py",
+      "source_location": "L96",
+      "community": 14,
+      "norm_label": "transcribe audio file to text.     strategy:       1. if groq_api_key is set \u2192 u",
+      "id": "services_whisper_service_rationale_96"
+    },
+    {
+      "label": "Simple 7-day rolling average demand forecast per product.",
+      "file_type": "rationale",
+      "source_file": "backend/routers/analytics.py",
       "source_location": "L49",
       "community": 19,
       "norm_label": "simple 7-day rolling average demand forecast per product.",
@@ -4229,7 +4445,7 @@
       "file_type": "rationale",
       "source_file": "backend/routers/simulator.py",
       "source_location": "L109",
-      "community": 10,
+      "community": 15,
       "norm_label": "return recent orders for a customer phone number to show in chat.",
       "id": "routers_simulator_rationale_109"
     },
@@ -4277,9 +4493,9 @@
       "source_file": "debug_llm.py",
       "source_location": "L14",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "debug_llm_py",
-      "target": "faraway_hackathon_debug_llm_run",
-      "confidence_score": 1.0
+      "target": "faraway_hackathon_debug_llm_run"
     },
     {
       "relation": "calls",
@@ -4308,9 +4524,9 @@
       "source_file": "test_type_tab.py",
       "source_location": "L207",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "test_type_tab_py",
-      "target": "faraway_hackathon_test_type_tab_run_test",
-      "confidence_score": 1.0
+      "target": "faraway_hackathon_test_type_tab_run_test"
     },
     {
       "relation": "contains",
@@ -4318,9 +4534,9 @@
       "source_file": "test_type_tab.py",
       "source_location": "L295",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "test_type_tab_py",
-      "target": "faraway_hackathon_test_type_tab_main",
-      "confidence_score": 1.0
+      "target": "faraway_hackathon_test_type_tab_main"
     },
     {
       "relation": "rationale_for",
@@ -4328,9 +4544,9 @@
       "source_file": "test_type_tab.py",
       "source_location": "L1",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "faraway_hackathon_test_type_tab_rationale_1",
-      "target": "test_type_tab_py",
-      "confidence_score": 1.0
+      "target": "test_type_tab_py"
     },
     {
       "relation": "calls",
@@ -4339,9 +4555,9 @@
       "source_file": "test_type_tab.py",
       "source_location": "L314",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "faraway_hackathon_test_type_tab_main",
-      "target": "faraway_hackathon_test_type_tab_run_test",
-      "confidence_score": 1.0
+      "target": "faraway_hackathon_test_type_tab_run_test"
     },
     {
       "relation": "contains",
@@ -4362,6 +4578,16 @@
       "confidence_score": 1.0,
       "source": "gemini_settings_hooks",
       "target": "gemini_settings_hooks_beforetool"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/main.py",
+      "source_location": "L12",
+      "weight": 1.0,
+      "source": "backend_main_py",
+      "target": "backend_main_lifespan",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -4419,9 +4645,9 @@
       "source_file": "backend/models/schemas.py",
       "source_location": "L18",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "backend_models_schemas_py",
-      "target": "models_schemas_quantity_must_be_positive",
-      "confidence_score": 1.0
+      "target": "models_schemas_quantity_must_be_positive"
     },
     {
       "relation": "contains",
@@ -4429,9 +4655,9 @@
       "source_file": "backend/models/schemas.py",
       "source_location": "L25",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "backend_models_schemas_py",
-      "target": "models_schemas_product_name_not_empty",
-      "confidence_score": 1.0
+      "target": "models_schemas_product_name_not_empty"
     },
     {
       "relation": "contains",
@@ -4439,9 +4665,9 @@
       "source_file": "backend/models/schemas.py",
       "source_location": "L33",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "backend_models_schemas_py",
-      "target": "models_schemas_unit_must_be_valid",
-      "confidence_score": 1.0
+      "target": "models_schemas_unit_must_be_valid"
     },
     {
       "relation": "contains",
@@ -4459,9 +4685,9 @@
       "source_file": "backend/models/schemas.py",
       "source_location": "L50",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "backend_models_schemas_py",
-      "target": "models_schemas_name_not_empty",
-      "confidence_score": 1.0
+      "target": "models_schemas_name_not_empty"
     },
     {
       "relation": "contains",
@@ -4469,9 +4695,9 @@
       "source_file": "backend/models/schemas.py",
       "source_location": "L58",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "backend_models_schemas_py",
-      "target": "models_schemas_items_not_empty",
-      "confidence_score": 1.0
+      "target": "models_schemas_items_not_empty"
     },
     {
       "relation": "contains",
@@ -4489,9 +4715,9 @@
       "source_file": "backend/models/schemas.py",
       "source_location": "L70",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "backend_models_schemas_py",
-      "target": "models_schemas_status_must_be_valid",
-      "confidence_score": 1.0
+      "target": "models_schemas_status_must_be_valid"
     },
     {
       "relation": "contains",
@@ -4509,9 +4735,9 @@
       "source_file": "backend/models/schemas.py",
       "source_location": "L86",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "backend_models_schemas_py",
-      "target": "models_schemas_lat_in_range",
-      "confidence_score": 1.0
+      "target": "models_schemas_lat_in_range"
     },
     {
       "relation": "contains",
@@ -4519,9 +4745,9 @@
       "source_file": "backend/models/schemas.py",
       "source_location": "L93",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "backend_models_schemas_py",
-      "target": "models_schemas_lng_in_range",
-      "confidence_score": 1.0
+      "target": "models_schemas_lng_in_range"
     },
     {
       "relation": "contains",
@@ -4539,9 +4765,9 @@
       "source_file": "backend/models/schemas.py",
       "source_location": "L105",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "backend_models_schemas_py",
-      "target": "models_schemas_order_ids_not_empty",
-      "confidence_score": 1.0
+      "target": "models_schemas_order_ids_not_empty"
     },
     {
       "relation": "contains",
@@ -4697,11 +4923,21 @@
       "relation": "rationale_for",
       "confidence": "EXTRACTED",
       "source_file": "backend/routers/analytics.py",
-      "source_location": "L45",
+      "source_location": "L48",
       "weight": 1.0,
-      "source": "routers_analytics_rationale_45",
+      "source": "routers_analytics_rationale_48",
       "target": "routers_analytics_get_forecast",
       "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/routers/analytics.py",
+      "source_location": "L45",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "routers_analytics_rationale_45",
+      "target": "routers_analytics_get_forecast"
     },
     {
       "relation": "rationale_for",
@@ -4717,11 +4953,21 @@
       "relation": "rationale_for",
       "confidence": "EXTRACTED",
       "source_file": "backend/routers/analytics.py",
-      "source_location": "L85",
+      "source_location": "L88",
       "weight": 1.0,
-      "source": "routers_analytics_rationale_85",
+      "source": "routers_analytics_rationale_88",
       "target": "routers_analytics_get_weekly_stats",
       "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/routers/analytics.py",
+      "source_location": "L85",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "routers_analytics_rationale_85",
+      "target": "routers_analytics_get_weekly_stats"
     },
     {
       "relation": "rationale_for",
@@ -4861,9 +5107,9 @@
       "source_file": "backend/routers/simulator.py",
       "source_location": "L18",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "backend_routers_simulator_py",
-      "target": "routers_simulator_upsert_customer",
-      "confidence_score": 1.0
+      "target": "routers_simulator_upsert_customer"
     },
     {
       "relation": "contains",
@@ -4871,9 +5117,9 @@
       "source_file": "backend/routers/simulator.py",
       "source_location": "L30",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "backend_routers_simulator_py",
-      "target": "routers_simulator_sanitise_delivery_date",
-      "confidence_score": 1.0
+      "target": "routers_simulator_sanitise_delivery_date"
     },
     {
       "relation": "contains",
@@ -4881,9 +5127,9 @@
       "source_file": "backend/routers/simulator.py",
       "source_location": "L64",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "backend_routers_simulator_py",
-      "target": "routers_simulator_build_reply",
-      "confidence_score": 1.0
+      "target": "routers_simulator_build_reply"
     },
     {
       "relation": "contains",
@@ -4912,9 +5158,9 @@
       "source_file": "backend/routers/simulator.py",
       "source_location": "L199",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "routers_simulator_receive_simulator_message",
-      "target": "routers_simulator_upsert_customer",
-      "confidence_score": 1.0
+      "target": "routers_simulator_upsert_customer"
     },
     {
       "relation": "rationale_for",
@@ -4922,9 +5168,20 @@
       "source_file": "backend/routers/simulator.py",
       "source_location": "L19",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "routers_simulator_rationale_19",
-      "target": "routers_simulator_upsert_customer",
-      "confidence_score": 1.0
+      "target": "routers_simulator_upsert_customer"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "backend/routers/whatsapp.py",
+      "source_location": "L112",
+      "weight": 1.0,
+      "source": "routers_whatsapp_twilio_whatsapp_webhook",
+      "target": "routers_simulator_upsert_customer"
     },
     {
       "relation": "calls",
@@ -4933,9 +5190,9 @@
       "source_file": "backend/routers/simulator.py",
       "source_location": "L186",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "routers_simulator_receive_simulator_message",
-      "target": "routers_simulator_sanitise_delivery_date",
-      "confidence_score": 1.0
+      "target": "routers_simulator_sanitise_delivery_date"
     },
     {
       "relation": "rationale_for",
@@ -4943,9 +5200,20 @@
       "source_file": "backend/routers/simulator.py",
       "source_location": "L31",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "routers_simulator_rationale_31",
-      "target": "routers_simulator_sanitise_delivery_date",
-      "confidence_score": 1.0
+      "target": "routers_simulator_sanitise_delivery_date"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "backend/routers/whatsapp.py",
+      "source_location": "L103",
+      "weight": 1.0,
+      "source": "routers_whatsapp_twilio_whatsapp_webhook",
+      "target": "routers_simulator_sanitise_delivery_date"
     },
     {
       "relation": "calls",
@@ -4954,9 +5222,9 @@
       "source_file": "backend/routers/simulator.py",
       "source_location": "L192",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "routers_simulator_receive_simulator_message",
-      "target": "routers_simulator_build_reply",
-      "confidence_score": 1.0
+      "target": "routers_simulator_build_reply"
     },
     {
       "relation": "rationale_for",
@@ -4964,9 +5232,20 @@
       "source_file": "backend/routers/simulator.py",
       "source_location": "L65",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "routers_simulator_rationale_65",
-      "target": "routers_simulator_build_reply",
-      "confidence_score": 1.0
+      "target": "routers_simulator_build_reply"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "backend/routers/whatsapp.py",
+      "source_location": "L108",
+      "weight": 1.0,
+      "source": "routers_whatsapp_twilio_whatsapp_webhook",
+      "target": "routers_simulator_build_reply"
     },
     {
       "relation": "calls",
@@ -4996,9 +5275,9 @@
       "source_file": "backend/routers/simulator.py",
       "source_location": "L240",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "routers_simulator_rationale_240",
-      "target": "routers_simulator_get_chat_history",
-      "confidence_score": 1.0
+      "target": "routers_simulator_get_chat_history"
     },
     {
       "relation": "rationale_for",
@@ -5055,6 +5334,120 @@
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
+      "source_file": "backend/routers/whatsapp.py",
+      "source_location": "L21",
+      "weight": 1.0,
+      "source": "backend_routers_whatsapp_py",
+      "target": "routers_whatsapp_download_twilio_media",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/routers/whatsapp.py",
+      "source_location": "L44",
+      "weight": 1.0,
+      "source": "backend_routers_whatsapp_py",
+      "target": "routers_whatsapp_twilio_whatsapp_webhook",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/routers/whatsapp.py",
+      "source_location": "L144",
+      "weight": 1.0,
+      "source": "backend_routers_whatsapp_py",
+      "target": "routers_whatsapp_send_twiml",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/routers/whatsapp.py",
+      "source_location": "L72",
+      "weight": 1.0,
+      "source": "routers_whatsapp_twilio_whatsapp_webhook",
+      "target": "routers_whatsapp_download_twilio_media",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/routers/whatsapp.py",
+      "source_location": "L22",
+      "weight": 1.0,
+      "source": "routers_whatsapp_rationale_22",
+      "target": "routers_whatsapp_download_twilio_media",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/routers/whatsapp.py",
+      "source_location": "L69",
+      "weight": 1.0,
+      "source": "routers_whatsapp_twilio_whatsapp_webhook",
+      "target": "routers_whatsapp_send_twiml",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/routers/whatsapp.py",
+      "source_location": "L45",
+      "weight": 1.0,
+      "source": "routers_whatsapp_rationale_45",
+      "target": "routers_whatsapp_twilio_whatsapp_webhook",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "backend/routers/whatsapp.py",
+      "source_location": "L78",
+      "weight": 1.0,
+      "source": "routers_whatsapp_twilio_whatsapp_webhook",
+      "target": "services_whisper_service_transcribe_audio"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "backend/routers/whatsapp.py",
+      "source_location": "L98",
+      "weight": 1.0,
+      "source": "routers_whatsapp_twilio_whatsapp_webhook",
+      "target": "services_llm_service_extract_order"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/routers/whatsapp.py",
+      "source_location": "L145",
+      "weight": 1.0,
+      "source": "routers_whatsapp_rationale_145",
+      "target": "routers_whatsapp_send_twiml",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/scripts/seed_db.py",
+      "source_location": "L18",
+      "weight": 1.0,
+      "source": "backend_scripts_seed_db_py",
+      "target": "scripts_seed_db_seed",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
       "source_file": "backend/services/geocoder.py",
       "source_location": "L7",
       "weight": 1.0,
@@ -5088,9 +5481,9 @@
       "source_file": "backend/services/llm_service.py",
       "source_location": "L45",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "backend_services_llm_service_py",
-      "target": "services_llm_service_parse_json_safe",
-      "confidence_score": 1.0
+      "target": "services_llm_service_parse_json_safe"
     },
     {
       "relation": "contains",
@@ -5098,9 +5491,9 @@
       "source_file": "backend/services/llm_service.py",
       "source_location": "L67",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "backend_services_llm_service_py",
-      "target": "services_llm_service_groq_extract",
-      "confidence_score": 1.0
+      "target": "services_llm_service_groq_extract"
     },
     {
       "relation": "contains",
@@ -5108,9 +5501,9 @@
       "source_file": "backend/services/llm_service.py",
       "source_location": "L108",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "backend_services_llm_service_py",
-      "target": "services_llm_service_ollama_extract",
-      "confidence_score": 1.0
+      "target": "services_llm_service_ollama_extract"
     },
     {
       "relation": "contains",
@@ -5118,9 +5511,9 @@
       "source_file": "backend/services/llm_service.py",
       "source_location": "L127",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "backend_services_llm_service_py",
-      "target": "services_llm_service_async_sleep",
-      "confidence_score": 1.0
+      "target": "services_llm_service_async_sleep"
     },
     {
       "relation": "contains",
@@ -5139,9 +5532,9 @@
       "source_file": "backend/services/llm_service.py",
       "source_location": "L147",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "services_llm_service_extract_order",
-      "target": "services_llm_service_parse_json_safe",
-      "confidence_score": 1.0
+      "target": "services_llm_service_parse_json_safe"
     },
     {
       "relation": "rationale_for",
@@ -5149,9 +5542,9 @@
       "source_file": "backend/services/llm_service.py",
       "source_location": "L46",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "services_llm_service_rationale_46",
-      "target": "services_llm_service_parse_json_safe",
-      "confidence_score": 1.0
+      "target": "services_llm_service_parse_json_safe"
     },
     {
       "relation": "calls",
@@ -5160,9 +5553,9 @@
       "source_file": "backend/services/llm_service.py",
       "source_location": "L100",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "services_llm_service_groq_extract",
-      "target": "services_llm_service_async_sleep",
-      "confidence_score": 1.0
+      "target": "services_llm_service_async_sleep"
     },
     {
       "relation": "calls",
@@ -5171,9 +5564,9 @@
       "source_file": "backend/services/llm_service.py",
       "source_location": "L144",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "services_llm_service_extract_order",
-      "target": "services_llm_service_groq_extract",
-      "confidence_score": 1.0
+      "target": "services_llm_service_groq_extract"
     },
     {
       "relation": "rationale_for",
@@ -5181,9 +5574,9 @@
       "source_file": "backend/services/llm_service.py",
       "source_location": "L68",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "services_llm_service_rationale_68",
-      "target": "services_llm_service_groq_extract",
-      "confidence_score": 1.0
+      "target": "services_llm_service_groq_extract"
     },
     {
       "relation": "calls",
@@ -5192,9 +5585,9 @@
       "source_file": "backend/services/llm_service.py",
       "source_location": "L146",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "services_llm_service_extract_order",
-      "target": "services_llm_service_ollama_extract",
-      "confidence_score": 1.0
+      "target": "services_llm_service_ollama_extract"
     },
     {
       "relation": "rationale_for",
@@ -5202,9 +5595,9 @@
       "source_file": "backend/services/llm_service.py",
       "source_location": "L109",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "services_llm_service_rationale_109",
-      "target": "services_llm_service_ollama_extract",
-      "confidence_score": 1.0
+      "target": "services_llm_service_ollama_extract"
     },
     {
       "relation": "rationale_for",
@@ -5212,9 +5605,9 @@
       "source_file": "backend/services/llm_service.py",
       "source_location": "L133",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "services_llm_service_rationale_133",
-      "target": "services_llm_service_extract_order",
-      "confidence_score": 1.0
+      "target": "services_llm_service_extract_order"
     },
     {
       "relation": "contains",
@@ -5242,9 +5635,9 @@
       "source_file": "backend/services/whisper_service.py",
       "source_location": "L23",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "backend_services_whisper_service_py",
-      "target": "services_whisper_service_get_local_model",
-      "confidence_score": 1.0
+      "target": "services_whisper_service_get_local_model"
     },
     {
       "relation": "contains",
@@ -5252,9 +5645,9 @@
       "source_file": "backend/services/whisper_service.py",
       "source_location": "L35",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "backend_services_whisper_service_py",
-      "target": "services_whisper_service_groq_transcribe",
-      "confidence_score": 1.0
+      "target": "services_whisper_service_groq_transcribe"
     },
     {
       "relation": "contains",
@@ -5262,9 +5655,9 @@
       "source_file": "backend/services/whisper_service.py",
       "source_location": "L80",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "backend_services_whisper_service_py",
-      "target": "services_whisper_service_local_transcribe",
-      "confidence_score": 1.0
+      "target": "services_whisper_service_local_transcribe"
     },
     {
       "relation": "contains",
@@ -5275,6 +5668,16 @@
       "confidence_score": 1.0,
       "source": "backend_services_whisper_service_py",
       "target": "services_whisper_service_transcribe_audio"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/services/whisper_service.py",
+      "source_location": "L176",
+      "weight": 1.0,
+      "source": "backend_services_whisper_service_py",
+      "target": "services_whisper_service_preload_model",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -5291,9 +5694,9 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "backend/services/whisper_service.py",
-      "source_location": "L83",
+      "source_location": "L183",
       "weight": 1.0,
-      "source": "services_whisper_service_local_transcribe",
+      "source": "services_whisper_service_preload_model",
       "target": "services_whisper_service_get_local_model",
       "confidence_score": 1.0
     },
@@ -5301,9 +5704,9 @@
       "relation": "rationale_for",
       "confidence": "EXTRACTED",
       "source_file": "backend/services/whisper_service.py",
-      "source_location": "L24",
+      "source_location": "L30",
       "weight": 1.0,
-      "source": "services_whisper_service_rationale_24",
+      "source": "services_whisper_service_rationale_30",
       "target": "services_whisper_service_get_local_model",
       "confidence_score": 1.0
     },
@@ -5312,9 +5715,40 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "backend/services/whisper_service.py",
+      "source_location": "L83",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "services_whisper_service_local_transcribe",
+      "target": "services_whisper_service_get_local_model"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/services/whisper_service.py",
+      "source_location": "L24",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "services_whisper_service_rationale_24",
+      "target": "services_whisper_service_get_local_model"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/services/whisper_service.py",
       "source_location": "L104",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "services_whisper_service_transcribe_audio",
+      "target": "services_whisper_service_groq_transcribe"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/services/whisper_service.py",
+      "source_location": "L86",
+      "weight": 1.0,
+      "source": "services_whisper_service_rationale_86",
       "target": "services_whisper_service_groq_transcribe",
       "confidence_score": 1.0
     },
@@ -5324,9 +5758,9 @@
       "source_file": "backend/services/whisper_service.py",
       "source_location": "L36",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "services_whisper_service_rationale_36",
-      "target": "services_whisper_service_groq_transcribe",
-      "confidence_score": 1.0
+      "target": "services_whisper_service_groq_transcribe"
     },
     {
       "relation": "calls",
@@ -5335,7 +5769,17 @@
       "source_file": "backend/services/whisper_service.py",
       "source_location": "L111",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "services_whisper_service_transcribe_audio",
+      "target": "services_whisper_service_local_transcribe"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/services/whisper_service.py",
+      "source_location": "L134",
+      "weight": 1.0,
+      "source": "services_whisper_service_rationale_134",
       "target": "services_whisper_service_local_transcribe",
       "confidence_score": 1.0
     },
@@ -5345,8 +5789,18 @@
       "source_file": "backend/services/whisper_service.py",
       "source_location": "L81",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "services_whisper_service_rationale_81",
-      "target": "services_whisper_service_local_transcribe",
+      "target": "services_whisper_service_local_transcribe"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/services/whisper_service.py",
+      "source_location": "L158",
+      "weight": 1.0,
+      "source": "services_whisper_service_rationale_158",
+      "target": "services_whisper_service_transcribe_audio",
       "confidence_score": 1.0
     },
     {
@@ -5355,9 +5809,9 @@
       "source_file": "backend/services/whisper_service.py",
       "source_location": "L96",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "services_whisper_service_rationale_96",
-      "target": "services_whisper_service_transcribe_audio",
-      "confidence_score": 1.0
+      "target": "services_whisper_service_transcribe_audio"
     },
     {
       "relation": "calls",
@@ -5369,6 +5823,16 @@
       "confidence_score": 1.0,
       "source": "services_whisper_service_transcribe_audio",
       "target": "services_whisper_service_get_model"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/services/whisper_service.py",
+      "source_location": "L177",
+      "weight": 1.0,
+      "source": "services_whisper_service_rationale_177",
+      "target": "services_whisper_service_preload_model",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -6032,9 +6496,9 @@
       "source_file": "frontend/src/app/orders/new/page.tsx",
       "source_location": "L7",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "frontend_src_app_orders_new_page_tsx",
-      "target": "new_page_step",
-      "confidence_score": 1.0
+      "target": "new_page_step"
     },
     {
       "relation": "contains",
@@ -6042,9 +6506,9 @@
       "source_file": "frontend/src/app/orders/new/page.tsx",
       "source_location": "L8",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "frontend_src_app_orders_new_page_tsx",
-      "target": "new_page_inputmode",
-      "confidence_score": 1.0
+      "target": "new_page_inputmode"
     },
     {
       "relation": "contains",
@@ -6052,9 +6516,9 @@
       "source_file": "frontend/src/app/orders/new/page.tsx",
       "source_location": "L10",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "frontend_src_app_orders_new_page_tsx",
-      "target": "new_page_example_orders",
-      "confidence_score": 1.0
+      "target": "new_page_example_orders"
     },
     {
       "relation": "contains",
@@ -6062,9 +6526,9 @@
       "source_file": "frontend/src/app/orders/new/page.tsx",
       "source_location": "L16",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "frontend_src_app_orders_new_page_tsx",
-      "target": "new_page_neworderpage",
-      "confidence_score": 1.0
+      "target": "new_page_neworderpage"
     },
     {
       "relation": "contains",
@@ -6086,6 +6550,28 @@
       "confidence_score": 1.0,
       "source": "frontend_src_app_route_map_page_tsx",
       "target": "frontend_src_components_mapwrapper_tsx"
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/src/app/route-map/page.tsx",
+      "source_location": "L5",
+      "weight": 1.0,
+      "source": "frontend_src_app_route_map_page_tsx",
+      "target": "frontend_src_lib_supabase_ts",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/src/app/route-map/page.tsx",
+      "source_location": "L5",
+      "weight": 1.0,
+      "source": "frontend_src_app_route_map_page_tsx",
+      "target": "lib_supabase_supabase",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -6123,9 +6609,9 @@
       "source_file": "frontend/src/app/simulator/page.tsx",
       "source_location": "L24",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "frontend_src_app_simulator_page_tsx",
-      "target": "simulator_page_rendermarkdown",
-      "confidence_score": 1.0
+      "target": "simulator_page_rendermarkdown"
     },
     {
       "relation": "contains",
@@ -6133,9 +6619,9 @@
       "source_file": "frontend/src/app/simulator/page.tsx",
       "source_location": "L38",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "frontend_src_app_simulator_page_tsx",
-      "target": "simulator_page_formatduration",
-      "confidence_score": 1.0
+      "target": "simulator_page_formatduration"
     },
     {
       "relation": "contains",
@@ -6154,9 +6640,9 @@
       "source_file": "frontend/src/app/simulator/page.tsx",
       "source_location": "L312",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "simulator_page_simulatorpage",
-      "target": "simulator_page_formatduration",
-      "confidence_score": 1.0
+      "target": "simulator_page_formatduration"
     },
     {
       "relation": "contains",
@@ -8501,6 +8987,56 @@
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
+      "source_file": "docs/improve.md",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "docs_improve_md",
+      "target": "docs_improve_whisper_service_improvements",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/improve.md",
+      "source_location": "L5",
+      "weight": 1.0,
+      "source": "docs_improve_whisper_service_improvements",
+      "target": "docs_improve_completed_1_enable_gpu_acceleration_for_faster_whisper",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/improve.md",
+      "source_location": "L11",
+      "weight": 1.0,
+      "source": "docs_improve_whisper_service_improvements",
+      "target": "docs_improve_completed_2_make_transcription_asynchronous_non_blocking",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/improve.md",
+      "source_location": "L16",
+      "weight": 1.0,
+      "source": "docs_improve_whisper_service_improvements",
+      "target": "docs_improve_completed_3_replace_print_with_structured_logging_and_metrics",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "docs/improve.md",
+      "source_location": "L21",
+      "weight": 1.0,
+      "source": "docs_improve_whisper_service_improvements",
+      "target": "docs_improve_completed_4_application_startup_pre_loading",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
       "source_file": "docs/PS.md",
       "source_location": "L2",
       "weight": 1.0,
@@ -8820,5 +9356,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "0f60b32b629fa44ec8d9199fb17a2c409a25d073"
+  "built_at_commit": "f1853a9bdedc835ad633fe574e13a6f7d7f607f3"
 }

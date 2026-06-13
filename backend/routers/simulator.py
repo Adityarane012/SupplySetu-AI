@@ -137,7 +137,7 @@ async def receive_simulator_message(
                     "transcript": None,
                 }
 
-            result = transcribe_audio(tmp_path)
+            result = await transcribe_audio(tmp_path)
             transcript = result["transcript"]
             audio_duration = result.get("duration_seconds", 0.0)
             transcription_meta = {

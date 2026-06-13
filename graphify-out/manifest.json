@@ -10,8 +10,8 @@
     "semantic_hash": ""
   },
   "C:\\Users\\Aditya Rane\\Downloads\\FarAway Hackathon\\backend\\main.py": {
-    "mtime": 1781268120.7924287,
-    "ast_hash": "85eebbb71bd2dcfe2bd3b889ce0b7228",
+    "mtime": 1781352902.1252723,
+    "ast_hash": "b4eff2abc8daa3722090c5aa2eb7c1aa",
     "semantic_hash": ""
   },
   "C:\\Users\\Aditya Rane\\Downloads\\FarAway Hackathon\\backend\\db\\rls.sql": {
@@ -55,8 +55,8 @@
     "semantic_hash": ""
   },
   "C:\\Users\\Aditya Rane\\Downloads\\FarAway Hackathon\\backend\\routers\\analytics.py": {
-    "mtime": 1781284400.7390432,
-    "ast_hash": "6506ab9690eee795bb1227616c61b431",
+    "mtime": 1781338954.342285,
+    "ast_hash": "729b336775077ac8c6c14f3a2069162f",
     "semantic_hash": ""
   },
   "C:\\Users\\Aditya Rane\\Downloads\\FarAway Hackathon\\backend\\routers\\customers.py": {
@@ -70,18 +70,18 @@
     "semantic_hash": ""
   },
   "C:\\Users\\Aditya Rane\\Downloads\\FarAway Hackathon\\backend\\routers\\route.py": {
-    "mtime": 1781182685.490187,
-    "ast_hash": "705481a1a2d3bdf22e6855312c2fabf5",
+    "mtime": 1781339290.922909,
+    "ast_hash": "f951d9025f6f41fb6c7ae883228edad3",
     "semantic_hash": ""
   },
   "C:\\Users\\Aditya Rane\\Downloads\\FarAway Hackathon\\backend\\routers\\simulator.py": {
-    "mtime": 1781284357.4660273,
-    "ast_hash": "cf45739831274b503b18653f11f27800",
+    "mtime": 1781345732.7642045,
+    "ast_hash": "548f039a411a41975acb55be6c87df5b",
     "semantic_hash": ""
   },
   "C:\\Users\\Aditya Rane\\Downloads\\FarAway Hackathon\\backend\\routers\\transcribe.py": {
-    "mtime": 1781182648.097344,
-    "ast_hash": "bb41ba900fa9cc3503c6231e5b45e1ec",
+    "mtime": 1781345730.7244601,
+    "ast_hash": "9c92f40884e65592c296337b6f43f00a",
     "semantic_hash": ""
   },
   "C:\\Users\\Aditya Rane\\Downloads\\FarAway Hackathon\\backend\\routers\\__init__.py": {
@@ -95,8 +95,8 @@
     "semantic_hash": ""
   },
   "C:\\Users\\Aditya Rane\\Downloads\\FarAway Hackathon\\backend\\services\\llm_service.py": {
-    "mtime": 1781285281.365204,
-    "ast_hash": "60b45479118d25af01e896f5e1878169",
+    "mtime": 1781342222.8347573,
+    "ast_hash": "0df5683a1db47cb3bc958d758eecf763",
     "semantic_hash": ""
   },
   "C:\\Users\\Aditya Rane\\Downloads\\FarAway Hackathon\\backend\\services\\route_optimizer.py": {
@@ -105,8 +105,8 @@
     "semantic_hash": ""
   },
   "C:\\Users\\Aditya Rane\\Downloads\\FarAway Hackathon\\backend\\services\\whisper_service.py": {
-    "mtime": 1781284080.6770935,
-    "ast_hash": "8abe9e73a06f17eb6c29a4cae695d7e3",
+    "mtime": 1781346048.2763906,
+    "ast_hash": "b54731a32de21e1af836a377b1723156",
     "semantic_hash": ""
   },
   "C:\\Users\\Aditya Rane\\Downloads\\FarAway Hackathon\\backend\\services\\__init__.py": {
@@ -120,8 +120,8 @@
     "semantic_hash": ""
   },
   "C:\\Users\\Aditya Rane\\Downloads\\FarAway Hackathon\\frontend\\next-env.d.ts": {
-    "mtime": 1781286773.9615548,
-    "ast_hash": "d0f8375ae1199dc7acd3977fc33b78b8",
+    "mtime": 1781346583.6920054,
+    "ast_hash": "2a74d3909800ca5467fa83b0ab4a4890",
     "semantic_hash": ""
   },
   "C:\\Users\\Aditya Rane\\Downloads\\FarAway Hackathon\\frontend\\next.config.ts": {
@@ -165,8 +165,8 @@
     "semantic_hash": ""
   },
   "C:\\Users\\Aditya Rane\\Downloads\\FarAway Hackathon\\backend\\requirements.txt": {
-    "mtime": 1781271415.4943,
-    "ast_hash": "4c2ca159bdd7a39cbf47d47da1bdffe5",
+    "mtime": 1781347796.6831148,
+    "ast_hash": "770ccd4837195513019273e17744e09b",
     "semantic_hash": ""
   },
   "C:\\Users\\Aditya Rane\\Downloads\\FarAway Hackathon\\docs\\Architecture.md": {
@@ -190,8 +190,8 @@
     "semantic_hash": ""
   },
   "C:\\Users\\Aditya Rane\\Downloads\\FarAway Hackathon\\docs\\SA_Implementation.md": {
-    "mtime": 1781110354.3248148,
-    "ast_hash": "cfcd060e1ae6336b712b37b8f9099cff",
+    "mtime": 1781353269.66777,
+    "ast_hash": "a2550aaf13789d143261abfe5085af10",
     "semantic_hash": ""
   },
   "C:\\Users\\Aditya Rane\\Downloads\\FarAway Hackathon\\frontend\\AGENTS.md": {
@@ -505,28 +505,28 @@
     "semantic_hash": ""
   },
   "C:\\Users\\Aditya Rane\\Downloads\\FarAway Hackathon\\frontend\\src\\app\\analytics\\page.tsx": {
-    "mtime": 1781283044.3057227,
-    "ast_hash": "30b7fef13ca310a13bf0b973ce419b58",
+    "mtime": 1781338952.317881,
+    "ast_hash": "1977aa897cdd37b5170a8057818aac11",
     "semantic_hash": ""
   },
   "C:\\Users\\Aditya Rane\\Downloads\\FarAway Hackathon\\frontend\\src\\app\\dashboard\\page.tsx": {
-    "mtime": 1781284640.2403843,
-    "ast_hash": "680b710e3ad78f70afeccb601b90c028",
+    "mtime": 1781346876.4722128,
+    "ast_hash": "921bfc13afd2357bae75ed1d582f07b9",
     "semantic_hash": ""
   },
   "C:\\Users\\Aditya Rane\\Downloads\\FarAway Hackathon\\frontend\\src\\app\\orders\\page.tsx": {
-    "mtime": 1781284642.2567174,
-    "ast_hash": "4c83c9b4685843b045e0d4f979d49daa",
+    "mtime": 1781346925.3120866,
+    "ast_hash": "c4bb0c95dbb11523d10c3d6caa26ba0f",
     "semantic_hash": ""
   },
   "C:\\Users\\Aditya Rane\\Downloads\\FarAway Hackathon\\frontend\\src\\app\\orders\\new\\page.tsx": {
-    "mtime": 1781286857.152948,
-    "ast_hash": "c1c7ffae42d8da5b0f675090ca15385f",
+    "mtime": 1781341407.933789,
+    "ast_hash": "bf2ac7e23527f677e91bd3d048a47f46",
     "semantic_hash": ""
   },
   "C:\\Users\\Aditya Rane\\Downloads\\FarAway Hackathon\\frontend\\src\\app\\route-map\\page.tsx": {
-    "mtime": 1781202260.270057,
-    "ast_hash": "4dbad4b6dd821b8490783e39b79ee8b5",
+    "mtime": 1781346518.5462708,
+    "ast_hash": "981bfebb75d3868d636faeaa8de8d7e6",
     "semantic_hash": ""
   },
   "C:\\Users\\Aditya Rane\\Downloads\\FarAway Hackathon\\frontend\\src\\app\\simulator\\page.tsx": {
@@ -535,13 +535,13 @@
     "semantic_hash": ""
   },
   "C:\\Users\\Aditya Rane\\Downloads\\FarAway Hackathon\\frontend\\src\\components\\DeliveryMap.tsx": {
-    "mtime": 1781266197.042562,
-    "ast_hash": "c5bc67ae141416bf34b34902354c1053",
+    "mtime": 1781346517.2100666,
+    "ast_hash": "e8d84be31775e35e171d79d07cef9852",
     "semantic_hash": ""
   },
   "C:\\Users\\Aditya Rane\\Downloads\\FarAway Hackathon\\frontend\\src\\components\\MapWrapper.tsx": {
-    "mtime": 1781202260.2720668,
-    "ast_hash": "03d58d04fb3030ad3fa888123177bff7",
+    "mtime": 1781346515.92096,
+    "ast_hash": "ddf29b57b6a36062917c4af7e840e161",
     "semantic_hash": ""
   },
   "C:\\Users\\Aditya Rane\\Downloads\\FarAway Hackathon\\frontend\\src\\lib\\supabase.ts": {
@@ -597,6 +597,26 @@
   "C:\\Users\\Aditya Rane\\Downloads\\FarAway Hackathon\\frontend\\public\\logo-main.png": {
     "mtime": 1781282776.6094,
     "ast_hash": "5631c33239c56af669ed470263bbf54a",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Aditya Rane\\Downloads\\FarAway Hackathon\\backend\\routers\\whatsapp.py": {
+    "mtime": 1781352875.9418108,
+    "ast_hash": "17c401ee4b9bb3ba97daba96f4c9e3c9",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Aditya Rane\\Downloads\\FarAway Hackathon\\backend\\scripts\\schema.sql": {
+    "mtime": 1781347145.0613494,
+    "ast_hash": "b5546fce6397fbe1a4a970f58431b6b3",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Aditya Rane\\Downloads\\FarAway Hackathon\\backend\\scripts\\seed_db.py": {
+    "mtime": 1781347583.6794288,
+    "ast_hash": "48e2c01af6dfad3a8e0b96f7e499a699",
+    "semantic_hash": ""
+  },
+  "C:\\Users\\Aditya Rane\\Downloads\\FarAway Hackathon\\docs\\improve.md": {
+    "mtime": 1781353254.0773761,
+    "ast_hash": "c7d4814637d47ec84f638ed4301ed292",
     "semantic_hash": ""
   }
 }

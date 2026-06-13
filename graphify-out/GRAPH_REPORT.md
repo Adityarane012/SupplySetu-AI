@@ -1,16 +1,16 @@
 # Graph Report - FarAway Hackathon  (2026-06-13)
 
 ## Corpus Check
-- 60 files · ~152,920 words
+- 64 files · ~156,626 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 474 nodes · 452 edges · 54 communities (44 shown, 10 thin omitted)
-- Extraction: 98% EXTRACTED · 2% INFERRED · 0% AMBIGUOUS · INFERRED: 7 edges (avg confidence: 0.8)
+- 498 nodes · 483 edges · 57 communities (48 shown, 9 thin omitted)
+- Extraction: 98% EXTRACTED · 2% INFERRED · 0% AMBIGUOUS · INFERRED: 12 edges (avg confidence: 0.8)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `0f60b32b`
+- Built from commit: `f1853a9b`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -50,6 +50,8 @@
 - [[_COMMUNITY_Community 43|Community 43]]
 - [[_COMMUNITY_Community 44|Community 44]]
 - [[_COMMUNITY_Community 51|Community 51]]
+- [[_COMMUNITY_Community 54|Community 54]]
+- [[_COMMUNITY_Community 55|Community 55]]
 
 ## God Nodes (most connected - your core abstractions)
 1. `SupplySetu AI — Comprehensive Phase-wise Implementation Plan` - 17 edges
@@ -58,28 +60,28 @@
 4. `SupplySetu AI — Frontend Design Document` - 14 edges
 5. `4. Screen-by-Screen Design Specifications` - 12 edges
 6. `Implementation Plan` - 11 edges
-7. `Component Descriptions` - 9 edges
-8. `SupplySetu AI` - 8 edges
-9. `5. Reusable Components Specification` - 8 edges
-10. `Phase 7 — Next.js Frontend Integration 🖥️` - 8 edges
+7. `twilio_whatsapp_webhook()` - 9 edges
+8. `transcribe_audio()` - 9 edges
+9. `Component Descriptions` - 9 edges
+10. `extract_order()` - 8 edges
 
 ## Surprising Connections (you probably didn't know these)
 - `run()` --calls--> `_groq_extract()`  [INFERRED]
   debug_llm.py → backend/services/llm_service.py
-- `extract()` --calls--> `extract_order()`  [INFERRED]
-  backend/routers/transcribe.py → backend/services/llm_service.py
-- `receive_simulator_message()` --calls--> `transcribe_audio()`  [INFERRED]
-  backend/routers/simulator.py → backend/services/whisper_service.py
 - `transcribe()` --calls--> `transcribe_audio()`  [INFERRED]
   backend/routers/transcribe.py → backend/services/whisper_service.py
-- `compute_route()` --calls--> `build_distance_matrix()`  [INFERRED]
-  backend/routers/route.py → backend/services/geocoder.py
+- `receive_simulator_message()` --calls--> `transcribe_audio()`  [INFERRED]
+  backend/routers/simulator.py → backend/services/whisper_service.py
+- `receive_simulator_message()` --calls--> `extract_order()`  [INFERRED]
+  backend/routers/simulator.py → backend/services/llm_service.py
+- `extract()` --calls--> `extract_order()`  [INFERRED]
+  backend/routers/transcribe.py → backend/services/llm_service.py
 
-## Communities (54 total, 10 thin omitted)
+## Communities (57 total, 9 thin omitted)
 
 ### Community 0 - "Community 0"
-Cohesion: 0.04
-Nodes (48): 2.1 — Core Schema (run in Supabase SQL Editor), 2.2 — Seed Mock Data, 📅 3-Day Sprint Calendar, 5.1 — Geocoding Service (`backend/services/geocoder.py`), 5.2 — OR-Tools Route Optimizer (`backend/services/route_optimizer.py`), 5.3 — Route Router (`backend/routers/route.py`), 6.1 — WhatsApp Router (`backend/routers/whatsapp.py`), 6.2 — Local Webhook Testing with ngrok (+40 more)
+Cohesion: 0.05
+Nodes (40): 2.1 — Core Schema (run in Supabase SQL Editor), 2.2 — Seed Mock Data, 📅 3-Day Sprint Calendar, 4.1 — Whisper Transcription Service (`backend/services/whisper_service.py`), 4.2 — LLM Order Extraction (`backend/services/llm_service.py`), 4.3 — Transcribe Router (`backend/routers/transcribe.py`), 4.4 — Full Pipeline Test, 6.1 — WhatsApp Router (`backend/routers/whatsapp.py`) (+32 more)
 
 ### Community 1 - "Community 1"
 Cohesion: 0.07
@@ -118,8 +120,8 @@ Cohesion: 0.14
 Nodes (13): API Endpoints, code:mermaid (gantt), Data Models (Database Schema), Deliverables by Phase, Demo Script (3–5 minutes), Development & Deployment Workflow, Executive Summary, Implementation Plan (+5 more)
 
 ### Community 10 - "Community 10"
-Cohesion: 0.11
-Nodes (20): run(), _build_reply(), get_chat_history(), Return recent orders for a customer phone number to show in chat., Get or create customer record, updating name if it changed., Return recent orders for a customer phone number., Parse and validate delivery_date from LLM output.     - Must be a valid ISO date, Build a natural, WhatsApp-style reply. (+12 more)
+Cohesion: 0.17
+Nodes (12): run(), extract(), transcribe(), _async_sleep(), extract_order(), _groq_extract(), _ollama_extract(), _parse_json_safe() (+4 more)
 
 ### Community 11 - "Community 11"
 Cohesion: 0.17
@@ -134,12 +136,12 @@ Cohesion: 0.20
 Nodes (10): 0.1 — Complete Graph Generation, 0.2 — Install Graphify into Antigravity, 0.3 — Install into Gemini CLI (bonus), 0.4 — Verify Graph Quality, 0.5 — Watch Mode (ongoing), code:bash (graphify antigravity install), code:bash (graphify gemini install), code:bash (# Check the report) (+2 more)
 
 ### Community 14 - "Community 14"
-Cohesion: 0.21
-Nodes (11): extract(), transcribe(), _get_local_model(), get_model(), _groq_transcribe(), _local_transcribe(), Lazy-load faster-whisper model (only used as last resort)., Transcribe via Groq Whisper-large-v3 cloud API with retry. (+3 more)
+Cohesion: 0.17
+Nodes (15): _get_local_model(), get_model(), _groq_transcribe(), _local_transcribe(), preload_model(), Fallback: transcribe locally with faster-whisper., Transcribe audio file to text.     Strategy:       1. If GROQ_API_KEY is set → u, Preloads the local model into memory if local inference is enabled.     This pre (+7 more)
 
 ### Community 15 - "Community 15"
-Cohesion: 0.22
-Nodes (9): 4.1 — Whisper Transcription Service (`backend/services/whisper_service.py`), 4.2 — LLM Order Extraction (`backend/services/llm_service.py`), 4.3 — Transcribe Router (`backend/routers/transcribe.py`), 4.4 — Full Pipeline Test, code:python (from faster_whisper import WhisperModel), code:python (import httpx, json, os), code:python (import shutil, tempfile), code:bash (# Test voice upload end-to-end) (+1 more)
+Cohesion: 0.16
+Nodes (16): _build_reply(), get_chat_history(), Return recent orders for a customer phone number to show in chat., Get or create customer record, updating name if it changed., Return recent orders for a customer phone number., Parse and validate delivery_date from LLM output.     - Must be a valid ISO date, Build a natural, WhatsApp-style reply., receive_simulator_message() (+8 more)
 
 ### Community 16 - "Community 16"
 Cohesion: 0.22
@@ -154,8 +156,8 @@ Cohesion: 0.11
 Nodes (18): 1. Backend Setup, 2. Frontend Setup, 3. Environment Configuration, Backend & AI Pipeline, code:bash (cd backend), code:bash (cd frontend), code:env (# Judging Toggle (Set to false and provide Groq key for inst), code:env (NEXT_PUBLIC_SUPABASE_URL=https://<your-project>.supabase.co) (+10 more)
 
 ### Community 19 - "Community 19"
-Cohesion: 0.22
-Nodes (8): get_forecast(), get_summary(), get_weekly_stats(), KPI summary across all orders (all-time)., Simple 7-day rolling average demand forecast per product., Simple 7-day rolling average demand forecast per product., Daily order counts for the last 7 days for charts., Daily order counts for the last 7 days for charts.
+Cohesion: 0.18
+Nodes (10): get_forecast(), get_summary(), get_weekly_stats(), KPI summary across all orders (all-time)., Simple 7-day rolling average demand forecast per product., Simple 7-day rolling average demand forecast per product., Simple 7-day rolling average demand forecast per product., Daily order counts for the last 7 days for charts. (+2 more)
 
 ### Community 22 - "Community 22"
 Cohesion: 0.40
@@ -169,6 +171,10 @@ Nodes (5): geistMono, geistSans, inter, metadata, notoSans
 Cohesion: 0.67
 Nodes (3): main(), SupplySetu AI — Type Tab Edge Case Test Suite ==================================, run_test()
 
+### Community 43 - "Community 43"
+Cohesion: 0.20
+Nodes (10): 9.1 — Frontend Deployment (Vercel), 9.2 — Backend Deployment (Render), 9.3 — Supabase Production Migration, 9.4 — Twilio Production Webhook Update, 9.5 — Final Health Check, code:bash (cd frontend), code:yaml (services:), code:bash (# Use Supabase CLI) (+2 more)
+
 ### Community 44 - "Community 44"
 Cohesion: 0.40
 Nodes (4): CONTACTS, formatDuration(), Message, SimulatorPage()
@@ -177,24 +183,32 @@ Nodes (4): CONTACTS, formatDuration(), Message, SimulatorPage()
 Cohesion: 0.33
 Nodes (3): EXAMPLE_ORDERS, InputMode, Step
 
+### Community 54 - "Community 54"
+Cohesion: 0.29
+Nodes (7): 5.1 — Geocoding Service (`backend/services/geocoder.py`), 5.2 — OR-Tools Route Optimizer (`backend/services/route_optimizer.py`), 5.3 — Route Router (`backend/routers/route.py`), code:python (from geopy.geocoders import Nominatim), code:python (from ortools.constraint_solver import routing_enums_pb2, pyw), code:python (from fastapi import APIRouter), Phase 5 — Route Optimization Engine 🗺️
+
+### Community 55 - "Community 55"
+Cohesion: 0.33
+Nodes (5): ✅ [COMPLETED] 1. Enable GPU Acceleration for `faster-whisper`, ✅ [COMPLETED] 2. Make Transcription Asynchronous (Non-Blocking), ✅ [COMPLETED] 3. Replace `print()` with Structured Logging and Metrics, ✅ [COMPLETED] 4. Application Startup Pre-loading, Whisper Service Improvements
+
 ## Knowledge Gaps
-- **216 isolated node(s):** `BeforeTool`, `eslintConfig`, `nextConfig`, `name`, `version` (+211 more)
+- **220 isolated node(s):** `BeforeTool`, `eslintConfig`, `nextConfig`, `name`, `version` (+215 more)
   These have ≤1 connection - possible missing edges or undocumented components.
-- **10 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
+- **9 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `SupplySetu AI — Comprehensive Phase-wise Implementation Plan` connect `Community 0` to `Community 7`, `Community 11`, `Community 13`, `Community 15`, `Community 17`?**
-  _High betweenness centrality (0.043) - this node is a cross-community bridge._
+- **Why does `SupplySetu AI — Comprehensive Phase-wise Implementation Plan` connect `Community 0` to `Community 7`, `Community 11`, `Community 43`, `Community 13`, `Community 17`, `Community 54`?**
+  _High betweenness centrality (0.039) - this node is a cross-community bridge._
 - **Why does `SupplySetu AI — Frontend Design Document` connect `Community 4` to `Community 2`, `Community 6`?**
-  _High betweenness centrality (0.021) - this node is a cross-community bridge._
+  _High betweenness centrality (0.019) - this node is a cross-community bridge._
 - **Why does `4. Screen-by-Screen Design Specifications` connect `Community 2` to `Community 4`?**
-  _High betweenness centrality (0.015) - this node is a cross-community bridge._
+  _High betweenness centrality (0.014) - this node is a cross-community bridge._
 - **What connects `SupplySetu AI — Type Tab Edge Case Test Suite ==================================`, `BeforeTool`, `KPI summary across all orders (all-time).` to the rest of the system?**
-  _237 weakly-connected nodes found - possible documentation gaps or missing edges._
+  _251 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `Community 0` be split into smaller, more focused modules?**
-  _Cohesion score 0.04081632653061224 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.04878048780487805 - nodes in this community are weakly interconnected._
 - **Should `Community 1` be split into smaller, more focused modules?**
   _Cohesion score 0.06666666666666667 - nodes in this community are weakly interconnected._
 - **Should `Community 2` be split into smaller, more focused modules?**
