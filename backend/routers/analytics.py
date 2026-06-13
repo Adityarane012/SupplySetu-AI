@@ -23,10 +23,13 @@ def get_summary():
 
     # Top products by quantity (all-time)
     product_totals: dict[str, float] = {}
+    product_units: dict[str, str] = {}
     for order in orders:
         for item in order.get("order_items") or []:
             p = item["product_name"]
             product_totals[p] = product_totals.get(p, 0) + float(item["quantity"])
+            if p not in product_units:
+                product_units[p] = item.get("unit", "kg")
 
     top_products = sorted(product_totals.items(), key=lambda x: -x[1])[:5]
 
@@ -36,7 +39,7 @@ def get_summary():
         "in_transit": in_transit,
         "delivered": delivered,
         "completion_rate": round(delivered / total * 100, 1) if total else 0,
-        "top_products": [{"name": p, "quantity": q} for p, q in top_products],
+        "top_products": [{"name": p, "quantity": q, "unit": product_units.get(p, "kg")} for p, q in top_products],
     }
 
 

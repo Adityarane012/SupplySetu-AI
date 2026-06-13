@@ -173,7 +173,7 @@ export default function AnalyticsPage() {
                 {summary?.top_products?.map((prod: any, i: number) => (
                   <div key={i} className="bg-gray-50 p-4 rounded-lg border border-gray-100 flex flex-col items-center justify-center text-center">
                     <p className="font-bold text-gray-800 capitalize text-lg mb-1">{prod.name}</p>
-                    <p className="text-gray-500 text-sm font-medium">{prod.quantity} requested</p>
+                    <p className="text-gray-500 text-sm font-medium">{prod.quantity} {prod.unit || 'kg'} requested</p>
                   </div>
                 ))}
               </div>

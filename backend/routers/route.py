@@ -33,8 +33,13 @@ async def compute_route(req: RouteRequest):
         lng = customer.get("lng")
 
         if lat is None or lng is None:
-            # Skip orders without coordinates
-            continue
+            # Generate deterministic mock coordinates based on order ID for demo purposes
+            import hashlib
+            seed_str = str(oid)
+            hash_val = int(hashlib.md5(seed_str.encode()).hexdigest()[:8], 16)
+            # +/- 0.05 degrees around Dadar Market (approx 5km radius)
+            lat = 19.0178 + ((hash_val % 100) - 50) * 0.001
+            lng = 72.8478 + ((hash_val // 100 % 100) - 50) * 0.001
 
         locations.append({"lat": lat, "lng": lng})
         order_meta.append({

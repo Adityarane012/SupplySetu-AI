@@ -20,7 +20,7 @@ Output format MUST match exactly:
   "items": [
     {{"product_name": "<English name>", "quantity": <number>, "unit": "<kg|piece|dozen|litre|bundle|gram>"}}
   ],
-  "delivery_date": "<YYYY-MM-DD if mentioned, else null>",
+  "delivery_date": "<YYYY-MM-DD or relative date like 'kal', 'tomorrow', 'today', 'kal subah' if mentioned, else null>",
   "notes": "<any special instructions, else null>",
   "confidence": <0.0 to 1.0>
 }}

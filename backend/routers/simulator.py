@@ -42,7 +42,7 @@ def _sanitise_delivery_date(raw: str | None) -> str | None:
 
     # Handle common relative strings
     lower = raw.strip().lower()
-    if lower in ("tomorrow", "kal", "aaj kal", "next day"):
+    if lower in ("tomorrow", "kal", "aaj kal", "next day", "kal subah", "tomorrow morning"):
         return str(today + timedelta(days=1))
     if lower in ("today", "aaj"):
         return str(today)

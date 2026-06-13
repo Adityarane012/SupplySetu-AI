@@ -4,6 +4,24 @@
   "graph": {},
   "nodes": [
     {
+      "label": "debug_llm.py",
+      "file_type": "code",
+      "source_file": "debug_llm.py",
+      "source_location": "L1",
+      "id": "debug_llm_py",
+      "community": 10,
+      "norm_label": "debug_llm.py"
+    },
+    {
+      "label": "run()",
+      "file_type": "code",
+      "source_file": "debug_llm.py",
+      "source_location": "L14",
+      "id": "faraway_hackathon_debug_llm_run",
+      "community": 10,
+      "norm_label": "run()"
+    },
+    {
       "label": "download_screens.py",
       "file_type": "code",
       "source_file": "download_screens.py",
@@ -38,6 +56,42 @@
       "id": "faraway_hackathon_test_extract_test_extract",
       "community": 50,
       "norm_label": "test_extract()"
+    },
+    {
+      "label": "test_type_tab.py",
+      "file_type": "code",
+      "source_file": "test_type_tab.py",
+      "source_location": "L1",
+      "id": "test_type_tab_py",
+      "community": 42,
+      "norm_label": "test_type_tab.py"
+    },
+    {
+      "label": "run_test()",
+      "file_type": "code",
+      "source_file": "test_type_tab.py",
+      "source_location": "L207",
+      "id": "faraway_hackathon_test_type_tab_run_test",
+      "community": 42,
+      "norm_label": "run_test()"
+    },
+    {
+      "label": "main()",
+      "file_type": "code",
+      "source_file": "test_type_tab.py",
+      "source_location": "L295",
+      "id": "faraway_hackathon_test_type_tab_main",
+      "community": 42,
+      "norm_label": "main()"
+    },
+    {
+      "label": "SupplySetu AI \u2014 Type Tab Edge Case Test Suite ==================================",
+      "file_type": "rationale",
+      "source_file": "test_type_tab.py",
+      "source_location": "L1",
+      "id": "faraway_hackathon_test_type_tab_rationale_1",
+      "community": 42,
+      "norm_label": "supplysetu ai \u2014 type tab edge case test suite =================================="
     },
     {
       "label": "settings.json",
@@ -88,7 +142,7 @@
       "label": "health()",
       "file_type": "code",
       "source_file": "backend/main.py",
-      "source_location": "L23",
+      "source_location": "L26",
       "id": "backend_main_health",
       "community": 26,
       "norm_label": "health()"
@@ -178,7 +232,7 @@
       "label": "OrderItem",
       "file_type": "code",
       "source_file": "backend/models/schemas.py",
-      "source_location": "L7",
+      "source_location": "L11",
       "id": "models_schemas_orderitem",
       "community": 12,
       "norm_label": "orderitem"
@@ -193,46 +247,127 @@
       "norm_label": "basemodel"
     },
     {
+      "label": "quantity_must_be_positive()",
+      "file_type": "code",
+      "source_file": "backend/models/schemas.py",
+      "source_location": "L18",
+      "id": "models_schemas_quantity_must_be_positive",
+      "community": 12,
+      "norm_label": "quantity_must_be_positive()"
+    },
+    {
+      "label": "product_name_not_empty()",
+      "file_type": "code",
+      "source_file": "backend/models/schemas.py",
+      "source_location": "L25",
+      "id": "models_schemas_product_name_not_empty",
+      "community": 12,
+      "norm_label": "product_name_not_empty()"
+    },
+    {
+      "label": "unit_must_be_valid()",
+      "file_type": "code",
+      "source_file": "backend/models/schemas.py",
+      "source_location": "L33",
+      "id": "models_schemas_unit_must_be_valid",
+      "community": 12,
+      "norm_label": "unit_must_be_valid()"
+    },
+    {
       "label": "OrderCreate",
       "file_type": "code",
       "source_file": "backend/models/schemas.py",
-      "source_location": "L13",
+      "source_location": "L40",
       "id": "models_schemas_ordercreate",
       "community": 12,
       "norm_label": "ordercreate"
     },
     {
+      "label": "name_not_empty()",
+      "file_type": "code",
+      "source_file": "backend/models/schemas.py",
+      "source_location": "L50",
+      "id": "models_schemas_name_not_empty",
+      "community": 12,
+      "norm_label": "name_not_empty()"
+    },
+    {
+      "label": "items_not_empty()",
+      "file_type": "code",
+      "source_file": "backend/models/schemas.py",
+      "source_location": "L58",
+      "id": "models_schemas_items_not_empty",
+      "community": 12,
+      "norm_label": "items_not_empty()"
+    },
+    {
       "label": "OrderUpdate",
       "file_type": "code",
       "source_file": "backend/models/schemas.py",
-      "source_location": "L22",
+      "source_location": "L64",
       "id": "models_schemas_orderupdate",
       "community": 12,
       "norm_label": "orderupdate"
     },
     {
+      "label": "status_must_be_valid()",
+      "file_type": "code",
+      "source_file": "backend/models/schemas.py",
+      "source_location": "L70",
+      "id": "models_schemas_status_must_be_valid",
+      "community": 12,
+      "norm_label": "status_must_be_valid()"
+    },
+    {
       "label": "CustomerCreate",
       "file_type": "code",
       "source_file": "backend/models/schemas.py",
-      "source_location": "L27",
+      "source_location": "L76",
       "id": "models_schemas_customercreate",
       "community": 12,
       "norm_label": "customercreate"
     },
     {
+      "label": "lat_in_range()",
+      "file_type": "code",
+      "source_file": "backend/models/schemas.py",
+      "source_location": "L86",
+      "id": "models_schemas_lat_in_range",
+      "community": 12,
+      "norm_label": "lat_in_range()"
+    },
+    {
+      "label": "lng_in_range()",
+      "file_type": "code",
+      "source_file": "backend/models/schemas.py",
+      "source_location": "L93",
+      "id": "models_schemas_lng_in_range",
+      "community": 12,
+      "norm_label": "lng_in_range()"
+    },
+    {
       "label": "RouteRequest",
       "file_type": "code",
       "source_file": "backend/models/schemas.py",
-      "source_location": "L36",
+      "source_location": "L99",
       "id": "models_schemas_routerequest",
       "community": 12,
       "norm_label": "routerequest"
     },
     {
+      "label": "order_ids_not_empty()",
+      "file_type": "code",
+      "source_file": "backend/models/schemas.py",
+      "source_location": "L105",
+      "id": "models_schemas_order_ids_not_empty",
+      "community": 12,
+      "norm_label": "order_ids_not_empty()"
+    },
+    {
       "label": "TranscribeResponse",
       "file_type": "code",
       "source_file": "backend/models/schemas.py",
-      "source_location": "L41",
+      "source_location": "L111",
       "id": "models_schemas_transcriberesponse",
       "community": 12,
       "norm_label": "transcriberesponse"
@@ -241,7 +376,7 @@
       "label": "ExtractResponse",
       "file_type": "code",
       "source_file": "backend/models/schemas.py",
-      "source_location": "L47",
+      "source_location": "L117",
       "id": "models_schemas_extractresponse",
       "community": 12,
       "norm_label": "extractresponse"
@@ -250,7 +385,7 @@
       "label": "SimulatorMessageRequest",
       "file_type": "code",
       "source_file": "backend/models/schemas.py",
-      "source_location": "L54",
+      "source_location": "L124",
       "id": "models_schemas_simulatormessagerequest",
       "community": 12,
       "norm_label": "simulatormessagerequest"
@@ -286,7 +421,7 @@
       "label": "get_forecast()",
       "file_type": "code",
       "source_file": "backend/routers/analytics.py",
-      "source_location": "L48",
+      "source_location": "L44",
       "id": "routers_analytics_get_forecast",
       "community": 19,
       "norm_label": "get_forecast()"
@@ -295,26 +430,26 @@
       "label": "get_weekly_stats()",
       "file_type": "code",
       "source_file": "backend/routers/analytics.py",
-      "source_location": "L72",
+      "source_location": "L84",
       "id": "routers_analytics_get_weekly_stats",
       "community": 19,
       "norm_label": "get_weekly_stats()"
     },
     {
-      "label": "KPI summary for a specific date (defaults to today).",
+      "label": "KPI summary across all orders (all-time).",
       "file_type": "rationale",
       "source_file": "backend/routers/analytics.py",
       "source_location": "L11",
       "id": "routers_analytics_rationale_11",
       "community": 19,
-      "norm_label": "kpi summary for a specific date (defaults to today)."
+      "norm_label": "kpi summary across all orders (all-time)."
     },
     {
       "label": "Simple 7-day rolling average demand forecast per product.",
       "file_type": "rationale",
       "source_file": "backend/routers/analytics.py",
-      "source_location": "L49",
-      "id": "routers_analytics_rationale_49",
+      "source_location": "L45",
+      "id": "routers_analytics_rationale_45",
       "community": 19,
       "norm_label": "simple 7-day rolling average demand forecast per product."
     },
@@ -322,8 +457,8 @@
       "label": "Daily order counts for the last 7 days for charts.",
       "file_type": "rationale",
       "source_file": "backend/routers/analytics.py",
-      "source_location": "L73",
-      "id": "routers_analytics_rationale_73",
+      "source_location": "L85",
+      "id": "routers_analytics_rationale_85",
       "community": 19,
       "norm_label": "daily order counts for the last 7 days for charts."
     },
@@ -454,10 +589,37 @@
       "norm_label": "simulator.py"
     },
     {
+      "label": "_upsert_customer()",
+      "file_type": "code",
+      "source_file": "backend/routers/simulator.py",
+      "source_location": "L18",
+      "id": "routers_simulator_upsert_customer",
+      "community": 10,
+      "norm_label": "_upsert_customer()"
+    },
+    {
+      "label": "_sanitise_delivery_date()",
+      "file_type": "code",
+      "source_file": "backend/routers/simulator.py",
+      "source_location": "L30",
+      "id": "routers_simulator_sanitise_delivery_date",
+      "community": 10,
+      "norm_label": "_sanitise_delivery_date()"
+    },
+    {
+      "label": "_build_reply()",
+      "file_type": "code",
+      "source_file": "backend/routers/simulator.py",
+      "source_location": "L64",
+      "id": "routers_simulator_build_reply",
+      "community": 10,
+      "norm_label": "_build_reply()"
+    },
+    {
       "label": "receive_simulator_message()",
       "file_type": "code",
       "source_file": "backend/routers/simulator.py",
-      "source_location": "L16",
+      "source_location": "L103",
       "id": "routers_simulator_receive_simulator_message",
       "community": 10,
       "norm_label": "receive_simulator_message()"
@@ -466,19 +628,46 @@
       "label": "get_chat_history()",
       "file_type": "code",
       "source_file": "backend/routers/simulator.py",
-      "source_location": "L108",
+      "source_location": "L239",
       "id": "routers_simulator_get_chat_history",
       "community": 10,
       "norm_label": "get_chat_history()"
     },
     {
-      "label": "Return recent orders for a customer phone number to show in chat.",
+      "label": "Get or create customer record, updating name if it changed.",
       "file_type": "rationale",
       "source_file": "backend/routers/simulator.py",
-      "source_location": "L109",
-      "id": "routers_simulator_rationale_109",
+      "source_location": "L19",
+      "id": "routers_simulator_rationale_19",
       "community": 10,
-      "norm_label": "return recent orders for a customer phone number to show in chat."
+      "norm_label": "get or create customer record, updating name if it changed."
+    },
+    {
+      "label": "Parse and validate delivery_date from LLM output.     - Must be a valid ISO date",
+      "file_type": "rationale",
+      "source_file": "backend/routers/simulator.py",
+      "source_location": "L31",
+      "id": "routers_simulator_rationale_31",
+      "community": 10,
+      "norm_label": "parse and validate delivery_date from llm output.     - must be a valid iso date"
+    },
+    {
+      "label": "Build a natural, WhatsApp-style reply.",
+      "file_type": "rationale",
+      "source_file": "backend/routers/simulator.py",
+      "source_location": "L65",
+      "id": "routers_simulator_rationale_65",
+      "community": 10,
+      "norm_label": "build a natural, whatsapp-style reply."
+    },
+    {
+      "label": "Return recent orders for a customer phone number.",
+      "file_type": "rationale",
+      "source_file": "backend/routers/simulator.py",
+      "source_location": "L240",
+      "id": "routers_simulator_rationale_240",
+      "community": 10,
+      "norm_label": "return recent orders for a customer phone number."
     },
     {
       "label": "transcribe.py",
@@ -486,7 +675,7 @@
       "source_file": "backend/routers/transcribe.py",
       "source_location": "L1",
       "id": "backend_routers_transcribe_py",
-      "community": 10,
+      "community": 14,
       "norm_label": "transcribe.py"
     },
     {
@@ -495,7 +684,7 @@
       "source_file": "backend/routers/transcribe.py",
       "source_location": "L14",
       "id": "routers_transcribe_transcribe",
-      "community": 10,
+      "community": 14,
       "norm_label": "transcribe()"
     },
     {
@@ -504,7 +693,7 @@
       "source_file": "backend/routers/transcribe.py",
       "source_location": "L33",
       "id": "routers_transcribe_extract",
-      "community": 10,
+      "community": 14,
       "norm_label": "extract()"
     },
     {
@@ -562,13 +751,85 @@
       "norm_label": "llm_service.py"
     },
     {
+      "label": "_parse_json_safe()",
+      "file_type": "code",
+      "source_file": "backend/services/llm_service.py",
+      "source_location": "L45",
+      "id": "services_llm_service_parse_json_safe",
+      "community": 10,
+      "norm_label": "_parse_json_safe()"
+    },
+    {
+      "label": "_groq_extract()",
+      "file_type": "code",
+      "source_file": "backend/services/llm_service.py",
+      "source_location": "L67",
+      "id": "services_llm_service_groq_extract",
+      "community": 10,
+      "norm_label": "_groq_extract()"
+    },
+    {
+      "label": "_ollama_extract()",
+      "file_type": "code",
+      "source_file": "backend/services/llm_service.py",
+      "source_location": "L108",
+      "id": "services_llm_service_ollama_extract",
+      "community": 10,
+      "norm_label": "_ollama_extract()"
+    },
+    {
+      "label": "_async_sleep()",
+      "file_type": "code",
+      "source_file": "backend/services/llm_service.py",
+      "source_location": "L127",
+      "id": "services_llm_service_async_sleep",
+      "community": 10,
+      "norm_label": "_async_sleep()"
+    },
+    {
       "label": "extract_order()",
       "file_type": "code",
       "source_file": "backend/services/llm_service.py",
-      "source_location": "L34",
+      "source_location": "L132",
       "id": "services_llm_service_extract_order",
       "community": 10,
       "norm_label": "extract_order()"
+    },
+    {
+      "label": "Parse JSON with fallback for common LLM formatting issues.",
+      "file_type": "rationale",
+      "source_file": "backend/services/llm_service.py",
+      "source_location": "L46",
+      "id": "services_llm_service_rationale_46",
+      "community": 10,
+      "norm_label": "parse json with fallback for common llm formatting issues."
+    },
+    {
+      "label": "Call Groq LLM with retry logic.",
+      "file_type": "rationale",
+      "source_file": "backend/services/llm_service.py",
+      "source_location": "L68",
+      "id": "services_llm_service_rationale_68",
+      "community": 10,
+      "norm_label": "call groq llm with retry logic."
+    },
+    {
+      "label": "Call local Ollama LLM.",
+      "file_type": "rationale",
+      "source_file": "backend/services/llm_service.py",
+      "source_location": "L109",
+      "id": "services_llm_service_rationale_109",
+      "community": 10,
+      "norm_label": "call local ollama llm."
+    },
+    {
+      "label": "Extract structured order from a customer transcript.     Strategy:       1. If G",
+      "file_type": "rationale",
+      "source_file": "backend/services/llm_service.py",
+      "source_location": "L133",
+      "id": "services_llm_service_rationale_133",
+      "community": 10,
+      "norm_label": "extract structured order from a customer transcript.     strategy:       1. if g"
     },
     {
       "label": "route_optimizer.py",
@@ -603,26 +864,80 @@
       "source_file": "backend/services/whisper_service.py",
       "source_location": "L1",
       "id": "backend_services_whisper_service_py",
-      "community": 10,
+      "community": 14,
       "norm_label": "whisper_service.py"
     },
     {
-      "label": "get_model()",
+      "label": "_get_local_model()",
       "file_type": "code",
       "source_file": "backend/services/whisper_service.py",
-      "source_location": "L10",
-      "id": "services_whisper_service_get_model",
-      "community": 10,
-      "norm_label": "get_model()"
+      "source_location": "L23",
+      "id": "services_whisper_service_get_local_model",
+      "community": 14,
+      "norm_label": "_get_local_model()"
+    },
+    {
+      "label": "_groq_transcribe()",
+      "file_type": "code",
+      "source_file": "backend/services/whisper_service.py",
+      "source_location": "L35",
+      "id": "services_whisper_service_groq_transcribe",
+      "community": 14,
+      "norm_label": "_groq_transcribe()"
+    },
+    {
+      "label": "_local_transcribe()",
+      "file_type": "code",
+      "source_file": "backend/services/whisper_service.py",
+      "source_location": "L80",
+      "id": "services_whisper_service_local_transcribe",
+      "community": 14,
+      "norm_label": "_local_transcribe()"
     },
     {
       "label": "transcribe_audio()",
       "file_type": "code",
       "source_file": "backend/services/whisper_service.py",
-      "source_location": "L19",
+      "source_location": "L95",
       "id": "services_whisper_service_transcribe_audio",
-      "community": 10,
+      "community": 14,
       "norm_label": "transcribe_audio()"
+    },
+    {
+      "label": "Lazy-load faster-whisper model (only used as last resort).",
+      "file_type": "rationale",
+      "source_file": "backend/services/whisper_service.py",
+      "source_location": "L24",
+      "id": "services_whisper_service_rationale_24",
+      "community": 14,
+      "norm_label": "lazy-load faster-whisper model (only used as last resort)."
+    },
+    {
+      "label": "Transcribe via Groq Whisper-large-v3 cloud API with retry.",
+      "file_type": "rationale",
+      "source_file": "backend/services/whisper_service.py",
+      "source_location": "L36",
+      "id": "services_whisper_service_rationale_36",
+      "community": 14,
+      "norm_label": "transcribe via groq whisper-large-v3 cloud api with retry."
+    },
+    {
+      "label": "Fallback: transcribe locally with faster-whisper.",
+      "file_type": "rationale",
+      "source_file": "backend/services/whisper_service.py",
+      "source_location": "L81",
+      "id": "services_whisper_service_rationale_81",
+      "community": 14,
+      "norm_label": "fallback: transcribe locally with faster-whisper."
+    },
+    {
+      "label": "Transcribe audio file to text.     Strategy:       1. If GROQ_API_KEY is set \u2192 u",
+      "file_type": "rationale",
+      "source_file": "backend/services/whisper_service.py",
+      "source_location": "L96",
+      "id": "services_whisper_service_rationale_96",
+      "community": 14,
+      "norm_label": "transcribe audio file to text.     strategy:       1. if groq_api_key is set \u2192 u"
     },
     {
       "label": "__init__.py",
@@ -1168,7 +1483,7 @@
       "label": "RootLayout()",
       "file_type": "code",
       "source_file": "frontend/src/app/layout.tsx",
-      "source_location": "L21",
+      "source_location": "L25",
       "id": "app_layout_rootlayout",
       "community": 23,
       "norm_label": "rootlayout()"
@@ -1255,13 +1570,40 @@
       "norm_label": "page.tsx"
     },
     {
-      "label": "NewOrderVoicePage()",
+      "label": "Step",
       "file_type": "code",
       "source_file": "frontend/src/app/orders/new/page.tsx",
-      "source_location": "L6",
-      "id": "new_page_newordervoicepage",
+      "source_location": "L7",
+      "id": "new_page_step",
       "community": 51,
-      "norm_label": "newordervoicepage()"
+      "norm_label": "step"
+    },
+    {
+      "label": "InputMode",
+      "file_type": "code",
+      "source_file": "frontend/src/app/orders/new/page.tsx",
+      "source_location": "L8",
+      "id": "new_page_inputmode",
+      "community": 51,
+      "norm_label": "inputmode"
+    },
+    {
+      "label": "EXAMPLE_ORDERS",
+      "file_type": "code",
+      "source_file": "frontend/src/app/orders/new/page.tsx",
+      "source_location": "L10",
+      "id": "new_page_example_orders",
+      "community": 51,
+      "norm_label": "example_orders"
+    },
+    {
+      "label": "NewOrderPage()",
+      "file_type": "code",
+      "source_file": "frontend/src/app/orders/new/page.tsx",
+      "source_location": "L16",
+      "id": "new_page_neworderpage",
+      "community": 51,
+      "norm_label": "neworderpage()"
     },
     {
       "label": "page.tsx",
@@ -1303,16 +1645,34 @@
       "label": "CONTACTS",
       "file_type": "code",
       "source_file": "frontend/src/app/simulator/page.tsx",
-      "source_location": "L14",
+      "source_location": "L15",
       "id": "simulator_page_contacts",
       "community": 44,
       "norm_label": "contacts"
     },
     {
+      "label": "renderMarkdown()",
+      "file_type": "code",
+      "source_file": "frontend/src/app/simulator/page.tsx",
+      "source_location": "L24",
+      "id": "simulator_page_rendermarkdown",
+      "community": 44,
+      "norm_label": "rendermarkdown()"
+    },
+    {
+      "label": "formatDuration()",
+      "file_type": "code",
+      "source_file": "frontend/src/app/simulator/page.tsx",
+      "source_location": "L38",
+      "id": "simulator_page_formatduration",
+      "community": 44,
+      "norm_label": "formatduration()"
+    },
+    {
       "label": "SimulatorPage()",
       "file_type": "code",
       "source_file": "frontend/src/app/simulator/page.tsx",
-      "source_location": "L22",
+      "source_location": "L46",
       "id": "simulator_page_simulatorpage",
       "community": 44,
       "norm_label": "simulatorpage()"
@@ -3060,7 +3420,7 @@
       "source_file": "docs/implementation_plan.md",
       "source_location": "L494",
       "id": "docs_implementation_plan_phase_5_route_optimization_engine",
-      "community": 42,
+      "community": 0,
       "norm_label": "phase 5 \u2014 route optimization engine \ud83d\uddfa\ufe0f"
     },
     {
@@ -3069,7 +3429,7 @@
       "source_file": "docs/implementation_plan.md",
       "source_location": "L498",
       "id": "docs_implementation_plan_5_1_geocoding_service_backend_services_geocoder_py",
-      "community": 42,
+      "community": 0,
       "norm_label": "5.1 \u2014 geocoding service (`backend/services/geocoder.py`)"
     },
     {
@@ -3078,7 +3438,7 @@
       "source_file": "docs/implementation_plan.md",
       "source_location": "L499",
       "id": "docs_implementation_plan_codeblock_22",
-      "community": 42,
+      "community": 0,
       "norm_label": "code:python (from geopy.geocoders import nominatim)"
     },
     {
@@ -3087,7 +3447,7 @@
       "source_file": "docs/implementation_plan.md",
       "source_location": "L526",
       "id": "docs_implementation_plan_5_2_or_tools_route_optimizer_backend_services_route_optimizer_py",
-      "community": 42,
+      "community": 0,
       "norm_label": "5.2 \u2014 or-tools route optimizer (`backend/services/route_optimizer.py`)"
     },
     {
@@ -3096,7 +3456,7 @@
       "source_file": "docs/implementation_plan.md",
       "source_location": "L527",
       "id": "docs_implementation_plan_codeblock_23",
-      "community": 42,
+      "community": 0,
       "norm_label": "code:python (from ortools.constraint_solver import routing_enums_pb2, pyw)"
     },
     {
@@ -3105,7 +3465,7 @@
       "source_file": "docs/implementation_plan.md",
       "source_location": "L569",
       "id": "docs_implementation_plan_5_3_route_router_backend_routers_route_py",
-      "community": 42,
+      "community": 0,
       "norm_label": "5.3 \u2014 route router (`backend/routers/route.py`)"
     },
     {
@@ -3114,7 +3474,7 @@
       "source_file": "docs/implementation_plan.md",
       "source_location": "L570",
       "id": "docs_implementation_plan_codeblock_24",
-      "community": 42,
+      "community": 0,
       "norm_label": "code:python (from fastapi import apirouter)"
     },
     {
@@ -3357,7 +3717,7 @@
       "source_file": "docs/implementation_plan.md",
       "source_location": "L928",
       "id": "docs_implementation_plan_phase_9_deployment_production_readiness",
-      "community": 14,
+      "community": 0,
       "norm_label": "phase 9 \u2014 deployment & production readiness \ud83d\ude80"
     },
     {
@@ -3366,7 +3726,7 @@
       "source_file": "docs/implementation_plan.md",
       "source_location": "L932",
       "id": "docs_implementation_plan_9_1_frontend_deployment_vercel",
-      "community": 14,
+      "community": 0,
       "norm_label": "9.1 \u2014 frontend deployment (vercel)"
     },
     {
@@ -3375,7 +3735,7 @@
       "source_file": "docs/implementation_plan.md",
       "source_location": "L933",
       "id": "docs_implementation_plan_codeblock_36",
-      "community": 14,
+      "community": 0,
       "norm_label": "code:bash (cd frontend)"
     },
     {
@@ -3384,7 +3744,7 @@
       "source_file": "docs/implementation_plan.md",
       "source_location": "L943",
       "id": "docs_implementation_plan_9_2_backend_deployment_render",
-      "community": 14,
+      "community": 0,
       "norm_label": "9.2 \u2014 backend deployment (render)"
     },
     {
@@ -3393,7 +3753,7 @@
       "source_file": "docs/implementation_plan.md",
       "source_location": "L945",
       "id": "docs_implementation_plan_codeblock_37",
-      "community": 14,
+      "community": 0,
       "norm_label": "code:yaml (services:)"
     },
     {
@@ -3402,7 +3762,7 @@
       "source_file": "docs/implementation_plan.md",
       "source_location": "L966",
       "id": "docs_implementation_plan_9_3_supabase_production_migration",
-      "community": 14,
+      "community": 0,
       "norm_label": "9.3 \u2014 supabase production migration"
     },
     {
@@ -3411,7 +3771,7 @@
       "source_file": "docs/implementation_plan.md",
       "source_location": "L967",
       "id": "docs_implementation_plan_codeblock_38",
-      "community": 14,
+      "community": 0,
       "norm_label": "code:bash (# use supabase cli)"
     },
     {
@@ -3420,7 +3780,7 @@
       "source_file": "docs/implementation_plan.md",
       "source_location": "L972",
       "id": "docs_implementation_plan_9_4_twilio_production_webhook_update",
-      "community": 14,
+      "community": 0,
       "norm_label": "9.4 \u2014 twilio production webhook update"
     },
     {
@@ -3429,7 +3789,7 @@
       "source_file": "docs/implementation_plan.md",
       "source_location": "L975",
       "id": "docs_implementation_plan_9_5_final_health_check",
-      "community": 14,
+      "community": 0,
       "norm_label": "9.5 \u2014 final health check"
     },
     {
@@ -3438,7 +3798,7 @@
       "source_file": "docs/implementation_plan.md",
       "source_location": "L976",
       "id": "docs_implementation_plan_codeblock_39",
-      "community": 14,
+      "community": 0,
       "norm_label": "code:bash (curl https://supplysetu-backend.onrender.com/health)"
     },
     {
@@ -3847,6 +4207,51 @@
       "norm_label": "deploy on vercel"
     },
     {
+      "label": "Simple 7-day rolling average demand forecast per product.",
+      "file_type": "rationale",
+      "source_file": "backend/routers/analytics.py",
+      "source_location": "L49",
+      "community": 19,
+      "norm_label": "simple 7-day rolling average demand forecast per product.",
+      "id": "routers_analytics_rationale_49"
+    },
+    {
+      "label": "Daily order counts for the last 7 days for charts.",
+      "file_type": "rationale",
+      "source_file": "backend/routers/analytics.py",
+      "source_location": "L73",
+      "community": 19,
+      "norm_label": "daily order counts for the last 7 days for charts.",
+      "id": "routers_analytics_rationale_73"
+    },
+    {
+      "label": "Return recent orders for a customer phone number to show in chat.",
+      "file_type": "rationale",
+      "source_file": "backend/routers/simulator.py",
+      "source_location": "L109",
+      "community": 10,
+      "norm_label": "return recent orders for a customer phone number to show in chat.",
+      "id": "routers_simulator_rationale_109"
+    },
+    {
+      "label": "get_model()",
+      "file_type": "code",
+      "source_file": "backend/services/whisper_service.py",
+      "source_location": "L10",
+      "community": 14,
+      "norm_label": "get_model()",
+      "id": "services_whisper_service_get_model"
+    },
+    {
+      "label": "NewOrderVoicePage()",
+      "file_type": "code",
+      "source_file": "frontend/src/app/orders/new/page.tsx",
+      "source_location": "L6",
+      "community": 51,
+      "norm_label": "newordervoicepage()",
+      "id": "new_page_newordervoicepage"
+    },
+    {
       "label": "geistSans",
       "file_type": "code",
       "source_file": "frontend/src/app/layout.tsx",
@@ -3869,11 +4274,73 @@
     {
       "relation": "contains",
       "confidence": "EXTRACTED",
+      "source_file": "debug_llm.py",
+      "source_location": "L14",
+      "weight": 1.0,
+      "source": "debug_llm_py",
+      "target": "faraway_hackathon_debug_llm_run",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "source_file": "debug_llm.py",
+      "source_location": "L24",
+      "weight": 1.0,
+      "source": "faraway_hackathon_debug_llm_run",
+      "target": "services_llm_service_groq_extract"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
       "source_file": "test_extract.py",
       "source_location": "L5",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "test_extract_py",
-      "target": "faraway_hackathon_test_extract_test_extract",
+      "target": "faraway_hackathon_test_extract_test_extract"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "test_type_tab.py",
+      "source_location": "L207",
+      "weight": 1.0,
+      "source": "test_type_tab_py",
+      "target": "faraway_hackathon_test_type_tab_run_test",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "test_type_tab.py",
+      "source_location": "L295",
+      "weight": 1.0,
+      "source": "test_type_tab_py",
+      "target": "faraway_hackathon_test_type_tab_main",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "test_type_tab.py",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "faraway_hackathon_test_type_tab_rationale_1",
+      "target": "test_type_tab_py",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "test_type_tab.py",
+      "source_location": "L314",
+      "weight": 1.0,
+      "source": "faraway_hackathon_test_type_tab_main",
+      "target": "faraway_hackathon_test_type_tab_run_test",
       "confidence_score": 1.0
     },
     {
@@ -3912,9 +4379,9 @@
       "source_file": "backend/test_db.py",
       "source_location": "L11",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "backend_test_db_py",
-      "target": "backend_test_db_test_db",
-      "confidence_score": 1.0
+      "target": "backend_test_db_test_db"
     },
     {
       "relation": "contains",
@@ -3922,9 +4389,9 @@
       "source_file": "backend/test_route.py",
       "source_location": "L4",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "backend_test_route_py",
-      "target": "backend_test_route_test_route",
-      "confidence_score": 1.0
+      "target": "backend_test_route_test_route"
     },
     {
       "relation": "contains",
@@ -3932,9 +4399,9 @@
       "source_file": "backend/test_transcribe.py",
       "source_location": "L4",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "backend_test_transcribe_py",
-      "target": "backend_test_transcribe_test_transcribe",
-      "confidence_score": 1.0
+      "target": "backend_test_transcribe_test_transcribe"
     },
     {
       "relation": "contains",
@@ -3950,11 +4417,61 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "backend/models/schemas.py",
+      "source_location": "L18",
+      "weight": 1.0,
+      "source": "backend_models_schemas_py",
+      "target": "models_schemas_quantity_must_be_positive",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/models/schemas.py",
+      "source_location": "L25",
+      "weight": 1.0,
+      "source": "backend_models_schemas_py",
+      "target": "models_schemas_product_name_not_empty",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/models/schemas.py",
+      "source_location": "L33",
+      "weight": 1.0,
+      "source": "backend_models_schemas_py",
+      "target": "models_schemas_unit_must_be_valid",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/models/schemas.py",
       "source_location": "L13",
       "weight": 1.0,
       "confidence_score": 1.0,
       "source": "backend_models_schemas_py",
       "target": "models_schemas_ordercreate"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/models/schemas.py",
+      "source_location": "L50",
+      "weight": 1.0,
+      "source": "backend_models_schemas_py",
+      "target": "models_schemas_name_not_empty",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/models/schemas.py",
+      "source_location": "L58",
+      "weight": 1.0,
+      "source": "backend_models_schemas_py",
+      "target": "models_schemas_items_not_empty",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -3970,6 +4487,16 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "backend/models/schemas.py",
+      "source_location": "L70",
+      "weight": 1.0,
+      "source": "backend_models_schemas_py",
+      "target": "models_schemas_status_must_be_valid",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/models/schemas.py",
       "source_location": "L27",
       "weight": 1.0,
       "confidence_score": 1.0,
@@ -3980,11 +4507,41 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "backend/models/schemas.py",
+      "source_location": "L86",
+      "weight": 1.0,
+      "source": "backend_models_schemas_py",
+      "target": "models_schemas_lat_in_range",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/models/schemas.py",
+      "source_location": "L93",
+      "weight": 1.0,
+      "source": "backend_models_schemas_py",
+      "target": "models_schemas_lng_in_range",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/models/schemas.py",
       "source_location": "L36",
       "weight": 1.0,
       "confidence_score": 1.0,
       "source": "backend_models_schemas_py",
       "target": "models_schemas_routerequest"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/models/schemas.py",
+      "source_location": "L105",
+      "weight": 1.0,
+      "source": "backend_models_schemas_py",
+      "target": "models_schemas_order_ids_not_empty",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -4140,11 +4697,31 @@
       "relation": "rationale_for",
       "confidence": "EXTRACTED",
       "source_file": "backend/routers/analytics.py",
+      "source_location": "L45",
+      "weight": 1.0,
+      "source": "routers_analytics_rationale_45",
+      "target": "routers_analytics_get_forecast",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/routers/analytics.py",
       "source_location": "L49",
       "weight": 1.0,
       "confidence_score": 1.0,
       "source": "routers_analytics_rationale_49",
       "target": "routers_analytics_get_forecast"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/routers/analytics.py",
+      "source_location": "L85",
+      "weight": 1.0,
+      "source": "routers_analytics_rationale_85",
+      "target": "routers_analytics_get_weekly_stats",
+      "confidence_score": 1.0
     },
     {
       "relation": "rationale_for",
@@ -4282,6 +4859,36 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "backend/routers/simulator.py",
+      "source_location": "L18",
+      "weight": 1.0,
+      "source": "backend_routers_simulator_py",
+      "target": "routers_simulator_upsert_customer",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/routers/simulator.py",
+      "source_location": "L30",
+      "weight": 1.0,
+      "source": "backend_routers_simulator_py",
+      "target": "routers_simulator_sanitise_delivery_date",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/routers/simulator.py",
+      "source_location": "L64",
+      "weight": 1.0,
+      "source": "backend_routers_simulator_py",
+      "target": "routers_simulator_build_reply",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/routers/simulator.py",
       "source_location": "L16",
       "weight": 1.0,
       "confidence_score": 1.0,
@@ -4297,6 +4904,69 @@
       "confidence_score": 1.0,
       "source": "backend_routers_simulator_py",
       "target": "routers_simulator_get_chat_history"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/routers/simulator.py",
+      "source_location": "L199",
+      "weight": 1.0,
+      "source": "routers_simulator_receive_simulator_message",
+      "target": "routers_simulator_upsert_customer",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/routers/simulator.py",
+      "source_location": "L19",
+      "weight": 1.0,
+      "source": "routers_simulator_rationale_19",
+      "target": "routers_simulator_upsert_customer",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/routers/simulator.py",
+      "source_location": "L186",
+      "weight": 1.0,
+      "source": "routers_simulator_receive_simulator_message",
+      "target": "routers_simulator_sanitise_delivery_date",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/routers/simulator.py",
+      "source_location": "L31",
+      "weight": 1.0,
+      "source": "routers_simulator_rationale_31",
+      "target": "routers_simulator_sanitise_delivery_date",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/routers/simulator.py",
+      "source_location": "L192",
+      "weight": 1.0,
+      "source": "routers_simulator_receive_simulator_message",
+      "target": "routers_simulator_build_reply",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/routers/simulator.py",
+      "source_location": "L65",
+      "weight": 1.0,
+      "source": "routers_simulator_rationale_65",
+      "target": "routers_simulator_build_reply",
+      "confidence_score": 1.0
     },
     {
       "relation": "calls",
@@ -4319,6 +4989,16 @@
       "weight": 1.0,
       "source": "routers_simulator_receive_simulator_message",
       "target": "services_llm_service_extract_order"
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/routers/simulator.py",
+      "source_location": "L240",
+      "weight": 1.0,
+      "source": "routers_simulator_rationale_240",
+      "target": "routers_simulator_get_chat_history",
+      "confidence_score": 1.0
     },
     {
       "relation": "rationale_for",
@@ -4406,11 +5086,135 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "backend/services/llm_service.py",
+      "source_location": "L45",
+      "weight": 1.0,
+      "source": "backend_services_llm_service_py",
+      "target": "services_llm_service_parse_json_safe",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/services/llm_service.py",
+      "source_location": "L67",
+      "weight": 1.0,
+      "source": "backend_services_llm_service_py",
+      "target": "services_llm_service_groq_extract",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/services/llm_service.py",
+      "source_location": "L108",
+      "weight": 1.0,
+      "source": "backend_services_llm_service_py",
+      "target": "services_llm_service_ollama_extract",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/services/llm_service.py",
+      "source_location": "L127",
+      "weight": 1.0,
+      "source": "backend_services_llm_service_py",
+      "target": "services_llm_service_async_sleep",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/services/llm_service.py",
       "source_location": "L31",
       "weight": 1.0,
       "confidence_score": 1.0,
       "source": "backend_services_llm_service_py",
       "target": "services_llm_service_extract_order"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/services/llm_service.py",
+      "source_location": "L147",
+      "weight": 1.0,
+      "source": "services_llm_service_extract_order",
+      "target": "services_llm_service_parse_json_safe",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/services/llm_service.py",
+      "source_location": "L46",
+      "weight": 1.0,
+      "source": "services_llm_service_rationale_46",
+      "target": "services_llm_service_parse_json_safe",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/services/llm_service.py",
+      "source_location": "L100",
+      "weight": 1.0,
+      "source": "services_llm_service_groq_extract",
+      "target": "services_llm_service_async_sleep",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/services/llm_service.py",
+      "source_location": "L144",
+      "weight": 1.0,
+      "source": "services_llm_service_extract_order",
+      "target": "services_llm_service_groq_extract",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/services/llm_service.py",
+      "source_location": "L68",
+      "weight": 1.0,
+      "source": "services_llm_service_rationale_68",
+      "target": "services_llm_service_groq_extract",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/services/llm_service.py",
+      "source_location": "L146",
+      "weight": 1.0,
+      "source": "services_llm_service_extract_order",
+      "target": "services_llm_service_ollama_extract",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/services/llm_service.py",
+      "source_location": "L109",
+      "weight": 1.0,
+      "source": "services_llm_service_rationale_109",
+      "target": "services_llm_service_ollama_extract",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/services/llm_service.py",
+      "source_location": "L133",
+      "weight": 1.0,
+      "source": "services_llm_service_rationale_133",
+      "target": "services_llm_service_extract_order",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -4436,11 +5240,31 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "backend/services/whisper_service.py",
-      "source_location": "L8",
+      "source_location": "L23",
       "weight": 1.0,
-      "confidence_score": 1.0,
       "source": "backend_services_whisper_service_py",
-      "target": "services_whisper_service_get_model"
+      "target": "services_whisper_service_get_local_model",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/services/whisper_service.py",
+      "source_location": "L35",
+      "weight": 1.0,
+      "source": "backend_services_whisper_service_py",
+      "target": "services_whisper_service_groq_transcribe",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/services/whisper_service.py",
+      "source_location": "L80",
+      "weight": 1.0,
+      "source": "backend_services_whisper_service_py",
+      "target": "services_whisper_service_local_transcribe",
+      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -4451,6 +5275,89 @@
       "confidence_score": 1.0,
       "source": "backend_services_whisper_service_py",
       "target": "services_whisper_service_transcribe_audio"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/services/whisper_service.py",
+      "source_location": "L8",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "backend_services_whisper_service_py",
+      "target": "services_whisper_service_get_model"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/services/whisper_service.py",
+      "source_location": "L83",
+      "weight": 1.0,
+      "source": "services_whisper_service_local_transcribe",
+      "target": "services_whisper_service_get_local_model",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/services/whisper_service.py",
+      "source_location": "L24",
+      "weight": 1.0,
+      "source": "services_whisper_service_rationale_24",
+      "target": "services_whisper_service_get_local_model",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/services/whisper_service.py",
+      "source_location": "L104",
+      "weight": 1.0,
+      "source": "services_whisper_service_transcribe_audio",
+      "target": "services_whisper_service_groq_transcribe",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/services/whisper_service.py",
+      "source_location": "L36",
+      "weight": 1.0,
+      "source": "services_whisper_service_rationale_36",
+      "target": "services_whisper_service_groq_transcribe",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/services/whisper_service.py",
+      "source_location": "L111",
+      "weight": 1.0,
+      "source": "services_whisper_service_transcribe_audio",
+      "target": "services_whisper_service_local_transcribe",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/services/whisper_service.py",
+      "source_location": "L81",
+      "weight": 1.0,
+      "source": "services_whisper_service_rationale_81",
+      "target": "services_whisper_service_local_transcribe",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "rationale_for",
+      "confidence": "EXTRACTED",
+      "source_file": "backend/services/whisper_service.py",
+      "source_location": "L96",
+      "weight": 1.0,
+      "source": "services_whisper_service_rationale_96",
+      "target": "services_whisper_service_transcribe_audio",
+      "confidence_score": 1.0
     },
     {
       "relation": "calls",
@@ -4959,9 +5866,9 @@
       "source_file": "frontend/src/app/layout.tsx",
       "source_location": "L5",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "frontend_src_app_layout_tsx",
-      "target": "app_layout_inter",
-      "confidence_score": 1.0
+      "target": "app_layout_inter"
     },
     {
       "relation": "contains",
@@ -4969,9 +5876,9 @@
       "source_file": "frontend/src/app/layout.tsx",
       "source_location": "L10",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "frontend_src_app_layout_tsx",
-      "target": "app_layout_notosans",
-      "confidence_score": 1.0
+      "target": "app_layout_notosans"
     },
     {
       "relation": "contains",
@@ -5019,9 +5926,9 @@
       "source_file": "frontend/src/app/page.tsx",
       "source_location": "L6",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "frontend_src_app_page_tsx",
-      "target": "app_page_home",
-      "confidence_score": 1.0
+      "target": "app_page_home"
     },
     {
       "relation": "imports_from",
@@ -5030,9 +5937,9 @@
       "source_file": "frontend/src/app/analytics/page.tsx",
       "source_location": "L4",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "frontend_src_app_analytics_page_tsx",
-      "target": "frontend_src_lib_supabase_ts",
-      "confidence_score": 1.0
+      "target": "frontend_src_lib_supabase_ts"
     },
     {
       "relation": "imports",
@@ -5041,9 +5948,9 @@
       "source_file": "frontend/src/app/analytics/page.tsx",
       "source_location": "L4",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "frontend_src_app_analytics_page_tsx",
-      "target": "lib_supabase_supabase",
-      "confidence_score": 1.0
+      "target": "lib_supabase_supabase"
     },
     {
       "relation": "contains",
@@ -5051,9 +5958,9 @@
       "source_file": "frontend/src/app/analytics/page.tsx",
       "source_location": "L11",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "frontend_src_app_analytics_page_tsx",
-      "target": "analytics_page_analyticspage",
-      "confidence_score": 1.0
+      "target": "analytics_page_analyticspage"
     },
     {
       "relation": "imports_from",
@@ -5062,9 +5969,9 @@
       "source_file": "frontend/src/app/dashboard/page.tsx",
       "source_location": "L4",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "frontend_src_app_dashboard_page_tsx",
-      "target": "frontend_src_lib_supabase_ts",
-      "confidence_score": 1.0
+      "target": "frontend_src_lib_supabase_ts"
     },
     {
       "relation": "imports",
@@ -5073,9 +5980,9 @@
       "source_file": "frontend/src/app/dashboard/page.tsx",
       "source_location": "L4",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "frontend_src_app_dashboard_page_tsx",
-      "target": "lib_supabase_supabase",
-      "confidence_score": 1.0
+      "target": "lib_supabase_supabase"
     },
     {
       "relation": "contains",
@@ -5083,9 +5990,9 @@
       "source_file": "frontend/src/app/dashboard/page.tsx",
       "source_location": "L7",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "frontend_src_app_dashboard_page_tsx",
-      "target": "dashboard_page_dashboardpage",
-      "confidence_score": 1.0
+      "target": "dashboard_page_dashboardpage"
     },
     {
       "relation": "imports_from",
@@ -5094,9 +6001,9 @@
       "source_file": "frontend/src/app/orders/page.tsx",
       "source_location": "L4",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "frontend_src_app_orders_page_tsx",
-      "target": "frontend_src_lib_supabase_ts",
-      "confidence_score": 1.0
+      "target": "frontend_src_lib_supabase_ts"
     },
     {
       "relation": "imports",
@@ -5105,9 +6012,9 @@
       "source_file": "frontend/src/app/orders/page.tsx",
       "source_location": "L4",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "frontend_src_app_orders_page_tsx",
-      "target": "lib_supabase_supabase",
-      "confidence_score": 1.0
+      "target": "lib_supabase_supabase"
     },
     {
       "relation": "contains",
@@ -5115,8 +6022,48 @@
       "source_file": "frontend/src/app/orders/page.tsx",
       "source_location": "L7",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "frontend_src_app_orders_page_tsx",
-      "target": "orders_page_orderspage",
+      "target": "orders_page_orderspage"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/src/app/orders/new/page.tsx",
+      "source_location": "L7",
+      "weight": 1.0,
+      "source": "frontend_src_app_orders_new_page_tsx",
+      "target": "new_page_step",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/src/app/orders/new/page.tsx",
+      "source_location": "L8",
+      "weight": 1.0,
+      "source": "frontend_src_app_orders_new_page_tsx",
+      "target": "new_page_inputmode",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/src/app/orders/new/page.tsx",
+      "source_location": "L10",
+      "weight": 1.0,
+      "source": "frontend_src_app_orders_new_page_tsx",
+      "target": "new_page_example_orders",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/src/app/orders/new/page.tsx",
+      "source_location": "L16",
+      "weight": 1.0,
+      "source": "frontend_src_app_orders_new_page_tsx",
+      "target": "new_page_neworderpage",
       "confidence_score": 1.0
     },
     {
@@ -5125,9 +6072,9 @@
       "source_file": "frontend/src/app/orders/new/page.tsx",
       "source_location": "L6",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "frontend_src_app_orders_new_page_tsx",
-      "target": "new_page_newordervoicepage",
-      "confidence_score": 1.0
+      "target": "new_page_newordervoicepage"
     },
     {
       "relation": "imports_from",
@@ -5136,9 +6083,9 @@
       "source_file": "frontend/src/app/route-map/page.tsx",
       "source_location": "L1",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "frontend_src_app_route_map_page_tsx",
-      "target": "frontend_src_components_mapwrapper_tsx",
-      "confidence_score": 1.0
+      "target": "frontend_src_components_mapwrapper_tsx"
     },
     {
       "relation": "contains",
@@ -5146,9 +6093,9 @@
       "source_file": "frontend/src/app/route-map/page.tsx",
       "source_location": "L3",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "frontend_src_app_route_map_page_tsx",
-      "target": "route_map_page_routemappage",
-      "confidence_score": 1.0
+      "target": "route_map_page_routemappage"
     },
     {
       "relation": "contains",
@@ -5156,9 +6103,9 @@
       "source_file": "frontend/src/app/simulator/page.tsx",
       "source_location": "L6",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "frontend_src_app_simulator_page_tsx",
-      "target": "simulator_page_message",
-      "confidence_score": 1.0
+      "target": "simulator_page_message"
     },
     {
       "relation": "contains",
@@ -5166,8 +6113,28 @@
       "source_file": "frontend/src/app/simulator/page.tsx",
       "source_location": "L14",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "frontend_src_app_simulator_page_tsx",
-      "target": "simulator_page_contacts",
+      "target": "simulator_page_contacts"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/src/app/simulator/page.tsx",
+      "source_location": "L24",
+      "weight": 1.0,
+      "source": "frontend_src_app_simulator_page_tsx",
+      "target": "simulator_page_rendermarkdown",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/src/app/simulator/page.tsx",
+      "source_location": "L38",
+      "weight": 1.0,
+      "source": "frontend_src_app_simulator_page_tsx",
+      "target": "simulator_page_formatduration",
       "confidence_score": 1.0
     },
     {
@@ -5176,8 +6143,19 @@
       "source_file": "frontend/src/app/simulator/page.tsx",
       "source_location": "L22",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "frontend_src_app_simulator_page_tsx",
-      "target": "simulator_page_simulatorpage",
+      "target": "simulator_page_simulatorpage"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "frontend/src/app/simulator/page.tsx",
+      "source_location": "L312",
+      "weight": 1.0,
+      "source": "simulator_page_simulatorpage",
+      "target": "simulator_page_formatduration",
       "confidence_score": 1.0
     },
     {
@@ -5186,9 +6164,9 @@
       "source_file": "frontend/src/components/DeliveryMap.tsx",
       "source_location": "L16",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "frontend_src_components_deliverymap_tsx",
-      "target": "components_deliverymap_mapboundsfitter",
-      "confidence_score": 1.0
+      "target": "components_deliverymap_mapboundsfitter"
     },
     {
       "relation": "contains",
@@ -5196,9 +6174,9 @@
       "source_file": "frontend/src/components/DeliveryMap.tsx",
       "source_location": "L27",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "frontend_src_components_deliverymap_tsx",
-      "target": "components_deliverymap_deliverymap",
-      "confidence_score": 1.0
+      "target": "components_deliverymap_deliverymap"
     },
     {
       "relation": "contains",
@@ -5206,9 +6184,9 @@
       "source_file": "frontend/src/components/MapWrapper.tsx",
       "source_location": "L4",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "frontend_src_components_mapwrapper_tsx",
-      "target": "components_mapwrapper_deliverymap",
-      "confidence_score": 1.0
+      "target": "components_mapwrapper_deliverymap"
     },
     {
       "relation": "contains",
@@ -5216,9 +6194,9 @@
       "source_file": "frontend/src/components/MapWrapper.tsx",
       "source_location": "L9",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "frontend_src_components_mapwrapper_tsx",
-      "target": "components_mapwrapper_mapwrapper",
-      "confidence_score": 1.0
+      "target": "components_mapwrapper_mapwrapper"
     },
     {
       "relation": "contains",
@@ -5226,9 +6204,9 @@
       "source_file": "frontend/src/lib/supabase.ts",
       "source_location": "L6",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "frontend_src_lib_supabase_ts",
-      "target": "lib_supabase_supabase",
-      "confidence_score": 1.0
+      "target": "lib_supabase_supabase"
     },
     {
       "relation": "contains",
@@ -5246,9 +6224,9 @@
       "source_file": "README.md",
       "source_location": "L1",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "readme_md",
-      "target": "faraway_hackathon_readme_supplysetu_ai",
-      "confidence_score": 1.0
+      "target": "faraway_hackathon_readme_supplysetu_ai"
     },
     {
       "relation": "contains",
@@ -5256,9 +6234,9 @@
       "source_file": "README.md",
       "source_location": "L11",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "faraway_hackathon_readme_supplysetu_ai",
-      "target": "faraway_hackathon_readme_note_for_hackathon_judges",
-      "confidence_score": 1.0
+      "target": "faraway_hackathon_readme_note_for_hackathon_judges"
     },
     {
       "relation": "contains",
@@ -5266,9 +6244,9 @@
       "source_file": "README.md",
       "source_location": "L24",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "faraway_hackathon_readme_supplysetu_ai",
-      "target": "faraway_hackathon_readme_the_problem_our_solution",
-      "confidence_score": 1.0
+      "target": "faraway_hackathon_readme_the_problem_our_solution"
     },
     {
       "relation": "contains",
@@ -5276,9 +6254,9 @@
       "source_file": "README.md",
       "source_location": "L30",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "faraway_hackathon_readme_supplysetu_ai",
-      "target": "faraway_hackathon_readme_key_features",
-      "confidence_score": 1.0
+      "target": "faraway_hackathon_readme_key_features"
     },
     {
       "relation": "contains",
@@ -5286,9 +6264,9 @@
       "source_file": "README.md",
       "source_location": "L39",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "faraway_hackathon_readme_supplysetu_ai",
-      "target": "faraway_hackathon_readme_technical_architecture",
-      "confidence_score": 1.0
+      "target": "faraway_hackathon_readme_technical_architecture"
     },
     {
       "relation": "contains",
@@ -5296,9 +6274,9 @@
       "source_file": "README.md",
       "source_location": "L55",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "faraway_hackathon_readme_supplysetu_ai",
-      "target": "faraway_hackathon_readme_getting_started",
-      "confidence_score": 1.0
+      "target": "faraway_hackathon_readme_getting_started"
     },
     {
       "relation": "contains",
@@ -5306,9 +6284,9 @@
       "source_file": "README.md",
       "source_location": "L104",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "faraway_hackathon_readme_supplysetu_ai",
-      "target": "faraway_hackathon_readme_try_the_simulator",
-      "confidence_score": 1.0
+      "target": "faraway_hackathon_readme_try_the_simulator"
     },
     {
       "relation": "contains",
@@ -5316,9 +6294,9 @@
       "source_file": "README.md",
       "source_location": "L109",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "faraway_hackathon_readme_supplysetu_ai",
-      "target": "faraway_hackathon_readme_license",
-      "confidence_score": 1.0
+      "target": "faraway_hackathon_readme_license"
     },
     {
       "relation": "contains",
@@ -5326,9 +6304,9 @@
       "source_file": "README.md",
       "source_location": "L41",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "faraway_hackathon_readme_technical_architecture",
-      "target": "faraway_hackathon_readme_frontend",
-      "confidence_score": 1.0
+      "target": "faraway_hackathon_readme_frontend"
     },
     {
       "relation": "contains",
@@ -5336,9 +6314,9 @@
       "source_file": "README.md",
       "source_location": "L46",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "faraway_hackathon_readme_technical_architecture",
-      "target": "faraway_hackathon_readme_backend_ai_pipeline",
-      "confidence_score": 1.0
+      "target": "faraway_hackathon_readme_backend_ai_pipeline"
     },
     {
       "relation": "contains",
@@ -5346,9 +6324,9 @@
       "source_file": "README.md",
       "source_location": "L57",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "faraway_hackathon_readme_getting_started",
-      "target": "faraway_hackathon_readme_prerequisites",
-      "confidence_score": 1.0
+      "target": "faraway_hackathon_readme_prerequisites"
     },
     {
       "relation": "contains",
@@ -5356,9 +6334,9 @@
       "source_file": "README.md",
       "source_location": "L64",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "faraway_hackathon_readme_getting_started",
-      "target": "faraway_hackathon_readme_1_backend_setup",
-      "confidence_score": 1.0
+      "target": "faraway_hackathon_readme_1_backend_setup"
     },
     {
       "relation": "contains",
@@ -5366,9 +6344,9 @@
       "source_file": "README.md",
       "source_location": "L74",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "faraway_hackathon_readme_getting_started",
-      "target": "faraway_hackathon_readme_2_frontend_setup",
-      "confidence_score": 1.0
+      "target": "faraway_hackathon_readme_2_frontend_setup"
     },
     {
       "relation": "contains",
@@ -5376,9 +6354,9 @@
       "source_file": "README.md",
       "source_location": "L82",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "faraway_hackathon_readme_getting_started",
-      "target": "faraway_hackathon_readme_3_environment_configuration",
-      "confidence_score": 1.0
+      "target": "faraway_hackathon_readme_3_environment_configuration"
     },
     {
       "relation": "contains",
@@ -5386,9 +6364,9 @@
       "source_file": "README.md",
       "source_location": "L66",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "faraway_hackathon_readme_1_backend_setup",
-      "target": "faraway_hackathon_readme_codeblock_1",
-      "confidence_score": 1.0
+      "target": "faraway_hackathon_readme_codeblock_1"
     },
     {
       "relation": "contains",
@@ -5396,9 +6374,9 @@
       "source_file": "README.md",
       "source_location": "L76",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "faraway_hackathon_readme_2_frontend_setup",
-      "target": "faraway_hackathon_readme_codeblock_2",
-      "confidence_score": 1.0
+      "target": "faraway_hackathon_readme_codeblock_2"
     },
     {
       "relation": "contains",
@@ -5406,9 +6384,9 @@
       "source_file": "README.md",
       "source_location": "L84",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "faraway_hackathon_readme_3_environment_configuration",
-      "target": "faraway_hackathon_readme_codeblock_3",
-      "confidence_score": 1.0
+      "target": "faraway_hackathon_readme_codeblock_3"
     },
     {
       "relation": "contains",
@@ -5416,9 +6394,9 @@
       "source_file": "README.md",
       "source_location": "L97",
       "weight": 1.0,
+      "confidence_score": 1.0,
       "source": "faraway_hackathon_readme_3_environment_configuration",
-      "target": "faraway_hackathon_readme_codeblock_4",
-      "confidence_score": 1.0
+      "target": "faraway_hackathon_readme_codeblock_4"
     },
     {
       "relation": "contains",
@@ -7842,5 +8820,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "8ed1965cf57c35318c0bbede0a3ca76774033193"
+  "built_at_commit": "0f60b32b629fa44ec8d9199fb17a2c409a25d073"
 }
