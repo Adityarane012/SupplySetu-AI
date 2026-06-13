@@ -4,6 +4,7 @@ import { MapContainer, TileLayer, Marker, Popup, Polyline, useMap } from "react-
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
 import Link from "next/link";
+import { supabase } from "@/lib/supabase";
 
 // Fix for default Leaflet icons in Next.js
 delete (L.Icon.Default.prototype as any)._getIconUrl;
@@ -31,7 +32,7 @@ export default function DeliveryMap() {
   useEffect(() => {
     async function fetchRoute() {
       try {
-        const ordersRes = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/orders?status=pending`);
+        const ordersRes = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/orders`);
         const ordersData = await ordersRes.json();
         let orderIds = ordersData.map((o: any) => o.id);
         
@@ -60,6 +61,22 @@ export default function DeliveryMap() {
       }
     }
     fetchRoute();
+
+    const channel = supabase
+      .channel("map-realtime")
+      .on(
+        "postgres_changes",
+        { event: "*", schema: "public", table: "orders" },
+        (payload) => {
+          console.log("Realtime event received in map:", payload);
+          fetchRoute(); // Re-fetch route on any change
+        }
+      )
+      .subscribe();
+
+    return () => {
+      supabase.removeChannel(channel);
+    };
   }, []);
 
   const routeCoordinates = route.map(stop => [stop.lat, stop.lng] as [number, number]);

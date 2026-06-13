@@ -42,11 +42,11 @@ def _sanitise_delivery_date(raw: str | None) -> str | None:
 
     # Handle common relative strings
     lower = raw.strip().lower()
-    if lower in ("tomorrow", "kal", "aaj kal", "next day", "kal subah", "tomorrow morning"):
+    if lower in ("tomorrow", "kal", "aaj kal", "next day", "kal subah", "tomorrow morning", "udya", "udya sakaali"):
         return str(today + timedelta(days=1))
     if lower in ("today", "aaj"):
         return str(today)
-    if lower in ("day after tomorrow", "parso"):
+    if lower in ("day after tomorrow", "parso", "parson", "parso subah", "parva", "parwa", "parva sakaali", "parwa sakaali", "paro", "parvi"):
         return str(today + timedelta(days=2))
 
     # Try ISO format

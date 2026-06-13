@@ -10,7 +10,7 @@ type InputMode = "voice" | "text";
 const EXAMPLE_ORDERS = [
   "20 kg tamatar aur 15 kg pyaz kal subah bhejna",
   "50 kg potato, 10 kg garlic, 5 kg ginger needed tomorrow",
-  "Bhaiya 2 dozen palak aur 3 kg methi chahiye kal tak",
+  "Bhaiya 2 dozen palak aur 3 kg methi chahiye parso tak",
 ];
 
 export default function NewOrderPage() {
@@ -226,7 +226,7 @@ export default function NewOrderPage() {
               value={typedText}
               onChange={(e) => setTypedText(e.target.value)}
               rows={5}
-              placeholder={"e.g. \"20 kg tamatar aur 10 kg pyaz kal tak chahiye\"\nor \"50 kg potato, 5 kg garlic needed tomorrow morning\""}
+              placeholder={"e.g. \"20 kg tamatar aur 10 kg pyaz parso chahiye\"\nor \"50 kg potato, 5 kg garlic needed tomorrow morning\""}
               className="w-full border border-gray-300 rounded-xl px-4 py-3 text-gray-800 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-green-400 resize-none text-sm leading-relaxed font-noto-sans"
             />
 
