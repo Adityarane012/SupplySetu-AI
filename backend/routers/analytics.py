@@ -86,14 +86,28 @@ def get_forecast():
 @router.get("/weekly")
 def get_weekly_stats():
     """Daily order counts for the last 7 days for charts."""
+    seven_days_ago = str((datetime.today() - timedelta(days=6)).date())
+    
+    # Do 1 single query for the last 7 days
+    result = (
+        supabase.table("orders")
+        .select("id, scheduled_date")
+        .gte("scheduled_date", seven_days_ago)
+        .execute()
+    )
+    
+    orders = result.data or []
+    
+    # Aggregate counts by date
+    counts_by_date = {}
+    for o in orders:
+        d = o.get("scheduled_date")
+        if d:
+            counts_by_date[d] = counts_by_date.get(d, 0) + 1
+            
     rows = []
     for i in range(6, -1, -1):
         d = str((datetime.today() - timedelta(days=i)).date())
-        result = (
-            supabase.table("orders")
-            .select("id", count="exact")
-            .eq("scheduled_date", d)
-            .execute()
-        )
-        rows.append({"date": d, "count": result.count or 0})
+        rows.append({"date": d, "count": counts_by_date.get(d, 0)})
+        
     return rows

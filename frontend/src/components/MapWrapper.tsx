@@ -6,6 +6,6 @@ const DeliveryMap = dynamic(
   { ssr: false }
 );
 
-export default function MapWrapper({ route }: { route: any[] }) {
-  return <DeliveryMap route={route} />;
+export default function MapWrapper() {
+  return <DeliveryMap />;
 }

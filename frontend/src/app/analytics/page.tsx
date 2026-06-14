@@ -5,13 +5,38 @@ import { supabase } from "@/lib/supabase";
 import { Package, Truck, Clock, Filter, BarChart3 } from "lucide-react";
 import {
   BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip as RechartsTooltip, ResponsiveContainer,
-  LineChart, Line, Legend
+  LineChart, Line
 } from 'recharts';
 
+interface TopProduct {
+  name: string;
+  quantity: number;
+  unit?: string;
+}
+
+interface SummaryData {
+  total_orders?: number;
+  completion_rate?: number;
+  pending?: number;
+  in_transit?: number;
+  top_products?: TopProduct[];
+}
+
+interface WeeklyData {
+  date: string;
+  count: number;
+  day?: string;
+}
+
+interface ForecastData {
+  name: string;
+  avg: number;
+}
+
 export default function AnalyticsPage() {
-  const [summary, setSummary] = useState<any>(null);
-  const [weekly, setWeekly] = useState<any[]>([]);
-  const [forecast, setForecast] = useState<any>(null);
+  const [summary, setSummary] = useState<SummaryData | null>(null);
+  const [weekly, setWeekly] = useState<WeeklyData[]>([]);
+  const [forecast, setForecast] = useState<ForecastData[] | null>(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -31,15 +56,15 @@ export default function AnalyticsPage() {
 
         setSummary(sumData);
         // Format dates for weekly chart
-        const formattedWeekly = weekData.map((d: any) => ({
+        const formattedWeekly = Array.isArray(weekData) ? weekData.map((d: WeeklyData) => ({
           ...d,
           day: new Date(d.date).toLocaleDateString('en-US', { weekday: 'short' })
-        }));
+        })) : [];
         setWeekly(formattedWeekly);
         
         // Format forecast into an array for charts if needed
         const forecastArr = Object.entries(foreData.forecast_daily_avg || {}).map(([name, avg]) => ({
-          name, avg
+          name, avg: avg as number
         }));
         setForecast(forecastArr);
       } catch (err) {
@@ -73,6 +98,7 @@ export default function AnalyticsPage() {
       {/* Sidebar */}
       <div className="w-64 bg-white border-r border-gray-200 hidden md:flex flex-col">
         <div className="p-5 border-b border-gray-200 flex items-center">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src="/logo-main.png" alt="SupplySetu AI" className="h-10 w-auto" />
         </div>
         <nav className="flex-1 p-4 space-y-2">
@@ -154,7 +180,7 @@ export default function AnalyticsPage() {
                 <p className="text-sm text-gray-500 mb-6">Rolling 7-day average predictions for top requested items.</p>
                 <div className="h-64">
                   <ResponsiveContainer width="100%" height="100%">
-                    <BarChart data={forecast} layout="vertical" margin={{ left: 20 }}>
+                    <BarChart data={forecast || []} layout="vertical" margin={{ left: 20 }}>
                       <CartesianGrid strokeDasharray="3 3" horizontal={false} stroke="#E5E7EB" />
                       <XAxis type="number" axisLine={false} tickLine={false} tick={{fill: '#6B7280'}} />
                       <YAxis dataKey="name" type="category" axisLine={false} tickLine={false} tick={{fill: '#4B5563', fontSize: 12}} width={100} />
@@ -170,7 +196,7 @@ export default function AnalyticsPage() {
             <div className="bg-white p-6 rounded-xl border border-gray-200 shadow-sm">
               <h3 className="text-lg font-bold text-gray-800 mb-4">Top Products (All Time)</h3>
               <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
-                {summary?.top_products?.map((prod: any, i: number) => (
+                {summary?.top_products?.map((prod: TopProduct, i: number) => (
                   <div key={i} className="bg-gray-50 p-4 rounded-lg border border-gray-100 flex flex-col items-center justify-center text-center">
                     <p className="font-bold text-gray-800 capitalize text-lg mb-1">{prod.name}</p>
                     <p className="text-gray-500 text-sm font-medium">{prod.quantity} {prod.unit || 'kg'} requested</p>
