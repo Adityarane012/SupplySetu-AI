@@ -146,11 +146,11 @@ export default function AnalyticsPage() {
                 <p className="text-3xl font-bold text-green-600 mt-2">{summary?.completion_rate || 0}%</p>
               </div>
               <div className="bg-white p-6 rounded-xl border border-gray-200 shadow-sm">
-                <p className="text-sm font-medium text-gray-500 uppercase">Pending Items</p>
+                <p className="text-sm font-medium text-gray-500 uppercase">Pending Orders</p>
                 <p className="text-3xl font-bold text-orange-500 mt-2">{summary?.pending || 0}</p>
               </div>
               <div className="bg-white p-6 rounded-xl border border-gray-200 shadow-sm">
-                <p className="text-sm font-medium text-gray-500 uppercase">In Transit</p>
+                <p className="text-sm font-medium text-gray-500 uppercase">In Transit Orders</p>
                 <p className="text-3xl font-bold text-blue-500 mt-2">{summary?.in_transit || 0}</p>
               </div>
             </div>

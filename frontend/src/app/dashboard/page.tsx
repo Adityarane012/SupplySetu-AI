@@ -16,15 +16,19 @@ export default function DashboardPage() {
     try {
       // Wake up Render backend (free tier spins down after inactivity)
       await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/health`).catch(() => {});
-      const res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/orders`);
-      const data = await res.json();
+      const [ordersRes, summaryRes] = await Promise.all([
+        fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/orders`),
+        fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/analytics/summary`)
+      ]);
+      const data = await ordersRes.json();
+      const summary = await summaryRes.json();
       setOrders(data);
       
-      const pending = data.filter((o: any) => o.status === "pending").length;
-      const inTransit = data.filter((o: any) => o.status === "in_transit").length;
-      const delivered = data.filter((o: any) => o.status === "delivered").length;
-      
-      setStats({ pending, in_transit: inTransit, delivered });
+      setStats({ 
+        pending: summary.pending || 0, 
+        in_transit: summary.in_transit || 0, 
+        delivered: summary.delivered || 0 
+      });
     } catch (err) {
       console.error("Error fetching orders:", err);
     }
