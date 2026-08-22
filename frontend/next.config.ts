@@ -1,6 +1,8 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  // Note: Next 16 removed the `eslint` config key (`next build` no longer runs
+  // ESLint). Run `npm run lint` separately.
   typescript: {
     ignoreBuildErrors: true,
   },

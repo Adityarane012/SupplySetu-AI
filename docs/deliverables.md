@@ -37,18 +37,46 @@ Code is committed and pushed to branch `claude/project-docs-review-75xxw8`.
 The `order_history` table doesn't exist in your Supabase project yet — I don't have your
 credentials, so this step can't be automated from here.
 
-1. Open your Supabase project → **SQL Editor**.
-2. Run the full contents of `backend/db/schema.sql` (safe to re-run — everything uses
-   `IF NOT EXISTS`). This creates `order_history` and enables realtime on it.
-3. Run the full contents of `backend/db/rls.sql` (also safe to re-run — policies are
-   `CREATE POLICY`, so drop-and-recreate only if you already ran an older version and hit
-   a "policy already exists" error; in that case just run:
-   ```sql
-   DROP POLICY IF EXISTS "allow_all_order_history" ON order_history;
-   ```
-   then re-run `rls.sql`).
-4. Optionally run `backend/db/verify.sql` to confirm `order_history` now appears in the
-   table list.
+The other five tables (`customers`, `orders`, `order_items`, `deliveries`, `messages`)
+already exist in the project — only `order_history` is missing.
+
+**Do NOT run the whole of `backend/db/schema.sql`.** That file ends with
+`ALTER PUBLICATION supabase_realtime ADD TABLE orders;`, and because `orders` is already a
+member of that publication, the statement fails with *"relation orders is already member of
+publication"*. Run this targeted snippet in the Supabase **SQL Editor** instead:
+
+```sql
+CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
+
+CREATE TABLE IF NOT EXISTS order_history (
+  id           UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+  order_id     UUID NOT NULL REFERENCES orders(id) ON DELETE CASCADE,
+  change_type  TEXT NOT NULL
+                 CHECK (change_type IN ('created', 'status_changed', 'notes_changed')),
+  summary      TEXT NOT NULL,
+  intent       TEXT,
+  source       TEXT NOT NULL DEFAULT 'system'
+                 CHECK (source IN ('voice', 'text', 'manual', 'system')),
+  actor        TEXT,
+  before_data  JSONB,
+  after_data   JSONB,
+  created_at   TIMESTAMPTZ DEFAULT NOW()
+);
+
+CREATE INDEX IF NOT EXISTS idx_order_history_order
+  ON order_history(order_id, created_at DESC);
+
+ALTER TABLE order_history ENABLE ROW LEVEL SECURITY;
+
+DROP POLICY IF EXISTS "allow_all_order_history" ON order_history;
+CREATE POLICY "allow_all_order_history"
+  ON order_history FOR ALL USING (true) WITH CHECK (true);
+
+ALTER PUBLICATION supabase_realtime ADD TABLE order_history;
+```
+
+Then optionally run `backend/db/verify.sql` to confirm `order_history` appears in the
+table list.
 
 ### 2. Restart the backend
 
