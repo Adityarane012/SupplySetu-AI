@@ -17,17 +17,19 @@ async def compute_route(req: RouteRequest):
     order_meta = []
 
     for oid in req.order_ids:
+        # .limit(1) rather than .single(): `single` raises on a missing row, which
+        # would abort the whole route computation instead of skipping one bad ID.
         order_resp = (
             supabase.table("orders")
             .select("id, customer_name, customer_id, customers(lat, lng, name, address)")
             .eq("id", oid)
-            .single()
+            .limit(1)
             .execute()
         )
         if not order_resp.data:
             continue
 
-        data = order_resp.data
+        data = order_resp.data[0]
         customer = data.get("customers") or {}
         lat = customer.get("lat")
         lng = customer.get("lng")

@@ -3,6 +3,7 @@ load_dotenv()  # Loads variables from .env
 
 from contextlib import asynccontextmanager
 import asyncio
+import os
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from routers import orders, customers, route, transcribe, simulator, analytics, whatsapp
@@ -12,13 +13,13 @@ from scripts.seed_db import seed
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
-    # Preseed database on startup
-    try:
-        # Run in thread since seed() is synchronous
+    # Seed demo data only when the database is still empty. seed() is
+    # destructive, and the API restarts often on free-tier hosting — seeding
+    # unconditionally would wipe real orders and their change history on every
+    # cold start. Set SEED_ON_STARTUP=false to disable this entirely.
+    if os.getenv("SEED_ON_STARTUP", "true").lower() == "true":
         asyncio.create_task(asyncio.to_thread(seed))
-    except Exception as e:
-        print(f"Failed to preseed database: {e}")
-        
+
     # Fire off model pre-load in a background thread so it doesn't block startup
     asyncio.create_task(asyncio.to_thread(preload_model))
     yield

@@ -27,10 +27,18 @@ def list_orders(
 
 @router.get("/{order_id}")
 def get_order(order_id: str):
-    result = supabase.table("orders").select("*, order_items(*), customers(*)").eq("id", order_id).single().execute()
+    # .limit(1) rather than .single(): PostgREST's `single` returns a 406 for a
+    # missing row, which surfaces as a 500 instead of the 404 we want.
+    result = (
+        supabase.table("orders")
+        .select("*, order_items(*), customers(*)")
+        .eq("id", order_id)
+        .limit(1)
+        .execute()
+    )
     if not result.data:
         raise HTTPException(status_code=404, detail="Order not found")
-    return result.data
+    return result.data[0]
 
 
 @router.post("/")
@@ -75,10 +83,10 @@ def create_order(body: OrderCreate):
 
 @router.put("/{order_id}")
 def update_order(order_id: str, body: OrderUpdate):
-    existing = supabase.table("orders").select("*").eq("id", order_id).single().execute()
+    existing = supabase.table("orders").select("*").eq("id", order_id).limit(1).execute()
     if not existing.data:
         raise HTTPException(status_code=404, detail="Order not found")
-    old = existing.data
+    old = existing.data[0]
 
     update_data = body.model_dump(exclude={"reason"}, exclude_none=True)
     if not update_data:

@@ -1,3 +1,8 @@
+# SupplySetu AI
+
+Project guide, conventions and gotchas live in **`AGENTS.md`** at the repo root — read
+that first.
+
 ## graphify
 
 This project has a knowledge graph at graphify-out/ with god nodes, community structure, and cross-file relationships.

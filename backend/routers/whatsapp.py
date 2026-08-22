@@ -1,9 +1,8 @@
 import os
-import shutil
 import tempfile
 import httpx
 from datetime import date
-from fastapi import APIRouter, Request, BackgroundTasks
+from fastapi import APIRouter, Request
 from fastapi.responses import Response
 from twilio.twiml.messaging_response import MessagingResponse
 

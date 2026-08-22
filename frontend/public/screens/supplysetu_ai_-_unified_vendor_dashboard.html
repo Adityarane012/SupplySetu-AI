@@ -657,7 +657,7 @@
                                     <div class="text-on-surface-variant text-[11px]">${new Date(order.created_at).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}</div>
                                 </td>
                                 <td class="py-2 px-container-padding text-right">
-                                    <button onclick="location.href='/orders/detail?id=${order.id}'" class="p-1 text-on-surface hover:bg-surface-variant rounded hc-border border-[1px]">
+                                    <button onclick="location.href='/orders/${order.id}'" class="p-1 text-on-surface hover:bg-surface-variant rounded hc-border border-[1px]">
                                         <span class="material-symbols-outlined text-[18px]">visibility</span>
                                     </button>
                                 </td>

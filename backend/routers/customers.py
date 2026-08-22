@@ -17,10 +17,18 @@ def list_customers(search: Optional[str] = Query(None), limit: int = Query(100))
 
 @router.get("/{customer_id}")
 def get_customer(customer_id: str):
-    result = supabase.table("customers").select("*, orders(*, order_items(*))").eq("id", customer_id).single().execute()
+    # .limit(1) rather than .single(): PostgREST's `single` returns a 406 for a
+    # missing row, which surfaces as a 500 instead of the 404 we want.
+    result = (
+        supabase.table("customers")
+        .select("*, orders(*, order_items(*))")
+        .eq("id", customer_id)
+        .limit(1)
+        .execute()
+    )
     if not result.data:
         raise HTTPException(status_code=404, detail="Customer not found")
-    return result.data
+    return result.data[0]
 
 
 @router.post("/")
