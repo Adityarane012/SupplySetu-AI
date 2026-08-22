@@ -36,6 +36,7 @@ Extraction Rules:
 6. If the message contains no food/grocery items, return an empty "items" array: []
 7. "intent" must always be a short, human-readable sentence — never null and never empty.
 8. "is_amendment" must be true if the message is revising a previous order (e.g. "actually", "instead", "change it to", "make it", "badal do", "nahi nahi", "add also").
+9. Map Hindi phonetic numbers to digits correctly for quantity: "das" = 10, "bees" = 20, "tees" = 30, "chalis" = 40, "pachas" = 50.
 
 Examples:
 - "20 kg tamatar aur 15 kg pyaz" → items: [{{"product_name":"Tomato","quantity":20,"unit":"kg"}},{{"product_name":"Onion","quantity":15,"unit":"kg"}}], intent: "Routine grocery order", is_amendment: false
@@ -43,6 +44,7 @@ Examples:
 - "10 kg tomato at Rs 30 per kg" → items: [{{"product_name":"Tomato","quantity":10,"unit":"kg"}}] (price ignored), intent: "Routine grocery order", is_amendment: false
 - "🍅 20 kg tamatar please, weekly order" → items: [{{"product_name":"Tomato","quantity":20,"unit":"kg"}}] (emoji ignored), intent: "Weekly restock for the store", is_amendment: false
 - "actually make it 30 kg, guests aa rahe hain" → items: [{{"product_name":"Tomato","quantity":30,"unit":"kg"}}], intent: "More quantity needed for guests", is_amendment: true
+- "das kilo aalu aur bees kilo pyaz" → items: [{{"product_name":"Potato","quantity":10,"unit":"kg"}},{{"product_name":"Onion","quantity":20,"unit":"kg"}}], intent: "Routine grocery order", is_amendment: false
 
 Customer message: {transcript}"""
 
