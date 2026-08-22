@@ -22,6 +22,15 @@ interface SummaryData {
   top_products?: TopProduct[];
 }
 
+interface IntentData {
+  fulfilled: number;
+  missed: number;
+  partial: number;
+  unknown: number;
+  fulfilment_rate: number;
+  top_miss_reasons: { reason: string; count: number }[];
+}
+
 interface WeeklyData {
   date: string;
   count: number;
@@ -35,6 +44,7 @@ interface ForecastData {
 
 export default function AnalyticsPage() {
   const [summary, setSummary] = useState<SummaryData | null>(null);
+  const [intent, setIntent] = useState<IntentData | null>(null);
   const [weekly, setWeekly] = useState<WeeklyData[]>([]);
   const [forecast, setForecast] = useState<ForecastData[] | null>(null);
   const [loading, setLoading] = useState(true);
@@ -44,17 +54,20 @@ export default function AnalyticsPage() {
       try {
         // Wake up Render backend (free tier spins down after inactivity)
         await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/health`).catch(() => {});
-        const [sumRes, weekRes, foreRes] = await Promise.all([
+        const [sumRes, weekRes, foreRes, intentRes] = await Promise.all([
           fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/analytics/summary`),
           fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/analytics/weekly`),
-          fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/analytics/forecast`)
+          fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/analytics/forecast`),
+          fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/analytics/intent-fulfilment`)
         ]);
 
         const sumData = await sumRes.json();
         const weekData = await weekRes.json();
         const foreData = await foreRes.json();
+        const intentData = await intentRes.json();
 
         setSummary(sumData);
+        setIntent(intentData);
         // Format dates for weekly chart
         const formattedWeekly = Array.isArray(weekData) ? weekData.map((d: WeeklyData) => ({
           ...d,
@@ -147,15 +160,15 @@ export default function AnalyticsPage() {
               </div>
               <div className="bg-white p-6 rounded-xl border border-gray-200 shadow-sm">
                 <p className="text-sm font-medium text-gray-500 uppercase">Completion Rate</p>
-                <p className="text-3xl font-bold text-green-600 mt-2">{summary?.completion_rate || 0}%</p>
+                <p className="text-3xl font-bold text-gray-800 mt-2">{summary?.completion_rate || 0}%</p>
+              </div>
+              <div className="bg-white p-6 rounded-xl border border-gray-200 shadow-sm">
+                <p className="text-sm font-medium text-gray-500 uppercase">Intent Fulfilment Rate</p>
+                <p className="text-3xl font-bold text-green-600 mt-2">{intent?.fulfilment_rate || 0}%</p>
               </div>
               <div className="bg-white p-6 rounded-xl border border-gray-200 shadow-sm">
                 <p className="text-sm font-medium text-gray-500 uppercase">Pending Orders</p>
                 <p className="text-3xl font-bold text-orange-500 mt-2">{summary?.pending || 0}</p>
-              </div>
-              <div className="bg-white p-6 rounded-xl border border-gray-200 shadow-sm">
-                <p className="text-sm font-medium text-gray-500 uppercase">In Transit Orders</p>
-                <p className="text-3xl font-bold text-blue-500 mt-2">{summary?.in_transit || 0}</p>
               </div>
             </div>
 
@@ -207,6 +220,25 @@ export default function AnalyticsPage() {
                   </div>
                 ))}
               </div>
+            </div>
+
+            {/* Top Miss Reasons */}
+            <div className="bg-white p-6 rounded-xl border border-gray-200 shadow-sm">
+              <h3 className="text-lg font-bold text-gray-800 mb-4">Top Reasons for Missed Intents</h3>
+              {intent?.top_miss_reasons?.length === 0 ? (
+                <p className="text-gray-500 italic">No missed intents recorded yet.</p>
+              ) : (
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  {intent?.top_miss_reasons?.map((item: any, i: number) => (
+                    <div key={i} className="bg-red-50 p-4 rounded-lg border border-red-100 flex items-center justify-between">
+                      <p className="font-medium text-red-800 truncate pr-4">{item.reason}</p>
+                      <span className="bg-red-100 text-red-800 font-bold px-3 py-1 rounded-full text-sm shrink-0">
+                        {item.count} misses
+                      </span>
+                    </div>
+                  ))}
+                </div>
+              )}
             </div>
 
           </div>

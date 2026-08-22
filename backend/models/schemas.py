@@ -66,6 +66,8 @@ class OrderUpdate(BaseModel):
     status: Optional[str] = None
     notes: Optional[str] = None
     reason: Optional[str] = None  # captured intent behind this change — not persisted on the order row
+    outcome_reason: Optional[str] = None
+    items: Optional[List[OrderItem]] = None
 
     @field_validator("status")
     @classmethod

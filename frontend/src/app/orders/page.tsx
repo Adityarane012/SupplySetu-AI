@@ -157,13 +157,20 @@ export default function OrdersPage() {
                       {order.customer_name}
                     </a>
                   </td>
-                  <td className="px-6 py-4 text-sm">
+                  <td className="px-6 py-4 text-sm flex items-center gap-2">
                     <span className={`px-3 py-1 rounded-full text-xs font-semibold 
                       ${order.status === 'pending' ? 'bg-orange-100 text-orange-700' : 
                         order.status === 'in_transit' ? 'bg-blue-100 text-blue-700' : 
                         'bg-green-100 text-green-700'}`}>
                       {order.status === 'in_transit' ? 'IN TRANSIT' : order.status.toUpperCase()}
                     </span>
+                    {order.status === 'delivered' && order.intent_outcome && (
+                      <span className={`w-2 h-2 rounded-full ${
+                        order.intent_outcome === 'fulfilled' ? 'bg-green-500' :
+                        order.intent_outcome === 'missed' ? 'bg-red-500' :
+                        'bg-gray-400'
+                      }`} title={`Intent ${order.intent_outcome}`} />
+                    )}
                   </td>
                   <td className="px-6 py-4 text-sm text-gray-500">
                     {order.order_items?.map((item: any) => (

@@ -40,6 +40,9 @@ CREATE TABLE IF NOT EXISTS orders (
                       'whatsapp_text'
                     )),
   scheduled_date  DATE NOT NULL DEFAULT CURRENT_DATE,
+  delivered_at    TIMESTAMPTZ,
+  intent_outcome  TEXT CHECK (intent_outcome IN ('fulfilled', 'missed', 'partial', 'unknown')),
+  intent_outcome_reason TEXT,
   raw_transcript  TEXT,
   notes           TEXT,
   deleted_at      TIMESTAMPTZ,

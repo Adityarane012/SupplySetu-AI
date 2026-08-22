@@ -3,8 +3,10 @@ from typing import Optional
 from db.supabase_client import supabase
 from models.schemas import OrderCreate, OrderUpdate, OrderDelete
 from datetime import date, datetime
-from services.time_service import today_ist
+from services.time_service import today_ist, now_ist
 from services.history_service import log_history, log_order_created, default_status_intent
+from services.outcome_service import evaluate_intent_outcome
+from services.snapshot_service import reconstruct_snapshots
 
 router = APIRouter()
 
@@ -107,13 +109,67 @@ def update_order(order_id: str, body: OrderUpdate):
         raise HTTPException(status_code=404, detail="Order not found")
     old = existing.data[0]
 
-    update_data = body.model_dump(exclude={"reason"}, exclude_unset=True)
-    if not update_data:
+    update_data = body.model_dump(exclude={"reason", "outcome_reason", "items"}, exclude_unset=True)
+    if not update_data and body.items is None:
         raise HTTPException(400, "No fields to update")
 
-    result = supabase.table("orders").update(update_data).eq("id", order_id).execute()
+    # Evaluate intent outcome if marked delivered
+    if "status" in update_data and update_data["status"] == "delivered" and old.get("status") != "delivered":
+        scheduled_date_str = old.get("scheduled_date")
+        scheduled_date = date.fromisoformat(scheduled_date_str) if scheduled_date_str else None
+        delivered_at = now_ist()
+        
+        outcome = evaluate_intent_outcome(scheduled_date, delivered_at)
+        
+        if outcome == "missed" and not body.outcome_reason:
+            raise HTTPException(400, "Missed intent outcome requires a reason.")
+            
+        update_data["delivered_at"] = delivered_at.isoformat()
+        update_data["intent_outcome"] = outcome
+        if body.outcome_reason:
+            update_data["intent_outcome_reason"] = body.outcome_reason.strip()
+
+    if update_data:
+        result = supabase.table("orders").update(update_data).eq("id", order_id).execute()
+
+    if body.items is not None:
+        old_items_result = supabase.table("order_items").select("*").eq("order_id", order_id).execute()
+        old_items = old_items_result.data or []
+        
+        # Format for DB insertion (dropping id and created_at if they exist)
+        new_items = []
+        for it in body.items:
+            new_items.append({
+                "order_id": order_id,
+                "product_name": it.product_name,
+                "quantity": it.quantity,
+                "unit": it.unit,
+            })
+            
+        # Delete old and insert new
+        supabase.table("order_items").delete().eq("order_id", order_id).execute()
+        if new_items:
+            supabase.table("order_items").insert(new_items).execute()
+            
+        log_history(
+            order_id=order_id,
+            change_type="items_changed",
+            summary="Order items updated",
+            intent=body.reason,
+            source="manual",
+            actor="vendor",
+            before=old_items,
+            after=new_items,
+        )
 
     if "status" in update_data and update_data["status"] != old.get("status"):
+        after_data = {"status": update_data["status"]}
+        if update_data["status"] == "delivered":
+            after_data["delivered_at"] = update_data["delivered_at"]
+            after_data["intent_outcome"] = update_data["intent_outcome"]
+            if "intent_outcome_reason" in update_data:
+                after_data["intent_outcome_reason"] = update_data["intent_outcome_reason"]
+
         log_history(
             order_id=order_id,
             change_type="status_changed",
@@ -122,7 +178,7 @@ def update_order(order_id: str, body: OrderUpdate):
             source="manual",
             actor="vendor",
             before={"status": old.get("status")},
-            after={"status": update_data["status"]},
+            after=after_data,
         )
 
     if "notes" in update_data and update_data["notes"] != old.get("notes"):
@@ -151,6 +207,20 @@ def get_order_history(order_id: str):
         .execute()
     )
     return result.data
+
+
+@router.get("/{order_id}/snapshots")
+def get_order_snapshots(order_id: str):
+    # Fetch history in ascending order to reconstruct forward
+    result = (
+        supabase.table("order_history")
+        .select("*")
+        .eq("order_id", order_id)
+        .order("created_at", desc=False)
+        .limit(1000)
+        .execute()
+    )
+    return reconstruct_snapshots(result.data or [])
 
 
 @router.delete("/{order_id}")

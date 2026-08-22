@@ -128,3 +128,45 @@ def get_weekly_stats():
         rows.append({"date": d, "count": counts_by_date.get(d, 0)})
         
     return rows
+
+
+@router.get("/intent-fulfilment")
+def get_intent_fulfilment():
+    """KPI for Intent Fulfilment Rate across delivered orders."""
+    # Fast count-only queries
+    fulfilled = supabase.table("orders").select("id", count="exact").eq("intent_outcome", "fulfilled").is_("deleted_at", "null").execute().count or 0
+    missed = supabase.table("orders").select("id", count="exact").eq("intent_outcome", "missed").is_("deleted_at", "null").execute().count or 0
+    partial = supabase.table("orders").select("id", count="exact").eq("intent_outcome", "partial").is_("deleted_at", "null").execute().count or 0
+    unknown = supabase.table("orders").select("id", count="exact").eq("intent_outcome", "unknown").is_("deleted_at", "null").execute().count or 0
+    
+    total_evaluated = fulfilled + missed + partial
+    fulfilment_rate = round((fulfilled / total_evaluated * 100), 1) if total_evaluated > 0 else 0
+
+    # Top miss reasons
+    missed_orders = (
+        supabase.table("orders")
+        .select("intent_outcome_reason")
+        .eq("intent_outcome", "missed")
+        .not_.is_("intent_outcome_reason", "null")
+        .is_("deleted_at", "null")
+        .execute()
+        .data
+    ) or []
+
+    reason_counts: dict[str, int] = {}
+    for o in missed_orders:
+        r = o.get("intent_outcome_reason")
+        if r:
+            reason_counts[r] = reason_counts.get(r, 0) + 1
+
+    top_miss_reasons = [{"reason": r, "count": c} for r, c in sorted(reason_counts.items(), key=lambda x: -x[1])[:5]]
+
+    return {
+        "fulfilled": fulfilled,
+        "missed": missed,
+        "partial": partial,
+        "unknown": unknown,
+        "fulfilment_rate": fulfilment_rate,
+        "top_miss_reasons": top_miss_reasons,
+    }
+
