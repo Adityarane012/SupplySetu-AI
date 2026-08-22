@@ -2,10 +2,11 @@
 
 import { useEffect, useState } from "react";
 import { supabase } from "@/lib/supabase";
-import { Package, Truck, DollarSign, CheckCircle, Clock, BarChart3, Filter, Plus } from "lucide-react";
+import { Package, Truck, DollarSign, CheckCircle, Clock, BarChart3, Filter, Plus, ActivitySquare } from "lucide-react";
 
 export default function DashboardPage() {
   const [orders, setOrders] = useState<any[]>([]);
+  const [error, setError] = useState<string | null>(null);
   const [stats, setStats] = useState({
     pending: 0,
     in_transit: 0,
@@ -14,13 +15,23 @@ export default function DashboardPage() {
 
   const fetchOrders = async () => {
     try {
+      setError(null);
       // Wake up Render backend (free tier spins down after inactivity)
       await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/health`).catch(() => {});
       const [ordersRes, summaryRes] = await Promise.all([
         fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/orders`),
         fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/analytics/summary`)
       ]);
+      
+      if (!ordersRes.ok || !summaryRes.ok) {
+        throw new Error("Failed to fetch data from the server");
+      }
+      
       const data = await ordersRes.json();
+      if (!Array.isArray(data)) {
+        throw new Error("Invalid response format: Expected an array of orders");
+      }
+      
       const summary = await summaryRes.json();
       setOrders(data);
       
@@ -29,8 +40,9 @@ export default function DashboardPage() {
         in_transit: summary.in_transit || 0, 
         delivered: summary.delivered || 0 
       });
-    } catch (err) {
+    } catch (err: any) {
       console.error("Error fetching orders:", err);
+      setError(err.message || "An unexpected error occurred");
     }
   };
 
@@ -82,6 +94,10 @@ export default function DashboardPage() {
           <a href="/simulator" className="flex items-center space-x-3 text-gray-600 hover:bg-gray-50 px-4 py-3 rounded-lg font-medium transition-colors">
             <Clock size={20} />
             <span>WhatsApp Simulator</span>
+          </a>
+          <a href="/activity" className="flex items-center space-x-3 text-gray-600 hover:bg-gray-50 px-4 py-3 rounded-lg font-medium transition-colors">
+            <ActivitySquare size={20} />
+            <span>Activity</span>
           </a>
         </nav>
       </div>
@@ -143,8 +159,17 @@ export default function DashboardPage() {
           <div className="p-6 border-b border-gray-200">
             <h3 className="text-lg font-bold text-gray-800">Recent Orders (Realtime)</h3>
           </div>
-          <div className="overflow-x-auto">
-            <table className="w-full">
+          
+          {error ? (
+            <div className="p-8 text-center bg-red-50 border-t border-red-100">
+              <p className="text-red-600 font-medium">{error}</p>
+              <button onClick={fetchOrders} className="mt-4 px-4 py-2 bg-red-100 hover:bg-red-200 text-red-700 rounded-lg text-sm transition-colors">
+                Try Again
+              </button>
+            </div>
+          ) : (
+            <div className="overflow-x-auto">
+              <table className="w-full">
               <thead className="bg-gray-50 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">
                 <tr>
                   <th className="px-6 py-4">Order ID</th>
@@ -183,6 +208,7 @@ export default function DashboardPage() {
               <div className="p-8 text-center text-gray-500">No orders found. Send a message via simulator!</div>
             )}
           </div>
+          )}
         </div>
       </main>
     </div>

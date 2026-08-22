@@ -13,7 +13,8 @@ Safety notes:
 import os
 import sys
 import random
-from datetime import datetime, timedelta
+from datetime import timedelta
+from services.time_service import now_ist
 from dotenv import load_dotenv
 from supabase import create_client, Client
 
@@ -35,7 +36,7 @@ def _get_client() -> Client | None:
 def _is_empty(supabase: Client) -> bool:
     """True when there are no orders and no customers yet."""
     try:
-        orders = supabase.table("orders").select("id").limit(1).execute().data or []
+        orders = supabase.table("orders").select("id").is_("deleted_at", "null").limit(1).execute().data or []
         customers = supabase.table("customers").select("id").limit(1).execute().data or []
         return not orders and not customers
     except Exception as e:
@@ -96,7 +97,7 @@ def seed(force: bool = False):
     for i in range(40):
         c = random.choice(c_data)
         days_ago = random.randint(0, 6)
-        date = (datetime.today() - timedelta(days=days_ago)).strftime('%Y-%m-%d')
+        date = (now_ist() - timedelta(days=days_ago)).strftime('%Y-%m-%d')
 
         # Make older orders more likely to be delivered
         status = "delivered" if days_ago > 1 else random.choice(statuses)

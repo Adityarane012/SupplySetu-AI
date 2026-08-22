@@ -27,6 +27,7 @@ function MapBoundsFitter({ coordinates }: { coordinates: [number, number][] }) {
 
 export default function DeliveryMap() {
   const [route, setRoute] = useState<any[]>([]);
+  const [skipped, setSkipped] = useState<any[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   
   useEffect(() => {
@@ -38,6 +39,7 @@ export default function DeliveryMap() {
         
         if (orderIds.length === 0) {
           setRoute([]);
+          setSkipped([]);
           setLoading(false);
           return;
         }
@@ -53,6 +55,9 @@ export default function DeliveryMap() {
         const data = await response.json();
         if (data.route) {
           setRoute(data.route);
+        }
+        if (data.skipped) {
+          setSkipped(data.skipped);
         }
       } catch (err) {
         console.error("Error fetching route:", err);
@@ -89,6 +94,12 @@ export default function DeliveryMap() {
           &larr; Back to Dashboard
         </Link>
       </div>
+
+      {skipped.length > 0 && (
+        <div style={{ backgroundColor: "#fef2f2", color: "#991b1b", padding: "12px 16px", borderRadius: "8px", marginBottom: "20px", border: "1px solid #fecaca", fontSize: "14px" }}>
+          <strong>⚠️ {skipped.length} {skipped.length === 1 ? "order" : "orders"} excluded:</strong> no valid address or coordinates.
+        </div>
+      )}
 
       {loading ? (
         <div style={{ display: "flex", justifyContent: "center", alignItems: "center", height: "600px", backgroundColor: "#f3f4f6", borderRadius: "10px", boxShadow: "0 4px 6px rgba(0,0,0,0.1)" }}>

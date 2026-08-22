@@ -23,6 +23,7 @@ Output format MUST match exactly:
   "delivery_date": "<YYYY-MM-DD or relative date like 'kal', 'udya', 'tomorrow', 'today', 'kal subah', 'parso', 'parva', 'paro', 'parvi' if mentioned, else null>",
   "notes": "<any special instructions, else null>",
   "intent": "<one short sentence in plain English capturing WHY the customer is placing this order — their underlying goal or purpose (e.g. 'Weekly restock for the store', 'Extra tomatoes needed for a family function', 'Urgent shortage refill'). Infer this from context/notes/wording; if nothing can be inferred, briefly describe the order itself, e.g. 'Routine grocery order'.>",
+  "is_amendment": <true|false>,
   "confidence": <0.0 to 1.0>
 }}
 
@@ -34,12 +35,14 @@ Extraction Rules:
 5. Translate all product names to English (tamatar -> Tomato, pyaz -> Onion, etc).
 6. If the message contains no food/grocery items, return an empty "items" array: []
 7. "intent" must always be a short, human-readable sentence — never null and never empty.
+8. "is_amendment" must be true if the message is revising a previous order (e.g. "actually", "instead", "change it to", "make it", "badal do", "nahi nahi", "add also").
 
 Examples:
-- "20 kg tamatar aur 15 kg pyaz" → items: [{{"product_name":"Tomato","quantity":20,"unit":"kg"}},{{"product_name":"Onion","quantity":15,"unit":"kg"}}], intent: "Routine grocery order"
-- "Ramesh here - need 10 kg tomato, ghar mein function hai" → customer: "Ramesh", items: [{{"product_name":"Tomato","quantity":10,"unit":"kg"}}], intent: "Extra tomatoes needed for a family function at home"
-- "10 kg tomato at Rs 30 per kg" → items: [{{"product_name":"Tomato","quantity":10,"unit":"kg"}}] (price ignored), intent: "Routine grocery order"
-- "🍅 20 kg tamatar please, weekly order" → items: [{{"product_name":"Tomato","quantity":20,"unit":"kg"}}] (emoji ignored), intent: "Weekly restock for the store"
+- "20 kg tamatar aur 15 kg pyaz" → items: [{"product_name":"Tomato","quantity":20,"unit":"kg"},{"product_name":"Onion","quantity":15,"unit":"kg"}], intent: "Routine grocery order", is_amendment: false
+- "Ramesh here - need 10 kg tomato, ghar mein function hai" → customer: "Ramesh", items: [{"product_name":"Tomato","quantity":10,"unit":"kg"}], intent: "Extra tomatoes needed for a family function at home", is_amendment: false
+- "10 kg tomato at Rs 30 per kg" → items: [{"product_name":"Tomato","quantity":10,"unit":"kg"}] (price ignored), intent: "Routine grocery order", is_amendment: false
+- "🍅 20 kg tamatar please, weekly order" → items: [{"product_name":"Tomato","quantity":20,"unit":"kg"}] (emoji ignored), intent: "Weekly restock for the store", is_amendment: false
+- "actually make it 30 kg, guests aa rahe hain" → items: [{"product_name":"Tomato","quantity":30,"unit":"kg"}], intent: "More quantity needed for guests", is_amendment: true
 
 Customer message: {transcript}"""
 
@@ -63,7 +66,7 @@ def _parse_json_safe(raw: str) -> dict:
             except json.JSONDecodeError:
                 pass
     print(f"[LLM] JSON parse failed. Raw output: {raw[:300]}")
-    return {"items": [], "delivery_date": None, "notes": None, "intent": None, "confidence": 0.0}
+    return {"items": [], "delivery_date": None, "notes": None, "intent": None, "confidence": 0.0, "is_amendment": False}
 
 
 async def _groq_extract(prompt: str) -> str:
@@ -161,4 +164,5 @@ async def extract_order(transcript: str) -> dict:
             "intent": None,
             "confidence": 0.0,
             "error": str(e),
+            "is_amendment": False,
         }

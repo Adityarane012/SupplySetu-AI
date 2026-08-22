@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { supabase } from "@/lib/supabase";
-import { Package, Truck, Clock, Filter, BarChart3 } from "lucide-react";
+import { Package, Truck, Clock, Filter, BarChart3, ActivitySquare } from "lucide-react";
 import {
   BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip as RechartsTooltip, ResponsiveContainer,
   LineChart, Line
@@ -121,6 +121,10 @@ export default function AnalyticsPage() {
           <a href="/simulator" className="flex items-center space-x-3 text-gray-600 hover:bg-gray-50 px-4 py-3 rounded-lg font-medium transition-colors">
             <Clock size={20} />
             <span>WhatsApp Simulator</span>
+          </a>
+          <a href="/activity" className="flex items-center space-x-3 text-gray-600 hover:bg-gray-50 px-4 py-3 rounded-lg font-medium transition-colors">
+            <ActivitySquare size={20} />
+            <span>Activity</span>
           </a>
         </nav>
       </div>

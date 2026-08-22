@@ -27,9 +27,12 @@ async def lifespan(app: FastAPI):
 
 app = FastAPI(title="SupplySetu AI API", version="1.0", lifespan=lifespan)
 
+allowed_origins_env = os.getenv("ALLOWED_ORIGINS", "http://localhost:3000")
+allowed_origins = [origin.strip() for origin in allowed_origins_env.split(",") if origin.strip()]
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
+    allow_origins=allowed_origins,
     allow_methods=["*"],
     allow_headers=["*"],
 )

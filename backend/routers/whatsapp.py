@@ -2,13 +2,15 @@ import os
 import tempfile
 import httpx
 from datetime import date
-from fastapi import APIRouter, Request
+from services.time_service import today_ist
+from twilio.request_validator import RequestValidator
+from fastapi import APIRouter, Request, HTTPException
 from fastapi.responses import Response
 from twilio.twiml.messaging_response import MessagingResponse
 
 from services.whisper_service import transcribe_audio
 from services.llm_service import extract_order
-from services.history_service import log_order_created
+from services.history_service import log_order_created, log_history, find_amendable_order, apply_amendment
 from db.supabase_client import supabase
 from routers.simulator import _upsert_customer, _sanitise_delivery_date, _build_reply
 
@@ -17,6 +19,8 @@ router = APIRouter()
 # Read Twilio credentials for authenticating media downloads
 TWILIO_ACCOUNT_SID = os.getenv("TWILIO_ACCOUNT_SID", "")
 TWILIO_AUTH_TOKEN = os.getenv("TWILIO_AUTH_TOKEN", "")
+TWILIO_VALIDATE_SIGNATURE = os.getenv("TWILIO_VALIDATE_SIGNATURE", "true").lower() == "true"
+validator = RequestValidator(TWILIO_AUTH_TOKEN)
 
 async def download_twilio_media(media_url: str) -> str:
     """Securely downloads Twilio media to a temporary file."""
@@ -46,6 +50,34 @@ async def twilio_whatsapp_webhook(request: Request):
     Webhook endpoint to receive incoming WhatsApp messages from Twilio Sandbox.
     """
     form_data = await request.form()
+    
+    # Validate Twilio Signature
+    if TWILIO_VALIDATE_SIGNATURE:
+        signature = request.headers.get("X-Twilio-Signature", "")
+        proto = request.headers.get("X-Forwarded-Proto")
+        url = str(request.url)
+        if proto:
+            url = url.replace(request.url.scheme + "://", proto + "://", 1)
+            
+        post_vars = dict(form_data)
+        if not validator.validate(url, post_vars, signature):
+            raise HTTPException(status_code=403, detail="Invalid Twilio signature")
+
+    message_sid = form_data.get("MessageSid")
+    if message_sid:
+        # Claim processing lock by inserting immediately
+        try:
+            supabase.table("messages").insert({
+                "direction": "inbound",
+                "twilio_message_sid": message_sid,
+                "source": "whatsapp"
+            }).execute()
+        except Exception as e:
+            # postgrest handles duplicate keys by raising an APIError; we check the string loosely
+            if "duplicate key value" in str(e).lower() or "unique constraint" in str(e).lower() or "23505" in str(e):
+                print(f"[WhatsApp] Duplicate Twilio request received: {message_sid}. Ignoring.")
+                return _send_twiml("")
+
     
     # Twilio sends phone numbers formatted as 'whatsapp:+1234567890'
     raw_from = form_data.get("From", "")
@@ -110,14 +142,39 @@ async def twilio_whatsapp_webhook(request: Request):
             
         # ── 6. Save to Database ────────────────────────────────────────────
         customer = _upsert_customer(customer_name, customer_phone)
+
+        # ── 6b. Check for amendment ────────────────────────────────────────
+        if extracted.get("is_amendment"):
+            amendable_order = find_amendable_order(customer_phone)
+            if amendable_order:
+                amend_result = apply_amendment(amendable_order, extracted)
+                log_history(
+                    order_id=amendable_order["id"],
+                    change_type="items_changed",
+                    summary=amend_result["summary"],
+                    intent=extracted.get("intent", "Order amendment"),
+                    source="voice" if source == "whatsapp_voice" else "text",
+                    actor=customer_phone,
+                    before={"items": amend_result["before"]},
+                    after={"items": amend_result["after"]},
+                )
+                reply = (
+                    f"✏️ *Order updated!*\n\n"
+                    f"{amend_result['summary']}\n"
+                    f"Reason noted: {extracted.get('intent', 'Order amendment')}\n\n"
+                    f"— *SupplySetu AI*"
+                )
+                print(f"[WhatsApp] Amended order {amendable_order['id'][:8]} — {amend_result['summary']}")
+                return _send_twiml(reply)
         
+        # ── 6c. Save New Order ─────────────────────────────────────────────
         order_row = supabase.table("orders").insert({
             "customer_id": customer["id"],
             "customer_name": customer["name"],
             "status": "pending",
             "source": source,
             "raw_transcript": transcript,
-            "scheduled_date": delivery_date or str(date.today()),
+            "scheduled_date": delivery_date or str(today_ist()),
             "notes": notes,
         }).execute().data[0]
 

@@ -1,12 +1,13 @@
 import shutil
 import tempfile
 import os
-from datetime import date, timedelta
+from datetime import timedelta, date
+from services.time_service import today_ist
 from fastapi import APIRouter, Form, UploadFile, File
 from typing import Optional, Annotated
 from services.whisper_service import transcribe_audio
 from services.llm_service import extract_order
-from services.history_service import log_order_created
+from services.history_service import log_order_created, log_history, find_amendable_order, apply_amendment
 from db.supabase_client import supabase
 
 router = APIRouter()
@@ -38,7 +39,7 @@ def _sanitise_delivery_date(raw: str | None) -> str | None:
     if not raw:
         return None
 
-    today = date.today()
+    today = today_ist()
 
     # Handle common relative strings
     lower = raw.strip().lower()
@@ -198,14 +199,46 @@ async def receive_simulator_message(
     # ── 6. Upsert customer ──────────────────────────────────────────────────
     customer = _upsert_customer(customer_name, customer_phone)
 
-    # ── 7. Save order to DB ─────────────────────────────────────────────────
+    # ── 6b. Check for amendment ─────────────────────────────────────────────
+    if extracted.get("is_amendment"):
+        amendable_order = find_amendable_order(customer_phone)
+        if amendable_order:
+            amend_result = apply_amendment(amendable_order, extracted)
+            log_history(
+                order_id=amendable_order["id"],
+                change_type="items_changed",
+                summary=amend_result["summary"],
+                intent=extracted.get("intent", "Order amendment"),
+                source="voice" if source == "whatsapp_voice" else "text",
+                actor=customer_phone,
+                before={"items": amend_result["before"]},
+                after={"items": amend_result["after"]},
+            )
+            reply = (
+                f"✏️ *Order updated!*\n\n"
+                f"{amend_result['summary']}\n"
+                f"Reason noted: {extracted.get('intent', 'Order amendment')}\n\n"
+                f"— *SupplySetu AI*"
+            )
+            print(f"[Simulator] Amended order {amendable_order['id'][:8]} — {amend_result['summary']}")
+            return {
+                "reply": reply,
+                "transcript": transcript,
+                "order_id": str(amendable_order["id"]),
+                "extracted": extracted,
+                "customer": customer,
+                "transcription": transcription_meta,
+                "audio_duration": audio_duration,
+            }
+
+    # ── 7. Save order to DB (New Order Path) ────────────────────────────────
     order_row = supabase.table("orders").insert({
         "customer_id": customer["id"],
         "customer_name": customer["name"],
         "status": "pending",
         "source": source,
         "raw_transcript": transcript,
-        "scheduled_date": delivery_date or str(date.today()),
+        "scheduled_date": delivery_date or str(today_ist()),
         "notes": notes,
     }).execute().data[0]
 

@@ -17,9 +17,12 @@ import {
   PlusCircle,
   ArrowRightLeft,
   StickyNote,
-  Quote,
   X,
+  ActivitySquare,
+  Quote,
+  Trash2,
 } from "lucide-react";
+import HistoryDiff from "@/components/HistoryDiff";
 
 const BACKEND = process.env.NEXT_PUBLIC_BACKEND_URL;
 
@@ -46,6 +49,7 @@ const CHANGE_ICON: Record<string, any> = {
   created: PlusCircle,
   status_changed: ArrowRightLeft,
   notes_changed: StickyNote,
+  deleted: Trash2,
 };
 
 function timeAgo(iso: string) {
@@ -61,6 +65,51 @@ function timeAgo(iso: string) {
   return d.toLocaleDateString("en-IN", { day: "numeric", month: "short", year: "numeric" });
 }
 
+function TimelineEntry({ h }: { h: any }) {
+  const [expanded, setExpanded] = useState(false);
+  const ChangeIcon = CHANGE_ICON[h.change_type] || Package;
+  const SourceIcon = SOURCE_ICON[h.source] || Settings2;
+  const hasData = Boolean(h.before_data || h.after_data);
+
+  return (
+    <li className="ml-6">
+      <span className="absolute -left-[9px] flex items-center justify-center w-4 h-4 bg-green-100 rounded-full ring-4 ring-white">
+        <ChangeIcon size={10} className="text-green-700" />
+      </span>
+      <div className="flex items-center justify-between gap-2 flex-wrap">
+        <p className="text-sm font-semibold text-gray-800">{h.summary}</p>
+        <span className="text-xs text-gray-400">{timeAgo(h.created_at)}</span>
+      </div>
+      {h.intent && (
+        <p className="text-sm text-gray-600 italic mt-1 flex items-start gap-1.5">
+          <Quote size={12} className="mt-1 shrink-0 text-gray-400" />
+          {h.intent}
+        </p>
+      )}
+      
+      {hasData && (
+        <div className="mt-2">
+          <button
+            onClick={() => setExpanded(!expanded)}
+            className="text-xs font-medium text-gray-500 hover:text-gray-700 transition-colors"
+          >
+            {expanded ? "Hide changes" : "Show changes"}
+          </button>
+          {expanded && (
+            <HistoryDiff before={h.before_data} after={h.after_data} />
+          )}
+        </div>
+      )}
+
+      <div className="flex items-center gap-1.5 mt-2 text-xs text-gray-400">
+        <SourceIcon size={12} />
+        <span className="capitalize">{h.source}</span>
+        {h.actor && <span>· {h.actor}</span>}
+      </div>
+    </li>
+  );
+}
+
 export default function OrderDetailPage() {
   const params = useParams();
   const router = useRouter();
@@ -68,6 +117,7 @@ export default function OrderDetailPage() {
 
   const [order, setOrder] = useState<any>(null);
   const [history, setHistory] = useState<any[]>([]);
+  const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
   const [pendingAction, setPendingAction] = useState<{ status: string; label: string } | null>(null);
   const [reason, setReason] = useState("");
@@ -75,14 +125,28 @@ export default function OrderDetailPage() {
 
   const fetchAll = async () => {
     try {
+      setError(null);
       const [orderRes, historyRes] = await Promise.all([
         fetch(`${BACKEND}/api/orders/${orderId}`),
         fetch(`${BACKEND}/api/orders/${orderId}/history`),
       ]);
-      if (orderRes.ok) setOrder(await orderRes.json());
-      if (historyRes.ok) setHistory(await historyRes.json());
-    } catch (err) {
+      
+      if (!orderRes.ok) {
+        throw new Error("Failed to fetch order details");
+      }
+      if (!historyRes.ok) {
+        throw new Error("Failed to fetch order history");
+      }
+      
+      setOrder(await orderRes.json());
+      const histData = await historyRes.json();
+      if (!Array.isArray(histData)) {
+        throw new Error("Invalid response format: Expected an array of history events");
+      }
+      setHistory(histData);
+    } catch (err: any) {
       console.error("Error fetching order detail:", err);
+      setError(err.message || "An unexpected error occurred");
     } finally {
       setLoading(false);
     }
@@ -119,16 +183,24 @@ export default function OrderDetailPage() {
 
   const confirmStatusChange = async () => {
     if (!pendingAction) return;
-    if (pendingAction.status === "cancelled" && !reason.trim()) {
-      return; // cancellation requires a reason
+    if ((pendingAction.status === "cancelled" || pendingAction.status === "deleted") && !reason.trim()) {
+      return; // cancellation and deletion require a reason
     }
     setSubmitting(true);
     try {
-      await fetch(`${BACKEND}/api/orders/${orderId}`, {
-        method: "PUT",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ status: pendingAction.status, reason: reason.trim() || undefined }),
-      });
+      if (pendingAction.status === "deleted") {
+        await fetch(`${BACKEND}/api/orders/${orderId}`, {
+          method: "DELETE",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ reason: reason.trim() }),
+        });
+      } else {
+        await fetch(`${BACKEND}/api/orders/${orderId}`, {
+          method: "PUT",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ status: pendingAction.status, reason: reason.trim() || undefined }),
+        });
+      }
       setPendingAction(null);
       await fetchAll();
     } catch (err) {
@@ -142,6 +214,16 @@ export default function OrderDetailPage() {
     return <div className="min-h-screen flex items-center justify-center text-gray-500">Loading order…</div>;
   }
 
+  if (error) {
+    return (
+      <div className="min-h-screen flex flex-col items-center justify-center text-red-500 gap-4">
+        <p className="font-medium text-lg">⚠️ {error}</p>
+        <button onClick={fetchAll} className="px-4 py-2 bg-red-100 hover:bg-red-200 text-red-700 rounded-lg text-sm transition-colors">Try Again</button>
+        <a href="/orders" className="text-gray-500 font-medium hover:text-gray-700 mt-2">← Back to Orders</a>
+      </div>
+    );
+  }
+
   if (!order) {
     return (
       <div className="min-h-screen flex flex-col items-center justify-center text-gray-500 gap-4">
@@ -153,6 +235,7 @@ export default function OrderDetailPage() {
 
   const advance = NEXT_STATUS[order.status];
   const canCancel = order.status === "pending" || order.status === "in_transit";
+  const isDeleted = !!order.deleted_at;
 
   return (
     <div className="min-h-screen bg-gray-50 flex flex-col md:flex-row font-sans">
@@ -182,6 +265,10 @@ export default function OrderDetailPage() {
             <Clock size={20} />
             <span>WhatsApp Simulator</span>
           </a>
+          <a href="/activity" className="flex items-center space-x-3 text-gray-600 hover:bg-gray-50 px-4 py-3 rounded-lg font-medium transition-colors">
+            <ActivitySquare size={20} />
+            <span>Activity</span>
+          </a>
         </nav>
       </div>
 
@@ -204,8 +291,8 @@ export default function OrderDetailPage() {
                 Scheduled {order.scheduled_date} · Source {order.source?.replace("_", " ")}
               </p>
             </div>
-            <span className={`px-3 py-1.5 rounded-full text-xs font-semibold h-fit ${STATUS_STYLE[order.status] || "bg-gray-100 text-gray-700"}`}>
-              {order.status.replace("_", " ").toUpperCase()}
+            <span className={`px-3 py-1.5 rounded-full text-xs font-semibold h-fit ${isDeleted ? "bg-red-100 text-red-800" : (STATUS_STYLE[order.status] || "bg-gray-100 text-gray-700")}`}>
+              {isDeleted ? "DELETED" : order.status.replace("_", " ").toUpperCase()}
             </span>
           </div>
 
@@ -229,27 +316,35 @@ export default function OrderDetailPage() {
           </div>
 
           {/* Actions */}
-          <div className="mt-6 flex flex-wrap gap-3">
-            {advance && (
+          {!isDeleted && (
+            <div className="mt-6 flex flex-wrap gap-3 items-center">
+              {advance && (
+                <button
+                  onClick={() => openReasonModal(advance.next, advance.label)}
+                  className="px-4 py-2 rounded-lg text-white font-medium text-sm bg-blue-500 hover:bg-blue-600 transition-colors shadow-sm"
+                >
+                  {advance.label}
+                </button>
+              )}
+              {canCancel && (
+                <button
+                  onClick={() => openReasonModal("cancelled", "Cancel Order")}
+                  className="px-4 py-2 rounded-lg text-red-600 font-medium text-sm border border-red-200 hover:bg-red-50 transition-colors"
+                >
+                  Cancel Order
+                </button>
+              )}
+              {!advance && !canCancel && (
+                <span className="text-green-600 text-sm font-semibold flex items-center h-full mr-2">✓ No further actions</span>
+              )}
               <button
-                onClick={() => openReasonModal(advance.next, advance.label)}
-                className="px-4 py-2 rounded-lg text-white font-medium text-sm bg-blue-500 hover:bg-blue-600 transition-colors shadow-sm"
-              >
-                {advance.label}
-              </button>
-            )}
-            {canCancel && (
-              <button
-                onClick={() => openReasonModal("cancelled", "Cancel Order")}
+                onClick={() => openReasonModal("deleted", "Delete Order")}
                 className="px-4 py-2 rounded-lg text-red-600 font-medium text-sm border border-red-200 hover:bg-red-50 transition-colors"
               >
-                Cancel Order
+                Delete Order
               </button>
-            )}
-            {!advance && !canCancel && (
-              <span className="text-green-600 text-sm font-semibold">✓ No further actions</span>
-            )}
-          </div>
+            </div>
+          )}
         </div>
 
         {/* Intent & Change History Timeline */}
@@ -261,32 +356,9 @@ export default function OrderDetailPage() {
             <p className="text-sm text-gray-400">No history recorded yet.</p>
           ) : (
             <ol className="relative border-l border-gray-200 ml-2 space-y-6">
-              {history.map((h) => {
-                const ChangeIcon = CHANGE_ICON[h.change_type] || Package;
-                const SourceIcon = SOURCE_ICON[h.source] || Settings2;
-                return (
-                  <li key={h.id} className="ml-6">
-                    <span className="absolute -left-[9px] flex items-center justify-center w-4 h-4 bg-green-100 rounded-full ring-4 ring-white">
-                      <ChangeIcon size={10} className="text-green-700" />
-                    </span>
-                    <div className="flex items-center justify-between gap-2 flex-wrap">
-                      <p className="text-sm font-semibold text-gray-800">{h.summary}</p>
-                      <span className="text-xs text-gray-400">{timeAgo(h.created_at)}</span>
-                    </div>
-                    {h.intent && (
-                      <p className="text-sm text-gray-600 italic mt-1 flex items-start gap-1.5">
-                        <Quote size={12} className="mt-1 shrink-0 text-gray-400" />
-                        {h.intent}
-                      </p>
-                    )}
-                    <div className="flex items-center gap-1.5 mt-1.5 text-xs text-gray-400">
-                      <SourceIcon size={12} />
-                      <span className="capitalize">{h.source}</span>
-                      {h.actor && <span>· {h.actor}</span>}
-                    </div>
-                  </li>
-                );
-              })}
+              {history.map((h) => (
+                <TimelineEntry key={h.id} h={h} />
+              ))}
             </ol>
           )}
         </div>
@@ -303,21 +375,23 @@ export default function OrderDetailPage() {
               </button>
             </div>
             <label className="text-sm text-gray-600 mb-2 block">
-              Why? {pendingAction.status === "cancelled" ? "(required)" : "(optional — captured as intent in the history log)"}
+              Why? {(pendingAction.status === "cancelled" || pendingAction.status === "deleted") ? "(required)" : "(optional — captured as intent in the history log)"}
             </label>
             <textarea
               value={reason}
               onChange={(e) => setReason(e.target.value)}
               rows={3}
               placeholder={
-                pendingAction.status === "cancelled"
+                pendingAction.status === "deleted"
+                  ? "e.g. Duplicate order, created by mistake"
+                  : pendingAction.status === "cancelled"
                   ? "e.g. Customer no longer needs the items"
                   : "e.g. Driver picked up the order"
               }
               className="w-full border border-gray-300 rounded-lg p-3 text-sm focus:outline-none focus:ring-2 focus:ring-green-500"
             />
-            {pendingAction.status === "cancelled" && !reason.trim() && (
-              <p className="text-xs text-red-500 mt-1">A reason is required to cancel an order.</p>
+            {(pendingAction.status === "cancelled" || pendingAction.status === "deleted") && !reason.trim() && (
+              <p className="text-xs text-red-500 mt-1">A reason is required to {pendingAction.status === "deleted" ? "delete" : "cancel"} an order.</p>
             )}
             <div className="flex justify-end gap-3 mt-5">
               <button
@@ -328,7 +402,7 @@ export default function OrderDetailPage() {
               </button>
               <button
                 onClick={confirmStatusChange}
-                disabled={submitting || (pendingAction.status === "cancelled" && !reason.trim())}
+                disabled={submitting || ((pendingAction.status === "cancelled" || pendingAction.status === "deleted") && !reason.trim())}
                 className="px-4 py-2 rounded-lg text-white font-medium text-sm bg-green-600 hover:bg-green-700 disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 {submitting ? "Saving…" : "Confirm"}

@@ -79,3 +79,84 @@ def log_order_created(
         actor=actor,
         after={"items": items},
     )
+
+from datetime import datetime, timedelta
+
+def find_amendable_order(customer_phone: str) -> Optional[dict]:
+    """
+    Returns the most recent order for that phone with status in ('pending','in_transit')
+    created within the last 24 hours, else None.
+    """
+    customer_resp = supabase.table("customers").select("id").eq("phone", customer_phone).limit(1).execute()
+    if not customer_resp.data:
+        return None
+    customer_id = customer_resp.data[0]["id"]
+    
+    cutoff = (datetime.utcnow() - timedelta(hours=24)).isoformat()
+    
+    orders_resp = (
+        supabase.table("orders")
+        .select("*, order_items(*)")
+        .eq("customer_id", customer_id)
+        .in_("status", ["pending", "in_transit"])
+        .gte("created_at", cutoff)
+        .order("created_at", desc=True)
+        .limit(1)
+        .execute()
+    )
+    if orders_resp.data:
+        return orders_resp.data[0]
+    return None
+
+def apply_amendment(order: dict, extracted: dict) -> dict:
+    """
+    Merge extracted["items"] into the order's existing order_items:
+      - same product_name (case-insensitive) -> UPDATE quantity/unit
+      - new product_name -> INSERT
+    Returns {"before": [...], "after": [...], "summary": str}
+    """
+    existing_items = order.get("order_items", [])
+    new_items_extracted = extracted.get("items", [])
+    
+    existing_lookup = {item["product_name"].lower(): item for item in existing_items}
+    
+    before = [{"product_name": item["product_name"], "quantity": item["quantity"], "unit": item["unit"]} for item in existing_items]
+    
+    order_id = order["id"]
+    summary_parts = []
+    
+    for new_item in new_items_extracted:
+        name = new_item.get("product_name", "Unknown")
+        name_lower = name.lower()
+        quantity = max(float(new_item.get("quantity", 1)), 0.01)
+        unit = new_item.get("unit", "kg")
+        
+        if name_lower in existing_lookup:
+            item_id = existing_lookup[name_lower]["id"]
+            old_quantity = existing_lookup[name_lower]["quantity"]
+            old_unit = existing_lookup[name_lower]["unit"]
+            
+            if float(old_quantity) != float(quantity) or old_unit != unit:
+                supabase.table("order_items").update({
+                    "quantity": quantity,
+                    "unit": unit
+                }).eq("id", item_id).execute()
+                summary_parts.append(f"{name}: {old_quantity}{old_unit} → {quantity}{unit}")
+            
+            existing_lookup[name_lower]["quantity"] = quantity
+            existing_lookup[name_lower]["unit"] = unit
+        else:
+            inserted = supabase.table("order_items").insert({
+                "order_id": order_id,
+                "product_name": name,
+                "quantity": quantity,
+                "unit": unit
+            }).execute()
+            if inserted.data:
+                existing_lookup[name_lower] = inserted.data[0]
+                summary_parts.append(f"added {name} {quantity}{unit}")
+
+    after = [{"product_name": item["product_name"], "quantity": item["quantity"], "unit": item["unit"]} for item in existing_lookup.values()]
+    summary = "; ".join(summary_parts) if summary_parts else "No items changed"
+    
+    return {"before": before, "after": after, "summary": summary}

@@ -1,5 +1,6 @@
 from fastapi import APIRouter
-from datetime import datetime, timedelta
+from datetime import timedelta
+from services.time_service import now_ist
 from db.supabase_client import supabase
 
 router = APIRouter()
@@ -7,24 +8,39 @@ router = APIRouter()
 
 @router.get("/summary")
 def get_summary():
-    """KPI summary across all orders (all-time)."""
-    orders = (
+    """KPI summary across all orders (all-time counts, last 30 days products)."""
+    
+    # Fast count-only queries for statuses
+    total = supabase.table("orders").select("id", count="exact").is_("deleted_at", "null").execute().count or 0
+    pending = supabase.table("orders").select("id", count="exact").eq("status", "pending").is_("deleted_at", "null").execute().count or 0
+    in_transit = supabase.table("orders").select("id", count="exact").eq("status", "in_transit").is_("deleted_at", "null").execute().count or 0
+    delivered = supabase.table("orders").select("id", count="exact").eq("status", "delivered").is_("deleted_at", "null").execute().count or 0
+
+    # Top products by quantity (last 30 days only)
+    thirty_days_ago = str((now_ist() - timedelta(days=30)).date())
+    recent_orders = (
         supabase.table("orders")
-        .select("*, order_items(*)")
+        .select("id")
+        .gte("scheduled_date", thirty_days_ago)
+        .is_("deleted_at", "null")
         .execute()
         .data
     ) or []
 
-    total = len(orders)
-    pending = sum(1 for o in orders if o["status"] == "pending")
-    in_transit = sum(1 for o in orders if o["status"] == "in_transit")
-    delivered = sum(1 for o in orders if o["status"] == "delivered")
-
-    # Top products by quantity (all-time)
     product_totals: dict[str, float] = {}
     product_units: dict[str, str] = {}
-    for order in orders:
-        for item in order.get("order_items") or []:
+    
+    if recent_orders:
+        order_ids = [o["id"] for o in recent_orders]
+        items = (
+            supabase.table("order_items")
+            .select("product_name, quantity, unit")
+            .in_("order_id", order_ids)
+            .execute()
+            .data
+        ) or []
+        
+        for item in items:
             p = item["product_name"]
             product_totals[p] = product_totals.get(p, 0) + float(item["quantity"])
             if p not in product_units:
@@ -45,13 +61,14 @@ def get_summary():
 @router.get("/forecast")
 def get_forecast():
     """Simple 7-day rolling average demand forecast per product."""
-    seven_days_ago = str((datetime.today() - timedelta(days=7)).date())
+    seven_days_ago = str((now_ist() - timedelta(days=7)).date())
 
     # Fetch orders from the last 7 days first, then get their items
     recent_orders = (
         supabase.table("orders")
         .select("id")
         .gte("scheduled_date", seven_days_ago)
+        .is_("deleted_at", "null")
         .execute()
         .data
     ) or []
@@ -85,13 +102,14 @@ def get_forecast():
 @router.get("/weekly")
 def get_weekly_stats():
     """Daily order counts for the last 7 days for charts."""
-    seven_days_ago = str((datetime.today() - timedelta(days=6)).date())
+    seven_days_ago = str((now_ist() - timedelta(days=6)).date())
     
     # Do 1 single query for the last 7 days
     result = (
         supabase.table("orders")
         .select("id, scheduled_date")
         .gte("scheduled_date", seven_days_ago)
+        .is_("deleted_at", "null")
         .execute()
     )
     
@@ -106,7 +124,7 @@ def get_weekly_stats():
             
     rows = []
     for i in range(6, -1, -1):
-        d = str((datetime.today() - timedelta(days=i)).date())
+        d = str((now_ist() - timedelta(days=i)).date())
         rows.append({"date": d, "count": counts_by_date.get(d, 0)})
         
     return rows

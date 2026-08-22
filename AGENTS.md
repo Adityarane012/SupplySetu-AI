@@ -140,8 +140,21 @@ behind it — see `docs/deliverables.md` for the full write-up and demo script.
 - **Read path:** `GET /api/orders/{id}/history` → rendered as a live timeline on
   `/orders/[id]`, subscribed to Supabase realtime on both `orders` and `order_history`.
 
+- **History is append-only**: The `anon` role has `SELECT` only (so the browser can subscribe to the timeline). All writes go through the backend using the `service_role` key, bypassing RLS. A database trigger (`order_history_immutable`) enforces immutability against `UPDATE`.
+
 Schema changes live in `backend/db/schema.sql` and must be applied manually in the
 Supabase SQL editor — there is no migration runner in this project.
+
+## Testing
+
+The project uses `pytest` for automated testing of backend services, schema validators, and business logic without requiring a live database or network.
+
+Run tests:
+```bash
+cd backend
+python -m pytest -q
+```
+Test files are located in `backend/tests/`. We mock dependencies like the Supabase client and the LLM service to keep the suite fast and independent.
 
 ---
 

@@ -2,20 +2,29 @@
 
 import { useEffect, useState } from "react";
 import { supabase } from "@/lib/supabase";
-import { Package, Truck, Clock, Filter, BarChart3, Plus, ChevronRight, Eye } from "lucide-react";
+import { Package, Truck, Clock, Filter, BarChart3, Plus, ChevronRight, Eye, ActivitySquare } from "lucide-react";
 
 export default function OrdersPage() {
   const [orders, setOrders] = useState<any[]>([]);
+  const [error, setError] = useState<string | null>(null);
   const [filter, setFilter] = useState("all");
   const [updatingId, setUpdatingId] = useState<string | null>(null);
 
   const fetchOrders = async () => {
     try {
+      setError(null);
       const res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/orders`);
+      if (!res.ok) {
+        throw new Error("Failed to fetch orders from the server");
+      }
       const data = await res.json();
+      if (!Array.isArray(data)) {
+        throw new Error("Invalid response format: Expected an array of orders");
+      }
       setOrders(data);
-    } catch (err) {
+    } catch (err: any) {
       console.error("Error fetching orders:", err);
+      setError(err.message || "An unexpected error occurred");
     }
   };
 
@@ -91,6 +100,10 @@ export default function OrdersPage() {
             <Clock size={20} />
             <span>WhatsApp Simulator</span>
           </a>
+          <a href="/activity" className="flex items-center space-x-3 text-gray-600 hover:bg-gray-50 px-4 py-3 rounded-lg font-medium transition-colors">
+            <ActivitySquare size={20} />
+            <span>Activity</span>
+          </a>
         </nav>
       </div>
 
@@ -116,7 +129,16 @@ export default function OrdersPage() {
         </div>
 
         <div className="bg-white rounded-xl border border-gray-200 shadow-sm overflow-hidden">
-          <table className="w-full">
+          {error ? (
+            <div className="p-8 text-center bg-red-50 border-t border-red-100">
+              <p className="text-red-600 font-medium">{error}</p>
+              <button onClick={fetchOrders} className="mt-4 px-4 py-2 bg-red-100 hover:bg-red-200 text-red-700 rounded-lg text-sm transition-colors">
+                Try Again
+              </button>
+            </div>
+          ) : (
+          <>
+            <table className="w-full">
             <thead className="bg-gray-50 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">
               <tr>
                 <th className="px-6 py-4">Order ID</th>
@@ -187,6 +209,8 @@ export default function OrdersPage() {
                 + Create a new voice order
               </a>
             </div>
+          )}
+          </>
           )}
         </div>
       </main>

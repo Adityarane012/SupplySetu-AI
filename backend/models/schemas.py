@@ -44,6 +44,7 @@ class OrderCreate(BaseModel):
     scheduled_date: Optional[date] = None
     source: str = "manual"
     notes: Optional[str] = None
+    intent: Optional[str] = None
 
     @field_validator("customer_name")
     @classmethod
@@ -71,6 +72,18 @@ class OrderUpdate(BaseModel):
     def status_must_be_valid(cls, v: Optional[str]) -> Optional[str]:
         if v is not None and v not in VALID_STATUSES:
             raise ValueError(f"status must be one of: {', '.join(sorted(VALID_STATUSES))}")
+        return v
+
+
+class OrderDelete(BaseModel):
+    reason: str
+    
+    @field_validator("reason")
+    @classmethod
+    def reason_not_empty(cls, v: str) -> str:
+        v = v.strip()
+        if not v:
+            raise ValueError("reason for deletion cannot be empty")
         return v
 
 

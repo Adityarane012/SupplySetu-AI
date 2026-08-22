@@ -1,8 +1,9 @@
 from fastapi import APIRouter, HTTPException, Query
 from typing import Optional
 from db.supabase_client import supabase
-from models.schemas import OrderCreate, OrderUpdate
-from datetime import date
+from models.schemas import OrderCreate, OrderUpdate, OrderDelete
+from datetime import date, datetime
+from services.time_service import today_ist
 from services.history_service import log_history, log_order_created, default_status_intent
 
 router = APIRouter()
@@ -14,12 +15,29 @@ def list_orders(
     scheduled_date: Optional[str] = Query(None),
     limit: int = Query(50),
 ):
-    query = supabase.table("orders").select("*, order_items(*)")
+    query = supabase.table("orders").select("*, order_items(*)").is_("deleted_at", "null")
 
     if status:
         query = query.eq("status", status)
     if scheduled_date:
         query = query.eq("scheduled_date", scheduled_date)
+
+    result = query.order("created_at", desc=True).limit(limit).execute()
+    return result.data
+
+
+@router.get("/activity")
+def get_activity(
+    change_type: Optional[str] = Query(None),
+    source: Optional[str] = Query(None),
+    limit: int = Query(50),
+):
+    query = supabase.table("order_history").select("*, orders(customer_name, status)")
+
+    if change_type:
+        query = query.eq("change_type", change_type)
+    if source:
+        query = query.eq("source", source)
 
     result = query.order("created_at", desc=True).limit(limit).execute()
     return result.data
@@ -33,6 +51,7 @@ def get_order(order_id: str):
         supabase.table("orders")
         .select("*, order_items(*), customers(*)")
         .eq("id", order_id)
+        .is_("deleted_at", "null")
         .limit(1)
         .execute()
     )
@@ -48,7 +67,7 @@ def create_order(body: OrderCreate):
         "customer_name": body.customer_name,
         "status": "pending",
         "source": body.source,
-        "scheduled_date": str(body.scheduled_date or date.today()),
+        "scheduled_date": str(body.scheduled_date or today_ist()),
         "notes": body.notes,
     }
     if body.customer_id:
@@ -73,7 +92,7 @@ def create_order(body: OrderCreate):
     log_order_created(
         order_id=order["id"],
         items=items_payload,
-        intent=body.notes,  # manual entry has no LLM intent; use notes if the vendor gave any
+        intent=body.intent or body.notes,  # prefer LLM-inferred intent; fall back to vendor notes
         source="manual",
         actor="vendor",
     )
@@ -83,12 +102,12 @@ def create_order(body: OrderCreate):
 
 @router.put("/{order_id}")
 def update_order(order_id: str, body: OrderUpdate):
-    existing = supabase.table("orders").select("*").eq("id", order_id).limit(1).execute()
+    existing = supabase.table("orders").select("*").eq("id", order_id).is_("deleted_at", "null").limit(1).execute()
     if not existing.data:
         raise HTTPException(status_code=404, detail="Order not found")
     old = existing.data[0]
 
-    update_data = body.model_dump(exclude={"reason"}, exclude_none=True)
+    update_data = body.model_dump(exclude={"reason"}, exclude_unset=True)
     if not update_data:
         raise HTTPException(400, "No fields to update")
 
@@ -128,12 +147,31 @@ def get_order_history(order_id: str):
         .select("*")
         .eq("order_id", order_id)
         .order("created_at", desc=True)
+        .limit(100)
         .execute()
     )
     return result.data
 
 
 @router.delete("/{order_id}")
-def delete_order(order_id: str):
-    supabase.table("orders").delete().eq("id", order_id).execute()
-    return {"deleted": True}
+def delete_order(order_id: str, body: OrderDelete):
+    existing = supabase.table("orders").select("*").eq("id", order_id).is_("deleted_at", "null").limit(1).execute()
+    if not existing.data:
+        raise HTTPException(status_code=404, detail="Order not found or already deleted")
+    
+    old_status = existing.data[0].get("status")
+    now_ts = datetime.utcnow().isoformat()
+    
+    log_history(
+        order_id=order_id,
+        change_type="deleted",
+        summary="Order deleted",
+        intent=body.reason,
+        source="manual",
+        actor="vendor",
+        before={"status": old_status},
+        after={"deleted_at": now_ts},
+    )
+    
+    supabase.table("orders").update({"deleted_at": now_ts}).eq("id", order_id).execute()
+    return {"deleted": True, "deleted_at": now_ts}

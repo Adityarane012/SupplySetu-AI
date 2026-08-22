@@ -42,6 +42,7 @@ CREATE TABLE IF NOT EXISTS orders (
   scheduled_date  DATE NOT NULL DEFAULT CURRENT_DATE,
   raw_transcript  TEXT,
   notes           TEXT,
+  deleted_at      TIMESTAMPTZ,
   created_at      TIMESTAMPTZ DEFAULT NOW(),
   updated_at      TIMESTAMPTZ DEFAULT NOW()
 );
@@ -86,6 +87,7 @@ CREATE TABLE IF NOT EXISTS messages (
   transcript   TEXT,
   order_id     UUID REFERENCES orders(id) ON DELETE SET NULL,
   source       TEXT DEFAULT 'simulator',
+  twilio_message_sid TEXT UNIQUE,
   created_at   TIMESTAMPTZ DEFAULT NOW()
 );
 
@@ -99,7 +101,7 @@ CREATE TABLE IF NOT EXISTS order_history (
   order_id     UUID NOT NULL REFERENCES orders(id) ON DELETE CASCADE,
   change_type  TEXT NOT NULL
                  CHECK (change_type IN (
-                   'created', 'status_changed', 'notes_changed'
+                   'created', 'status_changed', 'notes_changed', 'items_changed'
                  )),
   summary      TEXT NOT NULL,   -- what changed, e.g. "Status changed from pending to delivered"
   intent       TEXT,            -- why it changed — the captured goal/purpose/reason
@@ -111,11 +113,17 @@ CREATE TABLE IF NOT EXISTS order_history (
   created_at   TIMESTAMPTZ DEFAULT NOW()
 );
 
+-- Apply the constraint for items_changed and deleted
+ALTER TABLE order_history DROP CONSTRAINT IF EXISTS order_history_change_type_check;
+ALTER TABLE order_history ADD CONSTRAINT order_history_change_type_check
+  CHECK (change_type IN ('created','status_changed','notes_changed','items_changed','deleted'));
+
 -- ============================================================
 -- 7. INDEXES for performance
 -- ============================================================
 CREATE INDEX IF NOT EXISTS idx_orders_status        ON orders(status);
 CREATE INDEX IF NOT EXISTS idx_orders_date          ON orders(scheduled_date);
+CREATE INDEX IF NOT EXISTS idx_orders_not_deleted   ON orders(deleted_at) WHERE deleted_at IS NULL;
 CREATE INDEX IF NOT EXISTS idx_orders_customer      ON orders(customer_id);
 CREATE INDEX IF NOT EXISTS idx_order_items_order    ON order_items(order_id);
 CREATE INDEX IF NOT EXISTS idx_customers_phone      ON customers(phone);

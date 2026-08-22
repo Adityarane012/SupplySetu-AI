@@ -1,7 +1,8 @@
 from fastapi import APIRouter, HTTPException
+import asyncio
 from db.supabase_client import supabase
 from models.schemas import RouteRequest
-from services.geocoder import build_distance_matrix
+from services.geocoder import build_distance_matrix, geocode_address
 from services.route_optimizer import solve_tsp
 
 router = APIRouter()
@@ -15,6 +16,8 @@ async def compute_route(req: RouteRequest):
     depot = req.depot or DEFAULT_DEPOT
     locations = [depot]  # index 0 = depot
     order_meta = []
+    skipped = []
+    addr_cache = {}
 
     for oid in req.order_ids:
         # .limit(1) rather than .single(): `single` raises on a missing row, which
@@ -23,31 +26,45 @@ async def compute_route(req: RouteRequest):
             supabase.table("orders")
             .select("id, customer_name, customer_id, customers(lat, lng, name, address)")
             .eq("id", oid)
+            .is_("deleted_at", "null")
             .limit(1)
             .execute()
         )
         if not order_resp.data:
+            skipped.append({"order_id": oid, "reason": "Order not found"})
             continue
 
         data = order_resp.data[0]
         customer = data.get("customers") or {}
         lat = customer.get("lat")
         lng = customer.get("lng")
+        address = customer.get("address", "")
+        customer_id = data.get("customer_id")
 
         if lat is None or lng is None:
-            # Generate deterministic mock coordinates based on order ID for demo purposes
-            import hashlib
-            seed_str = str(oid)
-            hash_val = int(hashlib.md5(seed_str.encode()).hexdigest()[:8], 16)
-            # +/- 0.05 degrees around Dadar Market (approx 5km radius)
-            lat = 19.0178 + ((hash_val % 100) - 50) * 0.001
-            lng = 72.8478 + ((hash_val // 100 % 100) - 50) * 0.001
+            if not address:
+                skipped.append({"order_id": oid, "reason": "No address or coordinates"})
+                continue
+            
+            if address in addr_cache:
+                lat, lng = addr_cache[address]
+            else:
+                loc = await asyncio.to_thread(geocode_address, address)
+                await asyncio.sleep(1.1)  # rate limit 1 req/sec
+                if loc:
+                    lat, lng = loc["lat"], loc["lng"]
+                    addr_cache[address] = (lat, lng)
+                    if customer_id:
+                        supabase.table("customers").update({"lat": lat, "lng": lng}).eq("id", customer_id).execute()
+                else:
+                    skipped.append({"order_id": oid, "reason": f"Geocoding failed for address: {address}"})
+                    continue
 
         locations.append({"lat": lat, "lng": lng})
         order_meta.append({
             "order_id": oid,
             "customer_name": data["customer_name"],
-            "address": customer.get("address", ""),
+            "address": address,
             "lat": lat,
             "lng": lng,
         })
@@ -76,4 +93,5 @@ async def compute_route(req: RouteRequest):
         "est_minutes": est_minutes,
         "total_stops": len(order_meta),
         "fuel_cost_inr": fuel_cost,
+        "skipped": skipped,
     }

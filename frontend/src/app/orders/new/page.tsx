@@ -127,9 +127,10 @@ export default function NewOrderPage() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           customer_name: extractedData?.customer || "Unknown Customer",
-          source: mode === "voice" ? "manual_voice" : "manual_text",
+          source: mode === "voice" ? "simulator_voice" : "simulator_text",
           items: extractedData?.items || [],
           notes: extractedData?.notes,
+          intent: extractedData?.intent,
         }),
       });
       if (!res.ok) throw new Error("Save failed");
