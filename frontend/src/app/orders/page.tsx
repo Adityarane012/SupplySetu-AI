@@ -3,12 +3,19 @@
 import { useEffect, useState } from "react";
 import { supabase } from "@/lib/supabase";
 import { Package, Truck, Clock, Filter, BarChart3, Plus, ChevronRight, Eye, ActivitySquare } from "lucide-react";
+import ReasonModal from "@/components/ReasonModal";
+
+interface PendingDelivery {
+  orderId: string;
+  reasonRequired: boolean;
+}
 
 export default function OrdersPage() {
   const [orders, setOrders] = useState<any[]>([]);
   const [error, setError] = useState<string | null>(null);
   const [filter, setFilter] = useState("all");
   const [updatingId, setUpdatingId] = useState<string | null>(null);
+  const [pendingDelivery, setPendingDelivery] = useState<PendingDelivery | null>(null);
 
   const fetchOrders = async () => {
     try {
@@ -28,21 +35,70 @@ export default function OrdersPage() {
     }
   };
 
-  const updateStatus = async (orderId: string, newStatus: string) => {
+  const updateStatus = async (orderId: string, newStatus: string, reason?: string) => {
     setUpdatingId(orderId);
+    setError(null);
     try {
-      await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/orders/${orderId}`, {
+      const body: Record<string, any> = { status: newStatus };
+      if (reason) {
+        body.reason = reason;
+      }
+
+      // For delivered orders that are overdue, attach the outcome_reason
+      if (newStatus === "delivered") {
+        const order = orders.find((o) => o.id === orderId);
+        if (order?.scheduled_date) {
+          const scheduled = new Date(order.scheduled_date + "T00:00:00");
+          const todayStart = new Date();
+          todayStart.setHours(0, 0, 0, 0);
+          if (scheduled < todayStart && reason) {
+            body.outcome_reason = reason;
+          }
+        }
+      }
+
+      const res = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/orders/${orderId}`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ status: newStatus }),
+        body: JSON.stringify(body),
       });
+
+      if (!res.ok) {
+        const errData = await res.json().catch(() => ({ detail: "Unknown error" }));
+        throw new Error(errData.detail || `Update failed with status ${res.status}`);
+      }
+
       // Realtime will handle the refresh, but also refetch to be safe
       await fetchOrders();
-    } catch (err) {
+    } catch (err: any) {
       console.error("Error updating order:", err);
+      setError(err.message || "Failed to update order status");
     } finally {
       setUpdatingId(null);
     }
+  };
+
+  /** For "Mark Delivered", always open the modal. Reason is required only when overdue. */
+  const handleStatusClick = (orderId: string, newStatus: string) => {
+    if (newStatus === "delivered") {
+      const order = orders.find((o) => o.id === orderId);
+      let reasonRequired = false;
+      if (order?.scheduled_date) {
+        const scheduled = new Date(order.scheduled_date + "T00:00:00");
+        const todayStart = new Date();
+        todayStart.setHours(0, 0, 0, 0);
+        reasonRequired = scheduled < todayStart;
+      }
+      setPendingDelivery({ orderId, reasonRequired });
+    } else {
+      updateStatus(orderId, newStatus);
+    }
+  };
+
+  const confirmDelivery = async (reason: string) => {
+    if (!pendingDelivery) return;
+    setPendingDelivery(null);
+    await updateStatus(pendingDelivery.orderId, "delivered", reason || undefined);
   };
 
   useEffect(() => {
@@ -132,7 +188,7 @@ export default function OrdersPage() {
           {error ? (
             <div className="p-8 text-center bg-red-50 border-t border-red-100">
               <p className="text-red-600 font-medium">{error}</p>
-              <button onClick={fetchOrders} className="mt-4 px-4 py-2 bg-red-100 hover:bg-red-200 text-red-700 rounded-lg text-sm transition-colors">
+              <button onClick={() => { setError(null); fetchOrders(); }} className="mt-4 px-4 py-2 bg-red-100 hover:bg-red-200 text-red-700 rounded-lg text-sm transition-colors">
                 Try Again
               </button>
             </div>
@@ -189,7 +245,7 @@ export default function OrdersPage() {
                       </a>
                       {nextStatus[order.status] ? (
                         <button
-                          onClick={() => updateStatus(order.id, nextStatus[order.status])}
+                          onClick={() => handleStatusClick(order.id, nextStatus[order.status])}
                           disabled={updatingId === order.id}
                           className={`inline-flex items-center space-x-1 px-3 py-1.5 rounded-lg text-white font-medium text-xs transition-colors shadow-sm ${
                             order.status === 'pending'
@@ -221,6 +277,22 @@ export default function OrdersPage() {
           )}
         </div>
       </main>
+
+      {/* Delivered reason modal */}
+      {pendingDelivery && (
+        <ReasonModal
+          title="Mark Delivered"
+          reasonRequired={pendingDelivery.reasonRequired}
+          placeholder={
+            pendingDelivery.reasonRequired
+              ? "e.g. Delivery truck broke down, traffic delays"
+              : "e.g. Delivered on time to the customer"
+          }
+          requiredMessage="This order is overdue — a reason for missing the deadline is required."
+          onConfirm={confirmDelivery}
+          onClose={() => setPendingDelivery(null)}
+        />
+      )}
     </div>
   );
 }

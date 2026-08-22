@@ -80,7 +80,7 @@ def log_order_created(
         after={"items": items},
     )
 
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, timezone
 
 def find_amendable_order(customer_phone: str) -> Optional[dict]:
     """
@@ -92,7 +92,7 @@ def find_amendable_order(customer_phone: str) -> Optional[dict]:
         return None
     customer_id = customer_resp.data[0]["id"]
     
-    cutoff = (datetime.utcnow() - timedelta(hours=24)).isoformat()
+    cutoff = (datetime.now(timezone.utc) - timedelta(hours=24)).isoformat()
     
     orders_resp = (
         supabase.table("orders")
