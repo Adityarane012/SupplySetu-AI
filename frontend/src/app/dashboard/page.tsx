@@ -158,7 +158,11 @@ export default function DashboardPage() {
                 {orders.slice(0, 10).map((order: any) => (
                   <tr key={order.id} className="hover:bg-gray-50 transition-colors">
                     <td className="px-6 py-4 text-sm text-gray-500">{order.id.slice(0, 8)}</td>
-                    <td className="px-6 py-4 text-sm font-medium text-gray-800">{order.customer_name}</td>
+                    <td className="px-6 py-4 text-sm font-medium text-gray-800">
+                      <a href={`/orders/${order.id}`} className="hover:text-green-700 hover:underline">
+                        {order.customer_name}
+                      </a>
+                    </td>
                     <td className="px-6 py-4 text-sm">
                       <span className={`px-3 py-1 rounded-full text-xs font-semibold 
                         ${order.status === 'pending' ? 'bg-orange-100 text-orange-700' : 

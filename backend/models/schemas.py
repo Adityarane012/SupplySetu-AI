@@ -1,5 +1,5 @@
-from pydantic import BaseModel, field_validator, model_validator
-from typing import List, Optional, Literal
+from pydantic import BaseModel, field_validator
+from typing import List, Optional
 from datetime import date
 import uuid
 
@@ -64,6 +64,7 @@ class OrderCreate(BaseModel):
 class OrderUpdate(BaseModel):
     status: Optional[str] = None
     notes: Optional[str] = None
+    reason: Optional[str] = None  # captured intent behind this change — not persisted on the order row
 
     @field_validator("status")
     @classmethod
@@ -98,7 +99,8 @@ class CustomerCreate(BaseModel):
 
 class RouteRequest(BaseModel):
     order_ids: List[str]
-    depot: dict  # {lat: float, lng: float}
+    # {lat, lng, name?} — optional; the route router falls back to a default depot.
+    depot: Optional[dict] = None
 
     @field_validator("order_ids")
     @classmethod

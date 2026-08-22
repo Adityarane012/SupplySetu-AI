@@ -7,7 +7,7 @@
 SELECT table_name
 FROM information_schema.tables
 WHERE table_schema = 'public'
-  AND table_name IN ('customers', 'orders', 'order_items', 'deliveries', 'messages')
+  AND table_name IN ('customers', 'orders', 'order_items', 'deliveries', 'messages', 'order_history')
 ORDER BY table_name;
 
 -- 2. Check row counts
