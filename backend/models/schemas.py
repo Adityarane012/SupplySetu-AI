@@ -45,6 +45,14 @@ class OrderCreate(BaseModel):
     source: str = "manual"
     notes: Optional[str] = None
     intent: Optional[str] = None
+    entry_source: Optional[str] = None
+
+    @field_validator("entry_source")
+    @classmethod
+    def validate_entry_source(cls, v: Optional[str]) -> Optional[str]:
+        if v not in ("voice", "text"):
+            return "manual"
+        return v
 
     @field_validator("customer_name")
     @classmethod

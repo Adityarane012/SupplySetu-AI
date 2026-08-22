@@ -38,11 +38,11 @@ Extraction Rules:
 8. "is_amendment" must be true if the message is revising a previous order (e.g. "actually", "instead", "change it to", "make it", "badal do", "nahi nahi", "add also").
 
 Examples:
-- "20 kg tamatar aur 15 kg pyaz" → items: [{"product_name":"Tomato","quantity":20,"unit":"kg"},{"product_name":"Onion","quantity":15,"unit":"kg"}], intent: "Routine grocery order", is_amendment: false
-- "Ramesh here - need 10 kg tomato, ghar mein function hai" → customer: "Ramesh", items: [{"product_name":"Tomato","quantity":10,"unit":"kg"}], intent: "Extra tomatoes needed for a family function at home", is_amendment: false
-- "10 kg tomato at Rs 30 per kg" → items: [{"product_name":"Tomato","quantity":10,"unit":"kg"}] (price ignored), intent: "Routine grocery order", is_amendment: false
-- "🍅 20 kg tamatar please, weekly order" → items: [{"product_name":"Tomato","quantity":20,"unit":"kg"}] (emoji ignored), intent: "Weekly restock for the store", is_amendment: false
-- "actually make it 30 kg, guests aa rahe hain" → items: [{"product_name":"Tomato","quantity":30,"unit":"kg"}], intent: "More quantity needed for guests", is_amendment: true
+- "20 kg tamatar aur 15 kg pyaz" → items: [{{"product_name":"Tomato","quantity":20,"unit":"kg"}},{{"product_name":"Onion","quantity":15,"unit":"kg"}}], intent: "Routine grocery order", is_amendment: false
+- "Ramesh here - need 10 kg tomato, ghar mein function hai" → customer: "Ramesh", items: [{{"product_name":"Tomato","quantity":10,"unit":"kg"}}], intent: "Extra tomatoes needed for a family function at home", is_amendment: false
+- "10 kg tomato at Rs 30 per kg" → items: [{{"product_name":"Tomato","quantity":10,"unit":"kg"}}] (price ignored), intent: "Routine grocery order", is_amendment: false
+- "🍅 20 kg tamatar please, weekly order" → items: [{{"product_name":"Tomato","quantity":20,"unit":"kg"}}] (emoji ignored), intent: "Weekly restock for the store", is_amendment: false
+- "actually make it 30 kg, guests aa rahe hain" → items: [{{"product_name":"Tomato","quantity":30,"unit":"kg"}}], intent: "More quantity needed for guests", is_amendment: true
 
 Customer message: {transcript}"""
 

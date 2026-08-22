@@ -95,7 +95,7 @@ def create_order(body: OrderCreate):
         order_id=order["id"],
         items=items_payload,
         intent=body.intent or body.notes,  # prefer LLM-inferred intent; fall back to vendor notes
-        source="manual",
+        source=body.entry_source or "manual",
         actor="vendor",
     )
 
