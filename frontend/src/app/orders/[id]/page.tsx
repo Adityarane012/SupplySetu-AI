@@ -26,6 +26,7 @@ import {
   HelpCircle,
 } from "lucide-react";
 import HistoryDiff from "@/components/HistoryDiff";
+import ReasonModal from "@/components/ReasonModal";
 
 const BACKEND = process.env.NEXT_PUBLIC_BACKEND_URL;
 
@@ -508,54 +509,51 @@ export default function OrderDetailPage() {
 
       {/* Reason Modal */}
       {pendingAction && (
-        <div className="fixed inset-0 bg-black/40 flex items-center justify-center z-50 p-4">
-          <div className="bg-white rounded-xl shadow-lg w-full max-w-md p-6">
-            <div className="flex items-center justify-between mb-4">
-              <h4 className="text-lg font-bold text-gray-800">{pendingAction.label}</h4>
-              <button onClick={() => setPendingAction(null)} className="text-gray-400 hover:text-gray-600">
-                <X size={20} />
-              </button>
-            </div>
-            <label className="text-sm text-gray-600 mb-2 block">
-              Why? {isReasonRequired ? "(required)" : "(optional — captured as intent in the history log)"}
-            </label>
-            <textarea
-              value={reason}
-              onChange={(e) => setReason(e.target.value)}
-              rows={3}
-              placeholder={
-                pendingAction.status === "deleted"
-                  ? "e.g. Duplicate order, created by mistake"
-                  : pendingAction.status === "cancelled"
-                  ? "e.g. Customer no longer needs the items"
-                  : isMissedDelivery 
-                  ? "e.g. Delivery truck broke down"
-                  : "e.g. Driver picked up the order"
+        <ReasonModal
+          title={pendingAction.label}
+          reasonRequired={isReasonRequired}
+          placeholder={
+            pendingAction.status === "deleted"
+              ? "e.g. Duplicate order, created by mistake"
+              : pendingAction.status === "cancelled"
+              ? "e.g. Customer no longer needs the items"
+              : isMissedDelivery
+              ? "e.g. Delivery truck broke down"
+              : "e.g. Driver picked up the order"
+          }
+          requiredMessage={`A reason is required to ${pendingAction.status === "deleted" ? "delete" : pendingAction.status === "cancelled" ? "cancel" : "miss deadline for"} this order.`}
+          onConfirm={async (reasonText) => {
+            setReason(reasonText);
+            if (isReasonRequired && !reasonText.trim()) return;
+            setSubmitting(true);
+            try {
+              if (pendingAction.status === "deleted") {
+                await fetch(`${BACKEND}/api/orders/${orderId}`, {
+                  method: "DELETE",
+                  headers: { "Content-Type": "application/json" },
+                  body: JSON.stringify({ reason: reasonText.trim() }),
+                });
+              } else {
+                const body: any = { status: pendingAction.status, reason: reasonText.trim() || undefined };
+                if (isMissedDelivery) {
+                  body.outcome_reason = reasonText.trim();
+                }
+                await fetch(`${BACKEND}/api/orders/${orderId}`, {
+                  method: "PUT",
+                  headers: { "Content-Type": "application/json" },
+                  body: JSON.stringify(body),
+                });
               }
-              className="w-full border border-gray-300 rounded-lg p-3 text-sm focus:outline-none focus:ring-2 focus:ring-green-500"
-            />
-            {isReasonRequired && !reason.trim() && (
-              <p className="text-xs text-red-500 mt-1">
-                 A reason is required to {pendingAction.status === "deleted" ? "delete" : pendingAction.status === "cancelled" ? "cancel" : "miss deadline for"} this order.
-              </p>
-            )}
-            <div className="flex justify-end gap-3 mt-5">
-              <button
-                onClick={() => setPendingAction(null)}
-                className="px-4 py-2 rounded-lg text-gray-600 font-medium text-sm hover:bg-gray-100"
-              >
-                Cancel
-              </button>
-              <button
-                onClick={confirmStatusChange}
-                disabled={submitting || (isReasonRequired && !reason.trim())}
-                className="px-4 py-2 rounded-lg text-white font-medium text-sm bg-green-600 hover:bg-green-700 disabled:opacity-50 disabled:cursor-not-allowed"
-              >
-                {submitting ? "Saving…" : "Confirm"}
-              </button>
-            </div>
-          </div>
-        </div>
+              setPendingAction(null);
+              await fetchAll();
+            } catch (err) {
+              console.error("Error updating order:", err);
+            } finally {
+              setSubmitting(false);
+            }
+          }}
+          onClose={() => setPendingAction(null)}
+        />
       )}
     </div>
   );

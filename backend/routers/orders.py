@@ -2,7 +2,7 @@ from fastapi import APIRouter, HTTPException, Query
 from typing import Optional
 from db.supabase_client import supabase
 from models.schemas import OrderCreate, OrderUpdate, OrderDelete
-from datetime import date, datetime
+from datetime import date, datetime, timezone
 from services.time_service import today_ist, now_ist
 from services.history_service import log_history, log_order_created, default_status_intent
 from services.outcome_service import evaluate_intent_outcome
@@ -230,7 +230,7 @@ def delete_order(order_id: str, body: OrderDelete):
         raise HTTPException(status_code=404, detail="Order not found or already deleted")
     
     old_status = existing.data[0].get("status")
-    now_ts = datetime.utcnow().isoformat()
+    now_ts = datetime.now(timezone.utc).isoformat()
     
     log_history(
         order_id=order_id,
