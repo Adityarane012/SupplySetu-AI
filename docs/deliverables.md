@@ -10,23 +10,73 @@ works end-to-end and can be demoed to judges.
 
 ## What was built
 
-A change-history / intent-capture system layered on top of the existing order pipeline:
+An intent-capture and change-history system layered onto the existing order pipeline.
+The design principle throughout: **record not just *what* changed, but *why*.**
 
-- **New `order_history` table** — records every meaningful change to an order (creation,
-  status change, notes edit), each entry paired with the *intent* (why it happened), not
-  just the diff (what happened).
-- **Intent inference from voice/text orders** — the LLM extraction prompt now returns an
-  `intent` field summarizing the customer's underlying goal (e.g. *"Extra tomatoes needed
-  for a family function"* vs *"Weekly restock for the store"*), captured automatically
-  when an order is created via WhatsApp or the Simulator.
-- **Manual intent capture** — when a vendor changes an order's status (in-transit,
-  delivered, cancelled) from the dashboard, they're prompted for a reason. Cancellation
-  requires one; other transitions fall back to a sensible default if skipped.
-- **New `/orders/[id]` page** — an order detail view with a live-updating (Supabase
-  realtime) timeline showing every change and its captured intent.
-- **New API:** `GET /api/orders/{id}/history`.
+### 1. Capturing intent
 
-Code is committed and pushed to branch `claude/project-docs-review-75xxw8`.
+- **`order_history` table** — an append-only log of every meaningful order change
+  (`created`, `status_changed`, `notes_changed`, `items_changed`, `deleted`). Each row
+  stores a human-readable `summary` (what), an `intent` (why), the `source`
+  (voice / text / manual / system), the `actor`, and `before_data` / `after_data` JSONB.
+- **AI-inferred customer intent** — the LLM extraction prompt returns an `intent` field
+  summarising the customer's underlying goal (*"Extra tomatoes needed for a family
+  function"* vs *"Weekly restock for the store"*), captured automatically on every order
+  arriving via WhatsApp, the Simulator, or the manual `/orders/new` page.
+- **Vendor-stated intent** — status changes prompt for a reason via a shared
+  `ReasonModal`. Required for cancellations and for deliveries that miss their date;
+  optional elsewhere, with a sensible default.
+
+### 2. Changes over time
+
+- **Order amendments** — a follow-up message ("actually make it 30 kg, guests aa rahe
+  hain") is detected by the LLM (`is_amendment`), matched to the customer's most recent
+  open order from the last 24 hours, and **merges into that order** rather than creating a
+  new one. The item delta and the customer's stated reason are logged as `items_changed`.
+- **Intent vs. outcome** — on delivery, the system compares the actual delivery time
+  against the date promised at order time and stamps the order `fulfilled` / `missed` /
+  `unknown`. A miss requires a reason. This turns intent from metadata into an
+  accountability measure, and yields a new KPI: **intent fulfilment rate**.
+- **Soft delete** — deleting an order sets `deleted_at` and requires a reason, rather than
+  destroying the row. The full history survives, ending with a `deleted` entry.
+
+### 3. Making it inspectable
+
+- **`/orders/[id]`** — order detail with a live change-history timeline (Supabase realtime
+  on both `orders` and `order_history`), each entry showing its captured intent.
+- **Before → after diffs** — `HistoryDiff` renders field-level changes per entry:
+  scalar fields as *old → new*, item arrays as added / removed / changed, collapsed behind
+  a toggle so the intent stays the headline.
+- **Time-travel snapshots** — `GET /api/orders/{id}/snapshots` reconstructs the order's
+  full state at every point in its history by replaying deltas forward from creation.
+  Because history logging is best-effort and can therefore have gaps, snapshots whose
+  deltas don't reconcile are flagged **approximate** rather than silently shown as fact.
+- **`/activity`** — a global feed of every change across all orders, filterable by change
+  type and source, so a vendor can answer *"what changed today, and why?"* without opening
+  orders one at a time.
+- **Intent analytics** — `GET /api/analytics/intent-fulfilment` powers a fulfilment-rate
+  stat and a breakdown of the most common reasons deliveries miss their intent.
+
+### 4. Making the record trustworthy
+
+- **Append-only history** — the `anon` role has `SELECT` only (so the browser can subscribe
+  to the timeline). All writes go through the backend using the `service_role` key,
+  bypassing RLS. A database trigger (`order_history_immutable`) enforces immutability
+  against `UPDATE`.
+- **Best-effort logging** — `history_service.log_history` swallows its own exceptions so a
+  logging failure can never break the order flow it is recording.
+
+### New API surface
+
+| Endpoint | Purpose |
+|---|---|
+| `GET /api/orders/{id}/history` | Change timeline for one order |
+| `GET /api/orders/{id}/snapshots` | Reconstructed state at each point in time |
+| `GET /api/orders/activity` | Global change feed (filter by change_type, source) |
+| `GET /api/analytics/intent-fulfilment` | Fulfilment rate + top miss reasons |
+| `DELETE /api/orders/{id}` | Soft delete, reason required |
+
+Code is on branch `claude/project-docs-review-75xxw8`.
 
 ---
 
@@ -134,12 +184,22 @@ just for the dashboard/route/analytics screens as before.
 
 ## Known limitations (be ready to answer if judges ask)
 
-- History is currently tracked at the **order** level only (creation, status, notes).
-  Item-level edits (e.g. changing quantities on an existing order) aren't captured yet —
-  there's no edit-items endpoint in this MVP.
-- Intent inference quality depends on the LLM (Groq cloud or local Ollama) correctly
-  reading context from the transcript; short/ambiguous messages fall back to a generic
-  "Routine grocery order" intent.
-- History logging is best-effort (wrapped in try/except) so a logging failure never
-  blocks the primary order flow — but it does mean a transient Supabase error could
-  silently produce a gap in the timeline.
+- **Amendment matching is heuristic.** A follow-up is matched to the customer's most
+  recent `pending`/`in_transit` order from the last 24 hours. If a customer has several
+  open orders at once, the amendment could attach to the wrong one. Explicit order
+  references would fix this.
+- **Amendments never remove items.** The merge updates quantities and adds new products,
+  but deliberately won't delete a line the customer didn't mention — so *"cancel the
+  onions"* is not yet understood. Erring toward not destroying data was the safer default.
+- **Intent inference quality depends on the LLM.** Short or ambiguous messages fall back
+  to a generic *"Routine grocery order"*. Intent is inferred, not confirmed by the
+  customer — echoing it back over WhatsApp for correction is the natural next step.
+- **History logging is best-effort by design** (wrapped in try/except) so a logging failure
+  can never break the order flow it records. The trade-off is that the log can have gaps.
+  Time-travel snapshots handle this honestly: any state that can't be reconciled from the
+  deltas is flagged **approximate** rather than presented as fact.
+- **Vendors still type their reason.** For a voice-first product aimed at semi-literate
+  users, reason capture should accept a voice note through the existing Whisper pipeline.
+  The plumbing exists (`/api/transcribe`); only the UI wiring is missing.
+- **Outcome evaluation is date-granular.** `fulfilled` vs `missed` compares calendar dates
+  in IST, not delivery time windows, so "morning delivery" promises aren't yet checked.
