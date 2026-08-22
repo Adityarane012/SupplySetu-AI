@@ -64,6 +64,7 @@ class OrderCreate(BaseModel):
 class OrderUpdate(BaseModel):
     status: Optional[str] = None
     notes: Optional[str] = None
+    reason: Optional[str] = None  # captured intent behind this change — not persisted on the order row
 
     @field_validator("status")
     @classmethod

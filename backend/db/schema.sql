@@ -90,6 +90,28 @@ CREATE TABLE IF NOT EXISTS messages (
 );
 
 -- ============================================================
+-- 6b. ORDER_HISTORY table (intent capture / change timeline)
+--     Records meaningful changes to an order over its lifecycle,
+--     paired with the captured "why" (intent) behind each change.
+-- ============================================================
+CREATE TABLE IF NOT EXISTS order_history (
+  id           UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+  order_id     UUID NOT NULL REFERENCES orders(id) ON DELETE CASCADE,
+  change_type  TEXT NOT NULL
+                 CHECK (change_type IN (
+                   'created', 'status_changed', 'notes_changed'
+                 )),
+  summary      TEXT NOT NULL,   -- what changed, e.g. "Status changed from pending to delivered"
+  intent       TEXT,            -- why it changed — the captured goal/purpose/reason
+  source       TEXT NOT NULL DEFAULT 'system'
+                 CHECK (source IN ('voice', 'text', 'manual', 'system')),
+  actor        TEXT,            -- customer phone, "vendor", or "system"
+  before_data  JSONB,
+  after_data   JSONB,
+  created_at   TIMESTAMPTZ DEFAULT NOW()
+);
+
+-- ============================================================
 -- 7. INDEXES for performance
 -- ============================================================
 CREATE INDEX IF NOT EXISTS idx_orders_status        ON orders(status);
@@ -99,6 +121,7 @@ CREATE INDEX IF NOT EXISTS idx_order_items_order    ON order_items(order_id);
 CREATE INDEX IF NOT EXISTS idx_customers_phone      ON customers(phone);
 CREATE INDEX IF NOT EXISTS idx_customers_name       ON customers(name);
 CREATE INDEX IF NOT EXISTS idx_messages_phone       ON messages(customer_phone);
+CREATE INDEX IF NOT EXISTS idx_order_history_order  ON order_history(order_id, created_at DESC);
 
 -- ============================================================
 -- 8. Auto-update `updated_at` on orders
@@ -118,10 +141,12 @@ CREATE TRIGGER orders_updated_at
   EXECUTE FUNCTION update_updated_at_column();
 
 -- ============================================================
--- 9. Enable Realtime on orders table
---    (Supabase real-time subscriptions for the dashboard)
+-- 9. Enable Realtime on orders + order_history tables
+--    (Supabase real-time subscriptions for the dashboard
+--     and the live intent/change-history timeline)
 -- ============================================================
 ALTER PUBLICATION supabase_realtime ADD TABLE orders;
+ALTER PUBLICATION supabase_realtime ADD TABLE order_history;
 
 -- ============================================================
 -- DONE! Run the seed.sql file next to populate mock data.

@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { supabase } from "@/lib/supabase";
-import { Package, Truck, Clock, Filter, BarChart3, Plus, ChevronRight } from "lucide-react";
+import { Package, Truck, Clock, Filter, BarChart3, Plus, ChevronRight, Eye } from "lucide-react";
 
 export default function OrdersPage() {
   const [orders, setOrders] = useState<any[]>([]);
@@ -130,7 +130,11 @@ export default function OrdersPage() {
               {filteredOrders.map((order: any) => (
                 <tr key={order.id} className="hover:bg-gray-50 transition-colors">
                   <td className="px-6 py-4 text-sm text-gray-500">{order.id.slice(0, 8)}</td>
-                  <td className="px-6 py-4 text-sm font-medium text-gray-800">{order.customer_name}</td>
+                  <td className="px-6 py-4 text-sm font-medium text-gray-800">
+                    <a href={`/orders/${order.id}`} className="hover:text-green-700 hover:underline">
+                      {order.customer_name}
+                    </a>
+                  </td>
                   <td className="px-6 py-4 text-sm">
                     <span className={`px-3 py-1 rounded-full text-xs font-semibold 
                       ${order.status === 'pending' ? 'bg-orange-100 text-orange-700' : 
@@ -145,22 +149,32 @@ export default function OrdersPage() {
                     ))}
                   </td>
                   <td className="px-6 py-4 text-right text-sm font-medium">
-                    {nextStatus[order.status] ? (
-                      <button
-                        onClick={() => updateStatus(order.id, nextStatus[order.status])}
-                        disabled={updatingId === order.id}
-                        className={`inline-flex items-center space-x-1 px-3 py-1.5 rounded-lg text-white font-medium text-xs transition-colors shadow-sm ${
-                          order.status === 'pending' 
-                            ? 'bg-blue-500 hover:bg-blue-600' 
-                            : 'bg-green-500 hover:bg-green-600'
-                        } ${updatingId === order.id ? 'opacity-50 cursor-not-allowed' : ''}`}
+                    <div className="flex items-center justify-end gap-2">
+                      <a
+                        href={`/orders/${order.id}`}
+                        title="View details & change history"
+                        className="inline-flex items-center space-x-1 px-3 py-1.5 rounded-lg text-gray-600 font-medium text-xs border border-gray-200 hover:bg-gray-50 transition-colors"
                       >
-                        <span>{updatingId === order.id ? 'Updating...' : statusLabel[order.status]}</span>
-                        <ChevronRight size={14} />
-                      </button>
-                    ) : (
-                      <span className="text-green-600 text-xs font-semibold">✓ Completed</span>
-                    )}
+                        <Eye size={14} />
+                        <span>View</span>
+                      </a>
+                      {nextStatus[order.status] ? (
+                        <button
+                          onClick={() => updateStatus(order.id, nextStatus[order.status])}
+                          disabled={updatingId === order.id}
+                          className={`inline-flex items-center space-x-1 px-3 py-1.5 rounded-lg text-white font-medium text-xs transition-colors shadow-sm ${
+                            order.status === 'pending'
+                              ? 'bg-blue-500 hover:bg-blue-600'
+                              : 'bg-green-500 hover:bg-green-600'
+                          } ${updatingId === order.id ? 'opacity-50 cursor-not-allowed' : ''}`}
+                        >
+                          <span>{updatingId === order.id ? 'Updating...' : statusLabel[order.status]}</span>
+                          <ChevronRight size={14} />
+                        </button>
+                      ) : (
+                        <span className="text-green-600 text-xs font-semibold">✓ Completed</span>
+                      )}
+                    </div>
                   </td>
                 </tr>
               ))}

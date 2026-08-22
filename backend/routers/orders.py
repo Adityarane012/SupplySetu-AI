@@ -3,6 +3,7 @@ from typing import Optional
 from db.supabase_client import supabase
 from models.schemas import OrderCreate, OrderUpdate
 from datetime import date
+from services.history_service import log_history, log_order_created, default_status_intent
 
 router = APIRouter()
 
@@ -48,8 +49,9 @@ def create_order(body: OrderCreate):
     order = supabase.table("orders").insert(order_data).execute().data[0]
 
     # Insert items
+    items_payload = []
     if body.items:
-        items = [
+        items_payload = [
             {
                 "order_id": order["id"],
                 "product_name": item.product_name,
@@ -58,18 +60,69 @@ def create_order(body: OrderCreate):
             }
             for item in body.items
         ]
-        supabase.table("order_items").insert(items).execute()
+        supabase.table("order_items").insert(items_payload).execute()
+
+    log_order_created(
+        order_id=order["id"],
+        items=items_payload,
+        intent=body.notes,  # manual entry has no LLM intent; use notes if the vendor gave any
+        source="manual",
+        actor="vendor",
+    )
 
     return {"order_id": order["id"], "status": "created"}
 
 
 @router.put("/{order_id}")
 def update_order(order_id: str, body: OrderUpdate):
-    update_data = {k: v for k, v in body.model_dump().items() if v is not None}
+    existing = supabase.table("orders").select("*").eq("id", order_id).single().execute()
+    if not existing.data:
+        raise HTTPException(status_code=404, detail="Order not found")
+    old = existing.data
+
+    update_data = body.model_dump(exclude={"reason"}, exclude_none=True)
     if not update_data:
         raise HTTPException(400, "No fields to update")
+
     result = supabase.table("orders").update(update_data).eq("id", order_id).execute()
+
+    if "status" in update_data and update_data["status"] != old.get("status"):
+        log_history(
+            order_id=order_id,
+            change_type="status_changed",
+            summary=f"Status changed from '{old.get('status')}' to '{update_data['status']}'",
+            intent=body.reason or default_status_intent(update_data["status"]),
+            source="manual",
+            actor="vendor",
+            before={"status": old.get("status")},
+            after={"status": update_data["status"]},
+        )
+
+    if "notes" in update_data and update_data["notes"] != old.get("notes"):
+        log_history(
+            order_id=order_id,
+            change_type="notes_changed",
+            summary="Order notes updated",
+            intent=body.reason,
+            source="manual",
+            actor="vendor",
+            before={"notes": old.get("notes")},
+            after={"notes": update_data["notes"]},
+        )
+
     return {"updated": True, "data": result.data}
+
+
+@router.get("/{order_id}/history")
+def get_order_history(order_id: str):
+    result = (
+        supabase.table("order_history")
+        .select("*")
+        .eq("order_id", order_id)
+        .order("created_at", desc=True)
+        .execute()
+    )
+    return result.data
 
 
 @router.delete("/{order_id}")

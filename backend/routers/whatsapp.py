@@ -9,6 +9,7 @@ from twilio.twiml.messaging_response import MessagingResponse
 
 from services.whisper_service import transcribe_audio
 from services.llm_service import extract_order
+from services.history_service import log_order_created
 from db.supabase_client import supabase
 from routers.simulator import _upsert_customer, _sanitise_delivery_date, _build_reply
 
@@ -131,7 +132,16 @@ async def twilio_whatsapp_webhook(request: Request):
             }
             for item in items
         ]).execute()
-        
+
+        # Capture the customer's intent behind this order for the change-history timeline
+        log_order_created(
+            order_id=order_row["id"],
+            items=items,
+            intent=extracted.get("intent"),
+            source="voice" if source == "whatsapp_voice" else "text",
+            actor=customer_phone,
+        )
+
         # ── 7. Send Confirmation ───────────────────────────────────────────
         reply = _build_reply(customer["name"], items, delivery_date, notes)
         print(f"[WhatsApp] Successfully processed order {order_row['id'][:8]} for {customer_name}")

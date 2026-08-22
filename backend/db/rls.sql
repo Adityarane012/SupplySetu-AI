@@ -7,11 +7,12 @@
 -- ============================================================
 
 -- Enable RLS on all tables
-ALTER TABLE customers    ENABLE ROW LEVEL SECURITY;
-ALTER TABLE orders       ENABLE ROW LEVEL SECURITY;
-ALTER TABLE order_items  ENABLE ROW LEVEL SECURITY;
-ALTER TABLE deliveries   ENABLE ROW LEVEL SECURITY;
-ALTER TABLE messages     ENABLE ROW LEVEL SECURITY;
+ALTER TABLE customers      ENABLE ROW LEVEL SECURITY;
+ALTER TABLE orders         ENABLE ROW LEVEL SECURITY;
+ALTER TABLE order_items    ENABLE ROW LEVEL SECURITY;
+ALTER TABLE deliveries     ENABLE ROW LEVEL SECURITY;
+ALTER TABLE messages       ENABLE ROW LEVEL SECURITY;
+ALTER TABLE order_history  ENABLE ROW LEVEL SECURITY;
 
 -- ============================================================
 -- MVP POLICY: Allow all operations for authenticated AND
@@ -19,8 +20,9 @@ ALTER TABLE messages     ENABLE ROW LEVEL SECURITY;
 -- This is fine for a hackathon — tighten before production.
 -- ============================================================
 
-CREATE POLICY "allow_all_customers"   ON customers   FOR ALL USING (true) WITH CHECK (true);
-CREATE POLICY "allow_all_orders"      ON orders      FOR ALL USING (true) WITH CHECK (true);
-CREATE POLICY "allow_all_order_items" ON order_items FOR ALL USING (true) WITH CHECK (true);
-CREATE POLICY "allow_all_deliveries"  ON deliveries  FOR ALL USING (true) WITH CHECK (true);
-CREATE POLICY "allow_all_messages"    ON messages    FOR ALL USING (true) WITH CHECK (true);
+CREATE POLICY "allow_all_customers"     ON customers     FOR ALL USING (true) WITH CHECK (true);
+CREATE POLICY "allow_all_orders"        ON orders        FOR ALL USING (true) WITH CHECK (true);
+CREATE POLICY "allow_all_order_items"   ON order_items   FOR ALL USING (true) WITH CHECK (true);
+CREATE POLICY "allow_all_deliveries"    ON deliveries    FOR ALL USING (true) WITH CHECK (true);
+CREATE POLICY "allow_all_messages"      ON messages      FOR ALL USING (true) WITH CHECK (true);
+CREATE POLICY "allow_all_order_history" ON order_history FOR ALL USING (true) WITH CHECK (true);

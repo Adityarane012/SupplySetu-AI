@@ -7,6 +7,7 @@ from fastapi import APIRouter, Form, UploadFile, File
 from typing import Optional, Annotated
 from services.whisper_service import transcribe_audio
 from services.llm_service import extract_order
+from services.history_service import log_order_created
 from db.supabase_client import supabase
 
 router = APIRouter()
@@ -218,6 +219,15 @@ async def receive_simulator_message(
         }
         for item in items
     ]).execute()
+
+    # Capture the customer's intent behind this order for the change-history timeline
+    log_order_created(
+        order_id=order_row["id"],
+        items=items,
+        intent=extracted.get("intent"),
+        source="voice" if source == "whatsapp_voice" else "text",
+        actor=customer_phone,
+    )
 
     # ── 8. Build and return reply ───────────────────────────────────────────
     reply = _build_reply(customer["name"], items, delivery_date, notes)
