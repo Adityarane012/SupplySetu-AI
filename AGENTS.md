@@ -110,9 +110,10 @@ an array apply after the filesystem check, so the rewrites for `/`, `/orders/new
 static Stitch mockups with no data binding. Don't assume a rewrite is active without
 checking whether a page file shadows it.
 
-**`next.config.ts` sets `ignoreBuildErrors: true` and `ignoreDuringBuilds: true`.**
-TypeScript and ESLint errors will *not* fail the build. Verify frontend changes by
-actually loading the page, not by trusting a green build.
+**`next.config.ts` sets `typescript.ignoreBuildErrors: true`**, so `next build` skips type
+validation entirely — a green build does not mean the types are sound. Run
+`npx tsc --noEmit` to actually check. (Next 16 removed the `eslint` config key and no
+longer runs ESLint during `next build`; use `npm run lint`.)
 
 **Leaflet must stay client-only.** It touches `window` at import. `MapWrapper` exists to
 wrap `DeliveryMap` in a dynamic import with `ssr: false` — keep map code behind it.

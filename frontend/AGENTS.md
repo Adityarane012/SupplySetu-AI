@@ -19,9 +19,10 @@ timeline and is the primary Round 2 demo surface.
 
 ## Gotchas
 
-**Build errors are suppressed.** `next.config.ts` sets both `typescript.ignoreBuildErrors`
-and `eslint.ignoreDuringBuilds` to `true`, so a green build proves nothing. Verify changes
-by loading the page.
+**Type errors are suppressed.** `next.config.ts` sets `typescript.ignoreBuildErrors: true`,
+so `next build` skips type validation — a green build proves nothing about types. Run
+`npx tsc --noEmit` to check them. Next 16 removed the `eslint` config key and no longer
+lints during `next build`; run `npm run lint` separately.
 
 **Rewrites vs. pages.** `next.config.ts` rewrites map some paths to static Stitch mockups
 in `public/screens/`. Array-form rewrites apply *after* the filesystem check, so any path
