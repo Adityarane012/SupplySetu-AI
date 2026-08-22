@@ -31,3 +31,20 @@ backend/test_extract.py
 download_screens.py
 test_extract.py
 *.log
+
+# Scratch scripts
+debug_llm.py
+fix_quotes.py
+test_type_tab.py
+download_screens.py
+
+# Agent and AI Tool configs
+.agents/
+.claude/
+.gemini/
+skills-lock.json
+
+# Generated Output
+graphify-out/
+stitch_htmls/
+supabase/
